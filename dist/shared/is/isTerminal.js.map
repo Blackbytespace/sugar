@@ -1,0 +1,1 @@
+{"version":3,"file":"isTerminal.js","sourceRoot":"","sources":["../../../src/shared/is/isTerminal.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;GAoBG;AACH,MAAM,CAAC,OAAO,UAAU,UAAU;IAChC,aAAa;IACb,IAAI,OAAO,IAAI,OAAO,CAAC,MAAM,IAAI,OAAO,CAAC,MAAM,CAAC,KAAK;QAAE,OAAO,IAAI,CAAC;IACnE,OAAO,KAAK,CAAC;AACf,CAAC"}

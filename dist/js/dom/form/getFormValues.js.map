@@ -1,0 +1,1 @@
+{"version":3,"file":"getFormValues.js","sourceRoot":"","sources":["../../../../src/js/dom/form/getFormValues.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;;;GAsBG;AACH,MAAM,CAAC,OAAO,UAAU,aAAa,CAAC,KAAsB;IAC1D,MAAM,QAAQ,GAAG,IAAI,QAAQ,CAAC,KAAK,CAAC,CAAC;IACrC,OAAO,MAAM,CAAC,WAAW,CAAC,QAAQ,CAAC,CAAC;AACtC,CAAC"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"ensureFileSync.js","sourceRoot":"","sources":["../../../src/node/fs/ensureFileSync.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,UAAU,CAAC;AAE1B;;;;;;;;;;;;;;;;;;;;;;GAsBG;AACH,MAAM,CAAC,OAAO,UAAU,cAAc,CAAC,QAAgB;IACrD,EAAE,CAAC,cAAc,CAAC,QAAQ,CAAC,CAAC;AAC9B,CAAC"}

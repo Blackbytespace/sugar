@@ -1,0 +1,1 @@
+{"version":3,"file":"mapToObject.js","sourceRoot":"","sources":["../../../src/shared/convert/mapToObject.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;GA0BG;AACH,MAAM,CAAC,OAAO,UAAU,WAAW,CAAC,GAAQ;IAC1C,MAAM,GAAG,GAAG,EAAE,CAAC;IACf,KAAK,MAAM,CAAC,CAAC,EAAE,CAAC,CAAC,IAAI,GAAG;QAAE,GAAG,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC;IACrC,OAAO,GAAG,CAAC;AACb,CAAC"}

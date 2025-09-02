@@ -1,0 +1,73 @@
+import isChrome from './isChrome.js';
+import isCrawler from './isCrawler.js';
+import isDarkMode from './isDarkMode.js';
+import isEdge from './isEdge.js';
+import isFirefox from './isFirefox.js';
+import isFocus from './isFocus.js';
+import isFocusWithin from './isFocusWithin.js';
+import isHlsSupported from './isHlsSupported.js';
+import isHover from './isHover.js';
+import isIe from './isIe.js';
+import isInIframe from './isInIframe.js';
+import isInViewport from './isInViewport.js';
+import isMobile from './isMobile.js';
+import isOpera from './isOpera.js';
+import isPhone from './isPhone.js';
+import isSafari from './isSafari.js';
+import isSamsungBrowser from './isSamsungBrowser.js';
+import isScrollable from './isScrollable.js';
+import isTablet from './isTablet.js';
+import isUcBrowser from './isUcBrowser.js';
+import isUserScrolling from './isUserScrolling.js';
+import isVideoPlaying from './isVideoPlaying.js';
+import isVisible from './isVisible.js';
+
+export * from '../../shared/is/_exports.js';
+export {
+  isChrome as __isChrome,
+  isCrawler as __isCrawler,
+  isDarkMode as __isDarkMode,
+  isEdge as __isEdge,
+  isFirefox as __isFirefox,
+  isFocus as __isFocus,
+  isFocusWithin as __isFocusWithin,
+  isHlsSupported as __isHlsSupported,
+  isHover as __isHover,
+  isIe as __isIe,
+  isInIframe as __isInIframe,
+  isInViewport as __isInViewport,
+  isMobile as __isMobile,
+  isOpera as __isOpera,
+  isPhone as __isPhone,
+  isSafari as __isSafari,
+  isSamsungBrowser as __isSamsungBrowser,
+  isScrollable as __isScrollable,
+  isTablet as __isTablet,
+  isUcBrowser as __isUcBrowser,
+  isUserScrolling as __isUserScrolling,
+  isVideoPlaying as __isVideoPlaying,
+  isVisible as __isVisible,
+  isChrome,
+  isCrawler,
+  isDarkMode,
+  isEdge,
+  isFirefox,
+  isFocus,
+  isFocusWithin,
+  isHlsSupported,
+  isHover,
+  isIe,
+  isInIframe,
+  isInViewport,
+  isMobile,
+  isOpera,
+  isPhone,
+  isSafari,
+  isSamsungBrowser,
+  isScrollable,
+  isTablet,
+  isUcBrowser,
+  isUserScrolling,
+  isVideoPlaying,
+  isVisible,
+};

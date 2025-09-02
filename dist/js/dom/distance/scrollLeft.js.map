@@ -1,0 +1,1 @@
+{"version":3,"file":"scrollLeft.js","sourceRoot":"","sources":["../../../../src/js/dom/distance/scrollLeft.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;GAmBG;AACH,MAAM,CAAC,OAAO,UAAU,UAAU;IAChC,OAAO,CACL,MAAM,CAAC,OAAO;QACd,MAAM,CAAC,WAAW;QAClB,aAAa;QACb,QAAQ,CAAC,UAAU;QACnB,QAAQ,CAAC,IAAI,CAAC,UAAU,CACzB,CAAC;AACJ,CAAC"}

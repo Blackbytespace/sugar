@@ -1,0 +1,1 @@
+{"version":3,"file":"moveSync.js","sourceRoot":"","sources":["../../../src/node/fs/moveSync.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,UAAU,CAAC;AAE1B;;;;;;;;;;;;;;;;;;;;;GAqBG;AACH,MAAM,CAAC,OAAO,UAAU,QAAQ,CAAC,GAAW,EAAE,IAAY;IACxD,IAAI,GAAG,KAAK,IAAI,EAAE,CAAC;QACjB,OAAO;IACT,CAAC;IACD,EAAE,CAAC,QAAQ,CAAC,GAAG,EAAE,IAAI,CAAC,CAAC;AACzB,CAAC"}

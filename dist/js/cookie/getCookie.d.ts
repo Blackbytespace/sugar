@@ -1,0 +1,24 @@
+/**
+ * @name            getCookie
+ * @namespace       js.cookie
+ * @type            Function
+ * @platform        js
+ * @status          stable
+ *
+ * Get a cookie value
+ *
+ * @param       {String}            name            The cookie name to get
+ * @return      {any}                               The cookie value
+ *
+ * @snippet         getCookie($1)
+ *
+ * @todo            tests
+ *
+ * @example         js
+ * import { getCookie } from '@blackbyte/sugar/cookie';
+ * getCookie('myCookie');
+ *
+ * @since       1.0.0
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
+ */
+export default function getCookie(name: string): any;

@@ -1,0 +1,1 @@
+{"version":3,"file":"isVideoPlaying.js","sourceRoot":"","sources":["../../../src/js/is/isVideoPlaying.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;;;;;;GAyBG;AACH,MAAM,CAAC,OAAO,UAAU,cAAc,CAAC,MAAwB;IAC7D,OAAO,CAAC,CAAC,CACP,MAAM,CAAC,WAAW,GAAG,CAAC;QACtB,CAAC,MAAM,CAAC,MAAM;QACd,CAAC,MAAM,CAAC,KAAK;QACb,MAAM,CAAC,UAAU,GAAG,CAAC,CACtB,CAAC;AACJ,CAAC"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"move.js","sourceRoot":"","sources":["../../../src/node/fs/move.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,UAAU,CAAC;AAE1B;;;;;;;;;;;;;;;;;;;;;;;;;;;GA2BG;AACH,MAAM,CAAC,OAAO,UAAU,IAAI,CAAC,GAAW,EAAE,IAAY;IACpD,IAAI,GAAG,KAAK,IAAI,EAAE,CAAC;QACjB,OAAO,OAAO,CAAC,OAAO,EAAE,CAAC;IAC3B,CAAC;IACD,OAAO,EAAE,CAAC,IAAI,CAAC,GAAG,EAAE,IAAI,CAAC,CAAC;AAC5B,CAAC"}

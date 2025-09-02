@@ -1,0 +1,1 @@
+{"version":3,"file":"clamp.js","sourceRoot":"","sources":["../../../src/shared/math/clamp.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA4BG;AACH,MAAM,CAAC,OAAO,UAAU,KAAK,CAAC,GAAW,EAAE,GAAW,EAAE,GAAW;IACjE,OAAO,IAAI,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,CAAC,GAAG,EAAE,GAAG,CAAC,EAAE,GAAG,CAAC,CAAC;AAC3C,CAAC"}

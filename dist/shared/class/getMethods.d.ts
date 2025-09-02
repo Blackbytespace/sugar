@@ -1,0 +1,31 @@
+/**
+ * @name              getMethods
+ * @namespace         shared.class
+ * @type              Function
+ * @platform          js
+ * @platform          node
+ * @status            beta
+ *
+ * This function take an instance as parameter and return all the methods in array format
+ *
+ * @param         {Object}        instance        The instance of the object to get the methods names of
+ * @return        {Array}                         A simple array of all the methods names
+ *
+ * @todo      tests
+ *
+ * @snippet         getMethods($1)
+ *
+ * @example         js
+ * import { getMethods } from '@blackbyte/sugar/class';
+ * myClass {
+ *  constructor() {}
+ *  hello() {}
+ *  world() {}
+ * }
+ * const myInstance = new myClass();
+ * getMethods(myInstance); // => ['hello','world']
+ *
+ * @since       1.0.0
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
+ */
+export default function getMethods(toCheck: any): string[];

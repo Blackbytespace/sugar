@@ -1,0 +1,1 @@
+{"version":3,"file":"isIdCompliant.js","sourceRoot":"","sources":["../../../src/shared/is/isIdCompliant.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,0BAA0B,CAAC;AAErD;;;;;;;;;;;;;;;;;;;;;;;GAuBG;AAEH,MAAM,CAAC,OAAO,UAAU,aAAa,CAAC,GAAW;IAC/C,IAAI,CAAC,GAAG,EAAE,CAAC;QACT,OAAO,KAAK,CAAC;IACf,CAAC;IACD,OAAO,aAAa,CAAC,GAAG,CAAC,KAAK,GAAG,CAAC;AACpC,CAAC"}

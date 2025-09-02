@@ -1,0 +1,1 @@
+{"version":3,"file":"isNode.js","sourceRoot":"","sources":["../../../src/shared/is/isNode.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;;;GAsBG;AACH,MAAM,CAAC,OAAO,UAAU,MAAM;IAC5B,OAAO,CACL,OAAO,OAAO,KAAK,WAAW;QAC9B,OAAO,CAAC,OAAO;QACf,OAAO,CAAC,OAAO,CAAC,IAAI,KAAK,MAAM,CAChC,CAAC;AACJ,CAAC"}

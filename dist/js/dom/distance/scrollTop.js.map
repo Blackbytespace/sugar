@@ -1,0 +1,1 @@
+{"version":3,"file":"scrollTop.js","sourceRoot":"","sources":["../../../../src/js/dom/distance/scrollTop.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;;GAqBG;AACH,SAAS,SAAS;IAChB,OAAO,CACL,MAAM,CAAC,OAAO;QACd,MAAM,CAAC,WAAW;QAClB,aAAa;QACb,QAAQ,CAAC,SAAS;QAClB,QAAQ,CAAC,IAAI,CAAC,SAAS,CACxB,CAAC;AACJ,CAAC;AACD,eAAe,SAAS,CAAC"}

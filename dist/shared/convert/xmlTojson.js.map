@@ -1,0 +1,1 @@
+{"version":3,"file":"xmlTojson.js","sourceRoot":"","sources":["../../../src/shared/convert/xmlTojson.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAE5C;;;;;;;;;;;;;;;;;;;;;;;;GAwBG;AACH,MAAM,CAAC,OAAO,UAAU,SAAS,CAAC,GAAW;IAC3C,MAAM,MAAM,GAAG,IAAI,SAAS,EAAE,CAAC;IAC/B,OAAO,MAAM,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC;AAC3B,CAAC"}

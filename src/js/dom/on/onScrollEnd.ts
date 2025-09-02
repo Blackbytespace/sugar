@@ -1,0 +1,115 @@
+/**
+ * @name            onScrollEnd
+ * @namespace       js.dom.detect
+ * @type            Function
+ * @platform        js
+ * @status          stable
+ * @async
+ *
+ * This function simply listen for scroll on the passed element and call the passed callback
+ * when reaching the end of it.
+ *
+ * @param       {HTMLElement}           $elm        The element to listen on
+ * @param       {Function}              callback        The function to call when scroll end is detected
+ * @param       {TOnScrollEndSettings}      [settings={}]       Some settings like offset, etc...
+ *
+ * @setting         {Number}        [offset=20]             An offset to detect earlier the end of the scroll
+ * @setting         {boolean}       [once=false]            true if you want to detect the scroll end just once
+ * @setting         {number}        [times=-1]              Specify a number of times to detect the scroll end
+ *
+ * @todo      tests
+ *
+ * @snippet         onScrollEnd($1, $2)
+ * onScrollEnd($1, () => {
+ *      $2
+ * });
+ *
+ * @example         js
+ * import { onScrollEnd } from '@blackbyte/sugar/dom';
+ * onScrollEnd($elm, () => {
+ *      // do something
+ * }, {
+ *    offset: 50
+ * });
+ *
+ * @since       1.0.0
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
+ */
+export type TOnScrollEndSettings = {
+  offset: number;
+  once: boolean;
+  times: number;
+};
+
+export default function onScrollEnd(
+  $elm: HTMLElement,
+  callback: Function,
+  settings?: TOnScrollEndSettings,
+): void {
+  const finalSettings: TOnScrollEndSettings = {
+    offset: 20,
+    once: false,
+    times: -1,
+    ...(settings ?? {}),
+  };
+
+  let isBody = false;
+
+  let $scrollListenedElm: any = $elm;
+  let $scrollHeightElm = $elm;
+  if ($elm === window.document.body) {
+    isBody = true;
+    $scrollListenedElm = document;
+    $scrollHeightElm = window.document.body;
+    // @ts-ignore
+  } else if ($elm === window.document) {
+    isBody = true;
+    $elm = document.body;
+    $scrollHeightElm = document.body;
+  }
+
+  let active = true,
+    count = 0;
+
+  const internalCallback = (e) => {
+    let fullHeight, viewportHeight, scrollTop;
+    if (isBody) {
+      viewportHeight = window.innerHeight;
+      scrollTop = $scrollHeightElm.scrollTop;
+      fullHeight = Math.max(
+        window.document.body.scrollHeight,
+        window.document.documentElement.scrollHeight,
+        window.document.body.offsetHeight,
+        window.document.documentElement.offsetHeight,
+        window.document.body.clientHeight,
+        window.document.documentElement.clientHeight,
+      );
+    } else {
+      viewportHeight = $scrollHeightElm.offsetHeight;
+      scrollTop = $scrollHeightElm.scrollTop;
+      fullHeight = $scrollHeightElm.scrollHeight;
+    }
+
+    if (
+      active &&
+      scrollTop + viewportHeight >= fullHeight - finalSettings.offset
+    ) {
+      callback();
+      count++;
+      if (finalSettings.once) {
+        $scrollListenedElm.removeEventListener('scroll', internalCallback);
+        active = false;
+      } else if (finalSettings.times > 0 && count >= finalSettings.times) {
+        $scrollListenedElm.removeEventListener('scroll', internalCallback);
+        active = false;
+      }
+    } else if (
+      $scrollHeightElm.offsetHeight + $scrollHeightElm.scrollTop <
+      $scrollHeightElm.scrollHeight - finalSettings.offset
+    ) {
+      active = true;
+    }
+  };
+
+  $scrollListenedElm.addEventListener('scroll', internalCallback);
+}
