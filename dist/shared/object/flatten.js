@@ -1,3 +1,4 @@
+import { flatten } from 'flattenjs';
 /**
  * @name                        flatten
  * @namespace                   shared.object
@@ -12,9 +13,6 @@
  * @param               {Object}                          [settings={}]             An object of settings to configure your flatten process
  * @return              {Object}                                                    The flatten object
  *
- * @setting               {String}            [separation="."]          The separation character to use for preperty names
- * @setting               {String}            [prefix=""]               A prefix to add to the property names
- *
  * @todo      tests
  *
  * @snippet         flatten($1)
@@ -27,22 +25,11 @@
  *    }
  * });
  *
+ * @see.     https://www.npmjs.com/package/flat
  * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function flatten(obj, settings) {
-    const finalSettings = Object.assign({ separator: '.', prefix: '' }, (settings !== null && settings !== void 0 ? settings : {}));
-    return Object.keys(obj).reduce((acc, k) => {
-        const pre = finalSettings.prefix.length
-            ? finalSettings.prefix + finalSettings.separator
-            : '';
-        if (typeof obj[k] === 'object' && obj[k] !== null) {
-            Object.assign(acc, flatten(obj[k], Object.assign(Object.assign({}, finalSettings), { prefix: pre + k })));
-        }
-        else {
-            acc[pre + k] = obj[k];
-        }
-        return acc;
-    }, {});
+export default function _flatten(obj) {
+    return flatten(obj);
 }
 //# sourceMappingURL=flatten.js.map

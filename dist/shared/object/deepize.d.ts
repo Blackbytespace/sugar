@@ -35,6 +35,7 @@
  * import { deepize } from '@blackbyte/sugar/object';
  * deepize({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
  *
+ * @see       https://www.npmjs.com/package/flat
  * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */

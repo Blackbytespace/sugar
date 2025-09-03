@@ -12,11 +12,11 @@
  * @param       {Partial<TViewportEventsSettings>}      [$settings={}]      Some settings to configure your detector
  * @return 		{HTMLElement} 		                    The passed HTMLElement
  *
- * @setting         {String}        [offset='10px']             An offset to detect the in/out earlier or later
+ * @setting         {String}        [offset=25]                 An offset to detect the enter/leave earlier or later
  * @setting         {Boolean}       [once=false]                Specify if you want to event to be dispatched only once
  *
- * @event       viewport.in               Dispatched when the passed element enters the viewport
- * @event       viewport.out               Dispatched when the passed element exits the viewport
+ * @event       viewport.enter               Dispatched when the passed element enter the viewport
+ * @event       viewport.leave               Dispatched when the passed element leave the viewport
  *
  * @snippet         viewportEvents($1)
  * viewportEvents($1).addEventListener('viewport.enter', (e) => {
@@ -30,6 +30,9 @@
  * viewportEvents($1).addEventListener('viewport.enter', (e) => {
  *      // do something
  * });
+ *
+ * @changelog       1.0.0
+ * Rename events from `viewport.i`n / `viewport.out` to `viewport.enter` / `viewport.leave`
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

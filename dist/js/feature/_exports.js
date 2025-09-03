@@ -1,3 +1,4 @@
 import scrollClasses from './scrollClasses.js';
-export { scrollClasses as __scrolledClasses, scrollClasses };
+import sectionClasses from './sectionClasses.js';
+export { scrollClasses as __scrolledClasses, sectionClasses as __sectionClasses, scrollClasses, sectionClasses, };
 //# sourceMappingURL=_exports.js.map

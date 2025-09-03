@@ -17,7 +17,7 @@ export default function viewportEvents($elm, settings) {
                 return;
             }
             status = 'in';
-            $elm.dispatchEvent(new CustomEvent('viewport.in', {
+            $elm.dispatchEvent(new CustomEvent('viewport.enter', {
                 bubbles: true,
             }));
             if (finalSettings === null || finalSettings === void 0 ? void 0 : finalSettings.once) {
@@ -29,7 +29,7 @@ export default function viewportEvents($elm, settings) {
                 return;
             }
             status = 'out';
-            $elm.dispatchEvent(new CustomEvent('viewport.out', {
+            $elm.dispatchEvent(new CustomEvent('viewport.leave', {
                 bubbles: true,
             }));
         }

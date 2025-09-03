@@ -38,6 +38,7 @@ import fastFolderSize from 'fast-folder-size';
  */
 export default function folderSize(folderPath) {
     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+        // @ts-ignore
         fastFolderSize(folderPath, (err, bytes) => {
             resolve(bytes !== null && bytes !== void 0 ? bytes : 0);
         });

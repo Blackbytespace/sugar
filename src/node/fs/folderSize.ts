@@ -30,6 +30,7 @@ import fastFolderSize from 'fast-folder-size';
  */
 export default function folderSize(folderPath: string): Promise<number> {
   return new Promise(async (resolve, reject) => {
+    // @ts-ignore
     fastFolderSize(folderPath, (err, bytes) => {
       resolve(bytes ?? 0);
     });

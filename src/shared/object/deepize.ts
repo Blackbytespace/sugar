@@ -1,5 +1,4 @@
-import { unflatten } from 'flat';
-
+import { inflate } from 'flattenjs';
 /**
  * @name            deepize
  * @namespace       shared.object
@@ -42,5 +41,5 @@ import { unflatten } from 'flat';
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function deepize(object: any): any {
-  return unflatten(object);
+  return inflate(object);
 }

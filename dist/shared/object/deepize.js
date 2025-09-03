@@ -1,4 +1,4 @@
-import __set from './set.js';
+import { inflate } from 'flattenjs';
 /**
  * @name            deepize
  * @namespace       shared.object
@@ -36,17 +36,11 @@ import __set from './set.js';
  * import { deepize } from '@blackbyte/sugar/object';
  * deepize({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
  *
+ * @see       https://www.npmjs.com/package/flat
  * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function deepize(object) {
-    const finalObject = {};
-    for (const key in object) {
-        if (!key) {
-            continue;
-        }
-        __set(finalObject, key, object[key]);
-    }
-    return finalObject;
+    return inflate(object);
 }
 //# sourceMappingURL=deepize.js.map

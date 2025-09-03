@@ -1,4 +1,4 @@
-import { flatten } from 'flat';
+import { flatten } from 'flattenjs';
 
 /**
  * @name                        flatten
