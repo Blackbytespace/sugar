@@ -1,9 +1,9 @@
 /**
- * @name        isChrome
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name                isChrome
+ * @namespace           js.is
+ * @type                Function
+ * @platform            js
+ * @status              stable
  *
  * Detect if is chrome
  *

@@ -14,7 +14,7 @@
  * @todo      tests
  *
  * @example    js
- * import { isScrollable } from '@blackbyte/sugar/dom'
+ * import { isScrollable } from '@blackbyte/sugar/is'
  * if (isScrollable($myElement)) {
  *   // do something
  * }

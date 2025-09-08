@@ -9,13 +9,13 @@
  * This function takes as parameter a tokened string like "something [cool]", an object
  * of arguments/values and return the processed string with the tokens replaced by the arguments values.
  *
- * @param       {String}          string          The string to process
- * @param       {Object}          tokensObj         The arguments/value object
- * @param       {Object}          [settings={}]   A settings object to configure the parsing process
- * @return      {String}                          The processed string
+ * @param       {String}          string                The string to process
+ * @param       {Object}          tokensObj             The arguments/value object
+ * @param       {Object}          [settings={}]         A settings object to configure the parsing process
+ * @return      {String}                                The processed string
  *
- * @setting     {String}        [regexp=\[([a-zA-Z0-9-_]+)\] The regexp to use to match the tokens
- * @setting     {Boolean}       [stripUndefined=true]       Specify if you want to strip the tokens that are not found in the tokensObj
+ * @setting     {String}        [regexp=\[([a-zA-Z0-9-_]+)\]        The regexp to use to match the tokens
+ * @setting     {Boolean}       [stripUndefined=true]               Specify if you want to strip the tokens that are not found in the tokensObj
  *
  * @snippet         replaceTokens($1, $2)
  * replaceTokens($1, $2)

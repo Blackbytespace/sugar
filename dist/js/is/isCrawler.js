@@ -1,10 +1,10 @@
 import { isbot as __isbot } from 'isbot';
 /**
- * @name        isCrawler
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name                isCrawler
+ * @namespace           js.is
+ * @type                Function
+ * @platform            js
+ * @status              stable
  *
  * Detect if request is from a crawler (google bot, etc...) or not
  *

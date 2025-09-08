@@ -1,9 +1,9 @@
 /**
- * @name        isOpera
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name                  isOpera
+ * @namespace             js.is
+ * @type                  Function
+ * @platform              js
+ * @status                stable
  *
  * Detect if is opera
  *

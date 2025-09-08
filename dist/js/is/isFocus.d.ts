@@ -14,7 +14,7 @@
  * @todo      tests
  *
  * @example    js
- * import { isFocus } from '@blackbyte/sugar/dom'
+ * import { isFocus } from '@blackbyte/sugar/is'
  * const $myElm = document.querySelector('.my-elm')
  * if (isFocus($myElm)) {
  *   // do something

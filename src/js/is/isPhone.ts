@@ -1,11 +1,12 @@
 import __isMobile from './isMobile.js';
 
 /**
- * @name        isPhone
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name                isPhone
+ * @namespace           js.is
+ * @alias               isMobile
+ * @type                Function
+ * @platform            js
+ * @status              stable
  *
  * Detect if is a phone device
  *

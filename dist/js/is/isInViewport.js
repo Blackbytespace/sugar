@@ -1,9 +1,9 @@
 /**
- * @name      isInViewport
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name                isInViewport
+ * @namespace           js.is
+ * @type                Function
+ * @platform            js
+ * @status              stable
  *
  * Check if the passed HTMLElement is in the viewport or not
  *
@@ -16,7 +16,7 @@
  * @todo      tests
  *
  * @example  	js
- * import { isInViewport } from '@blackbyte/sugar/dom'
+ * import { isInViewport } from '@blackbyte/sugar/is'
  * if (isInViewport(myCoolHTMLElement) {
  * 		// i'm in the viewport
  * }

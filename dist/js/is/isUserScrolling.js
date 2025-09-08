@@ -17,7 +17,7 @@ var _a, _b;
  * @todo      tests
  *
  * @example  	js
- * import { isUserScrolling } from '@blackbyte/sugar/dom'
+ * import { isUserScrolling } from '@blackbyte/sugar/is'
  * if (isUserScrolling(myCoolHTMLElement) {
  * 		// i'm in the viewport
  * }

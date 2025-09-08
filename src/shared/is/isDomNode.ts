@@ -16,7 +16,7 @@
  * @snippet         isDomNode($1)
  *
  * @example    js
- * import { isDomNode } from '@blackbyte/sugar/dom'
+ * import { isDomNode } from '@blackbyte/sugar/is'
  * isDomNode($myElement);
  *
  * @see         https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object

@@ -1,11 +1,16 @@
 /**
- * @name        isMobile
- * @namespace            js.is
- * @type      Function
+ * @name              isMobile
+ * @namespace         js.is
+ * @type              Function
  * @platform          js
- * @status        stable
+ * @status            stable
  *
  * Detect if is a mobile device (phone or tablet)
+ * Here's the checklist we use:
+ * - has touch events
+ * - has orientation
+ * - max width 639px (to be improved)
+ * - pointer is coarse
  *
  * @return    {Boolean}    true if is a mobile, false if not
  *

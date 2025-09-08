@@ -8,10 +8,14 @@ import { __querySelectorUp } from '@blackbyte/sugar/dom';
  * @status        stable
  *
  * Detect if the user prefer the dark mode.
- * If you pass a "rootNode", it will check by querying up the DOM if an element
- * has the class `-dark` on it.
+ * Dark mode is detected using:
+ * - Match the media query `prefers-color-scheme: dark`
+ * - Check if an element has the class `-dark` on it or any of its parents (up to the document root)
  *
  * @return    {Boolean}    true if prefer dark mode, false if not
+ *
+ * @setting         {Window}       [ctx=window]               The window context to use
+ * @setting         {HTMLElement}  [rootNode]                 An optional root node to check for the `-dark` class
  *
  * @todo      tests
  *

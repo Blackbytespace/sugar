@@ -14,7 +14,7 @@
  * @todo      tests
  *
  * @example    js
- * import { isInIframe } from '@blackbyte/sugar/dom'
+ * import { isInIframe } from '@blackbyte/sugar/is'
  * if (isInIframe()) {
  *   // do something
  * }

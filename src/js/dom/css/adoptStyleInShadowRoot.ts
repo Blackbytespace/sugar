@@ -16,7 +16,7 @@
  * @todo        tests
  *
  * @example         js
- * import { adoptStyleInShadowRoot } from '@blackbyte/sugar/dom';
+ * import { adoptStyleInShadowRoot } from '@blackbyte/sugar/css';
  * const myShadowRoot = $myElement.shadowRoot;
  * await adoptStyleInShadowRoot(myShadowRoot);
  *

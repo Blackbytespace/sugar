@@ -15,7 +15,7 @@
  * @snippet         stylesheetToString($1)
  *
  * @example         js
- * import { stylesheetToString } from '@blackbyte/sugar/dom';
+ * import { stylesheetToString } from '@blackbyte/sugar/css';
  * stylesheetToString(document.stylesheets); // => body { ... }
  *
  * @since       1.0.0

@@ -14,7 +14,7 @@
  * @todo      tests
  *
  * @example    js
- * import { isHover } from '@blackbyte/sugar/dom'
+ * import { isHover } from '@blackbyte/sugar/is'
  * const $myElm = document.querySelector('.my-elm')
  * if (isHover($myElm)) {
  *   // do something

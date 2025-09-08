@@ -16,7 +16,7 @@
  * @todo      tests
  *
  * @example  	js
- * import { isVisible } from '@blackbyte/sugar/dom'
+ * import { isVisible } from '@blackbyte/sugar/is'
  * if (isVisible(myCoolHTMLElement) {
  * 		// i'm visible
  * }
