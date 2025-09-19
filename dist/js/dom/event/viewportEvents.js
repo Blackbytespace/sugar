@@ -20,6 +20,9 @@ export default function viewportEvents($elm, settings) {
             $elm.dispatchEvent(new CustomEvent('viewport.enter', {
                 bubbles: true,
             }));
+            $elm.dispatchEvent(new CustomEvent('viewport.in', {
+                bubbles: true,
+            }));
             if (finalSettings === null || finalSettings === void 0 ? void 0 : finalSettings.once) {
                 observer.disconnect();
             }
@@ -30,6 +33,9 @@ export default function viewportEvents($elm, settings) {
             }
             status = 'out';
             $elm.dispatchEvent(new CustomEvent('viewport.leave', {
+                bubbles: true,
+            }));
+            $elm.dispatchEvent(new CustomEvent('viewport.out', {
                 bubbles: true,
             }));
         }

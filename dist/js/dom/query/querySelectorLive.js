@@ -11,7 +11,6 @@ import when from '../when/when.js';
 export default function querySelectorLive(selector, cb, settings, _isFirstLevel = true) {
     var _a, _b, _c;
     let observer, canceled = false;
-    console.trace('SS', selector);
     const matchedNodes = new WeakMap();
     // extend settings
     const finalSettings = Object.assign({ rootNode: document, once: true, afterFirst: undefined, firstOnly: false, attributes: [], disconnectedCallback: undefined, when: undefined }, (settings !== null && settings !== void 0 ? settings : {}));

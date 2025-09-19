@@ -74,8 +74,6 @@ export default function querySelectorLive(
   let observer,
     canceled = false;
 
-  console.trace('SS', selector);
-
   const matchedNodes: WeakMap<HTMLElement, boolean> = new WeakMap();
 
   // extend settings

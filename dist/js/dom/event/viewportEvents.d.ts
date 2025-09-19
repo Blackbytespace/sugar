@@ -26,13 +26,13 @@
  * @todo      tests
  *
  * @example  	js
- * import { viewportEvents } from '@blackbyte/sugar/dom';
+ * import { viewportEvents } from '@blackbyte/sugar/dom';
  * viewportEvents($1).addEventListener('viewport.enter', (e) => {
  *      // do something
  * });
  *
  * @changelog       1.0.0
- * Rename events from `viewport.i`n / `viewport.out` to `viewport.enter` / `viewport.leave`
+ * Rename events from `viewport.in` / `viewport.out` to `viewport.enter` / `viewport.leave`
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
