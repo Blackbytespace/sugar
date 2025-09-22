@@ -7,8 +7,8 @@
  *
  * Detect if is opera
  *
- * @param       {String}        [ua=navigator.userAgent]         The user agent on which to make the test
- * @return    {Boolean}    true if is opera, false if not
+ * @param     {String}        [ua=navigator.userAgent]        The user agent on which to make the test
+ * @return    {Boolean}                                       true if is opera, false if not
  *
  * @todo      tests
  *

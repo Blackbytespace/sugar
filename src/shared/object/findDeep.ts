@@ -2,7 +2,7 @@ import flatten from './flatten.js';
 import __set from './set.js';
 
 /**
- * @name                        deepSearch
+ * @name                        findDeep
  * @namespace                   shared.object
  * @type                        Function
  * @platform                    js
@@ -19,8 +19,8 @@ import __set from './set.js';
  * @todo      tests
  *
  * @example           js
- * import { deepSearch } from '@blackbyte/sugar/object';
- * deepSearch ({
+ * import { findDeep } from '@blackbyte/sugar/object';
+ * findDeep ({
  *    coco: 'hello',
  *    plop: true,
  *    sub: {
@@ -37,16 +37,16 @@ import __set from './set.js';
  * @since         1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export type TDeepSearchFilter = {
-  (item: TDeepSearchItem): undefined | boolean;
+export type TFindDeepFilter = {
+  (item: TFindDeepItem): undefined | boolean;
 };
 
-export type TDeepSearchItem = {
+export type TFindDeepItem = {
   key: string;
   value: any;
 };
 
-export default function deepSearch(object: any, filter: TDeepSearchFilter) {
+export default function findDeep(object: any, filter: TFindDeepFilter) {
   // make sure the object is a copy
   object = JSON.parse(JSON.stringify(object));
 

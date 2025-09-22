@@ -7,9 +7,9 @@
  *
  * Get all the CSSRules of the passed stylesheet
  *
- * @param       {CSSStyleSheet}     stylesheet      The stylesheet from which to get the CSSRules
- * @param   {Boolean}               [recursive=true]            Specify if you want to get rules from imported css or not
- * @return          {CSSRule[]}             Array of CSSRules
+ * @param     {CSSStyleSheet}       stylesheet              The stylesheet from which to get the CSSRules
+ * @param     {Boolean}             [recursive=true]        Specify if you want to get rules from imported css or not
+ * @return    {CSSRule[]}                                   Array of CSSRules
  *
  * @todo      tests
  *

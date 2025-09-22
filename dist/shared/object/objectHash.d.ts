@@ -6,10 +6,9 @@
  * @platform        node
  * @status          stable
  *
- * This function allows you to get back an integrity hash passed object.
+ * This function allows you to get back an integrity hash of the passed object.
  *
- * @param           {any}            obj      The object to hash
- * @param           {IObjectHashSettings}       [settings={}]       Some settings to configure your hash generation process
+ * @param           {any}            obj                The object to hash
  * @return          {String}                            The calculated folder hash
  *
  * @snippet             objectHash($1)
@@ -18,7 +17,9 @@
  *
  * @example         js
  * import { objectHash } from '@blackbyte/sugar/object';
- * objectHash('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
+ * objectHash({
+ *   hello: 'world'
+ * }); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
  * @see             https://www.npmjs.com/package/hash-sum
  * @since           1.0.0

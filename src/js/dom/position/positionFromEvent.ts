@@ -7,7 +7,7 @@
  *
  * Get the position from an event "touchstart", "touchmove", "touchend", "mousedown", "mousemove" or "mouseup".
  *
- * @param 		{MouseEvent|TouchEvent} 					e  		The event to get the position from
+ * @param 		{MouseEvent|TouchEvent} 					e  		  The event to get the position from
  * @return 		{x: number; y: number;} 									The absolute position of the event
  *
  * @snippet         positionFromEvent($1)

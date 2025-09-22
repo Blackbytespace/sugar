@@ -9,8 +9,8 @@
  *
  * @feature       Promise based API
  *
- * @param 		{HTMLLinkElement} 			link  		The link tag to check the loading state
- * @return 		{Promise} 								The promise that will be resolved
+ * @param 		{HTMLLinkElement} 			$link  		    The link tag to check the loading state
+ * @return 		{Promise} 								            The promise that will be resolved
  *
  * @todo      tests
  *

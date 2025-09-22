@@ -1,5 +1,5 @@
 import { minimatch as __minimatch } from 'minimatch';
-import deepize from './deepize.js';
+import unflatten from './unflatten.js';
 import flatten from './flatten.js';
 
 /**
@@ -15,11 +15,11 @@ import flatten from './flatten.js';
  * all values with the path that matches the passed glob pattern.
  *
  * @param               {Object}                 obj                The object in which to set the value
- * @param               {String}                path                The dotted object path to get
+ * @param               {String}                glob                A glob to describe what you want into the object
  * @param               {Object}            [settings={}]           A settings object to configure your glob get process
  * @return              {Mixed}                                     The getted value or "undefined" if nothing found...
  *
- * @setting         {Boolean}               [deepize=true]          Specify if you want the result object to be deepized using the ```deepize``` sugar function
+ * @setting         {Boolean}               [unflatten=true]          Specify if you want the result object to be unflattend using the ```unflatten``` sugar function
  *
  * @todo      tests
  *
@@ -37,7 +37,7 @@ import flatten from './flatten.js';
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetGlobSettings = {
-  deepize?: boolean;
+  unflatten?: boolean;
 };
 
 export default function getGlob(
@@ -46,7 +46,7 @@ export default function getGlob(
   settings: TGetGlobSettings = {},
 ): any {
   settings = {
-    deepize: true,
+    unflatten: true,
     ...settings,
   };
 
@@ -60,6 +60,6 @@ export default function getGlob(
     }
   });
 
-  if (settings.deepize === true) return deepize(resultObj);
+  if (settings.unflatten === true) return unflatten(resultObj);
   return resultObj;
 }

@@ -8,8 +8,8 @@
  *
  * Check if the passed value is a base 64 string
  *
- * @param    {Mixed}    value    The value to check
- * @return   {Boolean}   true if it's a Boolean, false if not
+ * @param    {Mixed}    value   The value to check
+ * @return   {Boolean}          true if it's a Boolean, false if not
  *
  * @todo      tests
  *

@@ -12,10 +12,10 @@ import { setCookie } from '@blackbyte/sugar/cookie';
  * You will be able to get the theme from your backend code (PHP) using the `\Sugar\Theme\getTheme()` function
  * to set it in your body class attribute.
  *
- * @param           {String}           theme           The theme name to set
- * @param          {TSetThemeSettings}          [settings={}]         Some settings to configure your theme setter
+ * @param          {String}                 theme                     The theme name to set
+ * @param          {TSetThemeSettings}      [settings={}]             Some settings to configure your theme setter
  *
- * @setting         {String}          [cookieName='theme']         The cookie name to use to store the theme
+ * @setting         {String}          [cookieName='theme']            The cookie name to use to store the theme
  *
  * @todo      tests
  *

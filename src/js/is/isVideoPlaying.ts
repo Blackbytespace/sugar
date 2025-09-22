@@ -7,9 +7,8 @@
  *
  * This function allows you to know if a video is currently playing or not
  *
- * @param       {HTMLVideoElement}      video       The video element to check
- *
- * @return    {Boolean}    true if the video is playing, false if not
+ * @param     {HTMLVideoElement}      $video       The video element to check
+ * @return    {Boolean}                           true if the video is playing, false if not
  *
  * @todo      tests
  *

@@ -1,14 +1,14 @@
 /**
- * @name        isFirefox
- * @namespace            js.is
- * @type      Function
+ * @name              isFirefox
+ * @namespace         js.is
+ * @type              Function
  * @platform          js
- * @status        stable
+ * @status            stable
  *
  * Detect if is firefox
  *
- * @param       {String}        [ua=navigator.userAgent]         The user agent on which to make the test
- * @return    {Boolean}    true if is firefox, false if not
+ * @param     {String}        [ua=navigator.userAgent]          The user agent on which to make the test
+ * @return    {Boolean}                                         true if is firefox, false if not
  *
  * @todo      tests
  *

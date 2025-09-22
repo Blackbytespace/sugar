@@ -9,7 +9,7 @@
  * Check if a number is odd or not
  *
  * @param    {Number}    value    The value to check
- * @return    {Boolean}    true if odd, false if not
+ * @return    {Boolean}           true if odd, false if not
  *
  * @todo      tests
  *

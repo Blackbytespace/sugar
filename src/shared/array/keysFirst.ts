@@ -10,9 +10,9 @@ import unique from './unique.js';
  *
  * Make sure the passed array start with the passed keys
  *
- * @param    {Array}    array    The array to sort
- * @param    {Array}    keys    The keys to start the array with
- * @return    {Array}    The processed array
+ * @param    {Array}      array     The array to sort
+ * @param    {Array}      keys      The keys to start the array with
+ * @return    {Array}               The processed array
  *
  * @snippet         keysFirst($1, $2)
  *

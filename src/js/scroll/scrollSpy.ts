@@ -8,10 +8,10 @@
  * This function allows you to add/remove automatically the `-active` class on
  * some passed links that have a `href` attribute that points to an element on the page.
  *
- * @param           {TScrollSpySettings}          [settings={}]           The settings you want to override
+ * @param           {TScrollSpySettings}          [settings={}]         The settings you want to override
  *
  * @setting        {number}        [offset=window.innerHeight/2]        The offset you want before adding the classes
- * @setting        {string}        [activeClass=-active]        The class name you want to add/remove
+ * @setting        {string}        [activeClass=-active]                The class name you want to add/remove
  *
  * @snippet          scrollSpy($1);
  *

@@ -3,7 +3,7 @@ import isPlainObject from '../is/isPlainObject.js';
 import clone from './clone.js';
 
 /**
- * @name                deepMap
+ * @name                mapDeep
  * @namespace           shared.object
  * @type                Function
  * @platform            js
@@ -14,7 +14,7 @@ import clone from './clone.js';
  *
  * @param         {Object}        object          The object you want to map through
  * @param         {Function}      processor       The processor function that take as parameter the actual property value, the current property name and the full dotted path to the current property
- * @param         {Object}        [settings={}]     An object of settings to configure your deepMap process:
+ * @param         {Object}        [settings={}]     An object of settings to configure your mapDeep process:
  *
  * @setting    {Boolean}              [classInstances=false]            Specify if you want the objects to be processed the same as other values
  * @setting         {Boolean}       [array=true]                    Specify if we want to process also arrays or not
@@ -23,14 +23,14 @@ import clone from './clone.js';
  *
  * @todo      tests
  *
- * @snippet         deepMap($1, $2)
- * deepMap($1, ({object, prop, value, path}) => {
+ * @snippet         mapDeep($1, $2)
+ * mapDeep($1, ({object, prop, value, path}) => {
  *      $2
  * })
  *
  * @example       js
- * import { deepMap } from '@blackbyte/sugar/object';
- * deepMap({
+ * import { mapDeep } from '@blackbyte/sugar/object';
+ * mapDeep({
  *    hello: 'world'
  * }, ({object, prop, value, path}) => {
  *    return '~ ' + value;
@@ -40,17 +40,17 @@ import clone from './clone.js';
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export type TDeepMapSettings = {
+export type TMapDeepSettings = {
   classInstances?: boolean;
   array?: boolean;
   clone?: boolean;
   privateProps?: boolean;
 };
 
-export default function deepMap(
+export default function mapDeep(
   objectOrArray: any,
   processor?: Function,
-  settings?: TDeepMapSettings,
+  settings?: TMapDeepSettings,
   _path = [],
 ): any {
   settings = {
@@ -66,8 +66,8 @@ export default function deepMap(
   let newObject = isArray
     ? []
     : settings?.clone
-    ? clone(objectOrArray, { deep: true })
-    : objectOrArray;
+      ? clone(objectOrArray, { deep: true })
+      : objectOrArray;
 
   Object.keys(objectOrArray).forEach((prop) => {
     if (!settings?.privateProps && prop.match(/^_/)) return;
@@ -77,7 +77,7 @@ export default function deepMap(
       (isClassInstance(objectOrArray[prop]) && settings?.classInstances) ||
       (Array.isArray(objectOrArray[prop]) && settings?.array)
     ) {
-      const res = deepMap(
+      const res = mapDeep(
         objectOrArray[prop],
         processor,
         {

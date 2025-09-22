@@ -14,9 +14,9 @@ import unique from './unique.js';
  * You can specify if you want only comparing by reference for object, etc... or if
  * you want to transform items in hashes and compare that instead.
  *
- * @param       {Array}         ...arrays           The arrays you want to compare
+ * @param       {Array}         ...arrays               The arrays you want to compare
  * @param       {Object}        [settings={}]           Some settings to refine your comparaison process
- * @return      {Array}                              An array containing all the items that are present in all the passed arrays
+ * @return      {Array}                                 An array containing all the items that are present in all the passed arrays
  *
  * @setting         {Boolean}          [references=true]        Specify if you want to use the references comparaison or not
  * @setting         {Boolean}           [hash=true]             Specify if you want to allows transforming object etc in to hashes and compare this instead

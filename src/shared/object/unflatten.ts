@@ -1,6 +1,6 @@
 import { inflate } from 'flattenjs';
 /**
- * @name            deepize
+ * @name            unflatten
  * @namespace       shared.object
  * @type            Function
  * @platform        js
@@ -30,16 +30,16 @@ import { inflate } from 'flattenjs';
  *
  * @todo      tests
  *
- * @snippet         deepize($1)
+ * @snippet         unflatten($1)
  *
  * @example       js
- * import { deepize } from '@blackbyte/sugar/object';
- * deepize({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
+ * import { unflatten } from '@blackbyte/sugar/object';
+ * unflatten({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
  *
  * @see       https://www.npmjs.com/package/flat
  * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function deepize(object: any): any {
+export default function unflatten(object: any): any {
   return inflate(object);
 }

@@ -17,10 +17,10 @@
  * - the pressed key is the "escape" key.
  *
  *
- * @param       {String|String[]}        key         The key(s) to listen for
- * @param       {Function}      callback    The callback to call when the hotkey is pressed
- * @param       {THotkeySettings}      [settings={}]       Some settings to configure your hotkey
- * @return      {THotkeyApi}                          An object with a cancel method that you can call to cancel the hotkey
+ * @param       {String|String[]}         key             The key(s) to listen for
+ * @param       {Function}                callback        The callback to call when the hotkey is pressed
+ * @param       {THotkeySettings}         [settings={}]   Some settings to configure your hotkey
+ * @return      {THotkeyApi}                              An object with a cancel method that you can call to cancel the hotkey
  *
  * @setting    {HTMLElement}       [ctx=document.body]       The context in which to listen for the hotkey
  * @setting    {Boolean}           [preventDefault=true]    Specify if you want to prevent the default behavior of the hotkey

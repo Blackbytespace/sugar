@@ -10,7 +10,7 @@
  * This will match : mm.dd.yyyy | mm/dd/yyyy | mm-dd-yyyy | mm dd yyyy
  *
  * @param    {String}    date    The date to check
- * @return    {Boolean}    true if is valid, false if not
+ * @return   {Boolean}           true if is valid, false if not
  *
  * @todo      tests
  *

@@ -1,6 +1,6 @@
 /**
  * @name            onScrollEnd
- * @namespace       js.dom.detect
+ * @namespace       js.dom.on
  * @type            Function
  * @platform        js
  * @status          stable
@@ -9,8 +9,8 @@
  * This function simply listen for scroll on the passed element and call the passed callback
  * when reaching the end of it.
  *
- * @param       {HTMLElement}           $elm        The element to listen on
- * @param       {Function}              callback        The function to call when scroll end is detected
+ * @param       {HTMLElement}               $elm                The element to listen on
+ * @param       {Function}                  callback            The function to call when scroll end is detected
  * @param       {TOnScrollEndSettings}      [settings={}]       Some settings like offset, etc...
  *
  * @setting         {Number}        [offset=20]             An offset to detect earlier the end of the scroll

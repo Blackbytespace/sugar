@@ -1,7 +1,7 @@
 import isPlainObject from '../is/isPlainObject.js';
 
 /**
- * @name                        deepFilter
+ * @name                        filterDeep
  * @namespace                   shared.object
  * @type                        Function
  * @platform                    js
@@ -21,8 +21,8 @@ import isPlainObject from '../is/isPlainObject.js';
  * @todo      tests
  *
  * @example           js
- * import { deepFilter } from '@blackbyte/sugar/object';
- * deepFilter ({
+ * import { filterDeep } from '@blackbyte/sugar/object';
+ * filterDeep ({
  *    coco: 'hello',
  *    plop: true,
  *    sub: {
@@ -40,21 +40,21 @@ import isPlainObject from '../is/isPlainObject.js';
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export type TDeepFilterSettings = {
+export type TFilterDeepSettings = {
   clone: boolean;
 };
 
-export type TDeepFilterFilter = {
-  (item: TDeepFilterItem): undefined | boolean;
+export type TFilterDeepFilter = {
+  (item: TFilterDeepItem): undefined | boolean;
 };
 
-export type TDeepFilterItem = {
+export type TFilterDeepItem = {
   key: string;
   value: any;
   isObject: boolean;
 };
 
-function processObj(object: any, filter: TDeepFilterFilter, settings): any {
+function processObj(object: any, filter: TFilterDeepFilter, settings): any {
   const newObj = {},
     keys = Object.keys(object);
 
@@ -97,10 +97,10 @@ function processObj(object: any, filter: TDeepFilterFilter, settings): any {
   return newObj;
 }
 
-export default function deepFilter(
+export default function filterDeep(
   object: any,
-  filter: TDeepFilterFilter,
-  settings?: Partial<TDeepFilterSettings>,
+  filter: TFilterDeepFilter,
+  settings?: Partial<TFilterDeepSettings>,
 ) {
   settings = {
     clone: true,

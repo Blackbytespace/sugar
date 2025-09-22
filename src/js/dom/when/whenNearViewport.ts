@@ -13,9 +13,9 @@ import __closestScrollableElement from '../query/closestScrollableElement.js';
  * @feature       Promise based API
  * @feature       Some settings available to tweak the behavior
  *
- * @param 		{HTMLElement} 				elm 					The element to monitor
+ * @param 		{HTMLElement} 				                        $elm 					    The element to monitor
  * @param 		{Partial<TWhenNearViewportSettings>} 					[settings={}] 		Some settings to tweak the detection behavior
- * @return 		(Promise<HTMLElement>) 											The promise that will be resolved when the element is in the viewport
+ * @return 		(Promise<HTMLElement>) 											                    The promise that will be resolved when the element is in the viewport
  *
  * @setting         {String}            [offset=`${window.innerHeight}px ${window.innerWidth}px`]           Some offset
  *
@@ -41,7 +41,7 @@ export type TWhenNearViewportSettings = {
 };
 
 export default function whenNearViewport(
-  elm: HTMLElement,
+  $elm: HTMLElement,
   settings?: Partial<TWhenNearViewportSettings>,
 ): Promise<HTMLElement> {
   function getRootMargin() {
@@ -64,7 +64,7 @@ export default function whenNearViewport(
     ? `${finalSettings.offset}`
     : getRootMargin();
 
-  let $closest = __closestScrollableElement(elm);
+  let $closest = __closestScrollableElement($elm);
   if ($closest?.tagName === 'HTML') $closest = undefined;
 
   return new Promise(async (resolve) => {
@@ -78,13 +78,13 @@ export default function whenNearViewport(
       changes.forEach((change) => {
         if (change.intersectionRatio > 0) {
           observer.disconnect?.();
-          resolve(elm);
+          resolve($elm);
         }
       });
     }
 
     observer = new IntersectionObserver(onChange, options);
-    observer.observe(elm);
+    observer.observe($elm);
 
     window.addEventListener('resize', (e) => {
       clearTimeout(resizeTimeout);
@@ -93,7 +93,7 @@ export default function whenNearViewport(
         observer.disconnect?.();
         options.rootMargin = rootMargin;
         observer = new IntersectionObserver(onChange, options);
-        observer.observe(elm);
+        observer.observe($elm);
       }, 500);
     });
   });

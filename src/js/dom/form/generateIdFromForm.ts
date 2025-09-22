@@ -2,7 +2,7 @@ import { md5 } from '@blackbyte/sugar/crypto';
 
 /**
  * @name            generateIdFromForm
- * @namespace       js.dom.generate
+ * @namespace       js.dom.form
  * @type            Function
  * @platform        js
  * @status          stable

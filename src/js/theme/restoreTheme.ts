@@ -11,10 +11,10 @@ import setTheme from './setTheme.js';
  * This function allows you to restore the theme set on the website/application through
  * the `setTheme` function.
  *
- * @param           {String}          defaultTheme        The default theme to set if no theme has been set
- * @param           {TRestoreThemeSettings}          [settings={}]         Some settings to configure your theme restoration
+ * @param           {String}                        defaultTheme          The default theme to set if no theme has been set
+ * @param           {TRestoreThemeSettings}         [settings={}]         Some settings to configure your theme restoration
  *
- * @setting         {String}          [cookieName='theme']         The cookie name to use to store the theme
+ * @setting         {String}          [cookieName='theme']                The cookie name to use to store the theme
  *
  * @todo      tests
  *

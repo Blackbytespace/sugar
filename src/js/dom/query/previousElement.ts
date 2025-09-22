@@ -9,9 +9,9 @@ import matches from './matches.js';
  *
  * Browse the passed element previous siblings to find the first element that matches the passed selector
  *
- * @param 		{HTMLElement} 					$elm  		The element to start on
- * @param 		{String} 						selector 	A css selector to search for
- * @return 		{HTMLElement|undefined} 								The element found or undefined
+ * @param 		{HTMLElement} 					      $elm  		  The element to start on
+ * @param 		{String} 						          selector 	  A css selector to search for
+ * @return 		{HTMLElement|undefined} 								  The element found or undefined
  *
  * @snippet         previousElement($1, $2)
  *

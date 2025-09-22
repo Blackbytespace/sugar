@@ -10,7 +10,7 @@ import getStyleProperty from './getStyleProperty.js';
  *
  * Get the css animation properties from an HTMLElement in an object format
  *
- * @param 		{HTMLElement} 					elm  		The element to get the properties from
+ * @param 		{HTMLElement} 		elm  		The element to get the properties from
  * @return 		{Object} 									The animation properties
  *
  * @todo      tests
@@ -70,7 +70,7 @@ export default function getAnimationProperties(elm: HTMLElement) {
     durations: duration.split(',').map((value) => convertTime(value, 'ms')),
     delays: `${delay}`.split(',').map((value) => convertTime(value, 'ms')),
     timingFunctions:
-      timingFunction.split?.(',') ?? timingFunction.name
+      (timingFunction.split?.(',') ?? timingFunction.name)
         ? [timingFunction.name]
         : ['linear'],
     iterationCounts: `${iterationCount}`.split(','),

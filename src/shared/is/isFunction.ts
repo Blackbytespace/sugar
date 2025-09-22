@@ -10,8 +10,8 @@
  *
  * Check if the passed value is a js function
  *
- * @param    {Mixed}    value    The value to check
- * @return   {Boolean}   true if it's a function, false if not
+ * @param    {Mixed}    value   The value to check
+ * @return   {Boolean}          true if it's a function, false if not
  *
  * @todo      tests
  *

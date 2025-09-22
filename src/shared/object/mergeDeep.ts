@@ -1,7 +1,7 @@
 import isPlainObject from '../is/isPlainObject.js';
 
 /**
- * @name                    deepMerge
+ * @name                    mergeDeep
  * @namespace               shared.object
  * @type                    Function
  * @platform                js
@@ -15,7 +15,7 @@ import isPlainObject from '../is/isPlainObject.js';
  * Note that by default the resulting object is a clone and do not have the same reference that the first passed object.
  *
  * @param           {any[]}                             objects             Pass all the objects you want to merge
- * @param           {TDeepMergeSettings}                [settings={}]       Some settings to configure your merging process
+ * @param           {TMergeDeepSettings}                [settings={}]       Some settings to configure your merging process
  * @return          {Object}                                                The merged object result
  *
  * @setting         {Boolean}           [array=false]           Merge or not arrays
@@ -26,26 +26,26 @@ import isPlainObject from '../is/isPlainObject.js';
  *
  * @todo      tests
  *
- * @snippet         deepMerge($1, $2)
+ * @snippet         mergeDeep($1, $2)
  *
  * @example           js
- * import { deepMerge } from '@blackbyte/sugar/object';
- * deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
+ * import { mergeDeep } from '@blackbyte/sugar/object';
+ * mergeDeep([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
  * // => { a: { b: { c: 'c', d: 'd', e: 'e', f: 'f' } } }
  *
  * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export type TDeepMergeSettings = {
+export type TMergeDeepSettings = {
   array?: boolean;
   clone?: boolean;
 };
 
-export default function deepMerge(
+export default function mergeDeep(
   objects: any[],
-  settings?: TDeepMergeSettings,
+  settings?: TMergeDeepSettings,
 ): any {
-  const finalSettings: TDeepMergeSettings = {
+  const finalSettings: TMergeDeepSettings = {
     array: false,
     clone: true,
     ...(settings ?? {}),

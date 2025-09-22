@@ -1,7 +1,7 @@
 import isPlainObject from '../is/isPlainObject.js';
 
 /**
- * @name                deepClean
+ * @name                cleanDeep
  * @namespace           shared.object
  * @type                Function
  * @platform            js
@@ -14,7 +14,7 @@ import isPlainObject from '../is/isPlainObject.js';
  * The default cleaner function remove all that is either null, "" or undefined.
  *
  * @param         {Object}        object          The object you want to map through
- * @param         {Object}        [settings={}]     An object of settings to configure your deepMap process:
+ * @param         {Object}        [settings={}]     An object of settings to configure your mapDeep process:
  *
  * @setting         {Function}      [cleaner=null]       The cleaner function that take as parameter the actual property value, the current property name and the full dotted path to the current property
  * @setting         {Boolean}       [array=true]                    Specify if we want to process also arrays or not
@@ -22,12 +22,12 @@ import isPlainObject from '../is/isPlainObject.js';
  *
  * @todo      tests
  *
- * @snippet         deepClean($1)
- * deepClean($1);
+ * @snippet         cleanDeep($1)
+ * cleanDeep($1);
  *
  * @example       js
- * import { deepClean } from '@blackbyte/sugar/object';
- * deepClean({
+ * import { cleanDeep } from '@blackbyte/sugar/object';
+ * cleanDeep({
  *    hello: 'world',
  *    something: null
  * });
@@ -36,15 +36,15 @@ import isPlainObject from '../is/isPlainObject.js';
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export type TDeepCleanSettings = {
+export type TCleanDeepSettings = {
   array?: boolean;
   clone?: boolean;
   cleaner(value: any): boolean;
 };
 
-export default function deepClean(
+export default function cleanDeep(
   objectOrArray: any,
-  settings?: TDeepCleanSettings,
+  settings?: TCleanDeepSettings,
 ) {
   settings = {
     array: true,
@@ -73,7 +73,7 @@ export default function deepClean(
   if (settings.array && Array.isArray(objectOrArray)) {
     for (let [i, v] of objectOrArray.entries()) {
       if (isPlainObject(v) || Array.isArray(v)) {
-        workingObj[i] = deepClean(v, settings);
+        workingObj[i] = cleanDeep(v, settings);
       }
       if (!settings.cleaner(workingObj[i])) {
         workingObj.splice(workingObj.indexOf(v), 1);
@@ -82,7 +82,7 @@ export default function deepClean(
   } else if (isPlainObject(objectOrArray)) {
     for (let [k, v] of Object.entries(objectOrArray)) {
       if (isPlainObject(v) || Array.isArray(v)) {
-        workingObj[k] = deepClean(v, settings);
+        workingObj[k] = cleanDeep(v, settings);
       }
       if (!settings.cleaner(workingObj[k])) {
         delete workingObj[k];

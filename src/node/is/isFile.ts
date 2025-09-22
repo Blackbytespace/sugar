@@ -20,7 +20,7 @@ import * as __fs from 'fs';
  * import { isFile } from '@blackbyte/sugar/is';
  * isFile('something/cool');
  *
- * @since       1.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 

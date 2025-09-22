@@ -8,10 +8,10 @@
  *
  * This function allows you to move an item to another place in the array
  *
- * @param    {Array}    array    The array to process
- * @param    {any|integer}      from        Either the element itself that you want to move, or the index of the element you want to move
- * @param    {any|integer}      to          Either the element itself where you want to move the first one, or the index of the element you want to move your element to
- * @return    {Array}    The processed array
+ * @param    {Array}          array       The array to process
+ * @param    {any|integer}    from        Either the element itself that you want to move, or the index of the element you want to move
+ * @param    {any|integer}    to          Either the element itself where you want to move the first one, or the index of the element you want to move your element to
+ * @return   {Array}                      The processed array
  *
  * @snippet         moveItem($1, $2, $3)
  *

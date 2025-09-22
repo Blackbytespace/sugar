@@ -10,7 +10,7 @@ import * as rematrix from 'rematrix';
  * Get a translate properties of an HTMLElement
  *
  * @param 		{HTMLElement} 					$elm  		The element to get the properties from
- * @return 		{Object} 									The translate x,y and z properties
+ * @return 		{Object} 									        The translate x,y and z properties
  *
  * @todo      tests
  *

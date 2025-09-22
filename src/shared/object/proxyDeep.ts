@@ -2,10 +2,10 @@ import proxyArray from '../array/proxyArray.js';
 import isDomElement from '../is/isDomElement.js';
 import isPlainObject from '../is/isPlainObject.js';
 import clone from '../object/clone.js';
-import deepMap from '../object/deepMap.js';
+import mapDeep from '../object/mapDeep.js';
 
 /**
- * @name                            deepProxy
+ * @name                            proxyDeep
  * @namespace                       shared.object
  * @type                            Function
  * @platform                        js
@@ -38,8 +38,8 @@ import deepMap from '../object/deepMap.js';
  * @todo      tests
  *
  * @example           js
- * import { deepProxy } from '@blackbyte/sugar/object';
- * const a = deepProxy({
+ * import { proxyDeep } from '@blackbyte/sugar/object';
+ * const a = proxyDeep({
  *    hello: 'world'
  * }, (actionObj) => {
  *    // do something with the actionObj...
@@ -54,7 +54,7 @@ import deepMap from '../object/deepMap.js';
 
 const _loopTimeout = new WeakMap();
 
-export type TDeepProxyActionObj = {
+export type TProxyDeepActionObj = {
   object: any;
   target: string;
   key: string;
@@ -65,7 +65,7 @@ export type TDeepProxyActionObj = {
   value: any;
 };
 
-export type TDeepProxySettings = {
+export type TProxyDeepSettings = {
   deep: boolean;
   handleSet: boolean;
   handleGet: boolean;
@@ -73,10 +73,10 @@ export type TDeepProxySettings = {
   domElements: boolean;
 };
 
-export default function deepProxy(
+export default function proxyDeep(
   object,
   handlerFn,
-  settings: Partial<TDeepProxySettings> = {},
+  settings: Partial<TProxyDeepSettings> = {},
 ) {
   let isRevoked = false;
   settings = {
@@ -114,7 +114,7 @@ export default function deepProxy(
 
         // call the handler function with all the
         // usefull parameters
-        handlerFn(<TDeepProxyActionObj>{
+        handlerFn(<TProxyDeepActionObj>{
           object,
           target,
           key,
@@ -133,7 +133,7 @@ export default function deepProxy(
         if (Reflect.has(target, key)) {
           if (!settings.handleGet) return target[key];
 
-          const value = handlerFn(<TDeepProxyActionObj>{
+          const value = handlerFn(<TProxyDeepActionObj>{
             object,
             target,
             key,
@@ -156,7 +156,7 @@ export default function deepProxy(
           const oldValue = target[key];
           const deleted = Reflect.deleteProperty(target, key);
           if (deleted) {
-            handlerFn(<TDeepProxyActionObj>{
+            handlerFn(<TProxyDeepActionObj>{
               object,
               target,
               key,
@@ -211,7 +211,7 @@ export default function deepProxy(
         // mark the proxy as revoked
         isRevoked = true;
         // sanitize the copy
-        __copy = deepMap(__copy, ({ value, prop }) => {
+        __copy = mapDeep(__copy, ({ value, prop }) => {
           if (prop === 'revoke' && typeof value === 'function') {
             return -1;
           }
@@ -219,7 +219,7 @@ export default function deepProxy(
         });
         // deep revoke the proxies
         setTimeout(() => {
-          deepMap(
+          mapDeep(
             p.proxy,
             ({ value, prop }) => {
               if (prop === 'revoke' && typeof value === 'function') {

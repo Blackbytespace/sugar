@@ -8,7 +8,8 @@ import base64 from './base64.js';
  * @platform            node
  * @status              stable
  *
- * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the object algorithm
+ * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the object algorithm.
+ * The generated hash is a base65 one.
  *
  * @snippet         object.encrypt($1)
  *

@@ -32,7 +32,7 @@ import { filesize as __filesize } from 'filesize';
  * @todo     tests
  *
  * @example             js
- * import { formatFilesize } from '@blackbyte/sugar/fs';
+ * import { formatFilesize } from '@blackbyte/sugar/format';
  * formatFilesize(163931); // => 326.86 KB
  *
  * @see             https://www.npmjs.com/package/filesize

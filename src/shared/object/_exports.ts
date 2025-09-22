@@ -1,13 +1,13 @@
 import camelCaseProps from './camelCaseProps.js';
 import clone from './clone.js';
 import decycle from './decycle.js';
-import deepClean from './deepClean.js';
-import deepFilter from './deepFilter.js';
-import deepize from './deepize.js';
-import deepMap from './deepMap.js';
-import deepMerge from './deepMerge.js';
-import deepProxy from './deepProxy.js';
-import deepSearch from './deepSearch.js';
+import cleanDeep from './cleanDeep.js';
+import filterDeep from './filterDeep.js';
+import unflatten from './unflatten.js';
+import mapDeep from './mapDeep.js';
+import mergeDeep from './mergeDeep.js';
+import proxyDeep from './proxyDeep.js';
+import findDeep from './findDeep.js';
 import deleteProperty from './deleteProperty.js';
 import diff from './diff.js';
 import ensurePropertyExists from './ensurePropertyExists.js';
@@ -17,7 +17,6 @@ import get from './get.js';
 import getGlob from './getGlob.js';
 import getKeyByValue from './getKeyByValue.js';
 import map from './map.js';
-import merge from './merge.js';
 import objectHash from './objectHash.js';
 import propertyProxy from './propertyProxy.js';
 import remove from './remove.js';
@@ -32,13 +31,20 @@ export {
   camelCaseProps as __camelCaseProps,
   clone as __clone,
   decycle as __decycle,
-  deepClean as __deepClean,
-  deepFilter as __deepFilter,
-  deepize as __deepize,
-  deepMap as __deepMap,
-  deepMerge as __deepMerge,
-  deepProxy as __deepProxy,
-  deepSearch as __deepSearch,
+  cleanDeep as __cleanDeep,
+  cleanDeep as __deepClean,
+  filterDeep as __filterDeep,
+  filterDeep as __deepFilter,
+  unflatten as __unflatten,
+  unflatten as __deepize,
+  mapDeep as __deepMap,
+  mapDeep as __mapDeep,
+  mergeDeep as __mergeDeep,
+  mergeDeep as __deepMerge,
+  proxyDeep as __proxyDeep,
+  proxyDeep as __deepProxy,
+  findDeep as __findDeep,
+  findDeep as __deepSearch,
   deleteProperty as __deleteProperty,
   diff as __diff,
   ensurePropertyExists as __ensurePropertyExists,
@@ -48,7 +54,6 @@ export {
   getGlob as __getGlob,
   getKeyByValue as __getKeyByValue,
   map as __map,
-  merge as __merge,
   objectHash as __objectHash,
   propertyProxy as __propertyProxy,
   remove as __remove,
@@ -61,13 +66,20 @@ export {
   camelCaseProps,
   clone,
   decycle,
-  deepClean,
-  deepFilter,
-  deepize,
-  deepMap,
-  deepMerge,
-  deepProxy,
-  deepSearch,
+  cleanDeep,
+  cleanDeep as deepClean,
+  filterDeep,
+  filterDeep as deepFilter,
+  unflatten,
+  unflatten as deepize,
+  mapDeep,
+  mapDeep as deepMap,
+  mergeDeep,
+  mergeDeep as deepMerge,
+  proxyDeep,
+  proxyDeep as deepProxy,
+  findDeep,
+  findDeep as deepSearch,
   deleteProperty,
   diff,
   ensurePropertyExists,
@@ -77,7 +89,6 @@ export {
   getGlob,
   getKeyByValue,
   map,
-  merge,
   objectHash,
   propertyProxy,
   remove,

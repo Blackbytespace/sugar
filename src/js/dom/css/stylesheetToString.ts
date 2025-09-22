@@ -1,6 +1,6 @@
 /**
  * @name                stylesheetToString
- * @namespace           js.css
+ * @namespace           js.dom.css
  * @type                Function
  * @platform            js
  * @status              stable

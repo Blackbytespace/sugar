@@ -1,14 +1,14 @@
 /**
- * @name        isEdge
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name                isEdge
+ * @namespace           js.is
+ * @type                Function
+ * @platform            js
+ * @status              stable
  *
  * Detect if is edge
  *
- * @param       {String}        [ua=navigator.userAgent]         The user agent on which to make the test
- * @return    {Boolean}    true if is edge, false if not
+ * @param     {String}        [ua=navigator.userAgent]        The user agent on which to make the test
+ * @return    {Boolean}                                       true if is edge, false if not
  *
  * @todo      tests
  *

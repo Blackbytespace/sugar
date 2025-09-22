@@ -13,8 +13,8 @@ import whenImageLoaded from './whenImageLoaded.js';
  *
  * @feature       Promise based API
  *
- * @param    {Array<HTMLImageElement>}    $imgs    An array (or nodeList) of HTMLImageElement to detect the load
- * @return    {Promise}    A promise resolved when all images are loaded properly
+ * @param    {Array<HTMLImageElement>}    $imgs     An array (or nodeList) of HTMLImageElement to detect the load
+ * @return   {Promise}                              A promise resolved when all images are loaded properly
  *
  * @snippet         whenImagesLoaded($1)
  * whenImagesLoaded($1).then(imgs => {

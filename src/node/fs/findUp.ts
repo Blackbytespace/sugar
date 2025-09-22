@@ -13,9 +13,9 @@ import isGlob from '../../shared/is/isGlob.js';
  * This function simply walk across upper folders to search for a file
  * and returns you the first finded
  *
- * @param       {IFindUpSearch}         search          The name of the file you search
+ * @param       {IFindUpSearch}         search              The name of the file you search
  * @param       {TFindUpSettings}       [settings={}]       An object of settings to configure your research
- * @return      {SFile|null}                                 An SFile instance or null if nothings founded
+ * @return      {SFile|null}                                An SFile instance or null if nothings founded
  *
  * @todo            tests
  *

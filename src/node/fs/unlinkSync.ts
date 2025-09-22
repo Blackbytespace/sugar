@@ -20,9 +20,9 @@ import isDirectory from '../is/isDirectory.js';
  * import { unlinkSync } from '@blackbyte/sugar/fs';
  *  unlinkSync('my/cool/file.json');
  *
- * @see             https://github.com/jprichardson/node-fs-extra
+ * @see           https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
+ * @author        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function unlinkSync(path: string): void {
   if (!fs.existsSync(path)) return;

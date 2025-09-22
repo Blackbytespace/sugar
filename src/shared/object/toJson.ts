@@ -1,4 +1,4 @@
-import deepMap from './deepMap.js';
+import mapDeep from './mapDeep.js';
 import set from './set.js';
 
 /**
@@ -29,7 +29,7 @@ import set from './set.js';
  */
 export default function toJson(object: any): any {
   const newObj = {};
-  deepMap(
+  mapDeep(
     object,
     ({ value, path }) => {
       set(newObj, path, value);

@@ -10,7 +10,7 @@
  * @feature         Promise based API
  *
  * @param 		{HTMLImageElement} 			$img  		The image to check the loading state
- * @return 		{SPromise} 								The promise that will be resolved when all the images are correctly loaded
+ * @return 		{SPromise} 								        The promise that will be resolved when all the images are correctly loaded
  *
  * @snippet         whenImageLoaded($1)
  * whenImageLoaded($1).then(\$img => {

@@ -8,7 +8,7 @@
  *
  * Convert rem value to a px one
  *
- * @param         {Number}          em           The rem value to convert
+ * @param         {Number}          em            The rem value to convert
  * @return        {Number}                        The pixel value
  *
  * @todo      tests

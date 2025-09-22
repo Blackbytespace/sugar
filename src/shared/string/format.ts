@@ -3,7 +3,7 @@ import { format } from 'fecha';
 
 /**
  * @name                format
- * @namespace           js.string
+ * @namespace           shared.string
  * @type                Function
  * @platform            js
  * @platform            node

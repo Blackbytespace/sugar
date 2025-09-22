@@ -8,8 +8,8 @@
  *
  * Wait until the passed iframe is ready to be used
  *
- * @param       {HTMLIframeElement}         $iframe          The iframe to wait on
- * @return 		{Promise<HTMLIframeElement>} 					A promise that will be resolved when an interaction has been made
+ * @param     {HTMLIframeElement}               $iframe          The iframe to wait on
+ * @return 		{Promise<HTMLIframeElement>} 					            A promise that will be resolved when an interaction has been made
  *
  * @snippet         whenIframeReady($1)
  * whenIframeReady($1).then(\$elm => {

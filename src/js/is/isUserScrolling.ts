@@ -1,15 +1,15 @@
 /**
- * @name      isUserScrolling
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name            isUserScrolling
+ * @namespace       js.is
+ * @type            Function
+ * @platform        js
+ * @status          stable
  * @async
  *
  * Check the user is scrolling a particular element
  *
  * @param 		{HTMLElement} 				[$elm=document]  			The element to monitor
- * @return 		{Boolean}									If the element is in the viewport or not
+ * @return 		{Boolean}									                  If the element is in the viewport or not
  *
  * @snippet         isUserScrolling()
  *

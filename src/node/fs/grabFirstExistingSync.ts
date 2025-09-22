@@ -9,8 +9,8 @@ import * as fs from 'fs';
  *
  * Check every passed paths and return the first existing one.
  *
- * @param         {String[]}            paths              The paths to check
- * @return          {String}                            The first existing path
+ * @param         {String[]}            paths             The paths to check
+ * @return        {String}                                The first existing path
  *
  * @todo            tests
  *

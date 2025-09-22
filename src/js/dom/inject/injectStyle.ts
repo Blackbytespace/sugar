@@ -9,11 +9,11 @@ import __uniqid from '../../../js/string/uniqid.js';
  *
  * Inject a passed style string in the DOM
  *
- * @param         {String}          style         The style to inject in DOM
- * @param           {Partial<TInjectStyleSettings>}     [settings=null]         Some settings to configure your injection
- * @return                          {HTMLStyleElement}      The injected HTMLStyleElement node
+ * @param         {String}                            style               The style to inject in DOM
+ * @param         {Partial<TInjectStyleSettings>}     [settings=null]     Some settings to configure your injection
+ * @return        {HTMLStyleElement}                                      The injected HTMLStyleElement node
  *
- * @setting         {String}        id          An id for the injected style tag
+ * @setting         {String}        id                          An id for the injected style tag
  * @setting         {HTMLElement}   [rootNode=undefined]        A node in which to inject the style
  *
  * @snippet         injectStyle($1)

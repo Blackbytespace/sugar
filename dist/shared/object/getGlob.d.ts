@@ -11,11 +11,11 @@
  * all values with the path that matches the passed glob pattern.
  *
  * @param               {Object}                 obj                The object in which to set the value
- * @param               {String}                path                The dotted object path to get
+ * @param               {String}                glob                A glob to describe what you want into the object
  * @param               {Object}            [settings={}]           A settings object to configure your glob get process
  * @return              {Mixed}                                     The getted value or "undefined" if nothing found...
  *
- * @setting         {Boolean}               [deepize=true]          Specify if you want the result object to be deepized using the ```deepize``` sugar function
+ * @setting         {Boolean}               [unflatten=true]          Specify if you want the result object to be unflattend using the ```unflatten``` sugar function
  *
  * @todo      tests
  *
@@ -33,6 +33,6 @@
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetGlobSettings = {
-    deepize?: boolean;
+    unflatten?: boolean;
 };
 export default function getGlob(obj: any, glob: string, settings?: TGetGlobSettings): any;

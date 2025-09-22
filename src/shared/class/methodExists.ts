@@ -8,8 +8,8 @@
  *
  * Check if one or more methods exists on a class instance
  *
- * @param           {Object}              instance                The instance to check the methods on
- * @param           {String}              ...methods              The methods to check
+ * @param           {Object}                instance              The instance to check the methods on
+ * @param           {String[]}              methods               The methods to check
  * @return          {Boolean|Array}                               Return true if all is ok, and an array of missing methods if not
  *
  * @todo      tests
@@ -30,10 +30,9 @@
  */
 export default function methodExists(
   instance: any,
-  ...methods
+  methods: string[],
 ): boolean | string[] {
   const missingMethodsArray: string[] = [];
-  if (!Array.isArray(methods)) methods = [methods];
   methods.forEach((method) => {
     if (typeof instance[method] !== 'function')
       missingMethodsArray.push(method);

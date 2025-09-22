@@ -6,7 +6,7 @@ import isFunction from '../is/isFunction.js';
 import isJson from '../is/isJson.js';
 import isMap from '../is/isMap.js';
 import isObject from '../is/isObject.js';
-import deepMap from '../object/deepMap.js';
+import mapDeep from '../object/mapDeep.js';
 export default function toString(value, settings = {}) {
     settings = Object.assign({ beautify: true, verbose: true }, settings);
     // string
@@ -44,7 +44,7 @@ export default function toString(value, settings = {}) {
             value = decycle(value);
         }
         catch (e) { }
-        value = deepMap(value, ({ value }) => {
+        value = mapDeep(value, ({ value }) => {
             if (value instanceof Map)
                 return mapToObj(value);
             return value;

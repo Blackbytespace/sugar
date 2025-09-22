@@ -1,4 +1,4 @@
-import deepMap from '../object/deepMap.js';
+import mapDeep from '../object/mapDeep.js';
 import parse from '../string/parse.js';
 
 /**
@@ -174,7 +174,7 @@ export default function parseTypeString(
     return result;
   }
 
-  finalTypes = deepMap(finalTypes, ({ object, prop, value, path }) => {
+  finalTypes = mapDeep(finalTypes, ({ object, prop, value, path }) => {
     if (typeof value === 'string') {
       value = value.replace(/^\./, '').trim();
     }

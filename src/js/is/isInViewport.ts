@@ -7,9 +7,8 @@
  *
  * Check if the passed HTMLElement is in the viewport or not
  *
- * @param 		{HTMLElement} 				elm  			The element to insert
- * @param 		{Object} 					[offset=50] 	An object of top, right, bottom and left offset used to detect the status or an object with top, right, bottom and left offsets
- * @return 		{Boolean}									If the element is in the viewport or not
+ * @param 		{HTMLElement} 				$elm  			        The element to check if it is in viewport or not
+ * @return 		{Boolean}									                If the element is in the viewport or not
  *
  * @snippet         isInViewport($1)
  *
@@ -24,17 +23,7 @@
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-
-export type TIsInViewport = {};
-
-export default function isInViewport(
-  elm: HTMLElement,
-  settings: Partial<TIsInViewport> = {},
-): boolean {
-  settings = {
-    ...settings,
-  };
-
+export default function isInViewport(elm: HTMLElement): boolean {
   const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop,
     scrollLeft =

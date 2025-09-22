@@ -19,9 +19,9 @@ import renameSync from './renameSync.js';
  * import { rename } from '@blackbyte/sugar/fs';
  * await rename('my/cool/dir', 'another/place/for/directory');
  *
- * @see             https://github.com/jprichardson/node-fs-extra
+ * @see           https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
+ * @author        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TRenameSettings = {

@@ -14,10 +14,10 @@ import __parse from '../../../shared/string/parse.js';
  * @feature       Possibility to pass a check function to check if the attribute suits your needs
  * @feature       Promise based API
  *
- * @param 		{HTMLElement} 				elm 				The HTMLElement on which to monitor the property
- * @param 		{String} 					attribute 			The attribute to monitor
- * @param 		{Function} 					[checkFn=null] 		An optional function to check the attribute. The promise is resolved when this function return true
- * @return 		(Promise) 										The promise that will be resolved when the attribute exist on the element (and that it passes the checkFn)
+ * @param 		{HTMLElement} 			$elm 				        The HTMLElement on which to monitor the property
+ * @param 		{String} 					  attribute 			    The attribute to monitor
+ * @param 		{Function} 					[checkFn=null] 	    Optional function to check the attribute. The promise is resolved when this function return true
+ * @return 		(Promise) 										          The promise that will be resolved when the attribute exist on the element (and that it passes the checkFn)
  *
  * @snippet         whenAttribute($1, $2)
  * whenAttribute($1, $2).then(value => {

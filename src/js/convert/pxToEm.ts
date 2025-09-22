@@ -8,9 +8,9 @@
  *
  * Convert rem value to a px one
  *
- * @param         {Number}          em           The rem value to convert
+ * @param         {Number}          em                                      The rem value to convert
  * @param         {HTMLElement}     [$elm=document.documentElement]         The HTMLElement to take as source for calculating the em
- * @return        {Number}                        The pixel value
+ * @return        {Number}                                                  The pixel value
  *
  * @todo      tests
  *

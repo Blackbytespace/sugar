@@ -1,9 +1,9 @@
 /**
- * @name        isTablet
- * @namespace            js.is
- * @type      Function
+ * @name              isTablet
+ * @namespace         js.is
+ * @type              Function
  * @platform          js
- * @status        stable
+ * @status            stable
  *
  * Detect if is a tablet device
  *

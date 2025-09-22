@@ -45,11 +45,8 @@ export default function propertyProxy(obj, property, descriptor, applySetterAtSt
             return _val;
         },
         set: (v) => {
-            // const oldValue = val;
             // internal set to use the good setter
             _set(v);
-            // notify of new update
-            // this.notify(objPath, val, oldValue);
         },
         configurable: descriptor.configurable !== undefined
             ? descriptor.configurable
@@ -61,7 +58,6 @@ export default function propertyProxy(obj, property, descriptor, applySetterAtSt
             : currentDescriptor && currentDescriptor.enumarable !== undefined
                 ? currentDescriptor.enumarable
                 : true,
-        // writable : currentDescriptor && currentDescriptor.writable !== undefined ? currentDescriptor.writable : true
     });
     // return the value
     return val;

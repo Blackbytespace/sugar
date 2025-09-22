@@ -12,9 +12,9 @@ import parse from '../../../shared/string/parse.js';
  * This function try to store the actual style to not trigger more that 1 redraw
  * each js execution loop.
  *
- * @param 		{HTMLElement} 					elm  		The element to get style from
- * @param 		{String} 						property 	The css property to get
- * @return 		{Mixed} 									The style value
+ * @param 		{HTMLElement} 					elm  		      The element to get style from
+ * @param 		{String} 						    property 	    The css property to get
+ * @return 		{Mixed} 									            The style value
  *
  * @todo      tests
  *

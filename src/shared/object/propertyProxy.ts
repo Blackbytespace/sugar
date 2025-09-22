@@ -13,9 +13,9 @@
  * This gives you the possibility to process the data of the property
  * when it is getted or setted.
  *
- * @param 		{Object} 		obj 			The object on which to create the proxy
- * @param 		{String} 		property 		The property name that will be proxied
- * @param 		{Object} 		descriptor 		A descriptor object that contains at least a get or a set method, or both
+ * @param 		{Object} 		  obj 			        The object on which to create the proxy
+ * @param 		{String} 	  	property 		      The property name that will be proxied
+ * @param 		{Object} 		  descriptor 		    A descriptor object that contains at least a get or a set method, or both
  * @param 		{Boolean} 		[applySetterAtStart=false] 	If need to apply the descriptor setter directly on the current value or not
  *
  * @todo      tests
@@ -105,25 +105,21 @@ export default function propertyProxy(
       return _val;
     },
     set: (v) => {
-      // const oldValue = val;
       // internal set to use the good setter
       _set(v);
-      // notify of new update
-      // this.notify(objPath, val, oldValue);
     },
     configurable:
       descriptor.configurable !== undefined
         ? descriptor.configurable
         : currentDescriptor && currentDescriptor.configurable !== undefined
-        ? currentDescriptor.configurable
-        : false,
+          ? currentDescriptor.configurable
+          : false,
     enumarable:
       descriptor.enumarable !== undefined
         ? descriptor.enumarable
         : currentDescriptor && currentDescriptor.enumarable !== undefined
-        ? currentDescriptor.enumarable
-        : true,
-    // writable : currentDescriptor && currentDescriptor.writable !== undefined ? currentDescriptor.writable : true
+          ? currentDescriptor.enumarable
+          : true,
   });
 
   // return the value

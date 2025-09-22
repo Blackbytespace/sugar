@@ -9,8 +9,8 @@ import __whenLinkLoaded from '../when/whenLinkLoaded.js';
  *
  * Append a stylesheet link to the page head
  *
- * @param    {String}    href    THe url to the stylesheet
- * @return    {Promise}    A promise when the stylesheet is loaded with the link element as parameter
+ * @param    {String}    href     The url to the stylesheet
+ * @return   {Promise}            A promise when the stylesheet is loaded with the link element as parameter
  *
  * @snippet         injectStylesheet($1)
  *

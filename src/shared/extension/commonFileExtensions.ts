@@ -45,11 +45,11 @@ import commonWebFileExtensions from './commonWebFileExtensions.js';
  * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
  * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
- * @snippet         __commonFileExtensions()
+ * @snippet         commonFileExtensions()
  *
  * @example         js
- * import { __commonFileExtensions } from '@blackbyte/sugar/extension';
- * const extensions = __commonFileExtensions(); // => ['avi','mp3',...]
+ * import { commonFileExtensions } from '@blackbyte/sugar/extension';
+ * const extensions = commonFileExtensions(); // => ['avi','mp3',...]
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -78,7 +78,7 @@ export type TCommonFileExtensionsSettings = {
   extended?: boolean;
 };
 
-export default function __commonFileExtensions(
+export default function commonFileExtensions(
   settings: Partial<TCommonFileExtensionsSettings> = {},
 ): string[] {
   const finalSettings: TCommonFileExtensionsSettings = {

@@ -1,14 +1,14 @@
 /**
- * @name        isSafari
- * @namespace            js.is
- * @type      Function
+ * @name              isSafari
+ * @namespace         js.is
+ * @type              Function
  * @platform          js
- * @status        stable
+ * @status            stable
  *
  * Detect if is safari
  *
- * @param       {String}        [ua=navigator.userAgent]         The user agent on which to make the test
- * @return    {Boolean}    true if is safari, false if not
+ * @param     {String}        [ua=navigator.userAgent]        The user agent on which to make the test
+ * @return    {Boolean}                                       true if is safari, false if not
  *
  * @todo      tests
  *
