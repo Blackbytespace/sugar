@@ -9,8 +9,8 @@ import __commonImageFileExtensions from '../extension/commonImageFileExtensions.
  *
  * Check if the passed string path is an image url
  *
- * @param                 {String}        string             The string to check
- * @return              {Boolean}           true if is an image url/path, false if not
+ * @param                 {String}        string            The string to check
+ * @return                {Boolean}                         true if is an image url/path, false if not
  *
  * @todo      tests
  *

@@ -7,7 +7,7 @@
  *
  * Parse the simple html tags to format the console message
  *
- * @param           {String|Array}                  message                 The message to format of an array of messages to format
+ * @param           {String|Array}                  message           The message to format of an array of messages to format
  * @return          {String}                                          The formated message
  *
  * @todo        tests

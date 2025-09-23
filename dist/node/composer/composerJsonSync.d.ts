@@ -8,9 +8,9 @@
  * This function simply take a package name (or "." for the current package) as parameter, and return the corresponding
  * composer.json JSON content
  *
- * @param       {String}        [nameOrPath=process.cwd()]        the package name or path wanted
- * @param       {TComposerVendorDirSettings}      [settings={}]       Some settings to configure your process
- * @return      {JSON}                      The composer.json content
+ * @param       {String}                          [nameOrPath=process.cwd()]        the package name or path wanted
+ * @param       {TComposerVendorDirSettings}      [settings={}]                     Some settings to configure your process
+ * @return      {JSON}                                                              The composer.json content
  *
  * @setting     {String}        [cwd=process.cwd()]        The directory in which you want to start the research
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context

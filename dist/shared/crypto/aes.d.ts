@@ -5,7 +5,7 @@
  * @platform        node
  * @status          stable
  *
- * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the aes algorithm
+ * Expose two function named "encrypt" that you can use to process your content using the aes algorithm
  *
  * @snippet         aes.encrypt($1)
  *

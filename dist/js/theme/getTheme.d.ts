@@ -8,11 +8,11 @@
  * This function allows you to get the theme set on the website/application through
  * the `setTheme` function.
  *
- * @param           {String}          defaultTheme        The default theme to return if no theme has been set
- * @param           {TGetThemeSettings}          [settings={}]         Some settings to configure your theme getter
- * @return          {String}                              The theme name
+ * @param           {String}                  defaultTheme        The default theme to return if no theme has been set
+ * @param           {TGetThemeSettings}       [settings={}]       Some settings to configure your theme getter
+ * @return          {String}                                      The theme name
  *
- * @setting         {String}          [cookieName='theme']         The cookie name to use to store the theme
+ * @setting         {String}          [cookieName='theme']        The cookie name to use to store the theme
  *
  * @todo      tests
  *

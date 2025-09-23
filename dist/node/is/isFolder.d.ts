@@ -18,7 +18,7 @@
  * import { isfolder } from '@blackbyte/sugar/is';
  * isfolder('something/cool');
  *
- * @since       1.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TIsFolderSettings = {

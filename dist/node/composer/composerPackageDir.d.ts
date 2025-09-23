@@ -8,11 +8,11 @@
  * This function simply take a package name as parameter, and return the corresponding
  * package direcory path
  *
- * @param       {String}        [nameOrPath=process.cwd()]        the package name or path wanted
- * @param       {TComposerPackageDirSettings}     [settings={}]       Some settings to configure your process
- * @return      {String}                      The package path
+ * @param       {String}                          [nameOrPath=process.cwd()]        the package name or path wanted
+ * @param       {TComposerPackageDirSettings}     [settings={}]                     Some settings to configure your process
+ * @return      {String}                                                            The package path
  *
- * @setting     {String}        [cwd=process.cwd()]        The directory in which you want to start the research
+ * @setting     {String}        [cwd=process.cwd()]      The directory in which you want to start the research
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *

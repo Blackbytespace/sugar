@@ -10,7 +10,7 @@
  *
  * @feature       Promise based API
  *
- * @param 		{HTMLElement} 				$elm 		The element to monitor
+ * @param 		{HTMLElement} 				        $elm 		The element to monitor
  * @return 		(Promise<HTMLElement>) 								The promise that will be resolved when the element is visible
  *
  * @snippet         whenVisible($1)

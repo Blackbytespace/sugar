@@ -1,4 +1,5 @@
 import disablePasswordManagerAttributes from './disablePasswordManagerAttributes.js';
 import getFormValues from './getFormValues.js';
-export { disablePasswordManagerAttributes as __disablePasswordManagerAttributes, getFormValues as __getFormValues, disablePasswordManagerAttributes, getFormValues, };
+import generateIdFromForm from './generateIdFromForm.js';
+export { disablePasswordManagerAttributes as __disablePasswordManagerAttributes, getFormValues as __getFormValues, generateIdFromForm as __generateIdFromForm, disablePasswordManagerAttributes, getFormValues, generateIdFromForm, };
 //# sourceMappingURL=_exports.js.map

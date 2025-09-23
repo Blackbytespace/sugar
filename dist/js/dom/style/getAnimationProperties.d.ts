@@ -7,7 +7,7 @@
  *
  * Get the css animation properties from an HTMLElement in an object format
  *
- * @param 		{HTMLElement} 					elm  		The element to get the properties from
+ * @param 		{HTMLElement} 		elm  		The element to get the properties from
  * @return 		{Object} 									The animation properties
  *
  * @todo      tests

@@ -8,9 +8,9 @@
  *
  * Make sure the passed array ends with the passed keys
  *
- * @param    {Array}    array    The array to process
- * @param    {Array}    keys    The keys to end the array with
- * @return    {Array}    The processed array
+ * @param    {Array}    array       The array to process
+ * @param    {Array}    keys        The keys to end the array with
+ * @return   {Array}                The processed array
  *
  * @snippet         keysLast($1, $2)
  *

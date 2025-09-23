@@ -15,10 +15,10 @@ import type { TWhenVisibleSettings } from '../when/whenVisible.js';
  *
  * This function listen for passed `trigger(s)` on the passed `HTMLElement` and resolve the promise once one of them has reached his state.
  *
- * @param       {HTMLElement}           $elm        The element to listen on
- * @param       {String|String[]}       trigger     The trigger(s) to listen on
- * @param       {TwhenSettings}      [settings={}]       Some settings like offset, etc...
- * @return      {SPromise<HTMLElement>}                 A promise resolved when all the triggers are fulfilled
+ * @param       {HTMLElement}           $elm              The element to listen on
+ * @param       {String|String[]}       trigger           The trigger(s) to listen on
+ * @param       {TwhenSettings}         [settings={}]     Some settings like offset, etc...
+ * @return      {SPromise<HTMLElement>}                   A promise resolved when all the triggers are fulfilled
  *
  * @setting         {Partial<TWhenInViewportSettings>}          [whenInViewport={}]            Some settings for the whenInViewport function
  * @setting         {Partial<TWhenNearViewportSettings>}        [whenNearViewport={}]           Some settings for the whenNearViewport function

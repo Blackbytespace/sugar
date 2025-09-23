@@ -9,9 +9,9 @@
  * Create a temporary file on the disk with the passed content and returns the path
  * to it.
  *
- * @param       {Any}              data          The data to write in the file
- * @param       {TWriteTmpFileSettings}         [settings={}]           Some settings to customize your temp file creation
- * @return      {Promise<String>}                           A promise that will be resolved when the writeTmpFile is completed with the path to it
+ * @param       {Any}                       data                    The data to write in the file
+ * @param       {TWriteTmpFileSettings}     [settings={}]           Some settings to customize your temp file creation
+ * @return      {Promise<String>}                                   A promise that will be resolved when the writeTmpFile is completed with the path to it
  *
  * @todo        tests
  *
@@ -26,7 +26,7 @@
  *    // do something on complete...
  * });
  *
- * @since           1.0.0
+ * @since          1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TWriteTmpFileSettings = {

@@ -8,7 +8,7 @@ import * as rematrix from 'rematrix';
  *
  * Get a rotate properties of an HTMLElement
  *
- * @param 		{HTMLElement} 					$elm  		The element to get the properties from
+ * @param 		{HTMLElement} 					$elm  		  The element to get the properties from
  * @return 		{Object|undefined} 									The translate x,y and z properties
  *
  * @todo      tests

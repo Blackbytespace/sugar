@@ -31,7 +31,7 @@ import { spawnSync } from 'child_process';
  * await  isCommandExists('ls'); // => true
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
+ * @author      Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isCommandExists(command) {
     return __awaiter(this, void 0, void 0, function* () {

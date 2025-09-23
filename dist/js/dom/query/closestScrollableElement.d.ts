@@ -8,7 +8,7 @@
  * Go up the dom three to find the first element that is scrollable.
  * The default scrollable element is the body
  *
- * @param 		{HTMLElement} 					$elm  		The element to start on
+ * @param 		{HTMLElement} 					      $elm  		The element to start on
  * @return 		{HTMLElement|undefined} 								The element found or undefined
  *
  * @snippet         closestScrollableElement($1)

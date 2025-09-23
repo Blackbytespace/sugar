@@ -60,7 +60,7 @@ export default function easeInterval(
   let cleared = false,
     animationFrame;
 
-  const pro = new Promise((resolve) => {
+  const pro = new Promise<number>((resolve) => {
     settings = {
       interval: 1000 / 25,
       easing: easeInOutQuart,

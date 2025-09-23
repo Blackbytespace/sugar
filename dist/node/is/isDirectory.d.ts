@@ -20,7 +20,7 @@
  * import { isDirectory } from '@blackbyte/sugar/is';
  * isDirectory('something/cool');
  *
- * @since       1.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TIsDirectorySettings = {

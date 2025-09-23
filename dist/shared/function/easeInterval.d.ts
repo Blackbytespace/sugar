@@ -14,7 +14,7 @@
  * @param       {Number}            duration            The duration of your interval process you want
  * @param       {Function}          [cb=null]           A callback function to call at each interval
  * @param       {TEaseIntervalSettings}     [settings={}]       Some settings to customize your interval process
- * @return      {SPromise}                              An SPromise that will be resolved once the process is complete, and through which you can subscribe to the "interval" event that is the same as the "cb" parameter
+ * @return      {Promise<number>}                        A promise that will be resolved once the process is complete
  *
  * @setting         {Number}        [inteval=1000/25]           An interval in ms to call your callback function
  * @setting         {Function}      [easing=easeInOutQuart]     An easing function that take as parameter a value between 0 and 1
@@ -48,4 +48,4 @@ export type TEaseIntervalSettings = {
     to?: number;
     onEnd?: Function;
 };
-export default function easeInterval(duration: number, cb: Function, settings?: TEaseIntervalSettings): Promise<unknown>;
+export default function easeInterval(duration: number, cb: Function, settings?: TEaseIntervalSettings): Promise<number>;

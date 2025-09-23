@@ -9,10 +9,10 @@
  * You can pass a direction like "top", "right", "bottom", "left" to specify
  * the direction you want to search the nearest element.
  *
- * @param           {HTMLElement}           $from            The element from which to start the search
- * @param           {HTMLElement[]}          $elements       The elements list to search in
- * @param           {TNearestElementSettings}         [settings={}]       Some settings to configure your search
- * @return        {HTMLElement}                           The nearest element found
+ * @param           {HTMLElement}                 $from             The element from which to start the search
+ * @param           {HTMLElement[]}               $elements         The elements list to search in
+ * @param           {TNearestElementSettings}     [settings={}]     Some settings to configure your search
+ * @return        {HTMLElement}                                     The nearest element found
  *
  * @todo      tests
  *

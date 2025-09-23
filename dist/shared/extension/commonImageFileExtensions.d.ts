@@ -18,13 +18,13 @@ import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
  * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
- * @snippet         __commonImageFileExtensions()
+ * @snippet         commonImageFileExtensions()
  *
  * @example         js
- * import { __commonImageFileExtensions } from '@blackbyte/sugar/extension';
- * const extensions = __commonImageFileExtensions();
+ * import { commonImageFileExtensions } from '@blackbyte/sugar/extension';
+ * const extensions = commonImageFileExtensions();
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __commonImageFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];
+export default function commonImageFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];

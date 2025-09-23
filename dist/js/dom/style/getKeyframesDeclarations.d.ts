@@ -7,9 +7,9 @@
  *
  * Get all the keyframes declarations from the passed rules
  *
- * @param       {string}            animationName        CSS animationName to search KeyFrameRule declarations for
- * @param       {array}              rules               Array of CSSRules to search
- * @return      {CSSKeyframeRule}              Array of matching KeyFrameRules
+ * @param       {string}            animationName       CSS animationName to search KeyFrameRule declarations for
+ * @param       {array}             rules               Array of CSSRules to search
+ * @return      {CSSKeyframeRule}                       Array of matching KeyFrameRules
  *
  * @todo      tests
  *

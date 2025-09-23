@@ -11,9 +11,9 @@
  * @feature       Promise based API
  * @feature       Some settings available to tweak the behavior
  *
- * @param 		{HTMLElement} 				elm 					The element to monitor
- * @param 		{Partial<TWhenEntersViewportSettings>} 					[settings={}] 		Some settings to tweak the detection behavior
- * @return 		(Promise<HTMLElement>) 											The promise that will be resolved when the element is in the viewport
+ * @param 		{HTMLElement} 				                      $elm 					      The element to monitor
+ * @param 		{Partial<TWhenEntersViewportSettings>} 			[settings={}] 		  Some settings to tweak the detection behavior
+ * @return 		(Promise<HTMLElement>) 											                    The promise that will be resolved when the element is in the viewport
  *
  * @setting         {String}        [offset='0px 0px -25% 0px']         An offset to detect the element entering in viewport earlier or later
  *

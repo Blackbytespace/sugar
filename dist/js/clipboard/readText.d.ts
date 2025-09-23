@@ -12,10 +12,10 @@
  *
  * @todo     tests
  *
- * @snippet         __readText($1)
+ * @snippet         readText($1)
  *
  * @example         js
- * import { copyText, __readText } from '@blackbyte/sugar/clipboard';
+ * import { copyText, readText } from '@blackbyte/sugar/clipboard';
  * await readText();
  *
  * @since           1.0.0

@@ -8,7 +8,7 @@
  *
  * This function allows you to resize an iframe to fit its content.
  *
- * @param           {HTMLElement}           obj           The iframe element to resize
+ * @param           {HTMLElement}                       obj                     The iframe element to resize
  * @param           {TIFrameAutoSizeSettings}           [settings={}]           Some settings to configure your iframe auto size
  *
  * @setting        {Boolean}         [width=true]         Specify if you want to resize the width of the iframe

@@ -16,8 +16,8 @@
  * - sveltekit
  * - laravel
  *
- * @param       {String}            [cwd=process.cwd()]         The root project directory to detect the type from
- * @return      {IDetectProjectTypeResult}                      An object that describe the detected project type
+ * @param       {String}                      [cwd=process.cwd()]         The root project directory to detect the type from
+ * @return      {IDetectProjectTypeResult}                                An object that describe the detected project type
  *
  * @snippet         detectProjectType()
  *
@@ -25,7 +25,7 @@
  * import { detectProjectType } from '@coffeekraken/sugar/project';
  * detectProjectType();
  *
- * @since           1.0.0
+ * @since          1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDetectProjectTypeResult = {

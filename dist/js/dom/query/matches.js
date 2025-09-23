@@ -7,9 +7,9 @@
  *
  * Polyfill for the Element.matches function
  *
- * @param 		{HTMLElement} 			elm  			The element to check
- * @param 		{String} 				selector 		The selector to check on the element
- * @return 		{Boolean} 								If the element match the selector or not
+ * @param 		{HTMLElement} 			elm  			    The element to check
+ * @param 		{String} 				    selector 		  The selector to check on the element
+ * @return 		{Boolean} 								        If the element match the selector or not
  *
  * @snippet         matches($1, $2)
  *

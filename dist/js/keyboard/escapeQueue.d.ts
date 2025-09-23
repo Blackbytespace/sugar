@@ -11,12 +11,12 @@
  * action in the queue.
  * Note that you can get the current queue length by calling `escapeQueueLength()`.
  *
- * @param           {Function}          [callback=null]            The callback to call on pressing escape
- * @param         {Object}      [settings={}]    An option object to configure your hotkey. Here's the list of available settings:
- * @return      {SPromise}                       An SPromise instance that will be resolved when the user has pressed the escape key and that it's yout turn in the queue
+ * @param         {Function}          [callback=null]           The callback to call on pressing escape
+ * @param         {Object}            [settings={}]             An option object to configure your hotkey. Here's the list of available settings:
+ * @return        {SPromise}                                    An SPromise instance that will be resolved when the user has pressed the escape key and that it's yout turn in the queue
  *
- * @setting         {HTMLElement}       [ctx=document]         Specify where to add the listener
- * @setting         {String}            [id=null]                   Specify an id. If specified, will before unqueue the previous item with the same id and add it again
+ * @setting         {HTMLElement}       [ctx=document]          Specify where to add the listener
+ * @setting         {String}            [id=null]               Specify an id. If specified, will before unqueue the previous item with the same id and add it again
  *
  * @todo      tests
  *

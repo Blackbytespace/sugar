@@ -1,9 +1,9 @@
 /**
- * @name        isDarkMode
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name            isDarkMode
+ * @namespace       js.is
+ * @type            Function
+ * @platform        js
+ * @status          stable
  *
  * Detect if the user prefer the dark mode.
  * Dark mode is detected using:

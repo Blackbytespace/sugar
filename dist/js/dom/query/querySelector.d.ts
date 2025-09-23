@@ -11,8 +11,8 @@
  * @feature       Specify if you want nodes that are only inside or outside the viewport
  * @feature       Specify if you want nodes that are only visible or invisible
  *
- * @setting       {Boolean}       [visible=null]        Specify if you want only the visible nodes
- * @setting       {Boolean}       [inViewport=null]     Specify if you want only the nodes that are in the viewport
+ * @setting       {Boolean}         [visible=null]                Specify if you want only the visible nodes
+ * @setting       {Boolean}         [inViewport=null]             Specify if you want only the nodes that are in the viewport
  * @setting       {HTMLElement}     [rootNode=document.body]      Specify the root node from where you want to query
  *
  * @param 		{String} 			selector 			The css selector to search

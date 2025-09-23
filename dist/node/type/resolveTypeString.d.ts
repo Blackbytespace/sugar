@@ -10,9 +10,9 @@ import { TTypeStringObject } from '../../shared/type/parseTypeString.js';
  * This method simply parse the passed typeString like "string | number", or "string & path", etc... and return
  * an object defining the resolved type with interface if defined, etc...
  *
- * @param     {String}        typeString      The type string to parse
- * @param       {Partial<TResolveTypeStringSettings>}       [settings={}]     A setting object to configure your resolve process
- * @return    {Promise<TResolveTypeStringResult>}             A promise resolved once the type string has been resolved
+ * @param       {String}                                    typeString          The type string to parse
+ * @param       {Partial<TResolveTypeStringSettings>}       [settings={}]       A setting object to configure your resolve process
+ * @return      {Promise<TResolveTypeStringResult>}                             A promise resolved once the type string has been resolved
  *
  * @setting         {String}       [cwd=process.cwd()]          The cwd to use to resolve the type string when they are path
  *
@@ -29,7 +29,7 @@ import { TTypeStringObject } from '../../shared/type/parseTypeString.js';
  * //    }],
  * // }
  *
- * @since       1.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com>
  */
 export type TResolveTypeStringResult = {

@@ -10,8 +10,8 @@ import __isClass from 'is-class';
  *
  * Check if the passed variable (or array of variables) is/are plain variable(s)
  *
- * @param         {Mixed|Array}            variable                  The variable(s) to check
- * @return        {Boolean}                                         true if is class(es), false if not
+ * @param         {Mixed|Array}            variable         The variable(s) to check
+ * @return        {Boolean}                                 true if is class(es), false if not
  *
  * @todo      tests
  *

@@ -12,8 +12,8 @@
  * @feature       Possibility to pass a check function to check if the attribute suits your needs
  * @feature       Promise based API
  *
- * @param 		{HTMLElement} 				$elm 				The HTMLElement on which to monitor
- * @return 		(Promise<HTMLElement>) 										The promise that will be resolved when the attribute exist on the element (and that it passes the checkFn)
+ * @param 		{HTMLElement} 				      $elm 				The HTMLElement on which to monitor
+ * @return 		(Promise<HTMLElement>) 									The promise that will be resolved when the attribute exist on the element (and that it passes the checkFn)
  *
  * @snippet         whenRemoved($1);
  * whenRemoved($1).then(() => {

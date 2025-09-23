@@ -8,8 +8,8 @@
  *
  * Check if the passed value is a valid json
  *
- * @param    {Mixed}    value    The value to check
- * @return   {Boolean}   true if it's a valid json, false if not
+ * @param    {Mixed}    value     The value to check
+ * @return   {Boolean}            true if it's a valid json, false if not
  *
  * @todo      tests
  *

@@ -1,13 +1,14 @@
 /**
- * @name        isUcBrowser
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name            isUcBrowser
+ * @namespace       js.is
+ * @type            Function
+ * @platform        js
+ * @status          stable
  *
  * Detect if is the UC stock browser that is running the page
  *
- * @param       {String}        [ua=navigator.userAgent]         The user agent on which to make the test
+ * @param       {String}        [ua=navigator.userAgent]        The user agent on which to make the test
+ * @return      {Boolean}                                       true if is UC browser, false if not
  *
  * @todo      tests
  *

@@ -9,7 +9,7 @@
  * Ease in quad function
  *
  * @param 		{Number} 		t 		The current time
- * @return 		{Number} 				The value depending on time
+ * @return 		{Number} 				  The value depending on time
  *
  * @snippet         easeInQuad($1)
  *

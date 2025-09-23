@@ -16,13 +16,13 @@ import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
  * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
- * @snippet         __commonMediaFileExtensions()
+ * @snippet         commonMediaFileExtensions()
  *
  * @example         js
- * import { __commonMediaFileExtensions } from '@blackbyte/sugar/extension';
- * const extensions = __commonMediaFileExtensions(); // => ['avi','mp3',...]
+ * import { commonMediaFileExtensions } from '@blackbyte/sugar/extension';
+ * const extensions = commonMediaFileExtensions(); // => ['avi','mp3',...]
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __commonMediaFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];
+export default function commonMediaFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];

@@ -9,8 +9,8 @@
  * Check if the passed value is a valid number.
  * A valid number is either an integer or a number (float).
  *
- * @param       {any}           value       The value to check
- * @return   {Boolean}   true if it's in a valid number, false if not
+ * @param    {any}           value          The value to check
+ * @return   {Boolean}                      true if it's in a valid number, false if not
  *
  * @todo      tests
  *

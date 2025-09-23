@@ -18,13 +18,13 @@ import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
  * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
- * @snippet         __commonWebFileExtensions()
+ * @snippet         commonWebFileExtensions()
  *
  * @example         js
- * import { __commonWebFileExtensions } from '@blackbyte/sugar/extension';
- * const extensions = __commonWebFileExtensions();
+ * import { commonWebFileExtensions } from '@blackbyte/sugar/extension';
+ * const extensions = commonWebFileExtensions();
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __commonWebFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];
+export default function commonWebFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];

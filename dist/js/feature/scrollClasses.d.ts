@@ -21,10 +21,10 @@
  *
  * @param           {TScrollClassesSettings}          [settings={}]           The settings you want to override
  *
- * @setting         {number}        [offset=100]        The offset you want before adding the classes
- * @setting         {number}        [offsetX=null]             The offset x you want before adding the classes
- * @setting         {number}        [offsetY=null]             The offset y you want before adding the classes
- * @setting         {string}        [class=scrolled]        The class name you want. Will be used also in the %cls-x and %cls-y classes
+ * @setting         {number}        [offset=100]                The offset you want before adding the classes
+ * @setting         {number}        [offsetX=null]              The offset x you want before adding the classes
+ * @setting         {number}        [offsetY=null]              The offset y you want before adding the classes
+ * @setting         {string}        [class=scrolled]            The class name you want. Will be used also in the %cls-x and %cls-y classes
  *
  * @snippet          scrollClasses($1);
  *

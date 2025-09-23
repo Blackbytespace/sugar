@@ -7,7 +7,7 @@
  *
  * This function allows you to read an xml file and get his content back as JSON
  *
- * @param       {String}           path            The xml file path to read
+ * @param       {String}           path             The xml file path to read
  * @return      {Object}                            The readed json
  *
  * @todo            tests

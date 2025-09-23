@@ -10,7 +10,7 @@
  * This mean that it has no spaces, and no special characters
  *
  * @param       {String}        string         The string to process
- * @return      {Boolean}                       true if compliant, false if not
+ * @return      {Boolean}                      true if compliant, false if not
  *
  * @todo      tests
  *

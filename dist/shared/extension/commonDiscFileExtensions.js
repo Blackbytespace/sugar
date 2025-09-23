@@ -17,16 +17,16 @@
  * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
  * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
- * @snippet         __commonDiscFileExtensions()
+ * @snippet         commonDiscFileExtensions()
  *
  * @example         js
- * import { __commonDiscFileExtensions } from '@blackbyte/sugar/extension';
- * const extensions = __commonDiscFileExtensions();
+ * import { commonDiscFileExtensions } from '@blackbyte/sugar/extension';
+ * const extensions = commonDiscFileExtensions();
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __commonDiscFileExtensions(settings = {}) {
+export default function commonDiscFileExtensions(settings = {}) {
     const finalSettings = Object.assign({ dot: false, exclude: [], extended: false }, settings);
     const commons = [
         'iso',

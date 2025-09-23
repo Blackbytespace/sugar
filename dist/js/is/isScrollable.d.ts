@@ -1,13 +1,14 @@
 /**
- * @name      isScrollable
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name            isScrollable
+ * @namespace       js.is
+ * @type            Function
+ * @platform        js
+ * @status          stable
  *
  * Check if the passed element is scrollable or not
  *
- * @return    {Boolean}    true if is scrollable, false if not
+ * @param     {HTMLElement}       $elm        The element to check
+ * @return    {Boolean}                       true if is scrollable, false if not
  *
  * @snippet         isScrollable($1)
  *

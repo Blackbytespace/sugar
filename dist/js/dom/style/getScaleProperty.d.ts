@@ -7,8 +7,8 @@
  *
  * Get a scale properties of an HTMLElement
  *
- * @param 		{HTMLElement} 					$elm  		The element to get the properties from
- * @return 		{Number}                                     The scale property
+ * @param 		{HTMLElement} 					$elm  		      The element to get the properties from
+ * @return 		{Number}                                The scale property
  *
  * @todo      tests
  *

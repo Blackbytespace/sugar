@@ -9,9 +9,9 @@
  * Promisify the `addEventListener` method of an element to resolve a promise
  * once the event has been triggered.
  *
- * @param    {string}        event    The event to listen for (e.g. 'click', 'animationend', etc.)
- * @param    {HTMLElement}   $elm     The element to listen on
- * @return   {Promise<Event>}         A promise that will be resolved once the event has been triggered
+ * @param    {string}             event     The event to listen for (e.g. 'click', 'animationend', etc.)
+ * @param    {HTMLElement}        $elm      The element to listen on
+ * @return   {Promise<Event>}               A promise that will be resolved once the event has been triggered
  *
  * @snippet         whenEventListener($1, $2)
  * whenEventListener($1, $2).then(e: Event => {

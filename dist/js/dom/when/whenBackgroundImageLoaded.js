@@ -13,7 +13,7 @@ import whenImageLoaded from './whenImageLoaded.js';
  * @feature       Promise based API
  *
  * @param    {HTMLElement}    $elm    The HTMLElement on which to detect the background image load
- * @return    {SPromise}    A promise that will be resolved when the background image has been loaded
+ * @return   {SPromise}               A promise that will be resolved when the background image has been loaded
  *
  * @snippet         whenBackgroundImageLoaded($1)
  * whenBackgroundImageLoaded($1).then(\$elm => {

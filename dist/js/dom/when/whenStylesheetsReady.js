@@ -12,8 +12,8 @@ import whenLinkLoaded from './whenLinkLoaded.js';
  * @feature       Async promise based
  * @feature       Multiple stylesheets elements listening
  *
- * @param 		{Array}<HTMLLinkElement> 		[links=null] 			The HTMLLinkElement tags to process. If not passed, take the local stylesheets links
- * @return 		{Promise<void>} 										The promise that will be resolved when all the links are loaded
+ * @param 		{Array<HTMLLinkElement>} 		    [links=null] 			The HTMLLinkElement tags to process. If not passed, take the local stylesheets links
+ * @return 		{Promise<void>} 										              The promise that will be resolved when all the links are loaded
  *
  * @todo      tests
  *

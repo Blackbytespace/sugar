@@ -1,6 +1,6 @@
 /**
  * @name             onSwipe
- * @namespace        js.dom.detect
+ * @namespace        js.dom.on
  * @type             Function
  * @platform         js
  * @status           stable
@@ -13,9 +13,9 @@
  *
  * @setting     {Number}      [threshold=100]       The minimum distance the user has to swipe before detection
  *
- * @param       {HTMLElement}         elm         The HTMLElement on which to detect the swipe
- * @param       {Function}            cb          The function to call on swipe. The callback function has as parameter an object that containthe swipe direction like left, right, up and down
- * @param       {Partial<TOnSwipeSettings>}     [settings={}]           Some settings to configure your swipe detection
+ * @param       {HTMLElement}                     elm                 The HTMLElement on which to detect the swipe
+ * @param       {Function}                        cb                  The function to call on swipe. The callback function has as parameter an object that containthe swipe direction like left, right, up and down
+ * @param       {Partial<TOnSwipeSettings>}       [settings={}]       Some settings to configure your swipe detection
  *
  * @setting       {Number}              [threshold=100]       The swipe threshold
  *

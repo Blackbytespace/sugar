@@ -17,13 +17,13 @@ import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @setting     {boolean}         [dot=false]         If true, the dot will be added to the extension
  * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
  * @setting     {boolean}         [extended=false]    If true, the extended formats will be included * *
- * @snippet         __commonEmailFileExtensions()
+ * @snippet         commonEmailFileExtensions()
  *
  * @example         js
- * import { __commonEmailFileExtensions } from '@blackbyte/sugar/extension';
- * const extensions = __commonEmailFileExtensions();
+ * import { commonEmailFileExtensions } from '@blackbyte/sugar/extension';
+ * const extensions = commonEmailFileExtensions();
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __commonEmailFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];
+export default function commonEmailFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];

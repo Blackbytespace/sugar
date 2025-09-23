@@ -17,8 +17,8 @@
  * import { removeSync } from '@blackbyte/sugar/fs';
  *  removeSync('my/cool/file.json');
  *
- * @see             https://github.com/jprichardson/node-fs-extra
+ * @see           https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
+ * @author        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function removeSync(path: string): void;

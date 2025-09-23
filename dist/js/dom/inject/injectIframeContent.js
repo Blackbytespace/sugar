@@ -7,8 +7,8 @@
  *
  * Inject some content into an iframe
  *
- * @param       {HTMLIFrameElement}        $iframe          The iframe element to inject content into
- * @param    {String}    html           The html to inject
+ * @param       {HTMLIFrameElement}         $iframe           The iframe element to inject content into
+ * @param       {String}                    html              The html to inject
  *
  * @snippet         injectIframeContent($1, $2)
  *

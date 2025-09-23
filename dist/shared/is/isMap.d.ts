@@ -8,8 +8,8 @@
  *
  * Check if the passed value is a js Map
  *
- * @param    {Mixed}    value    The value to check
- * @return   {Boolean}   true if it's a Map, false if not
+ * @param    {Mixed}    value   The value to check
+ * @return   {Boolean}          true if it's a Map, false if not
  *
  * @todo      tests
  *

@@ -13,9 +13,9 @@
  *
  * @setting     {String}      [offset='10px']         An offset to detect sooner or later the element entering in the viewport
  *
- * @param 		{HTMLElement} 				elm 					The element to monitor
- * @param 		{Partial<TWhenInViewportSettings>} 					[settings={}] 		Some settings to tweak the detection behavior
- * @return 		(SPromise<HTMLElement>) 											The promise that will be resolved when the element is in the viewport
+ * @param 		{HTMLElement} 				                      $elm 					      The element to monitor
+ * @param 		{Partial<TWhenInViewportSettings>} 					[settings={}] 		  Some settings to tweak the detection behavior
+ * @return 		(SPromise<HTMLElement>) 											                  The promise that will be resolved when the element is in the viewport
  *
  * @snippet         whenInViewport($1)
  * whenInViewport($1).then(\$elm => {

@@ -8,10 +8,10 @@
  *
  * Clamp a number between two values with easing in and out
  *
- * @param       {Number}       num             The number to clamp
- * @param       {Number}       min             The minimum value
- * @param       {Number}       max             The maximum value
- * @return      {Number}                The clamped number
+ * @param       {Number}       num            The number to clamp
+ * @param       {Number}       min            The minimum value
+ * @param       {Number}       max            The maximum value
+ * @return      {Number}                      The clamped number
  *
  * @todo      tests
  *

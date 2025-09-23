@@ -8,8 +8,8 @@
  *
  * Check if a number is even or not
  *
- * @param    {Number}    value    The value to check
- * @return    {Boolean}    true if even, false if not
+ * @param     {Number}    value   The value to check
+ * @return    {Boolean}           true if even, false if not
  *
  * @todo      tests
  *

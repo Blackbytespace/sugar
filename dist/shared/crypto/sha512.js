@@ -8,7 +8,7 @@ import toString from '../../shared/string/toString.js';
  * @platform        node
  * @status          stable
  *
- * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the sha512 algorithm
+ * Expose two function named "encrypt" that you can use to process your content using the sha512 algorithm
  *
  * @snippet         sha512.encrypt($1)
  *

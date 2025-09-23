@@ -9,7 +9,7 @@
  * This function check if the passed object has circular dependencies and if so, returns where it has been found in the object
  *
  * @param           {Object}            object              The object to check
- * @return          {String|false}                              false if all is ok, a string that tells where the circular dep has been found if not
+ * @return          {String|false}                          false if all is ok, a string that tells where the circular dep has been found if not
  *
  * @todo      tests
  *

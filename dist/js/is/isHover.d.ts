@@ -1,13 +1,14 @@
 /**
- * @name      isHover
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name            isHover
+ * @namespace       js.is
+ * @type            Function
+ * @platform        js
+ * @status          stable
  *
  * Check if the mouse is isHover the passed HTMLElement
  *
  * @param    {HTMLElement}    $elm    The HTMLElement to check
+ * @return   {Boolean}                true if element is hover, false if not
  *
  * @snippet         isHover($1)
  *

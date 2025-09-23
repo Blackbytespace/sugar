@@ -5,7 +5,7 @@
  * @platform          js
  * @status            stable
  *
- * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the md5 algorithm
+ * Expose two function named "encrypt" that you can use to process your content using the md5 algorithm
  *
  * @snippet         md5.encrypt($1)
  *

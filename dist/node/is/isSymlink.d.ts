@@ -20,7 +20,7 @@
  *
  * @todo        Tests
  *
- * @since       1.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isSymlink(path: string): boolean;

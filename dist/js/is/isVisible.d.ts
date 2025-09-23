@@ -1,15 +1,15 @@
 /**
- * @name      isVisible
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name            isVisible
+ * @namespace       js.is
+ * @type            Function
+ * @platform        js
+ * @status          stable
  *
  * Check if the passed HTMLElement is visible or not.
  * Visible mean that it has not an opacity of 0, not a visibility of hidden and not a display of none and `return !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);`
  *
  * @param 		{HTMLElement} 				$elm  		The element to check
- * @return 		{Boolean}								If the element is visible or not
+ * @return 		{Boolean}								        If the element is visible or not
  *
  * @snippet         isVisible($1)
  *

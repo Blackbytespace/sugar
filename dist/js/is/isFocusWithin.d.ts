@@ -7,7 +7,8 @@
  *
  * Check if the mouse is isFocusWithin the passed HTMLElement
  *
- * @param    {HTMLElement}    $elm    The HTMLElement to check
+ * @param     {HTMLElement}    $elm     The HTMLElement to check
+ * @return    {Boolean}                 true if element is focus within, false if not
  *
  * @snippet         isFocusWithin($1)
  *

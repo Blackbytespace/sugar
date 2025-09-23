@@ -9,7 +9,7 @@
  * Check if the current module system the code runs on is one of the passed system names like "esm" or "cjs".
  *
  * @param       {('esm'|'cjs')[]}    systemNames    An array of system names to check against
- * @return      {Boolean}           true if the current system is one of the passed system names, false otherwise
+ * @return      {Boolean}                           true if the current system is one of the passed system names, false otherwise
  *
  * @todo        tests
  *

@@ -8,7 +8,7 @@
  * Get the css transition properties from an HTMLElement in an object format
  *
  * @param 		{HTMLElement} 					elm  		The element to get the properties from
- * @return 		{Object} 									The animation properties
+ * @return 		{Object} 									      The transition properties
  *
  * @todo      tests
  *

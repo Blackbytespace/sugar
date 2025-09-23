@@ -7,10 +7,10 @@
  *
  * Get all the CSSRules of the passed type
  *
- * @param           {string}             [typeName='style']             CSSRule type to search for, valid types: unknown, style, charset, import, media, fontface, page, keyframes, keyframe, namespace, counter, supports, document, fontfeature, viewport, region
- * @param           {array}          [rules=[]]                     Array of CSSRules to search
- * @param           {function}           [predecate=Boolean]        Predecate function to filter matches
- * @return          {array}             Array of matching CSSRules
+ * @param           {string}              [typeName='style']            CSSRule type to search for, valid types: unknown, style, charset, import, media, fontface, page, keyframes, keyframe, namespace, counter, supports, document, fontfeature, viewport, region
+ * @param           {array}               [rules=[]]                    Array of CSSRules to search
+ * @param           {function}            [predecate=Boolean]           Predecate function to filter matches
+ * @return          {array}                                             Array of matching CSSRules
  *
  * @todo      tests
  *

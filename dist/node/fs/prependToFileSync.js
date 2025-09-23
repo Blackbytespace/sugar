@@ -11,7 +11,7 @@ import writeFileSync from '../fs/writeFileSync.js';
  *
  * @todo        tests
  *
- * @param       {String}            path            The file path you want to check. With or without an extension
+ * @param       {String}            path                The file path you want to check. With or without an extension
  * @param       {String}            content             The content to add to the file
  *
  * @snippet         prependToFileSync($1, $2)

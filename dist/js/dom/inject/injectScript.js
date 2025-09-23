@@ -8,8 +8,8 @@ import __whenScriptLoaded from '../when/whenScriptLoaded.js';
  *
  * Append a script tag either to the head or the body
  *
- * @param    {String}    src    The script src to load
- * @return    {Promise}    A promise resolved with the script tag when it has fully loaded
+ * @param     {String}        src         The script src to load
+ * @return    {Promise}                   A promise resolved with the script tag when it has fully loaded
  *
  * @snippet         injectScript($1)
  *

@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import __closestScrollableElement from '../query/closestScrollableElement.js';
-export default function whenNearViewport(elm, settings) {
+export default function whenNearViewport($elm, settings) {
     function getRootMargin() {
         return [
             `${Math.round(window.innerHeight * 0.5)}px`,
@@ -22,7 +22,7 @@ export default function whenNearViewport(elm, settings) {
     const rootMargin = finalSettings.offset
         ? `${finalSettings.offset}`
         : getRootMargin();
-    let $closest = __closestScrollableElement(elm);
+    let $closest = __closestScrollableElement($elm);
     if (($closest === null || $closest === void 0 ? void 0 : $closest.tagName) === 'HTML')
         $closest = undefined;
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
@@ -36,12 +36,12 @@ export default function whenNearViewport(elm, settings) {
                 var _a;
                 if (change.intersectionRatio > 0) {
                     (_a = observer.disconnect) === null || _a === void 0 ? void 0 : _a.call(observer);
-                    resolve(elm);
+                    resolve($elm);
                 }
             });
         }
         observer = new IntersectionObserver(onChange, options);
-        observer.observe(elm);
+        observer.observe($elm);
         window.addEventListener('resize', (e) => {
             clearTimeout(resizeTimeout);
             // @ts-ignore
@@ -50,7 +50,7 @@ export default function whenNearViewport(elm, settings) {
                 (_a = observer.disconnect) === null || _a === void 0 ? void 0 : _a.call(observer);
                 options.rootMargin = rootMargin;
                 observer = new IntersectionObserver(onChange, options);
-                observer.observe(elm);
+                observer.observe($elm);
             }, 500);
         });
     }));

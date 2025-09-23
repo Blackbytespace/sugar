@@ -7,7 +7,7 @@
  *
  * Get the offset top and left of the passed element from his parent top left point
  *
- * @param 		{HTMLElement} 					elm  		The element to get the offset from
+ * @param 		{HTMLElement} 					          elm  		    The element to get the offset from
  * @return 		{top: number; left: number;} 									The offset top and left object
  *
  * @snippet         offsetFromParent($1)

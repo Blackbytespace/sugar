@@ -8,8 +8,8 @@ import { isbot as __isbot } from 'isbot';
  *
  * Detect if request is from a crawler (google bot, etc...) or not
  *
- * @param       {String}        [ua=navigator.userAgent]         The user agent on which to make the test
- * @return    {Boolean}    true if is a crawler, false if not
+ * @param     {String}        [ua=navigator.userAgent]          The user agent on which to make the test
+ * @return    {Boolean}                                         true if is a crawler, false if not
  *
  * @todo      tests
  *

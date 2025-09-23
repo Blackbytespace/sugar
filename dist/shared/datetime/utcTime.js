@@ -1,6 +1,6 @@
 /**
  * @name            utcTime
- * @namespace       shared.date
+ * @namespace       shared.datetime
  * @type            Function
  * @platform        js
  * @platform        node

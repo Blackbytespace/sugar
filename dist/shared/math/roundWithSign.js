@@ -9,7 +9,7 @@
  * This function allows you to round a number by keeping his sign "+" or "-"
  *
  * @param       {Number}    number    The number to round
- * @return      {Number}     The rounded number
+ * @return      {Number}              The rounded number
  *
  * @todo        tests
  *

@@ -12,7 +12,7 @@ import commonProgrammingFileExtensions from './commonProgrammingFileExtensions.j
 import commonTextFileExtensions from './commonTextFileExtensions.js';
 import commonVideoFileExtensions from './commonVideoFileExtensions.js';
 import commonWebFileExtensions from './commonWebFileExtensions.js';
-export default function __commonFileExtensions(settings = {}) {
+export default function commonFileExtensions(settings = {}) {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
     const finalSettings = Object.assign({ types: [
             'audio',

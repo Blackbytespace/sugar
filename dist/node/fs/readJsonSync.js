@@ -8,7 +8,7 @@ import * as fs from 'fs';
  *
  * This function allows you to read a json file
  *
- * @param       {String}           path            The json file path to read
+ * @param       {String}           path             The json file path to read
  * @return      {Object}                            The readed json
  *
  * @todo            tests

@@ -7,9 +7,8 @@
  *
  * Check if the passed HTMLElement is in the viewport or not
  *
- * @param 		{HTMLElement} 				elm  			The element to insert
- * @param 		{Object} 					[offset=50] 	An object of top, right, bottom and left offset used to detect the status or an object with top, right, bottom and left offsets
- * @return 		{Boolean}									If the element is in the viewport or not
+ * @param 		{HTMLElement} 				$elm  			        The element to check if it is in viewport or not
+ * @return 		{Boolean}									                If the element is in the viewport or not
  *
  * @snippet         isInViewport($1)
  *
@@ -24,8 +23,7 @@
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function isInViewport(elm, settings = {}) {
-    settings = Object.assign({}, settings);
+export default function isInViewport(elm) {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop, scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
     const containerHeight = window.innerHeight || document.documentElement.clientHeight, containerWidth = window.innerWidth || document.documentElement.clientWidth, rect = elm.getBoundingClientRect();
     const top = rect.top - scrollTop, left = rect.left - scrollLeft, right = rect.right - scrollLeft, bottom = rect.bottom - scrollTop;

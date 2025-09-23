@@ -8,7 +8,7 @@
  * Go up the dom three to find the first element that is not visible.
  * Not visible mean that has either an opacity to 0, a visibility to hidden or a display to none
  *
- * @param 		{HTMLElement} 					$elm  		The element to start on
+ * @param 		{HTMLElement} 					      $elm  		  The element to start on
  * @return 		{HTMLElement | undefined} 								The element found or undefined
  *
  * @snippet         closestNotVisibleElement($1)

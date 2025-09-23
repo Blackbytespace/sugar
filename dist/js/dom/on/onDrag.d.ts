@@ -1,6 +1,6 @@
 /**
  * @name            onDrag
- * @namespace       js.dom.detect
+ * @namespace       js.dom.on
  * @type            Function
  * @platform        js
  * @status          stable
@@ -8,8 +8,8 @@
  *
  * Detect drag "gesture" with the mouse or touch
  *
- * @param       {HTMLElement}         elm         The HTMLElement on which to detect the swipe
- * @param       {Function}            cb          The function to call on swipe. The callback function has as parameter an object that containthe swipe direction like left, right, up and down
+ * @param       {HTMLElement}         elm                   The HTMLElement on which to detect the swipe
+ * @param       {Function}            cb                    The function to call on swipe. The callback function has as parameter an object that containthe swipe direction like left, right, up and down
  * @param       {Number}              [threshold=100]       The swipe threshold
  *
  * @setting     {Number}      [maxSpeed=0.01]       The maximum speed

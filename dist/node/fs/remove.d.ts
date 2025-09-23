@@ -7,8 +7,8 @@
  *
  * Removes a file or directory. The directory can have contents. If the path does not exist, silently does nothing. Like rm -rf (async)
  *
- * @param       {String}              path           The file/directory path to delete
- * @return      {Promise}                           A promise that will be resolved when the remove is completed
+ * @param       {String}              path            The file/directory path to delete
+ * @return      {Promise}                             A promise that will be resolved when the remove is completed
  *
  * @todo        tests
  *

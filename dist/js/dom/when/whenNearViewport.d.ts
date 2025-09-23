@@ -11,9 +11,9 @@
  * @feature       Promise based API
  * @feature       Some settings available to tweak the behavior
  *
- * @param 		{HTMLElement} 				elm 					The element to monitor
+ * @param 		{HTMLElement} 				                        $elm 					    The element to monitor
  * @param 		{Partial<TWhenNearViewportSettings>} 					[settings={}] 		Some settings to tweak the detection behavior
- * @return 		(Promise<HTMLElement>) 											The promise that will be resolved when the element is in the viewport
+ * @return 		(Promise<HTMLElement>) 											                    The promise that will be resolved when the element is in the viewport
  *
  * @setting         {String}            [offset=`${window.innerHeight}px ${window.innerWidth}px`]           Some offset
  *
@@ -36,4 +36,4 @@
 export type TWhenNearViewportSettings = {
     offset: string | number | undefined;
 };
-export default function whenNearViewport(elm: HTMLElement, settings?: Partial<TWhenNearViewportSettings>): Promise<HTMLElement>;
+export default function whenNearViewport($elm: HTMLElement, settings?: Partial<TWhenNearViewportSettings>): Promise<HTMLElement>;

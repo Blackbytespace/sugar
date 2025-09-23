@@ -20,10 +20,10 @@ import __folderPath from './folderPath.js';
  *
  * Write a JSON file. If don't exist, will be created as well as the directory structure if needed... ( (async)
  *
- * @param       {String}              path           The file path to write
- * @param       {String}              object          The object to write in the JSON file
- * @param       {Object}              [options={}]  options are what you'd pass to [fs.writeJson()](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
- * @return      {Promise}                           A promise that will be resolved when the writeJson is completed
+ * @param       {String}              path              The file path to write
+ * @param       {String}              object            The object to write in the JSON file
+ * @param       {Object}              [options={}]      Options are what you'd pass to [fs.writeJson()](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
+ * @return      {Promise}                               A promise that will be resolved when the writeJson is completed
  *
  * @todo        tests
  *
@@ -36,7 +36,7 @@ import __folderPath from './folderPath.js';
  *    // do something on complete...
  * });
  *
- * @since           1.0.0
+ * @since          1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function writeJson(path, data) {

@@ -1,9 +1,9 @@
 /**
- * @name      isInIframe
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
+ * @name            isInIframe
+ * @namespace       js.is
+ * @type            Function
+ * @platform        js
+ * @status          stable
  *
  * Check if the page is loaded inside an iframe
  *

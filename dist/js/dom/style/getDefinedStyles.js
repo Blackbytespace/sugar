@@ -13,8 +13,8 @@
  *
  * Gets map of defined styles from CSS2Properties object
  *
- * @param           {CSS2Properties}            properties              CSS2Properties object to return defined styles from
- * @return          {object}                   plain object containing defined styles as key value pairs
+ * @param           {CSS2Properties}            properties          CSS2Properties object to return defined styles from
+ * @return          {object}                                        Plain object containing defined styles as key value pairs
  *
  * @todo      tests
  *

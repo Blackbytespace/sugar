@@ -8,7 +8,7 @@
  *
  * Detect when animation ends
  *
- * @param    {HTMLElement}    elm    The element to listen on
+ * @param    {HTMLElement}            $elm           The element to listen on
  * @return   {Promise<HTMLElement>}                  A promise that will be resolved once the animation has ended
  *
  * @snippet         whenAnimationEnd($1)

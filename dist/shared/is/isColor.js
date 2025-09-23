@@ -9,7 +9,7 @@
  * Check if the passed value is a color
  *
  * @param 		{Mixed} 		value 		The value to check
- * @return 		{Boolean} 					The check result
+ * @return 		{Boolean} 					  The check result
  *
  * @todo      tests
  *

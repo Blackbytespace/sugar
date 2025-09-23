@@ -20,7 +20,7 @@
  * import { encodeEntities } from '@blackbyte/sugar/html';
  * encodeEntities('<s-code-example>'); // => &lt;s-code-example&gt;
  *
- * @see             https://www.npmjs.com/package/escape-html
+ * @see             https://www.npmjs.com/package/html-entities
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */

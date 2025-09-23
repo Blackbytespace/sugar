@@ -7,8 +7,8 @@
  *
  * Transforms KeyFrameRule to array of web animation compatible keyframes
  *
- * @param               {Object}            keyFrameRule                 KeyFrameRule to transform
- * @return              {Array}               Array of webanimation keyframes
+ * @param               {Object}              keyFrameRule                KeyFrameRule to transform
+ * @return              {Array}                                           Array of webanimation keyframes
  *
  * @snippet         transformKeyframesDeclarations($1)
  *

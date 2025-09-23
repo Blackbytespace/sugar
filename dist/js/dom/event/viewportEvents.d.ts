@@ -8,9 +8,9 @@
  *
  * Monitor when the passed element enter or exit the viewport
  *
- * @param 		{HTMLElement} 						$elm  		The element to monitor
+ * @param 		  {HTMLElement} 						$elm  		                        The element to monitor
  * @param       {Partial<TViewportEventsSettings>}      [$settings={}]      Some settings to configure your detector
- * @return 		{HTMLElement} 		                    The passed HTMLElement
+ * @return 		  {HTMLElement} 		                                          The passed HTMLElement
  *
  * @setting         {String}        [offset=25]                 An offset to detect the enter/leave earlier or later
  * @setting         {Boolean}       [once=false]                Specify if you want to event to be dispatched only once
@@ -27,8 +27,12 @@
  *
  * @example  	js
  * import { viewportEvents } from '@blackbyte/sugar/dom';
- * viewportEvents($1).addEventListener('viewport.enter', (e) => {
- *      // do something
+ * viewportEvents($elm);
+ * $elm.addEventListener('viewport.enter', (e) => {
+ *      // do something on enter
+ * });
+ * $elm.addEventListener('viewport.leave', (e) => {
+ *      // do something on leave
  * });
  *
  * @changelog       1.0.0

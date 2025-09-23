@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 /**
  * @name            adoptStyleInShadowRoot
- * @namespace       js.css
+ * @namespace       js.dom.css
  * @type            Function
  * @platform        js
  * @status          stable
@@ -17,7 +17,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * This function allows you to make a shadowRoot element adopt his host context styles
  *
  * @param       {HTMLShadowRootElement}         $shadowRoot             The shadow root you want to adopt the $context styles
- * @param      {HTMLElement}                   [$context=document]     The context from which you want to adopt the styles
+ * @param       {HTMLElement}                   [$context=document]     The context from which you want to adopt the styles
  * @return      {Promise}                                               Return a promise fullfilled when the styles have been adopted
  *
  * @snippet         adoptStyleInShadowRoot($1)

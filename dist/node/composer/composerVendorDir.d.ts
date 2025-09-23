@@ -8,9 +8,9 @@
  * This function simply returns the "vendor" directory path
  *
  * @param       {TComposerVendorDirSettings}      [settings={}]       Some settings to configure your process
- * @return      {String}                      The package path
+ * @return      {String}                                              The package path
  *
- * @setting     {String}        [cwd=process.cwd()]        The directory in which you want to start the research
+ * @setting     {String}        [cwd=process.cwd()]      The directory in which you want to start the research
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *

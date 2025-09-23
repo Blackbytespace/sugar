@@ -8,10 +8,10 @@
  *
  * This returns you one or more random item of the passed array
  *
- * @param       {Any[]}         array          The array in which you want to pick a random item
- * @param       {Number}       [$min=1]        The minimum number of items to pick
- * @param       {Number}       [$max=null]        The maximum number of items to pick
- * @return      {Any}                         The random array item(s)
+ * @param       {Any[]}        array            The array in which you want to pick a random item
+ * @param       {Number}       [$min=1]         The minimum number of items to pick
+ * @param       {Number}       [$max=null]      The maximum number of items to pick
+ * @return      {Any}                           The random array item(s)
  *
  * @snippet         pickSome($1,$2,$3);
  *

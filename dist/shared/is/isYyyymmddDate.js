@@ -9,8 +9,8 @@
  * Check if is a valid yyyy.mm.dd date
  * This will match : yyyy.mm.dd | yyyy/mm/dd | yyyy-mm-dd | yyyy mm dd
  *
- * @param    {String}    date    The date to check
- * @return    {Boolean}    true if is valid, false if not
+ * @param    {String}    date     The date to check
+ * @return    {Boolean}           true if is valid, false if not
  *
  * @todo      tests
  *
