@@ -1,15 +1,18 @@
 {
   "name": "@blackbyte/sugar",
-  "description": "A toolkit that gives you access to \"lots of\" of cool and useful Node/Js/Php functions/classes like \"querySelectorLive\", \"getFreePort\", etc... ",
+  "description": "The toolkit that you missed... like a sugar in your coffee!",
   "version": "1.0.0-beta.1",
   "type": "module",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
     "doc.build": "blackbyte docmap.build --mdx --outPath ../website-sugar/docmap.json --outDir ../website-sugar/src/content/sugar",
     "test": "vitest",
-    "publish": "npm publish --access public"
+    "publish": "npm publish --access public --tag beta"
   },
   "homepage": "https://sugar.blackbyte.space",
   "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
@@ -17,7 +20,7 @@
     {
       "name": "Olivier Bossel",
       "email": "olivier.bossel@gmail.com",
-      "url": "http://olivierbossel.com"
+      "url": "https://blackbyte.space"
     }
   ],
   "license": "MIT",
