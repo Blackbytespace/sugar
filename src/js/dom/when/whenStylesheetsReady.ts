@@ -13,8 +13,8 @@ import whenLinkLoaded from './whenLinkLoaded.js';
  * @feature       Async promise based
  * @feature       Multiple stylesheets elements listening
  *
- * @param 		{Array<HTMLLinkElement>} 		    [links=null] 			The HTMLLinkElement tags to process. If not passed, take the local stylesheets links
- * @return 		{Promise<void>} 										              The promise that will be resolved when all the links are loaded
+ * @param 		{Array<HTMLLinkElement>} 		    [$links=null] 			The HTMLLinkElement tags to process. If not passed, take the local stylesheets links
+ * @return 		{Promise<void>} 										                The promise that will be resolved when all the links are loaded
  *
  * @todo      tests
  *
@@ -26,8 +26,8 @@ import whenLinkLoaded from './whenLinkLoaded.js';
  * @example 	js
  * import { whenStylesheetsReady } from '@blackbyte/sugar/dom'
  * whenStylesheetsReady([
- * 		myHTMLLinkElement1,
- * 		myHTMLLinkElement2
+ * 		$myHTMLLinkElement1,
+ * 		$myHTMLLinkElement2
  * ]).then(stylesheets => {
  *      // do something...
  * });
@@ -36,13 +36,13 @@ import whenLinkLoaded from './whenLinkLoaded.js';
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function whenStylesheetsReady(
-  links?: HTMLLinkElement[],
+  $links?: HTMLLinkElement[],
 ): Promise<HTMLLinkElement[]> {
-  if (!links) {
-    links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
+  if (!$links) {
+    $links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
   }
   const promises: Promise<HTMLLinkElement>[] = [];
-  [].forEach.call(links, ($link) => {
+  [].forEach.call($links, ($link) => {
     promises.push(whenLinkLoaded($link as HTMLLinkElement));
   });
   const allPromises = Promise.all(promises);

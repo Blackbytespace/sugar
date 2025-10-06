@@ -16,7 +16,7 @@
  *
  * @example    js
  * import { injectScript } from '@blackbyte/sugar/dom'
- *  injectScript('dist/js/app.js')
+ * injectScript('dist/js/app.js')
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

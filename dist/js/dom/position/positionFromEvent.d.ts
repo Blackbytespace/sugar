@@ -5,10 +5,28 @@
  * @platform        js
  * @status          stable
  *
- * Get the position from an event "touchstart", "touchmove", "touchend", "mousedown", "mousemove" or "mouseup".
+ * Get the position from an event like:
+ * - `touchstart`
+ * - `touchmove`
+ * - `touchend`
+ * - `touchcancel`
+ * - `mousedown`
+ * - `mouseup`
+ * - `mousemove`
+ * - `mouseover`
+ * - `mouseout`
+ * - `mouseenter`
+ * - `mouseleave`
+ * - `pointerdown`
+ * - `pointerup`
+ * - `pointermove`
+ * - `pointerover`
+ * - `pointerout`
+ * - `pointerenter`
+ * - `pointerleave`
  *
- * @param 		{MouseEvent|TouchEvent} 					e  		  The event to get the position from
- * @return 		{x: number; y: number;} 									The absolute position of the event
+ * @param 		{MouseEvent|PointerEvent|TouchEvent} 					event  		  The event to get the position from
+ * @return 		{x: number; y: number;} 									                The absolute position of the event
  *
  * @snippet         positionFromEvent($1)
  *

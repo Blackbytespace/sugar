@@ -17,9 +17,9 @@
  *
  * @example  	js
  * import { nextElement } from '@blackbyte/sugar/dom'
- * const nextElm =  nextElement(myCoolElement, '.my-cool-class');
+ * const nextElm =  nextElement($elm, '.my-cool-class');
  * if (nextElm) {
- * 		// we have found en element that matches the selector
+ *   // we have found en element that matches the selector
  * }
  *
  * @since           1.0.0

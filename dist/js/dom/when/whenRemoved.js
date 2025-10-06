@@ -17,15 +17,15 @@
  *
  * @snippet         whenRemoved($1);
  * whenRemoved($1).then(() => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
  * import { whenRemoved } from '@blackbyte/sugar/dom'
- * whenRemoved(myCoolHTMLElement).then(() => {
- * 		// the element has been removed
+ * whenRemoved($myCoolHTMLElement).then(() => {
+ *   // the element has been removed
  * });
  *
  * @since           1.0.0

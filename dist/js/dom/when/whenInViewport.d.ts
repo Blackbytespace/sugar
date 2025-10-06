@@ -19,15 +19,15 @@
  *
  * @snippet         whenInViewport($1)
  * whenInViewport($1).then(\$elm => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
  * import { whenInViewport } from '@blackbyte/sugar/dom'
- * const promise = whenInViewport(myCoolHTMLElement).then((elm) => {
- * 		// do something with your element that has entered the viewport...
+ * const promise = whenInViewport($myCoolHTMLElement).then((elm) => {
+ *   // do something with your element that has entered the viewport...
  * });
  * // when you want to stop listening
  * promise.cancel();

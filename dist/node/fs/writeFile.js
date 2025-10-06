@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import fs from 'fs-extra';
 import toString from '../../shared/string/toString.js';
 import ensureDirSync from '../fs/ensureDirSync.js';
-import { __folderPath } from './_exports.js';
+import { folderPath } from './_exports.js';
 /**
  * @name            writeFile
  * @namespace       node.fs
@@ -43,8 +43,8 @@ import { __folderPath } from './_exports.js';
  */
 export default function writeFile(path, data, options = {}) {
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
-        const folderPath = __folderPath(path);
-        ensureDirSync(folderPath);
+        const _folderPath = folderPath(path);
+        ensureDirSync(_folderPath);
         yield fs.outputFile(path, toString(data), options);
         resolve(path);
     }));

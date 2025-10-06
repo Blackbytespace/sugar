@@ -17,7 +17,7 @@ import closestNotVisible from './closestNotVisibleElement.js';
  *
  * @setting       {Boolean}         [visible=null]                Specify if you want only the visible nodes
  * @setting       {Boolean}         [inViewport=null]             Specify if you want only the nodes that are in the viewport
- * @setting       {HTMLElement}     [rootNode=document.body]      Specify the root node from where you want to query
+ * @setting       {HTMLElement}     [$rootNode=document.body]      Specify the root node from where you want to query
  *
  * @param 		{String} 				selector 			The css selector to search
  * @param 		{Object} 				settings	 		The settings of the query
@@ -34,7 +34,7 @@ import closestNotVisible from './closestNotVisibleElement.js';
  *
  * // get elements that are in the viewport
  * const elms = querySelectorAll('.a-cool-css-selector', {
- * 		inViewport : true
+ *   inViewport : true
  * });
  *
  * @since           1.0.0
@@ -44,7 +44,7 @@ import closestNotVisible from './closestNotVisibleElement.js';
 export type TQuerySelectorAllSettings = {
   visible: boolean | null;
   inViewport: boolean | null;
-  rootNode: HTMLElement;
+  $rootNode: HTMLElement;
 };
 
 export default function querySelectorAll(
@@ -55,15 +55,21 @@ export default function querySelectorAll(
   const finalSettings: TQuerySelectorAllSettings = {
     visible: null,
     inViewport: null,
-    rootNode: document.body,
+    $rootNode: document.body,
     ...settings,
   };
+  // compatibility only
+  // @ts-ignore
+  if (finalSettings.rootNode) {
+    // @ts-ignore
+    finalSettings.$rootNode = finalSettings.rootNode;
+  }
 
   // results array
   const results = [];
 
   // grab the element into the dom
-  const elms = finalSettings.rootNode.querySelectorAll(selector);
+  const elms = finalSettings.$rootNode.querySelectorAll(selector);
 
   // loop on the found elements
   [].forEach.call(elms, ($elm) => {

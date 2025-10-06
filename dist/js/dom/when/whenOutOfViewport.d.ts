@@ -19,15 +19,15 @@
  *
  * @snippet         whenOutOfViewport($1)
  * whenOutOfViewport($1).then(\$$elm => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
  * import { whenOutOfViewport } from '@blackbyte/sugar/dom'
- * whenOutOfViewport(myCoolHTMLElement).then(($elm) => {
- * 		// do something with your element that has exit the viewport...
+ * whenOutOfViewport($myCoolHTMLElement).then(($elm) => {
+ *   // do something with your element that has exit the viewport...
  * });
  *
  * @since           1.0.0

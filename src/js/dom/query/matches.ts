@@ -18,7 +18,7 @@
  * @example  	js
  * import { matches } from '@blackbyte/sugar/dom'
  * if (matches(myCoolHTMLElement, '.my-cool-css-selector')) {
- * 		// the element match the selector
+ *   // the element match the selector
  * }
  *
  * @see 		https://developer.mozilla.org/en/docs/Web/API/Element/matches

@@ -19,7 +19,7 @@
  *
  * @snippet         whenEntersViewport($1)
  * whenEntersViewport($1).then(\$elm => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
@@ -27,7 +27,7 @@
  * @example 	js
  * import { whenEntersViewport } from '@blackbyte/sugar/dom'
  * whenEntersViewport($myElement).then(($elm) => {
- * 		// do something with your element that has entered the viewport...
+ *   // do something with your element that has entered the viewport...
  * });
  *
  * @since           1.0.0

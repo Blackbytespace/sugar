@@ -1,4 +1,4 @@
-import { __parseHtml } from '@blackbyte/sugar/console';
+import { parseHtml } from '@blackbyte/sugar/console';
 let _isOverrided = false, nativeConsoleFn;
 class SugarConsole {
     static set default(sugarConsole) {
@@ -58,7 +58,7 @@ class SugarConsole {
                 continue;
             }
             if (!SugarConsole.types.includes(type)) {
-                nativeConsoleFn.error(__parseHtml(`Unsupported console type: <magenta>${type}</magenta>. Available types: <green>${SugarConsole.types.join(',')}</green>`));
+                nativeConsoleFn.error(parseHtml(`Unsupported console type: <magenta>${type}</magenta>. Available types: <green>${SugarConsole.types.join(',')}</green>`));
             }
         }
     }
@@ -106,14 +106,14 @@ class SugarConsole {
                     continue;
                 }
                 if (method === 'log' || i > 0) {
-                    finalLogs.push(__parseHtml(`${i === 0 ? '▊' : ''} ${log}`));
+                    finalLogs.push(parseHtml(`${i === 0 ? '▊' : ''} ${log}`));
                     continue;
                 }
                 if ((_a = this.settings.colors) === null || _a === void 0 ? void 0 : _a[method]) {
-                    finalLogs.push(__parseHtml(`<${(_c = (_b = this.settings) === null || _b === void 0 ? void 0 : _b.colors) === null || _c === void 0 ? void 0 : _c[method]}>${i === 0 ? '▊' : ''}</${(_e = (_d = this.settings) === null || _d === void 0 ? void 0 : _d.colors) === null || _e === void 0 ? void 0 : _e[method]}> ${log}`));
+                    finalLogs.push(parseHtml(`<${(_c = (_b = this.settings) === null || _b === void 0 ? void 0 : _b.colors) === null || _c === void 0 ? void 0 : _c[method]}>${i === 0 ? '▊' : ''}</${(_e = (_d = this.settings) === null || _d === void 0 ? void 0 : _d.colors) === null || _e === void 0 ? void 0 : _e[method]}> ${log}`));
                 }
                 else {
-                    finalLogs.push(__parseHtml(`${i === 0 ? '▊' : ''} ${log}`));
+                    finalLogs.push(parseHtml(`${i === 0 ? '▊' : ''} ${log}`));
                 }
                 continue;
             }

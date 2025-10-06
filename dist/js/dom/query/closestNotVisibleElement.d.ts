@@ -17,9 +17,9 @@
  *
  * @example  	js
  * import { closestNotVisibleElement } from '@blackbyte/sugar/dom'
- * const closestElm =  closestNotVisibleElement(myCoolElement);
+ * const closestElm =  closestNotVisibleElement($elm);
  * if (closestElm) {
- * 		// we have found en element that is not visible
+ *   // we have found en element that is not visible
  * }
  *
  * @since           1.0.0

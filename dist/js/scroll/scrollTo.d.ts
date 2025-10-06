@@ -3,7 +3,7 @@
  * @namespace           js.dom.scroll
  * @type                Function
  * @platform            js
- * @status              beta
+ * @status              stable
  * @async
  *
  * Function that let you make a smooth page scroll to a specific element in the page
@@ -11,9 +11,9 @@
  * @feature       Promise based API
  * @feature       Tweak the scroll behavior like duration, easing, etc...
  *
- * @param 		{HTMLElement} 				target 			The element to scroll to
+ * @param 		  {HTMLElement} 				  target 			        The element to scroll to
  * @param       {IScrollToSettings}     [settings={}]       Some settings to tweak the scroll behavior
- * @return      {Promise}           A promise resolved once the scroll has ended
+ * @return      {Promise}                                   A promise resolved once the scroll has ended
  *
  * @setting     {HTMLElement} 				[$elm=window] 			      The element to scroll
  * @setting 		{Number} 					    [duration=1000] 		      The animation duration
@@ -32,9 +32,9 @@
  * @todo      tests
  *
  * @example 	js
- * import { __scrollTop } from '@coffeekraken/sugar/dom'
+ * import { scrollTo } from '@coffeekraken/sugar/dom'
  * import { easeInOutQuad } from '@coffeekraken/sugar/easing'
- * __scrollTo(myCoolHTMLElement);
+ * scrollTo(myCoolHTMLElement);
  *
  * @since           2.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

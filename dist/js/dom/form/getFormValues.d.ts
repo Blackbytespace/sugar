@@ -7,8 +7,8 @@
  *
  * This function take a form element and return an object with all the values
  *
- * @param       {HTMLFormElement}      $form       The form element to get the values from
- * @return      {Object}                          An object with all the values
+ * @param       {HTMLFormElement}      $form        The form element to get the values from
+ * @return      {Object}                            An object with all the values
  *
  * @todo      tests
  *

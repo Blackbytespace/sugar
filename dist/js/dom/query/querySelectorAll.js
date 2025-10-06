@@ -3,11 +3,17 @@ import isVisible from '../../is/isVisible.js';
 import closestNotVisible from './closestNotVisibleElement.js';
 export default function querySelectorAll(selector, settings = {}) {
     // extend settings
-    const finalSettings = Object.assign({ visible: null, inViewport: null, rootNode: document.body }, settings);
+    const finalSettings = Object.assign({ visible: null, inViewport: null, $rootNode: document.body }, settings);
+    // compatibility only
+    // @ts-ignore
+    if (finalSettings.rootNode) {
+        // @ts-ignore
+        finalSettings.$rootNode = finalSettings.rootNode;
+    }
     // results array
     const results = [];
     // grab the element into the dom
-    const elms = finalSettings.rootNode.querySelectorAll(selector);
+    const elms = finalSettings.$rootNode.querySelectorAll(selector);
     // loop on the found elements
     [].forEach.call(elms, ($elm) => {
         // check settings

@@ -20,7 +20,7 @@
  *
  * @example       js
  * import { injectStyle } from '@blackbyte/sugar/dom';
- *  injectStyle('a { color: red; }');
+ * injectStyle('a { color: red; }');
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

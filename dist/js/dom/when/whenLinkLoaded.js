@@ -16,13 +16,13 @@
  *
  * @snippet         whenLinkLoaded($1)
  * whenLinkLoaded($1).then(\$elm => {
- *      $2
+ *   $2
  * });
  *
  * @example  	js
  * import { whenLinkLoaded } from '@blackbyte/sugar/dom'
- * whenLinkLoaded(myCoolHTMLLinlElement).then($link => {
- * 		// do something when the link is loaded
+ * whenLinkLoaded($myCoolHTMLLinlElement).then($link => {
+ *   // do something when the link is loaded
  * });
  *
  * @since           1.0.0

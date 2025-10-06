@@ -14,7 +14,9 @@ import distanceBetween from '../../../shared/math/distanceBetween.js';
  * @param           {HTMLElement}                 $from             The element from which to start the search
  * @param           {HTMLElement[]}               $elements         The elements list to search in
  * @param           {TNearestElementSettings}     [settings={}]     Some settings to configure your search
- * @return        {HTMLElement}                                     The nearest element found
+ * @return          {HTMLElement}                                   The nearest element found
+ *
+ * @setting         {'top' | 'right' | 'bottom' | 'left'}          [direction]        The direction to search in. Can be "top", "right", "bottom", "left"
  *
  * @todo      tests
  *
@@ -22,8 +24,8 @@ import distanceBetween from '../../../shared/math/distanceBetween.js';
  *
  * @example    js
  * import { nearestElement } from '@blackbyte/sugar/dom'
- * nearestElement(myCoolElement, document.querySelectorAll('.my-cool-elements'), {
- *      direction: 'top'
+ * nearestElement($elm, document.querySelectorAll('.my-cool-elements'), {
+ *   direction: 'top'
  * });
  *
  * @since           1.0.0

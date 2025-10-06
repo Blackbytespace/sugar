@@ -7,7 +7,7 @@
  *
  * Get the offset top and left of the passed element from his parent top left point
  *
- * @param 		{HTMLElement} 					          elm  		    The element to get the offset from
+ * @param 		{HTMLElement} 					          $elm  		  The element to get the offset from
  * @return 		{top: number; left: number;} 									The offset top and left object
  *
  * @snippet         offsetFromParent($1)
@@ -16,7 +16,7 @@
  *
  * @example  	js
  * import { offsetFromParent } from '@blackbyte/sugar/dom'
- * const offsetFromParentElm = offsetFromParent(myCoolElement);
+ * const offsetFromParentElm = offsetFromParent($elm);
  * // output : { top : 200, left : 300 }
  *
  * @since           1.0.0

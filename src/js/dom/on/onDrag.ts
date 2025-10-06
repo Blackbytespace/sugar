@@ -10,7 +10,7 @@ import positionFromEvent from '../position/positionFromEvent.js';
  *
  * Detect drag "gesture" with the mouse or touch
  *
- * @param       {HTMLElement}         elm                   The HTMLElement on which to detect the swipe
+ * @param       {HTMLElement}         $elm                  The HTMLElement on which to detect the swipe
  * @param       {Function}            cb                    The function to call on swipe. The callback function has as parameter an object that containthe swipe direction like left, right, up and down
  * @param       {Number}              [threshold=100]       The swipe threshold
  *
@@ -25,8 +25,8 @@ import positionFromEvent from '../position/positionFromEvent.js';
  *
  * @example 	js
  * import { onDrag } from '@blackbyte/sugar/dom'
- * onDrag($myElement, (drag) => {
- *    // do something...
+ * onDrag($elm, (drag) => {
+ *   // do something...
  * });
  *
  * @since           1.0.0

@@ -19,7 +19,7 @@
  *
  * @snippet         whenAttribute($1, $2)
  * whenAttribute($1, $2).then(value => {
- *      $3
+ *   $3
  * });
  *
  * @todo      tests
@@ -28,18 +28,18 @@
  * import { whenAttribute } from '@blackbyte/sugar/dom'
  *
  * // using promise
- * whenAttribute(myCoolHTMLElement, 'value').then(value => {
- *      // do something...
+ * whenAttribute($myCoolHTMLElement, 'value').then(value => {
+ *   // do something...
  * });
  *
  * // with a check function
- * whenAttribute(myCoolHTMLElement, 'value', {
- *    check(newVal, oldVal) {
- * 	      // make sure the value is a number
- * 		  return typeof(newVal) === 'number';
- *    }
+ * whenAttribute($myCoolHTMLElement, 'value', {
+ *   check(newVal, oldVal) {
+ *    // make sure the value is a number
+ *    return typeof(newVal) === 'number';
+ *   }
  * }).then(value => {
- *      // do something...
+ *   // do something...
  * });
  *
  * @since           1.0.0

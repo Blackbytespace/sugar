@@ -16,7 +16,7 @@
  *
  * @snippet         whenImagesLoaded($1)
  * whenImagesLoaded($1).then(imgs => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
@@ -25,9 +25,7 @@
  * import { whenImagesLoaded } from '@blackbyte/sugar/dom'
  * whenImagesLoaded([
  * 	$img1, $img2, $img3
- * ]).on('loaded', $img => {
- *    // do something with the loaded image
- * }).then(imgs => {
+ * ]).then(imgs => {
  *   // do something here
  * })
  *

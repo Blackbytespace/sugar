@@ -21,8 +21,8 @@ import parseHsla from './parseHsla.js';
  * @snippet         hslaToRgba($1)
  *
  * @example         js
- * import { __hslToRgba } from '@blackbyte/sugar/color';
- * __hslToRgba(10,20,30);
+ * import { hslToRgba } from '@blackbyte/sugar/color';
+ * hslToRgba(10,20,30);
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0

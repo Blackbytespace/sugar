@@ -7,7 +7,7 @@
  *
  * Get the css transition properties from an HTMLElement in an object format
  *
- * @param 		{HTMLElement} 					elm  		The element to get the properties from
+ * @param 		{HTMLElement} 					$elm  		The element to get the properties from
  * @return 		{Object} 									      The transition properties
  *
  * @todo      tests
@@ -16,7 +16,7 @@
  *
  * @example  	js
  * import { getTransitionProperties } from '@blackbyte/sugar/dom'
- * const props = getTransitionProperties(myCoolHTMLElement);
+ * const props = getTransitionProperties($myCoolHTMLElement);
  * // output format
  * // {
  * // 	property : ['all'],

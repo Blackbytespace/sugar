@@ -1,4 +1,4 @@
-import { __querySelectorUp } from '@blackbyte/sugar/dom';
+import { querySelectorUp } from '@blackbyte/sugar/dom';
 
 /**
  * @name            isDarkMode
@@ -48,7 +48,7 @@ export default function isDarkMode(
     if (finalSettings.rootNode.classList.contains('-dark')) {
       return true;
     }
-    const $dark = __querySelectorUp(finalSettings.rootNode, '.-dark');
+    const $dark = querySelectorUp(finalSettings.rootNode, '.-dark');
     if ($dark) {
       return true;
     }

@@ -13,7 +13,7 @@
  *
  * @snippet         whenIframeReady($1)
  * whenIframeReady($1).then(\$elm => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
@@ -21,7 +21,7 @@
  * @example  	js
  * import { whenIframeReady } from '@blackbyte/sugar/dom'
  * whenIframeReady($myCoolIframe).then($iframe => {
- *      // do something...
+ *   // do something...
  * });
  *
  * @since           1.0.0

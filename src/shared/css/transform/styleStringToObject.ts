@@ -22,8 +22,8 @@ import parse from '../../string/parse.js';
  * import { styleStringToObject } from '@blackbyte/sugar/css'
  * const styleString =  styleStringToObject('padding-left:20px; display:block;');
  * // output => {
- * //		paddingLeft : '20px',
- * // 		display : 'block'
+ * //	    paddingLeft : '20px',
+ * //     display : 'block'
  * // }
  *
  * @since           1.0.0

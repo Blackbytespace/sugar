@@ -13,8 +13,8 @@
  *
  * Note that the named controlls will be sorted before generating the uniqid.
  *
- * @param           {HTMLFormElement}          $form           The form element to generate the uniqid from
- * @return          {String}            A uniqid
+ * @param           {HTMLFormElement}          $form            The form element to generate the uniqid from
+ * @return          {String}                                    A uniqid
  *
  * @todo      tests
  *

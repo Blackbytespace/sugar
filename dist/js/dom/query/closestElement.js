@@ -8,22 +8,22 @@ import querySelectorUp from './querySelectorUp.js';
  *
  * Go up the dom three to find the first element that matches the passed selector
  *
- * @param 		{HTMLElement} 					$elm  		The element to start on
- * @param 		{String|Function} 				selector 	A css selector to search for or a check function that will be used
+ * @param 		{HTMLElement} 		        $from  		    The element to start from
+ * @param 		{String|Function} 			selector 	    A css selector to search for or a check function that will be used
  * @return 		{HTMLElement} 								The element found or null
- *
- * @snippet         closestElement($1, $2)
  *
  * @todo      tests
  *
+ * @snippet         querySelectorUp($1, $2)
+ *
  * @example  	js
- * import { closestElement } from '@blackbyte/sugar/dom'
- * const closestElm =  closestElement(myCoolElement, '.my-cool-class');
+ * import {closestElement } from '@blackbyte/sugar/dom'
+ * const closestElm = closestElement($elm, '.my-cool-class');
  * if (closestElm) {
- * 		// we have found en element that matches the selector
+ *   // we have found en element that matches the selector
  * }
  * // the selector param can be a function that need to return either true or false like so:
- * closest(myCoolElement, (elm) => {
+ * closestElement($elm, (elm) => {
  *   return elm.hasAttribute('my-cool-attribute')
  * })
  *

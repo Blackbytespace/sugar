@@ -13,7 +13,7 @@
  *
  * @snippet         whenAnimationEnd($1)
  * whenAnimationEnd($1).then(\$elm => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
@@ -21,7 +21,7 @@
  * @example    js
  * import { whenAnimationEnd } from '@blackbyte/sugar/dom'
  * whenAnimationEnd(myCoolElm).then(($elm) => {
- *      // do something...
+ *   // do something...
  * });
  *
  * @since           1.0.0

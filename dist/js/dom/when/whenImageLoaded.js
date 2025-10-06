@@ -14,15 +14,15 @@
  *
  * @snippet         whenImageLoaded($1)
  * whenImageLoaded($1).then(\$img => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
  *
  * @example  	js
  * import { whenImageLoaded } from '@blackbyte/sugar/dom'
- *  whenImageLoaded(myCoolHTMLImageElement).then(($img) => {
- * 		// do something when the image is loaded
+ * whenImageLoaded($myCoolHTMLImageElement).then(($img) => {
+ *   // do something when the image is loaded
  * });
  *
  * @since           1.0.0

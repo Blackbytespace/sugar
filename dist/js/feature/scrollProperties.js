@@ -5,12 +5,14 @@
  * @platform        js
  * @status          stable
  *
- * This feature allows you to automatically apply css properties on the body element depending on the scroll position.
+ * This feature allows you to automatically apply css properties on the element passed in settings depending on the scroll position.
  * The properties that are applied are:
  * - `--scroll-x`: The current scroll x position
  * - `--scroll-y`: The current scroll y position
  *
- * @param           {TScrollPropertiesSettings}          [settings={}]           The settings you want to override
+ * @param           {TScrollPropertiesSettings}          [settings={}]            The settings you want to override
+ *
+ * @setting         {HTMLElement}                        [$elm=document.body]     The element on which to apply the css properties
  *
  * @snippet          scrollProperties($1);
  *
@@ -22,9 +24,10 @@
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function scrollProperties(settings) {
+    const finalSettings = Object.assign({ $elm: document.body }, (settings !== null && settings !== void 0 ? settings : {}));
     window.addEventListener('scroll', () => {
-        document.body.style.setProperty('--scroll-x', `${window.scrollX}px`);
-        document.body.style.setProperty('--scroll-y', `${window.scrollY}px`);
+        finalSettings.$elm.style.setProperty('--scroll-x', `${window.scrollX}px`);
+        finalSettings.$elm.style.setProperty('--scroll-y', `${window.scrollY}px`);
     });
 }
 //# sourceMappingURL=scrollProperties.js.map

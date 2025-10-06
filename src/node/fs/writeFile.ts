@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import toString from '../../shared/string/toString.js';
 import ensureDirSync from '../fs/ensureDirSync.js';
-import { __folderPath } from './_exports.js';
+import { folderPath } from './_exports.js';
 
 /**
  * @name            writeFile
@@ -39,8 +39,8 @@ export default function writeFile(
   options = {},
 ): Promise<string> {
   return new Promise(async (resolve) => {
-    const folderPath = __folderPath(path);
-    ensureDirSync(folderPath);
+    const _folderPath = folderPath(path);
+    ensureDirSync(_folderPath);
     await fs.outputFile(path, toString(data), options);
     resolve(path);
   });

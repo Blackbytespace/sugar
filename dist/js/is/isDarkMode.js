@@ -1,11 +1,11 @@
-import { __querySelectorUp } from '@blackbyte/sugar/dom';
+import { querySelectorUp } from '@blackbyte/sugar/dom';
 export default function isDarkMode(settings) {
     const finalSettings = Object.assign({ ctx: window }, (settings !== null && settings !== void 0 ? settings : {}));
     if (finalSettings.rootNode) {
         if (finalSettings.rootNode.classList.contains('-dark')) {
             return true;
         }
-        const $dark = __querySelectorUp(finalSettings.rootNode, '.-dark');
+        const $dark = querySelectorUp(finalSettings.rootNode, '.-dark');
         if ($dark) {
             return true;
         }

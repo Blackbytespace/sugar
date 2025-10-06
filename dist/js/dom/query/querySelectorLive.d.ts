@@ -19,7 +19,7 @@ import type { TWhenTrigger } from '../when/when.js';
  * @param 	    {TQuerySelectorLiveSettings} 		[settings={}] 	      An optional settings object to specify things like the rootNode to monitor, etc...
  * @return      {TQuerySelectorLiveApi}                               An object with a cancel method to stop the query listening
  *
- * @setting         {HTMLElement}          [rootNode=document]        The root node from where to observe childs
+ * @setting         {HTMLElement}          [$rootNode=document]       The root node from where to observe childs
  * @setting         {Function}             [afterFirst=undefined]     A function to call after the first node has been found
  * @setting         {Boolean}              [firstOnly=false]          If true, the query will stop after the first node has been found
  * @setting         {TWhenTrigger}         [when=undefined]           A when trigger to wait for before executing the callback. Can be direct, inViewport, nearViewport, enterViewport, outOfViewport, interact, visible, domReady, stylesheetsReady or animationEnd
@@ -27,15 +27,15 @@ import type { TWhenTrigger } from '../when/when.js';
  *
  * @snippet         querySelectorLive($1, $2)
  * querySelectorLive($1, \$elm => {
- *      $2
+ *   $2
  * });
  *
  * @example 	js
  * import { querySelectorLive } from '@blackbyte/sugar/dom'
  * const query = querySelectorLive('.my-cool-item', (node, api) => {
- * 	    // do something here with the detected node
- *      // call api.cancel if you want to stop listening for this selector
- *      api.cancel();
+ *   // do something here with the detected node
+ *   // call api.cancel if you want to stop listening for this selector
+ *   api.cancel();
  * });
  * // cancel the query manually when needed
  * query.cancel();
@@ -44,7 +44,7 @@ import type { TWhenTrigger } from '../when/when.js';
  * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TQuerySelectorLiveSettings = {
-    rootNode: HTMLElement | Document;
+    $rootNode: HTMLElement | Document;
     once: boolean;
     afterFirst?: Function;
     firstOnly: boolean;

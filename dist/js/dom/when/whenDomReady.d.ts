@@ -13,7 +13,7 @@
  *
  * @snippet         whenDomReady()
  * whenDomReady().then(() => {
- *      $1
+ *   $1
  * });
  *
  * @todo      tests
@@ -21,7 +21,7 @@
  * @example  	js
  * import { whenDomReady } from '@blackbyte/sugar/dom'
  * whenDomReady().then(() => {
- *     // do something...
+ *   // do something...
  * });
  *
  * @see             https://www.jstips.co/en/javascript/detect-document-ready-in-pure-js/

@@ -18,7 +18,7 @@ import * as rematrix from 'rematrix';
  *
  * @example  	js
  * import { getScaleProperty } from '@blackbyte/sugar/dom'
- * const props = getScaleProperty(myCoolHTMLElement);
+ * const props = getScaleProperty($myCoolHTMLElement);
  * // output format
  * // 2
  *

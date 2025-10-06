@@ -20,8 +20,8 @@ import uncamelize from '../../../shared/string/uncamelize.js';
  * @example 	js
  * import { styleObjectToString } from '@blackbyte/sugar/css'
  * const styleString =  styleObjectToString({
- * 		paddingLeft : '20px',
- * 		display : 'block'
+ *   paddingLeft : '20px',
+ *   display : 'block'
  * });
  * // output => padding-left:20px; display:block;
  *

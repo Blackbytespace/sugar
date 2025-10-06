@@ -11,7 +11,7 @@ import parse from '../../../shared/string/parse.js';
  * This function try to store the actual style to not trigger more that 1 redraw
  * each js execution loop.
  *
- * @param 		{HTMLElement} 					elm  		      The element to get style from
+ * @param 		{HTMLElement} 					$elm  		    The element to get style from
  * @param 		{String} 						    property 	    The css property to get
  * @return 		{Mixed} 									            The style value
  *
@@ -21,7 +21,7 @@ import parse from '../../../shared/string/parse.js';
  *
  * @example  	js
  * import { getStyleProperty } from '@blackbyte/sugar/dom'
- * const opacity = getStyleProperty(myCoolHTMLElement, 'opacity');
+ * const opacity = getStyleProperty($myCoolHTMLElement, 'opacity');
  *
  * @see 		https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
  * @since           1.0.0

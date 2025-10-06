@@ -19,15 +19,15 @@
  *
  * @snippet         whenNearViewport($1)
  * whenNearViewport($1).then(\$elm => {
- *      $2
+ *   $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
  * import { whenNearViewport } from '@blackbyte/sugar/dom'
- * whenNearViewport(myCoolHTMLElement).then($elm => {
- * 		// do something with your element that has entered the viewport...
+ * whenNearViewport($myCoolHTMLElement).then($elm => {
+ *   // do something with your element that has entered the viewport...
  * });
  *
  * @since           1.0.0

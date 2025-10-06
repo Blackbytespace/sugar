@@ -13,7 +13,7 @@
  *
  * @setting     {Number}      [threshold=100]       The minimum distance the user has to swipe before detection
  *
- * @param       {HTMLElement}                     elm                 The HTMLElement on which to detect the swipe
+ * @param       {HTMLElement}                     $elm                The HTMLElement on which to detect the swipe
  * @param       {Function}                        cb                  The function to call on swipe. The callback function has as parameter an object that containthe swipe direction like left, right, up and down
  * @param       {Partial<TOnSwipeSettings>}       [settings={}]       Some settings to configure your swipe detection
  *
@@ -29,15 +29,15 @@
  *
  * @example 	js
  * import { onSwipe } from '@blackbyte/sugar/dom'
- * onSwipe(myCoolElm, (swipe) => {
- * 	// check the swipe direction
- * 	if (swipe.left) {
- * 		// do something...
- * 	}
- * 	// support : left, right, up, down
- * 	// etc...
+ * onSwipe($elm, (swipe) => {
+ *   // check the swipe direction
+ *   if (swipe.left) {
+ *     // do something...
+ * 	 }
+ * 	 // support : left, right, up, down
+ * 	 // etc...
  * }, {
- * 	threshold : 50
+ *   threshold : 50
  * });
  *
  * @see 		https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d

@@ -1,4 +1,4 @@
-import { __parseHtml } from '@blackbyte/sugar/console';
+import { parseHtml } from '@blackbyte/sugar/console';
 
 let _isOverrided = false,
   nativeConsoleFn: any;
@@ -104,7 +104,7 @@ export default class SugarConsole {
       }
       if (!SugarConsole.types.includes(type)) {
         nativeConsoleFn.error(
-          __parseHtml(
+          parseHtml(
             `Unsupported console type: <magenta>${type}</magenta>. Available types: <green>${SugarConsole.types.join(
               ',',
             )}</green>`,
@@ -168,20 +168,20 @@ export default class SugarConsole {
         }
 
         if (method === 'log' || i > 0) {
-          finalLogs.push(__parseHtml(`${i === 0 ? '▊' : ''} ${log}`));
+          finalLogs.push(parseHtml(`${i === 0 ? '▊' : ''} ${log}`));
           continue;
         }
 
         if (this.settings.colors?.[method]) {
           finalLogs.push(
-            __parseHtml(
+            parseHtml(
               `<${this.settings?.colors?.[method]}>${i === 0 ? '▊' : ''}</${
                 this.settings?.colors?.[method]
               }> ${log}`,
             ),
           );
         } else {
-          finalLogs.push(__parseHtml(`${i === 0 ? '▊' : ''} ${log}`));
+          finalLogs.push(parseHtml(`${i === 0 ? '▊' : ''} ${log}`));
         }
         continue;
       }

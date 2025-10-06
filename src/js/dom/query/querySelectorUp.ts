@@ -19,12 +19,12 @@ import matches from './matches.js';
  *
  * @example  	js
  * import { querySelectorUp } from '@blackbyte/sugar/dom'
- * const closestElm =  querySelectorUp(myCoolElement, '.my-cool-class');
+ * const closestElm =  querySelectorUp($elm, '.my-cool-class');
  * if (closestElm) {
- * 		// we have found en element that matches the selector
+ *   // we have found en element that matches the selector
  * }
  * // the selector param can be a function that need to return either true or false like so:
- *  querySelectorUp(myCoolElement, (elm) => {
+ * querySelectorUp($elm, (elm) => {
  *   return elm.hasAttribute('my-cool-attribute')
  * })
  *

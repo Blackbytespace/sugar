@@ -9,10 +9,11 @@ import isInViewport from '../../is/isInViewport.js';
  *
  * Get all the elements that are in viewport
  *
- * @setting       {HTMLElement}     [rootNode=document.body]      Specify the root node from where you want to query
  *
  * @param 		{Object} 			    settings	 		The settings of the query
  * @return 		{HTMLElement} 							    The founded element
+ *
+ * @setting       {HTMLElement}     [rootNode=document.body]      Specify the root node from where you want to query
  *
  * @snippet         elementsInViewport($1)
  *

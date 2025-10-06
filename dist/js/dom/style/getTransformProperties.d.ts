@@ -16,12 +16,12 @@
  *
  * @example  	js
  * import { getTransformProperties } from '@blackbyte/sugar/dom'
- * const props = getTransformProperties(myCoolHTMLElement);
+ * const props = getTransformProperties($myCoolHTMLElement);
  * // output format
  * // {
- * // 	translateX : 100,
- * // 	translateY : 0,
- * // 	translateZ : 0,
+ * //   translateX : 100,
+ * //   translateY : 0,
+ * //   translateZ : 0,
  * //   rotateX: 0,
  * //   rotateY: 0,
  * //   rotateZ: 0

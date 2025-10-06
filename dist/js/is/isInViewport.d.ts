@@ -17,7 +17,7 @@
  * @example  	js
  * import { isInViewport } from '@blackbyte/sugar/is'
  * if (isInViewport(myCoolHTMLElement) {
- * 		// i'm in the viewport
+ *   // i'm in the viewport
  * }
  *
  * @since           1.0.0

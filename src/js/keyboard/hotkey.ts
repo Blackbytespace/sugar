@@ -7,9 +7,9 @@
  *
  * This function allows you to register a hotkey on the passed element.
  * You can specify the hotkey using the following syntax:
- * - ctrl+a
- * - shift+ctrl+a
- * - a
+ * - `ctrl+a`
+ * - `shift+ctrl+a`
+ * - `a`
  * This function take care of avoiding to call your callback when the active element
  * is an input, a textarea or an editable content with the "contenteditable" attribute,
  * unless:
@@ -34,7 +34,7 @@
  * @example    js
  * import { hotkey } from '@blackbyte/sugar/keyboard'
  * const hotkeyApi = hotkey('ctrl+a', (e) => {
- *  console.log('Hotkey pressed');
+ *   console.log('Hotkey pressed');
  * });
  *
  * // if you want to cancel the hotkey

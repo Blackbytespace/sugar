@@ -18,7 +18,7 @@ import * as rematrix from 'rematrix';
  *
  * @example  	js
  * import { getTranslateProperties } from '@blackbyte/sugar/dom'
- * const props = getTranslateProperties(myCoolHTMLElement);
+ * const props = getTranslateProperties($myCoolHTMLElement);
  * // output format
  * // {
  * // 	x : 100,

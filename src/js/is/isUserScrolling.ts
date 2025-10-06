@@ -18,7 +18,7 @@
  * @example  	js
  * import { isUserScrolling } from '@blackbyte/sugar/is'
  * if (isUserScrolling(myCoolHTMLElement) {
- * 		// i'm in the viewport
+ *   // i'm in the viewport
  * }
  *
  * @since           1.0.0

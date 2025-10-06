@@ -28,7 +28,7 @@
  *
  * @example  	js
  * import { whenInteract } from '@blackbyte/sugar/dom'
- * whenInteract(myCoolElement).then($elm => {
+ * whenInteract($elm).then($elm => {
  *      // do something...
  * });
  *

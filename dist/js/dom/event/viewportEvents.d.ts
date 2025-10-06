@@ -29,10 +29,10 @@
  * import { viewportEvents } from '@blackbyte/sugar/dom';
  * viewportEvents($elm);
  * $elm.addEventListener('viewport.enter', (e) => {
- *      // do something on enter
+ *   // do something on enter
  * });
  * $elm.addEventListener('viewport.leave', (e) => {
- *      // do something on leave
+ *   // do something on leave
  * });
  *
  * @changelog       1.0.0

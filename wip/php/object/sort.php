@@ -23,8 +23,8 @@ namespace Sugar\Object;
  * });
  *
  * @example               js
- * import { __sort } from '@blackbyte/sugar/object';
- * __sort({
+ * import { sort } from '@blackbyte/sugar/object';
+ * sort({
  *    coco: { weight: 10 },
  *    lolo: { weight: 2 },
  *    plop: { weight: 5 }

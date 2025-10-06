@@ -13,7 +13,13 @@ export default function querySelectorLive(selector, cb, settings, _isFirstLevel 
     let observer, canceled = false;
     const matchedNodes = new WeakMap();
     // extend settings
-    const finalSettings = Object.assign({ rootNode: document, once: true, afterFirst: undefined, firstOnly: false, attributes: [], disconnectedCallback: undefined, when: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
+    const finalSettings = Object.assign({ $rootNode: document, once: true, afterFirst: undefined, firstOnly: false, attributes: [], disconnectedCallback: undefined, when: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
+    // compatibility only
+    // @ts-ignore
+    if (finalSettings.rootNode) {
+        // @ts-ignore
+        finalSettings.$rootNode = finalSettings.rootNode;
+    }
     const innerQuerySelectorLive = [];
     function isCanceled() {
         return canceled && _isFirstLevel;
@@ -132,9 +138,9 @@ export default function querySelectorLive(selector, cb, settings, _isFirstLevel 
                 ? finalSettings.attributes
                 : undefined });
     }
-    observer.observe(finalSettings.rootNode, observeSettings);
+    observer.observe(finalSettings.$rootNode, observeSettings);
     // first query
-    findAndProcess(finalSettings.rootNode, selector);
+    findAndProcess(finalSettings.$rootNode, selector);
     // after first callback
     (_c = finalSettings.afterFirst) === null || _c === void 0 ? void 0 : _c.call(finalSettings);
     return {

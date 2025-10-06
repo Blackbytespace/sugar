@@ -27,9 +27,9 @@
  * @example         js
  * import { onScrollEnd } from '@blackbyte/sugar/dom';
  * onScrollEnd($elm, () => {
- *      // do something
+ *   // do something
  * }, {
- *    offset: 50
+ *   offset: 50
  * });
  *
  * @since       1.0.0

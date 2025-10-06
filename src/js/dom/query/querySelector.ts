@@ -17,7 +17,7 @@ import closestNotVisibleElement from './closestNotVisibleElement.js';
  *
  * @setting       {Boolean}         [visible=null]                Specify if you want only the visible nodes
  * @setting       {Boolean}         [inViewport=null]             Specify if you want only the nodes that are in the viewport
- * @setting       {HTMLElement}     [rootNode=document.body]      Specify the root node from where you want to query
+ * @setting       {HTMLElement}     [$rootNode=document.body]     Specify the root node from where you want to query
  *
  * @param 		{String} 			selector 			The css selector to search
  * @param 		{Object} 			settings	 		The settings of the query
@@ -34,7 +34,7 @@ import closestNotVisibleElement from './closestNotVisibleElement.js';
  *
  * // get an element that is in the viewport
  * const elm = querySelector('.a-cool-css-selector', {
- * 		inViewport : true
+ *   inViewport : true
  * });
  *
  * @since           1.0.0
@@ -44,7 +44,7 @@ import closestNotVisibleElement from './closestNotVisibleElement.js';
 export type TQuerySelectorSettings = {
   visible: boolean | null;
   inViewport: boolean | null;
-  rootNode: HTMLElement;
+  $rootNode: HTMLElement;
 };
 
 export default function querySelector(
@@ -55,12 +55,19 @@ export default function querySelector(
   const finalSettings: TQuerySelectorSettings = {
     visible: null,
     inViewport: null,
-    rootNode: document.body,
+    $rootNode: document.body,
     ...settings,
   };
 
+  // compatibility only
+  // @ts-ignore
+  if (finalSettings.rootNode) {
+    // @ts-ignore
+    finalSettings.$rootNode = finalSettings.rootNode;
+  }
+
   // grab the element into the dom
-  const $elm = finalSettings.rootNode.querySelector(selector) as HTMLElement;
+  const $elm = finalSettings.$rootNode.querySelector(selector) as HTMLElement;
   // if no element, stop here
   if (!$elm) return;
 

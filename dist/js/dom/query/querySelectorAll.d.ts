@@ -13,7 +13,7 @@
  *
  * @setting       {Boolean}         [visible=null]                Specify if you want only the visible nodes
  * @setting       {Boolean}         [inViewport=null]             Specify if you want only the nodes that are in the viewport
- * @setting       {HTMLElement}     [rootNode=document.body]      Specify the root node from where you want to query
+ * @setting       {HTMLElement}     [$rootNode=document.body]      Specify the root node from where you want to query
  *
  * @param 		{String} 				selector 			The css selector to search
  * @param 		{Object} 				settings	 		The settings of the query
@@ -30,7 +30,7 @@
  *
  * // get elements that are in the viewport
  * const elms = querySelectorAll('.a-cool-css-selector', {
- * 		inViewport : true
+ *   inViewport : true
  * });
  *
  * @since           1.0.0
@@ -39,6 +39,6 @@
 export type TQuerySelectorAllSettings = {
     visible: boolean | null;
     inViewport: boolean | null;
-    rootNode: HTMLElement;
+    $rootNode: HTMLElement;
 };
 export default function querySelectorAll(selector: string, settings?: Partial<TQuerySelectorAllSettings>): HTMLElement[];

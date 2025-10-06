@@ -16,7 +16,7 @@
  *
  * @example    js
  * import { injectIframeContent } from '@blackbyte/sugar/dom'
- *  injectIframeContent($myIframe, '<html>...</html>');
+ * injectIframeContent($myIframe, '<html>...</html>');
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

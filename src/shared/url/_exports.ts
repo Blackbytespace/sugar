@@ -1,6 +1,15 @@
-import __gravatarUrl from './gravatarUrl.js';
-import __parseSchema from './parseSchema.js';
-import __queryStringToObject from './queryStringToObject.js';
-import __urlFromString from './urlFromString.js';
+import gravatarUrl from './gravatarUrl.js';
+import parseSchema from './parseSchema.js';
+import queryStringToObject from './queryStringToObject.js';
+import urlFromString from './urlFromString.js';
 
-export { __gravatarUrl, __parseSchema, __queryStringToObject, __urlFromString };
+export {
+  gravatarUrl,
+  parseSchema,
+  queryStringToObject,
+  urlFromString,
+  gravatarUrl as __gravatarUrl,
+  parseSchema as __parseSchema,
+  queryStringToObject as __queryStringToObject,
+  urlFromString as __urlFromString,
+};

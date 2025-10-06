@@ -14,7 +14,7 @@
  * @snippet         reloadStylesheets()
  *
  * @example         js
- * import { __reloeadStylesheets } from '@blackbyte/sugar/dom';
+ * import { reloeadStylesheets } from '@blackbyte/sugar/dom';
  * reloadStylesheets();
  *
  * @since       1.0.0

@@ -18,8 +18,8 @@
  * @snippet         setTheme($1)
  *
  * @example         js
- * import { setTheme } from '@blackbyte/sugar/theme';
- * setTheme('dark');
+ * import { restoreTheme } from '@blackbyte/sugar/theme';
+ * restoreTheme('dark');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

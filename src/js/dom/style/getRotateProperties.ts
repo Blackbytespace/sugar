@@ -18,7 +18,7 @@ import * as rematrix from 'rematrix';
  *
  * @example  	js
  * import { getRotateProperties } from '@blackbyte/sugar/dom'
- * const props = getRotateProperties(myCoolHTMLElement);
+ * const props = getRotateProperties($myCoolHTMLElement);
  * // output format
  * // {
  * // 	x : 100,

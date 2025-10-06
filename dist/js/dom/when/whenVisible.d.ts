@@ -23,7 +23,7 @@
  * @example 	js
  * import { whenVisible } from '@blackbyte/sugar/dom'
  * whenVisible(myCoolHTMLElement).then(($elm) => {
- * 		// do something with your element that is now visible
+ *   // do something with your element that is now visible
  * });
  *
  * @since           1.0.0

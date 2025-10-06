@@ -18,7 +18,7 @@
  * @example  	js
  * import { isVisible } from '@blackbyte/sugar/is'
  * if (isVisible(myCoolHTMLElement) {
- * 		// i'm visible
+ *   // i'm visible
  * }
  *
  * @see             https://stackoverflow.com/questions/19669786/check-if-element-is-visible-in-dom

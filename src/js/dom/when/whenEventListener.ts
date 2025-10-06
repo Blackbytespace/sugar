@@ -15,15 +15,15 @@
  *
  * @snippet         whenEventListener($1, $2)
  * whenEventListener($1, $2).then(e: Event => {
- *      $3
+ *   $3
  * });
  *
  * @todo      tests
  *
  * @example    js
  * import { whenEventListener } from '@blackbyte/sugar/dom'
- * whenEventListener('click', myCoolElm).then((e: Event) => {
- *      // do something...
+ * whenEventListener('click', $elm).then((e: Event) => {
+ *   // do something...
  * });
  *
  * @since           1.0.0
