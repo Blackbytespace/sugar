@@ -2,10 +2,20 @@
   "name": "@blackbyte/sugar",
   "description": "The toolkit that you missed... like a sugar in your coffee!",
   "version": "1.0.0-beta.1",
-  "type": "module",
-  "files": [
-    "dist/**/*"
+  "keywords": [
+    "javascript",
+    "typescript",
+    "toolkit",
+    "utilities",
+    "utils",
+    "helpers",
+    "library",
+    "sugar",
+    "blackbyte",
+    "node"
   ],
+  "homepage": "https://sugar.blackbyte.space",
+  "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
@@ -14,7 +24,6 @@
     "test": "vitest",
     "publish": "npm publish --access public --tag beta"
   },
-  "homepage": "https://sugar.blackbyte.space",
   "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
   "contributors": [
     {
@@ -23,6 +32,16 @@
       "url": "https://blackbyte.space"
     }
   ],
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Blackbytespace/sugar"
+  },
+  "bugs": {
+    "url": "https://github.com/Blackbytespace/sugar/issues"
+  },
   "license": "MIT",
   "globalDependencies": {},
   "exports": {
@@ -115,7 +134,7 @@
       "default": "./dist/js/is/_exports.js"
     },
     "./keyboard": {
-      "types": "./src/js/keyboard/_exports.ts",
+      "types": "./dist/js/keyboard/_exports.ts",
       "default": "./dist/js/keyboard/_exports.js"
     },
     "./math": {

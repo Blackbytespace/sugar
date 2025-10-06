@@ -4,11 +4,16 @@
 
 The toolkit that you missed... like a sugar in your coffee!
 
+## [Go to website!](https://sugar.blackbyte.space)
+
+---
+
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
 - [Blackbyte Sugar](#blackbyte-sugar)
+  - [Go to website!](#go-to-websitehttpssugarblackbytespace)
   - [What is this?](#what-is-this)
   - [Get started](#get-started)
     - [1. Install the package](#1-install-the-package)
@@ -25,6 +30,8 @@ The toolkit that you missed... like a sugar in your coffee!
   - [Contribute](#contribute)
 
 <!-- /code_chunk_output -->
+
+---
 
 ## What is this?
 
