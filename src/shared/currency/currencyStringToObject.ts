@@ -9,12 +9,11 @@ import currencySymbolMap from 'currency-symbol-map';
  * @status            stable
  *
  * This function take a currency string like "120 USD" and convert it to an object
- * like:
- * {
- *    "amount": 120,
- *    "code": "USD",
- *    "symbol": "$"
- * }
+ * containing these properties:
+ *
+ * - `amount`: 120,
+ * - `code`: USD,
+ * - `symbol`: $
  *
  * @param       {String}            currency            The currency string to convert
  * @return      {TCurrencyToObject}                     The currency object
@@ -25,9 +24,9 @@ import currencySymbolMap from 'currency-symbol-map';
  * import { currencyStringToObject } from '@blackbyte/sugar/currency';
  * currencyStringToObject('120 $');
  * {
- *   "amount": 120,
- *   "code": "USD",
- *   "symbol": "$"
+ *   amount: 120,
+ *   code: 'USD',
+ *   symbol: '$'
  * }
  *
  * @see       https://www.npmjs.com/package/currency-symbol-map
