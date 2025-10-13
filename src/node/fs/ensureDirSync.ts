@@ -1,5 +1,4 @@
 import fs from 'fs-extra';
-import path from 'path';
 import isDirectory from '../is/isDirectory.js';
 
 /**
@@ -30,13 +29,6 @@ export default function ensureDirSync(dir: string): void {
   // check if the directory already exists
   if (fs.existsSync(dir) && isDirectory(dir)) return;
 
-  // if the passed path is a file
-  if (!isDirectory(dir)) {
-    dir = path.dirname(dir);
-  }
-
   // create the directory
-  if (!fs.existsSync(dir)) {
-    fs.ensureDirSync(dir);
-  }
+  fs.ensureDirSync(dir);
 }

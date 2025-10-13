@@ -1,7 +1,7 @@
 {
   "name": "@blackbyte/sugar",
   "description": "The toolkit that you missed... like a sugar in your coffee!",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "keywords": [
     "javascript",
     "typescript",
@@ -213,6 +213,7 @@
     "clone-class": "1.0.3",
     "copy-paste": "^1.5.3",
     "crypto-js": "^4.2.0",
+    "currency-symbol-map": "^5.1.0",
     "escape-html": "^1.0.3",
     "fast-folder-size": "^2.2.0",
     "fast-xml-parser": "^4.3.5",
