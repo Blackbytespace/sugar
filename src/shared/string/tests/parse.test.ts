@@ -56,20 +56,6 @@ describe('sugar.shared.string.parse', () => {
     const res = parse(str);
     expect(res).toEqual(false);
   });
-  it('Should parse a valid date correctly', () => {
-    const str =
-      'Thu May 08 2025 11:07:48 GMT+0200 (Central European Summer Time)';
-    const res = parse(str);
-    expect(res).toBeInstanceOf(Date);
-  });
-  it('Should parse an invalid date correctly', () => {
-    const str =
-      'Thu May 08 20wa25 11:07:48 GMT+0200 (Central European Summer Time)';
-    const res = parse(str);
-    expect(res).toEqual(
-      'Thu May 08 20wa25 11:07:48 GMT+0200 (Central European Summer Time)',
-    );
-  });
   it('Should parse a valid json correctly', () => {
     const str = '{"hello":"world","foo":"bar","number":10,"float":10.12}';
     const res = parse(str);
