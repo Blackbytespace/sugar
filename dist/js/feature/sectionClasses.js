@@ -16,6 +16,11 @@
  * @param           {TSectionClassesSettings}          [settings={}]           The settings you want to override
  *
  * @setting        {String}          [inClass='-in-viewport']        The class to add when the section is in the viewport
+ * @setting        {Boolean}         [keepInClassWhenAbove=false]   Whether to keep the inClass when the section is above the viewport
+ * @setting        {String}          [fromAboveClass='-from-above'] The class to add when the section enters the viewport from above
+ * @setting        {String}          [fromBelowClass='-from-below'] The class to add when the section enters the viewport from below
+ * @setting        {String}          [aboveClass='-above-viewport'] The class to add when the section is above the viewport
+ * @setting        {String}          [belowClass='-below-viewport'] The class to add when
  * @setting        {Number}          [offset=25]                     The offset in px to consider the section is in the viewport
  *
  * @snippet          sectionClasses($1);
@@ -29,7 +34,7 @@
  */
 import { querySelectorLive, viewportEvents } from '@blackbyte/sugar/dom';
 export default function sectionClasses(settings) {
-    const finalSettings = Object.assign({ inClass: '-in-viewport', fromAboveClass: '-from-above', fromBelowClass: '-from-below', aboveClass: '-above-viewport', belowClass: '-below-viewport', offset: 25 }, settings);
+    const finalSettings = Object.assign({ inClass: '-in-viewport', keepInClassWhenAbove: false, fromAboveClass: '-from-above', fromBelowClass: '-from-below', aboveClass: '-above-viewport', belowClass: '-below-viewport', offset: 25 }, settings);
     querySelectorLive('section', ($section) => {
         // listen for enter/leave viewport
         viewportEvents($section, {
@@ -52,7 +57,6 @@ export default function sectionClasses(settings) {
         };
         const leaveHandler = () => {
             // remove the inClass on the section
-            $section.classList.remove(finalSettings.inClass);
             $section.classList.remove(finalSettings.fromAboveClass);
             $section.classList.remove(finalSettings.fromBelowClass);
         };
@@ -64,10 +68,17 @@ export default function sectionClasses(settings) {
             $section.classList.add(finalSettings.fromAboveClass);
         };
         const leaveAboveHandler = () => {
+            // if we want to keep the inClass when above
+            if (!finalSettings.keepInClassWhenAbove) {
+                $section.classList.remove(finalSettings.inClass);
+            }
             // remove the inClass on the section
             $section.classList.add(finalSettings.aboveClass);
         };
         const leaveBelowHandler = () => {
+            // remove the inClass
+            $section.classList.remove(finalSettings.inClass);
+            // remove the bellow class
             $section.classList.add(finalSettings.belowClass);
         };
         $section.addEventListener('viewport.enter.above', enterAboveHandler);

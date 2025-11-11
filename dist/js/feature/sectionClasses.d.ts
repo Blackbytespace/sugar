@@ -16,6 +16,11 @@
  * @param           {TSectionClassesSettings}          [settings={}]           The settings you want to override
  *
  * @setting        {String}          [inClass='-in-viewport']        The class to add when the section is in the viewport
+ * @setting        {Boolean}         [keepInClassWhenAbove=false]   Whether to keep the inClass when the section is above the viewport
+ * @setting        {String}          [fromAboveClass='-from-above'] The class to add when the section enters the viewport from above
+ * @setting        {String}          [fromBelowClass='-from-below'] The class to add when the section enters the viewport from below
+ * @setting        {String}          [aboveClass='-above-viewport'] The class to add when the section is above the viewport
+ * @setting        {String}          [belowClass='-below-viewport'] The class to add when
  * @setting        {Number}          [offset=25]                     The offset in px to consider the section is in the viewport
  *
  * @snippet          sectionClasses($1);
@@ -29,6 +34,7 @@
  */
 export type TSectionClassesSettings = {
     inClass: string;
+    keepInClassWhenAbove: boolean;
     fromAboveClass: string;
     fromBelowClass: string;
     aboveClass: string;

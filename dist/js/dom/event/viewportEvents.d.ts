@@ -17,6 +17,10 @@
  *
  * @event       viewport.enter               Dispatched when the passed element enter the viewport
  * @event       viewport.leave               Dispatched when the passed element leave the viewport
+ * @event       viewport.enter.above         Dispatched when the passed element enter the viewport from above
+ * @event       viewport.enter.below         Dispatched when the passed element enter the viewport from below
+ * @event       viewport.leave.above         Dispatched when the passed element leave the viewport from above
+ * @event       viewport.leave.below         Dispatched when the passed element leave the viewport from below
  *
  * @snippet         viewportEvents($1)
  * viewportEvents($1).addEventListener('viewport.enter', (e) => {
