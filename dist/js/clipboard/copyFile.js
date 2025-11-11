@@ -22,7 +22,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  *
  * @todo     tests
  *
- * @snippet         __copyFile($1)
+ * @snippet         copyFile($1)
  *
  * @example         js
  * import { copyFile } from '@blackbyte/sugar/clipboard';

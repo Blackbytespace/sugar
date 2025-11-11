@@ -21,7 +21,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  *
  * @todo     tests
  *
- * @snippet         __readFile($1)
+ * @snippet         readFile($1)
  *
  * @example         js
  * import { readFile } from '@blackbyte/sugar/clipboard';

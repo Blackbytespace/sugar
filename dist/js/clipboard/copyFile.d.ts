@@ -13,7 +13,7 @@
  *
  * @todo     tests
  *
- * @snippet         __copyFile($1)
+ * @snippet         copyFile($1)
  *
  * @example         js
  * import { copyFile } from '@blackbyte/sugar/clipboard';

@@ -6,8 +6,12 @@
  * @status          stable
  *
  *
- * This feature allows you to add some classes on your sections when they are in the viewport, near the viewport, etc...
+ * This feature allows you to add some classes on your sections when they are in the viewport, near the viewport, above, etc...
  * 1. `-in-viewport`: Added when the section is in the viewport
+ * 2. `-from-above`: Added when the section enters the viewport from above
+ * 3. `-from-below`: Added when the section enters the viewport from below
+ * 4. `-above-viewport`: Added when the section is above the viewport
+ * 5. `-below-viewport`: Added when the section is below the viewport
  *
  * @param           {TSectionClassesSettings}          [settings={}]           The settings you want to override
  *
@@ -25,6 +29,11 @@
  */
 export type TSectionClassesSettings = {
     inClass: string;
+    fromAboveClass: string;
+    fromBelowClass: string;
+    aboveClass: string;
+    belowClass: string;
     offset: number;
+    once?: boolean;
 };
 export default function sectionClasses(settings?: Partial<TSectionClassesSettings>): void;

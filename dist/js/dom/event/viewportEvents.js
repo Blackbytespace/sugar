@@ -1,3 +1,4 @@
+import { distanceFromElementTopToViewportTop } from '../_exports.js';
 const _viewportEventsInited = new WeakMap();
 export default function viewportEvents($elm, settings) {
     let observer, status = 'out';
@@ -16,6 +17,17 @@ export default function viewportEvents($elm, settings) {
             if (status === 'in') {
                 return;
             }
+            const distanceToTop = distanceFromElementTopToViewportTop($elm);
+            if (distanceToTop < window.innerHeight * 0.5) {
+                $elm.dispatchEvent(new CustomEvent('viewport.enter.above', {
+                    bubbles: true,
+                }));
+            }
+            else {
+                $elm.dispatchEvent(new CustomEvent('viewport.enter.below', {
+                    bubbles: true,
+                }));
+            }
             status = 'in';
             $elm.dispatchEvent(new CustomEvent('viewport.enter', {
                 bubbles: true,
@@ -30,6 +42,17 @@ export default function viewportEvents($elm, settings) {
         else {
             if (status === 'out') {
                 return;
+            }
+            const distanceToTop = distanceFromElementTopToViewportTop($elm);
+            if (distanceToTop < window.innerHeight * 0.5) {
+                $elm.dispatchEvent(new CustomEvent('viewport.leave.above', {
+                    bubbles: true,
+                }));
+            }
+            else {
+                $elm.dispatchEvent(new CustomEvent('viewport.leave.below', {
+                    bubbles: true,
+                }));
             }
             status = 'out';
             $elm.dispatchEvent(new CustomEvent('viewport.leave', {
