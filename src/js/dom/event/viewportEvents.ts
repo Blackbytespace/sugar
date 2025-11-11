@@ -1,3 +1,5 @@
+import { distanceFromElementTopToViewportTop } from '../_exports.js';
+
 /**
  * @name            viewportEvents
  * @namespace       js.dom.event
@@ -17,6 +19,10 @@
  *
  * @event       viewport.enter               Dispatched when the passed element enter the viewport
  * @event       viewport.leave               Dispatched when the passed element leave the viewport
+ * @event       viewport.enter.above         Dispatched when the passed element enter the viewport from above
+ * @event       viewport.enter.below         Dispatched when the passed element enter the viewport from below
+ * @event       viewport.leave.above         Dispatched when the passed element leave the viewport from above
+ * @event       viewport.leave.below         Dispatched when the passed element leave the viewport from below
  *
  * @snippet         viewportEvents($1)
  * viewportEvents($1).addEventListener('viewport.enter', (e) => {
@@ -75,6 +81,22 @@ export default function viewportEvents(
         if (status === 'in') {
           return;
         }
+
+        const distanceToTop = distanceFromElementTopToViewportTop($elm);
+        if (distanceToTop < window.innerHeight * 0.5) {
+          $elm.dispatchEvent(
+            new CustomEvent('viewport.enter.above', {
+              bubbles: true,
+            }),
+          );
+        } else {
+          $elm.dispatchEvent(
+            new CustomEvent('viewport.enter.below', {
+              bubbles: true,
+            }),
+          );
+        }
+
         status = 'in';
         $elm.dispatchEvent(
           new CustomEvent('viewport.enter', {
@@ -93,6 +115,22 @@ export default function viewportEvents(
         if (status === 'out') {
           return;
         }
+
+        const distanceToTop = distanceFromElementTopToViewportTop($elm);
+        if (distanceToTop < window.innerHeight * 0.5) {
+          $elm.dispatchEvent(
+            new CustomEvent('viewport.leave.above', {
+              bubbles: true,
+            }),
+          );
+        } else {
+          $elm.dispatchEvent(
+            new CustomEvent('viewport.leave.below', {
+              bubbles: true,
+            }),
+          );
+        }
+
         status = 'out';
         $elm.dispatchEvent(
           new CustomEvent('viewport.leave', {
