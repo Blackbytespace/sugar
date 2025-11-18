@@ -34,12 +34,12 @@
  */
 import { querySelectorLive, viewportEvents } from '@blackbyte/sugar/dom';
 export default function sectionClasses(settings) {
-    const finalSettings = Object.assign({ inClass: '-in-viewport', keepInClassWhenAbove: false, fromAboveClass: '-from-above', fromBelowClass: '-from-below', aboveClass: '-above-viewport', belowClass: '-below-viewport', offset: 25 }, settings);
+    const finalSettings = Object.assign({ inClass: '-in-viewport', keepInClassWhenAbove: false, fromAboveClass: '-from-above', fromBelowClass: '-from-below', aboveClass: '-above-viewport', belowClass: '-below-viewport', offset: 25, once: false }, settings);
     querySelectorLive('section', ($section) => {
         // listen for enter/leave viewport
         viewportEvents($section, {
             offset: finalSettings.offset,
-            once: finalSettings.once,
+            once: finalSettings.once
         });
         const enterHandler = () => {
             // add the inClass on the section

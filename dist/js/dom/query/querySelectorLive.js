@@ -55,6 +55,10 @@ export default function querySelectorLive(selector, cb, settings, _isFirstLevel 
         if (!selectedNodes.includes($node)) {
             selectedNodes.push($node);
         }
+        // mark our node as selected at least 1 time
+        if (!selectedNodes.includes($node)) {
+            selectedNodes.push($node);
+        }
         // disconnected callback
         if (finalSettings.disconnectedCallback) {
             let mutationTimeout;

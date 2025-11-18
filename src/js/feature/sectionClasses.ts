@@ -33,21 +33,21 @@
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-import { querySelectorLive, viewportEvents } from '@blackbyte/sugar/dom';
+import { querySelectorLive, viewportEvents } from '@blackbyte/sugar/dom'
 
 export type TSectionClassesSettings = {
-  inClass: string;
-  keepInClassWhenAbove: boolean;
-  fromAboveClass: string;
-  fromBelowClass: string;
-  aboveClass: string;
-  belowClass: string;
-  offset: number;
-  once?: boolean;
-};
+  inClass: string
+  keepInClassWhenAbove: boolean
+  fromAboveClass: string
+  fromBelowClass: string
+  aboveClass: string
+  belowClass: string
+  offset: number
+  once?: boolean
+}
 
 export default function sectionClasses(
-  settings?: Partial<TSectionClassesSettings>,
+  settings?: Partial<TSectionClassesSettings>
 ): void {
   const finalSettings: TSectionClassesSettings = {
     inClass: '-in-viewport',
@@ -57,71 +57,72 @@ export default function sectionClasses(
     aboveClass: '-above-viewport',
     belowClass: '-below-viewport',
     offset: 25,
-    ...settings,
-  };
+    once: false,
+    ...settings
+  }
 
   querySelectorLive('section', ($section) => {
     // listen for enter/leave viewport
     viewportEvents($section, {
       offset: finalSettings.offset,
-      once: finalSettings.once,
-    });
+      once: finalSettings.once
+    })
 
     const enterHandler = () => {
       // add the inClass on the section
-      $section.classList.add(finalSettings.inClass);
+      $section.classList.add(finalSettings.inClass)
 
       // remove above/below classes
-      $section.classList.remove(finalSettings.aboveClass);
-      $section.classList.remove(finalSettings.belowClass);
+      $section.classList.remove(finalSettings.aboveClass)
+      $section.classList.remove(finalSettings.belowClass)
 
       // stop if "once" setting is enabled
       if (finalSettings.once) {
-        $section.removeEventListener('viewport.enter', enterHandler);
-        $section.removeEventListener('viewport.leave', leaveHandler);
-        $section.removeEventListener('viewport.enter.above', enterAboveHandler);
-        $section.removeEventListener('viewport.enter.below', enterBelowHandler);
+        $section.removeEventListener('viewport.enter', enterHandler)
+        $section.removeEventListener('viewport.leave', leaveHandler)
+        $section.removeEventListener('viewport.enter.above', enterAboveHandler)
+        $section.removeEventListener('viewport.enter.below', enterBelowHandler)
       }
-    };
+    }
 
     const leaveHandler = () => {
       // remove the inClass on the section
-      $section.classList.remove(finalSettings.fromAboveClass);
-      $section.classList.remove(finalSettings.fromBelowClass);
-    };
+      $section.classList.remove(finalSettings.fromAboveClass)
+      $section.classList.remove(finalSettings.fromBelowClass)
+    }
 
     const enterBelowHandler = () => {
-      $section.classList.add(finalSettings.fromBelowClass);
-    };
+      $section.classList.add(finalSettings.fromBelowClass)
+    }
 
     const enterAboveHandler = () => {
       // add the inClass on the section
-      $section.classList.add(finalSettings.fromAboveClass);
-    };
+      $section.classList.add(finalSettings.fromAboveClass)
+    }
 
     const leaveAboveHandler = () => {
       // if we want to keep the inClass when above
       if (!finalSettings.keepInClassWhenAbove) {
-        $section.classList.remove(finalSettings.inClass);
+        $section.classList.remove(finalSettings.inClass)
       }
 
       // remove the inClass on the section
-      $section.classList.add(finalSettings.aboveClass);
-    };
+      $section.classList.add(finalSettings.aboveClass)
+    }
 
     const leaveBelowHandler = () => {
       // remove the inClass
-      $section.classList.remove(finalSettings.inClass);
+      $section.classList.remove(finalSettings.inClass)
 
       // remove the bellow class
-      $section.classList.add(finalSettings.belowClass);
-    };
+      $section.classList.add(finalSettings.belowClass)
+    }
 
-    $section.addEventListener('viewport.enter.above', enterAboveHandler);
-    $section.addEventListener('viewport.enter.below', enterBelowHandler);
-    $section.addEventListener('viewport.leave.above', leaveAboveHandler);
-    $section.addEventListener('viewport.leave.below', leaveBelowHandler);
-    $section.addEventListener('viewport.enter', enterHandler);
-    $section.addEventListener('viewport.leave', leaveHandler);
-  });
+    $section.addEventListener('viewport.enter.above', enterAboveHandler)
+    $section.addEventListener('viewport.enter.below', enterBelowHandler)
+    $section.addEventListener('viewport.leave.above', leaveAboveHandler)
+    $section.addEventListener('viewport.leave.below', leaveBelowHandler)
+    $section.addEventListener('viewport.enter', enterHandler)
+    $section.addEventListener('viewport.leave', leaveHandler)
+  })
 }
