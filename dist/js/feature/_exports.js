@@ -1,5 +1,6 @@
+import disableTitleTooltips from './disableTitleTooltips.js';
+import features from './features.js';
 import scrollClasses from './scrollClasses.js';
 import sectionClasses from './sectionClasses.js';
-import scrollProperties from './scrollProperties.js';
-export { scrollProperties as __scrollProperties, scrollClasses as __scrolledClasses, sectionClasses as __sectionClasses, scrollProperties, scrollClasses, sectionClasses, };
+export { disableTitleTooltips as __disableTitleTooltips, features as __features, scrollClasses as __scrolledClasses, sectionClasses as __sectionClasses, disableTitleTooltips, features, scrollClasses, sectionClasses, };
 //# sourceMappingURL=_exports.js.map
