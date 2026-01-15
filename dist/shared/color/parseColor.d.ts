@@ -29,11 +29,13 @@ export type TParseColorRgbaResult = {
     g: number;
     b: number;
     a: number;
+    toString: () => string;
 };
 export type TParseColorHslaResult = {
     h: number;
     s: number;
     l: number;
     a: number;
+    toString: () => string;
 };
 export default function parseColor(color: string, format?: 'rgb' | 'rgba' | 'hsl' | 'hsla'): TParseColorHslaResult | TParseColorRgbaResult;

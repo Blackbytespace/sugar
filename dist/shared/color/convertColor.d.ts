@@ -24,4 +24,17 @@
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function convertColor(input: any, format?: 'rgb' | 'rgba' | 'hsl' | 'hsla' | 'hex'): string | object;
+export type TConvertColorResult = {
+    r: number;
+    g: number;
+    b: number;
+    a?: number;
+    toString: () => string;
+} | {
+    h: number;
+    s: number;
+    l: number;
+    a?: number;
+    toString: () => string;
+} | string;
+export default function convertColor(input: any, format?: 'rgb' | 'rgba' | 'hsl' | 'hsla' | 'hex'): TConvertColorResult;

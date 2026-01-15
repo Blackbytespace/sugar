@@ -35,6 +35,7 @@ export type TParseColorRgbaResult = {
   g: number;
   b: number;
   a: number;
+  toString: () => string;
 };
 
 export type TParseColorHslaResult = {
@@ -42,6 +43,7 @@ export type TParseColorHslaResult = {
   s: number;
   l: number;
   a: number;
+  toString: () => string;
 };
 
 export default function parseColor(

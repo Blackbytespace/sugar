@@ -12,6 +12,9 @@
  * @feature       Some settings available to tweak the behavior
  *
  * @setting     {String}      [offset='10px']         An offset to detect sooner or later the element entering in the viewport
+ * @setting     {Function}    [whenIn]                A callback function to call when the element enter the viewport
+ * @setting     {Function}    [whenOut]               A callback function to call when the element leave the viewport
+ * @setting     {Boolean}     [once=true]             Specify if the promise should be resolved only once (the first time the element enter the viewport)
  *
  * @param 		{HTMLElement} 				                      $elm 					      The element to monitor
  * @param 		{Partial<TWhenInViewportSettings>} 					[settings={}] 		  Some settings to tweak the detection behavior

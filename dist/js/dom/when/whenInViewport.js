@@ -1,10 +1,21 @@
+import { isInViewport } from '@blackbyte/sugar/is';
 import uniqid from '../../string/uniqid.js';
 const whenInViewportStatuses = new WeakMap();
 class CancelablePromise extends Promise {
     cancel() { }
 }
 export default function whenInViewport($elm, settings) {
+    var _a;
     const finalSettings = Object.assign({ offset: '10px', once: true, whenIn: undefined, whenOut: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
+    // if the element is already in the viewport, resolve immediately
+    if (isInViewport($elm)) {
+        // trigger the "whenIn" callback
+        (_a = finalSettings.whenIn) === null || _a === void 0 ? void 0 : _a.call(finalSettings, $elm);
+        // stop here if the "once" setting is true
+        if (finalSettings.once) {
+            return Promise.resolve($elm);
+        }
+    }
     let observer;
     function getRootMargin() {
         return [

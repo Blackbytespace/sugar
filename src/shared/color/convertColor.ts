@@ -29,10 +29,27 @@ import rgbaToHsla from './rgbaToHsla.js';
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
+export type TConvertColorResult =
+  | {
+      r: number;
+      g: number;
+      b: number;
+      a?: number;
+      toString: () => string;
+    }
+  | {
+      h: number;
+      s: number;
+      l: number;
+      a?: number;
+      toString: () => string;
+    }
+  | string;
+
 export default function convertColor(
   input: any,
   format: 'rgb' | 'rgba' | 'hsl' | 'hsla' | 'hex' = 'rgba',
-): string | object {
+): TConvertColorResult {
   // transforming the input into rgba object
   let rgbaObj: any = {};
   if (typeof input === 'string') {
@@ -44,7 +61,12 @@ export default function convertColor(
       input.g !== undefined &&
       input.b !== undefined
     ) {
-      rgbaObj = input;
+      rgbaObj = {
+        ...input,
+        toString: () => {
+          return `rgba(${input.r}, ${input.g}, ${input.b}, ${input.a ?? 1})`;
+        },
+      };
     } else if (
       input.h !== undefined &&
       input.s !== undefined &&
@@ -62,7 +84,9 @@ export default function convertColor(
         r: rgbaObj.r,
         g: rgbaObj.g,
         b: rgbaObj.b,
-        toString: () => `rgb(${rgbaObj.r}, ${rgbaObj.g}, ${rgbaObj.b})`,
+        toString() {
+          return `rgb(${rgbaObj.r}, ${rgbaObj.g}, ${rgbaObj.b})`;
+        },
       };
     case 'rgba':
       return rgbaObj;
@@ -71,7 +95,9 @@ export default function convertColor(
         h: hslaObj.h,
         s: hslaObj.s,
         l: hslaObj.l,
-        toString: () => `hsl(${hslaObj.h}, ${hslaObj.s}%, ${hslaObj.l}%)`,
+        toString() {
+          return `hsl(${hslaObj.h}, ${hslaObj.s}%, ${hslaObj.l}%)`;
+        },
       };
     case 'hsla':
       return hslaObj;

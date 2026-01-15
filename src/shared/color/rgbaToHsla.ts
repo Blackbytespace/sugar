@@ -68,7 +68,15 @@ function RGBAToHSLA(r, g, b, a) {
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
-  return { h, s, l, a, toString: () => `hsla(${h}, ${s}%, ${l}%, ${a})` };
+  return {
+    h,
+    s,
+    l,
+    a,
+    toString() {
+      return `hsla(${this.h}, ${this.s}%, ${this.l}%, ${this.a})`;
+    },
+  };
 }
 
 export type TRgbaToHslaResult = {
@@ -86,7 +94,7 @@ export default function rgbaToHsla(
   a = 1,
 ): TRgbaToHslaResult {
   // string support
-  if (typeof r === 'string') {
+  if (typeof r === 'string' && r.length !== 2) {
     if (!r.match(/^rgba?\(/)) {
       throw new Error(
         '<red>[rgbaToHsla]</red> When passing a string to the first parameter, it MUST be formatted like: rgba?(.*)',

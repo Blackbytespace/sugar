@@ -2,32 +2,6 @@ import hslaToRgba from './hslaToRgba.js';
 import parseColor from './parseColor.js';
 import rgbaToHex from './rgbaToHex.js';
 import rgbaToHsla from './rgbaToHsla.js';
-/**
- * @name                    convertColor
- * @namespace               shared.color
- * @type                    Function
- * @platform                js
- * @platform                node
- * @status                  stable
- *
- * This function take as input any color format like rgba Object, hsl Object, hsv Object, hex String, rgba String, hsl String or hsv String
- * and convert it into the wanted format like "rgba", "hsl", "hsv", "hex", "rgbaString", "hslString" or "hsvString"
- *
- * @param           {Mixed}               input           The input color to convert
- * @param           {String}              [format="rgba"]     The format wanted
- * @return          {Mixed}                               The converted color
- *
- * @todo      tests
- *
- * @snippet         convertColor($1, $2)
- *
- * @example         js
- * import { convertColor } from '@blackbyte/sugar/color';
- * convertColor('rgba(10,20,30,100)', 'rgba'); // => { r: 10, g: 20, b: 30, a: 100 }
- *
- * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
- */
 export default function convertColor(input, format = 'rgba') {
     // transforming the input into rgba object
     let rgbaObj = {};
@@ -39,7 +13,10 @@ export default function convertColor(input, format = 'rgba') {
         if (input.r !== undefined &&
             input.g !== undefined &&
             input.b !== undefined) {
-            rgbaObj = input;
+            rgbaObj = Object.assign(Object.assign({}, input), { toString: () => {
+                    var _a;
+                    return `rgba(${input.r}, ${input.g}, ${input.b}, ${(_a = input.a) !== null && _a !== void 0 ? _a : 1})`;
+                } });
         }
         else if (input.h !== undefined &&
             input.s !== undefined &&
@@ -54,7 +31,9 @@ export default function convertColor(input, format = 'rgba') {
                 r: rgbaObj.r,
                 g: rgbaObj.g,
                 b: rgbaObj.b,
-                toString: () => `rgb(${rgbaObj.r}, ${rgbaObj.g}, ${rgbaObj.b})`,
+                toString() {
+                    return `rgb(${rgbaObj.r}, ${rgbaObj.g}, ${rgbaObj.b})`;
+                },
             };
         case 'rgba':
             return rgbaObj;
@@ -63,7 +42,9 @@ export default function convertColor(input, format = 'rgba') {
                 h: hslaObj.h,
                 s: hslaObj.s,
                 l: hslaObj.l,
-                toString: () => `hsl(${hslaObj.h}, ${hslaObj.s}%, ${hslaObj.l}%)`,
+                toString() {
+                    return `hsl(${hslaObj.h}, ${hslaObj.s}%, ${hslaObj.l}%)`;
+                },
             };
         case 'hsla':
             return hslaObj;

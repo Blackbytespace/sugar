@@ -1,4 +1,7 @@
-import { distanceFromElementTopToViewportTop } from '../_exports.js'
+import {
+  distanceFromElementTopToViewportTop,
+  whenRemoved,
+} from '../_exports.js';
 
 /**
  * @name            viewportEvents
@@ -12,7 +15,7 @@ import { distanceFromElementTopToViewportTop } from '../_exports.js'
  *
  * @param 		  {HTMLElement} 						$elm  		                        The element to monitor
  * @param       {Partial<TViewportEventsSettings>}      [$settings={}]      Some settings to configure your detector
- * @return 		  {HTMLElement} 		                                          The passed HTMLElement
+ * @return 		  {Function} 		                                          The passed HTMLElement
  *
  * @setting         {String}        [offset=25]                 An offset to detect the enter/leave earlier or later
  * @setting         {Boolean}       [once=false]                Specify if you want to event to be dispatched only once
@@ -48,101 +51,109 @@ import { distanceFromElementTopToViewportTop } from '../_exports.js'
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TViewportEventsSettings = {
-  offset: number | string
-  once: boolean
-}
+  offset: number | string;
+  once: boolean;
+};
 
-const _viewportEventsInited = new WeakMap()
+export type TViewportEventsApi = {
+  $elm: HTMLElement;
+  cancel: () => void;
+};
+
+const _viewportEventsInited = new WeakMap();
 
 export default function viewportEvents(
   $elm: HTMLElement,
-  settings?: Partial<TViewportEventsSettings>
-): HTMLElement {
+  settings?: Partial<TViewportEventsSettings>,
+): TViewportEventsApi {
   let observer,
-    status = 'out'
+    status = 'out';
 
   if (_viewportEventsInited.has($elm)) {
-    return $elm
+    return {
+      $elm,
+      cancel: () => {},
+    };
   }
-  _viewportEventsInited.set($elm, true)
+  _viewportEventsInited.set($elm, true);
 
   const finalSettings: TViewportEventsSettings = {
     offset: 25,
     once: false,
-    ...(settings ?? {})
-  }
+    ...(settings ?? {}),
+  };
 
   observer = new IntersectionObserver(
     (entries, observer) => {
-      if (!entries.length) return
+      if (!entries.length) return;
 
-      const entry = entries.pop()
-      if (!entry) return
+      const entry = entries.pop();
+      if (!entry) return;
       if (entry.intersectionRatio > 0) {
         if (status === 'in') {
-          return
+          return;
         }
 
-        const distanceToTop = distanceFromElementTopToViewportTop($elm)
+        const distanceToTop = distanceFromElementTopToViewportTop($elm);
         if (distanceToTop < window.innerHeight * 0.5) {
           $elm.dispatchEvent(
             new CustomEvent('viewport.enter.above', {
-              bubbles: true
-            })
-          )
+              bubbles: true,
+            }),
+          );
         } else {
           $elm.dispatchEvent(
             new CustomEvent('viewport.enter.below', {
-              bubbles: true
-            })
-          )
+              bubbles: true,
+            }),
+          );
         }
 
-        status = 'in'
+        status = 'in';
         $elm.dispatchEvent(
           new CustomEvent('viewport.enter', {
-            bubbles: true
-          })
-        )
+            bubbles: true,
+          }),
+        );
         $elm.dispatchEvent(
           new CustomEvent('viewport.in', {
-            bubbles: true
-          })
-        )
+            bubbles: true,
+          }),
+        );
         if (finalSettings?.once) {
-          observer.disconnect()
+          observer.disconnect();
         }
       } else {
         if (status === 'out') {
-          return
+          return;
         }
 
-        const distanceToTop = distanceFromElementTopToViewportTop($elm)
+        const distanceToTop = distanceFromElementTopToViewportTop($elm);
         if (distanceToTop < window.innerHeight * 0.5) {
           $elm.dispatchEvent(
             new CustomEvent('viewport.leave.above', {
-              bubbles: true
-            })
-          )
+              bubbles: true,
+            }),
+          );
         } else {
           $elm.dispatchEvent(
             new CustomEvent('viewport.leave.below', {
-              bubbles: true
-            })
-          )
+              bubbles: true,
+            }),
+          );
         }
 
-        status = 'out'
+        status = 'out';
         $elm.dispatchEvent(
           new CustomEvent('viewport.leave', {
-            bubbles: true
-          })
-        )
+            bubbles: true,
+          }),
+        );
         $elm.dispatchEvent(
           new CustomEvent('viewport.out', {
-            bubbles: true
-          })
-        )
+            bubbles: true,
+          }),
+        );
       }
     },
     {
@@ -151,11 +162,21 @@ export default function viewportEvents(
         typeof finalSettings.offset === 'string'
           ? finalSettings.offset
           : `${finalSettings.offset}px`,
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-    }
-  )
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    },
+  );
 
-  observer.observe($elm)
+  observer.observe($elm);
 
-  return $elm
+  // clean up on remove
+  whenRemoved($elm).then(() => {
+    observer.disconnect();
+  });
+
+  return {
+    $elm,
+    cancel: () => {
+      observer.disconnect();
+    },
+  };
 }

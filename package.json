@@ -1,7 +1,7 @@
 {
   "name": "@blackbyte/sugar",
   "description": "The toolkit that you missed... like a sugar in your coffee!",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.19",
   "keywords": [
     "javascript",
     "typescript",
@@ -22,7 +22,7 @@
     "build": "tsc",
     "doc.build": "blackbyte docmap.build --mdx --outPath ../website-sugar/docmap.json --outDir ../website-sugar/src/content/sugar",
     "test": "vitest",
-    "publish": "npm publish --access public --tag beta"
+    "publish": "npm publish --access public --tag latest"
   },
   "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
   "contributors": [

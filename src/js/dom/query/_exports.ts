@@ -8,6 +8,7 @@ import nextElement from './nextElement.js';
 import previousElement from './previousElement.js';
 import querySelector from './querySelector.js';
 import querySelectorAll from './querySelectorAll.js';
+import querySelectorAllUp from './querySelectorAllUp.js';
 import querySelectorLive from './querySelectorLive.js';
 import querySelectorUp from './querySelectorUp.js';
 
@@ -22,6 +23,7 @@ export {
   previousElement as __previousElement,
   querySelector as __querySelector,
   querySelectorAll as __querySelectorAll,
+  querySelectorAllUp as __querySelectorAllUp,
   querySelectorLive as __querySelectorLive,
   querySelectorUp as __querySelectorUp,
   closestElement,
@@ -34,6 +36,7 @@ export {
   previousElement,
   querySelector,
   querySelectorAll,
+  querySelectorAllUp,
   querySelectorLive,
   querySelectorUp,
 };

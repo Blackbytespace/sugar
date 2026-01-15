@@ -1,3 +1,4 @@
+import { isInViewport } from '@blackbyte/sugar/is';
 import uniqid from '../../string/uniqid.js';
 
 /**
@@ -14,6 +15,9 @@ import uniqid from '../../string/uniqid.js';
  * @feature       Some settings available to tweak the behavior
  *
  * @setting     {String}      [offset='10px']         An offset to detect sooner or later the element entering in the viewport
+ * @setting     {Function}    [whenIn]                A callback function to call when the element enter the viewport
+ * @setting     {Function}    [whenOut]               A callback function to call when the element leave the viewport
+ * @setting     {Boolean}     [once=true]             Specify if the promise should be resolved only once (the first time the element enter the viewport)
  *
  * @param 		{HTMLElement} 				                      $elm 					      The element to monitor
  * @param 		{Partial<TWhenInViewportSettings>} 					[settings={}] 		  Some settings to tweak the detection behavior
@@ -66,6 +70,17 @@ export default function whenInViewport(
     whenOut: undefined,
     ...(settings ?? {}),
   };
+
+  // if the element is already in the viewport, resolve immediately
+  if (isInViewport($elm)) {
+    // trigger the "whenIn" callback
+    finalSettings.whenIn?.($elm);
+
+    // stop here if the "once" setting is true
+    if (finalSettings.once) {
+      return Promise.resolve($elm) as TWhenInViewportResult;
+    }
+  }
 
   let observer;
 

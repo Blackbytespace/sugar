@@ -17,6 +17,7 @@ import whenRemoved from './whenRemoved.js';
 import whenScriptLoaded from './whenScriptLoaded.js';
 import whenStylesheetsReady from './whenStylesheetsReady.js';
 import whenTransitionEnd from './whenTransitionEnd.js';
+import whenVideoReady from './whenVideoReady.js';
 import whenVisible from './whenVisible.js';
 export {
   when as __when,
@@ -38,6 +39,7 @@ export {
   whenScriptLoaded as __whenScriptLoaded,
   whenStylesheetsReady as __whenStylesheetsReady,
   whenTransitionEnd as __whenTransitionEnd,
+  whenVideoReady as __whenVideoReady,
   whenVisible as __whenVisible,
   when,
   whenAnimationEnd,
@@ -59,5 +61,6 @@ export {
   whenStylesheetsReady,
   whenTransitionEnd,
   WhenTriggers,
+  whenVideoReady,
   whenVisible,
 };

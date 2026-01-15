@@ -28,6 +28,7 @@ export type TParseRgbaResult = {
   g: number;
   b: number;
   a: number;
+  toString: () => string;
 };
 
 export default function parseRgba(rgbaString: string): TParseRgbaResult {
@@ -43,5 +44,8 @@ export default function parseRgba(rgbaString: string): TParseRgbaResult {
     g: parseInt(array[1]),
     b: parseInt(array[2]),
     a: array[3] ? parseInt(array[3]) : 1,
+    toString() {
+      return `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`;
+    },
   };
 }

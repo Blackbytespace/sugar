@@ -27,5 +27,6 @@ export type TParseHslaResult = {
     s: number;
     l: number;
     a: number;
+    toString: () => string;
 };
 export default function parseHsla(hslaString: string): TParseHslaResult;

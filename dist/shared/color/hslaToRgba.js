@@ -93,8 +93,8 @@ export default function hslaToRgba(h, s, l, a = 1) {
         g: rgba.g,
         b: rgba.b,
         a: rgba.a !== undefined ? rgba.a : 1, // default alpha to 1 if not provided
-        toString: () => {
-            return `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+        toString() {
+            return `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`;
         },
     };
 }

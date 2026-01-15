@@ -12,7 +12,8 @@ import commonVideoFileExtensions from './commonVideoFileExtensions.js';
  * @platform        js
  * @status          stable
  *
- * This function allows you to get an array of common media file extensions with or without the dot
+ * This function allows you to get an array of common media file extensions with or without the dot.
+ * This includes image, video and audio file extensions.
  *
  * @param       {TCommonFileExtensionsSettings}           [settings={}]         Settings to customize the function behavior
  * @return      {Array<String>}                           The array of extensions

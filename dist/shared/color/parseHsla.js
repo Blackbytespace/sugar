@@ -35,6 +35,9 @@ export default function parseHsla(hslaString) {
         s: parseFloat(array[1]),
         l: parseFloat(array[2]),
         a: array[3] ? parseFloat(array[3]) : 1,
+        toString() {
+            return `hsla(${this.h}, ${this.s}, ${this.l}, ${this.a})`;
+        },
     };
 }
 //# sourceMappingURL=parseHsla.js.map

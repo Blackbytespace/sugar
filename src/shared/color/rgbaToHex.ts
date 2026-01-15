@@ -47,7 +47,7 @@ export default function rgbaToHex(
   a = 1,
 ): string {
   // string support
-  if (typeof r === 'string') {
+  if (typeof r === 'string' && r.length !== 2) {
     if (!r.match(/^rgba?\(/)) {
       throw new Error(
         '<red>[rgbaToHex]</red> When passing a string to the first parameter, it MUST be formatted like: rgba?(.*)',

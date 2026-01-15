@@ -27,5 +27,6 @@ export type TParseRgbaResult = {
     g: number;
     b: number;
     a: number;
+    toString: () => string;
 };
 export default function parseRgba(rgbaString: string): TParseRgbaResult;

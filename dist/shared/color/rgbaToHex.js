@@ -41,7 +41,7 @@ function RGBToHex(r, g, b) {
 }
 export default function rgbaToHex(r, g, b, a = 1) {
     // string support
-    if (typeof r === 'string') {
+    if (typeof r === 'string' && r.length !== 2) {
         if (!r.match(/^rgba?\(/)) {
             throw new Error('<red>[rgbaToHex]</red> When passing a string to the first parameter, it MUST be formatted like: rgba?(.*)');
         }

@@ -10,7 +10,7 @@
  *
  * @param 		  {HTMLElement} 						$elm  		                        The element to monitor
  * @param       {Partial<TViewportEventsSettings>}      [$settings={}]      Some settings to configure your detector
- * @return 		  {HTMLElement} 		                                          The passed HTMLElement
+ * @return 		  {Function} 		                                          The passed HTMLElement
  *
  * @setting         {String}        [offset=25]                 An offset to detect the enter/leave earlier or later
  * @setting         {Boolean}       [once=false]                Specify if you want to event to be dispatched only once
@@ -49,4 +49,8 @@ export type TViewportEventsSettings = {
     offset: number | string;
     once: boolean;
 };
-export default function viewportEvents($elm: HTMLElement, settings?: Partial<TViewportEventsSettings>): HTMLElement;
+export type TViewportEventsApi = {
+    $elm: HTMLElement;
+    cancel: () => void;
+};
+export default function viewportEvents($elm: HTMLElement, settings?: Partial<TViewportEventsSettings>): TViewportEventsApi;
