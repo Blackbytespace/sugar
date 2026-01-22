@@ -1,3 +1,4 @@
+export * from './canvas/_exports.js';
 export * from './css/_exports.js';
 export * from './distance/_exports.js';
 export * from './event/_exports.js';
@@ -10,6 +11,7 @@ export * from './on/_exports.js';
 export * from './position/_exports.js';
 export * from './query/_exports.js';
 export * from './script/_exports.js';
+export * from './scroll/_exports.js';
 export * from './selection/_exports.js';
 export * from './style/_exports.js';
 export * from './when/_exports.js';
