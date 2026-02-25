@@ -23,67 +23,31 @@
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function isInViewport(elm: HTMLElement): boolean {
-  const scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop,
-    scrollLeft =
-      document.documentElement.scrollLeft || document.body.scrollLeft;
+export default function isInViewport($elm: HTMLElement): boolean {
+  // Check if element exists
+  if (!$elm) return false;
 
-  const containerHeight =
-      window.innerHeight || document.documentElement.clientHeight,
-    containerWidth = window.innerWidth || document.documentElement.clientWidth,
-    rect = elm.getBoundingClientRect();
+  // Get the bounding rectangle of the element relative to the viewport
+  const rect = $elm.getBoundingClientRect();
 
-  const top = rect.top - scrollTop,
-    left = rect.left - scrollLeft,
-    right = rect.right - scrollLeft,
-    bottom = rect.bottom - scrollTop;
+  // Get viewport dimensions
+  const viewportWidth =
+    window.innerWidth || document.documentElement.clientWidth;
+  const viewportHeight =
+    window.innerHeight || document.documentElement.clientHeight;
 
-  const isTopIn = top - containerHeight <= 0,
-    isBottomIn = bottom <= containerHeight,
-    isLeftIn = left >= 0 && left <= containerWidth,
-    isRightIn = right >= 0 && right <= containerWidth;
+  // Check if element has zero dimensions (hidden elements)
+  if (rect.width === 0 || rect.height === 0) return false;
 
-  // if at least top|bottom AND left|right
-  if ((isTopIn || isBottomIn) && (isLeftIn || isRightIn)) {
-    return true;
-  }
+  // Check if any part of the element is visible in the viewport
+  // An element is in viewport if:
+  // - Its right edge is to the right of the viewport's left edge (rect.right > 0)
+  // - Its left edge is to the left of the viewport's right edge (rect.left < viewportWidth)
+  // - Its bottom edge is below the viewport's top edge (rect.bottom > 0)
+  // - Its top edge is above the viewport's bottom edge (rect.top < viewportHeight)
 
-  // is rect is bigger than viewport in all directions
-  if (
-    top <= 0 &&
-    bottom >= containerHeight &&
-    left <= 0 &&
-    right >= containerWidth
-  ) {
-    return true;
-  }
+  const horizontallyVisible = rect.right > 0 && rect.left < viewportWidth;
+  const verticallyVisible = rect.bottom > 0 && rect.top < viewportHeight;
 
-  if (top <= 0 && bottom >= containerHeight && left <= 0 && isRightIn) {
-    return true;
-  }
-
-  if (
-    top <= 0 &&
-    bottom >= containerHeight &&
-    right >= containerWidth &&
-    isLeftIn
-  ) {
-    return true;
-  }
-
-  if (left <= 0 && right >= containerWidth && top <= 0 && isBottomIn) {
-    return true;
-  }
-
-  if (
-    left <= 0 &&
-    right >= containerWidth &&
-    bottom >= containerHeight &&
-    isTopIn
-  ) {
-    return true;
-  }
-
-  return false;
+  return horizontallyVisible && verticallyVisible;
 }
