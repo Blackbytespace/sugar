@@ -1,3 +1,4 @@
+import isInViewport from '../../is/isInViewport.js';
 import {
   distanceFromElementTopToViewportTop,
   whenRemoved,
@@ -66,7 +67,7 @@ export default function viewportEvents(
   $elm: HTMLElement,
   settings?: Partial<TViewportEventsSettings>,
 ): TViewportEventsApi {
-  let observer,
+  let observer: IntersectionObserver,
     status = 'out';
 
   if (_viewportEventsInited.has($elm)) {
@@ -83,77 +84,105 @@ export default function viewportEvents(
     ...(settings ?? {}),
   };
 
-  observer = new IntersectionObserver(
-    (entries, observer) => {
-      if (!entries.length) return;
+  // check if the element is already in the viewport
+  // when the user has changed tab and come back
+  function visibilitychangeHandler() {
+    if (document.visibilityState === 'visible' && isInViewport($elm)) {
+      onIn();
+    } else {
+      onOut();
+    }
+  }
+  document.addEventListener('visibilitychange', visibilitychangeHandler);
 
+  // function to stop observing the element and remove the event listener
+  function cancel() {
+    observer?.disconnect();
+    document.removeEventListener('visibilitychange', visibilitychangeHandler);
+  }
+
+  // when the element
+  function onIn() {
+    if (status === 'in') {
+      return;
+    }
+
+    const distanceToTop = distanceFromElementTopToViewportTop($elm);
+    if (distanceToTop < window.innerHeight * 0.5) {
+      $elm.dispatchEvent(
+        new CustomEvent('viewport.enter.above', {
+          bubbles: true,
+        }),
+      );
+    } else {
+      $elm.dispatchEvent(
+        new CustomEvent('viewport.enter.below', {
+          bubbles: true,
+        }),
+      );
+    }
+
+    status = 'in';
+    $elm.dispatchEvent(
+      new CustomEvent('viewport.enter', {
+        bubbles: true,
+      }),
+    );
+    $elm.dispatchEvent(
+      new CustomEvent('viewport.in', {
+        bubbles: true,
+      }),
+    );
+    if (finalSettings?.once) {
+      observer.disconnect();
+    }
+  }
+
+  function onOut() {
+    if (status === 'out') {
+      return;
+    }
+
+    const distanceToTop = distanceFromElementTopToViewportTop($elm);
+    if (distanceToTop < window.innerHeight * 0.5) {
+      $elm.dispatchEvent(
+        new CustomEvent('viewport.leave.above', {
+          bubbles: true,
+        }),
+      );
+    } else {
+      $elm.dispatchEvent(
+        new CustomEvent('viewport.leave.below', {
+          bubbles: true,
+        }),
+      );
+    }
+
+    status = 'out';
+    $elm.dispatchEvent(
+      new CustomEvent('viewport.leave', {
+        bubbles: true,
+      }),
+    );
+    $elm.dispatchEvent(
+      new CustomEvent('viewport.out', {
+        bubbles: true,
+      }),
+    );
+  }
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      if (!entries.length) return;
       const entry = entries.pop();
       if (!entry) return;
+
+      // if the element is intersecting the viewport, we consider it as "in"
       if (entry.intersectionRatio > 0) {
-        if (status === 'in') {
-          return;
-        }
-
-        const distanceToTop = distanceFromElementTopToViewportTop($elm);
-        if (distanceToTop < window.innerHeight * 0.5) {
-          $elm.dispatchEvent(
-            new CustomEvent('viewport.enter.above', {
-              bubbles: true,
-            }),
-          );
-        } else {
-          $elm.dispatchEvent(
-            new CustomEvent('viewport.enter.below', {
-              bubbles: true,
-            }),
-          );
-        }
-
-        status = 'in';
-        $elm.dispatchEvent(
-          new CustomEvent('viewport.enter', {
-            bubbles: true,
-          }),
-        );
-        $elm.dispatchEvent(
-          new CustomEvent('viewport.in', {
-            bubbles: true,
-          }),
-        );
-        if (finalSettings?.once) {
-          observer.disconnect();
-        }
+        onIn();
+        // if the element is not intersecting the viewport, we consider it as "out"
       } else {
-        if (status === 'out') {
-          return;
-        }
-
-        const distanceToTop = distanceFromElementTopToViewportTop($elm);
-        if (distanceToTop < window.innerHeight * 0.5) {
-          $elm.dispatchEvent(
-            new CustomEvent('viewport.leave.above', {
-              bubbles: true,
-            }),
-          );
-        } else {
-          $elm.dispatchEvent(
-            new CustomEvent('viewport.leave.below', {
-              bubbles: true,
-            }),
-          );
-        }
-
-        status = 'out';
-        $elm.dispatchEvent(
-          new CustomEvent('viewport.leave', {
-            bubbles: true,
-          }),
-        );
-        $elm.dispatchEvent(
-          new CustomEvent('viewport.out', {
-            bubbles: true,
-          }),
-        );
+        onOut();
       }
     },
     {
@@ -170,13 +199,11 @@ export default function viewportEvents(
 
   // clean up on remove
   whenRemoved($elm).then(() => {
-    observer.disconnect();
+    cancel();
   });
 
   return {
     $elm,
-    cancel: () => {
-      observer.disconnect();
-    },
+    cancel,
   };
 }
