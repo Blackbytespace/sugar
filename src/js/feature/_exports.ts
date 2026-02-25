@@ -6,7 +6,7 @@ import sectionClasses from './sectionClasses.js';
 export {
   disableTitleTooltips as __disableTitleTooltips,
   features as __features,
-  scrollClasses as __scrolledClasses,
+  scrollClasses as __scrollClasses,
   sectionClasses as __sectionClasses,
   disableTitleTooltips,
   features,
