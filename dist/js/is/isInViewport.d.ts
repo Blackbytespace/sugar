@@ -23,4 +23,4 @@
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function isInViewport(elm: HTMLElement): boolean;
+export default function isInViewport($elm: HTMLElement): boolean;
