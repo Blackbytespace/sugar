@@ -1,9 +1,9 @@
-import aes from './aes.js';
-import base64 from './base64.js';
-import md5 from './md5.js';
-import object from './object.js';
-import sha256 from './sha256.js';
-import sha512 from './sha512.js';
+import aes from './aes/aes.js';
+import base64 from './base64/base64.js';
+import md5 from './md5/md5.js';
+import object from './object/object.js';
+import sha256 from './sha256/sha256.js';
+import sha512 from './sha512/sha512.js';
 
 export {
   aes as __aes,

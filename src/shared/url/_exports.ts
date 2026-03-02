@@ -1,9 +1,9 @@
-import getVimeoVideoIdFromUrl from './getVimeoVideoIdFromUrl.js';
-import getYoutubeVideoIdFromUrl from './getYoutubeVideoIdFromUrl.js';
-import gravatarUrl from './gravatarUrl.js';
-import parseSchema from './parseSchema.js';
-import queryStringToObject from './queryStringToObject.js';
-import urlFromString from './urlFromString.js';
+import getVimeoVideoIdFromUrl from './getVimeoVideoIdFromUrl/getVimeoVideoIdFromUrl.js';
+import getYoutubeVideoIdFromUrl from './getYoutubeVideoIdFromUrl/getYoutubeVideoIdFromUrl.js';
+import gravatarUrl from './gravatarUrl/gravatarUrl.js';
+import parseSchema from './parseSchema/parseSchema.js';
+import queryStringToObject from './queryStringToObject/queryStringToObject.js';
+import urlFromString from './urlFromString/urlFromString.js';
 
 export {
   getVimeoVideoIdFromUrl as __getVimeoVideoIdFromUrl,
