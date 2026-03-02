@@ -1,7 +1,7 @@
 import fs from 'fs';
-import ensureDirSync from './ensureDirSync.js';
-import moveSync from './moveSync.js';
-import unlinkSync from './unlinkSync.js';
+import ensureDirSync from './ensureDirSync/ensureDirSync.js';
+import moveSync from './moveSync/moveSync.js';
+import unlinkSync from './unlinkSync/unlinkSync.js';
 
 /**
  * @name            renameSync

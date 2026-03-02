@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import composerVendorDir from './composerVendorDir.js';
+import composerVendorDir from '../composerVendorDir/composerVendorDir.js';
 
 /**
  * @name                    composerPackageDir

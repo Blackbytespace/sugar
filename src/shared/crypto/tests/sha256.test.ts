@@ -1,4 +1,4 @@
-import sha256 from '../sha256.js';
+import sha256 from '../sha256/sha256.js';
 
 describe('shared.crypto.base64', () => {
   test('Encrypt', () => {

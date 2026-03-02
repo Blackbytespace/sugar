@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import renameSync from './renameSync.js';
+import renameSync from './renameSync/renameSync.js';
 export default function rename(src, newName, settings) {
     return __awaiter(this, void 0, void 0, function* () {
         renameSync(src, newName, settings);

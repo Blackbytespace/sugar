@@ -1,4 +1,4 @@
-import parseRgba from './parseRgba.js';
+import parseRgba from './parseRgba/parseRgba.js';
 /**
  * @name                    rgba2hex
  * @namespace               shared.color

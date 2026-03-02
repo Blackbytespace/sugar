@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import nodeModulesDir from './nodeModulesDir.js';
+import nodeModulesDir from '../nodeModulesDir/nodeModulesDir.js';
 
 /**
  * @name                    packageDir

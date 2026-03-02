@@ -1,7 +1,7 @@
 import unique from '../array/unique.js';
-import commonAudioFileExtensions from './commonAudioFileExtensions.js';
-import commonImageFileExtensions from './commonImageFileExtensions.js';
-import commonVideoFileExtensions from './commonVideoFileExtensions.js';
+import commonAudioFileExtensions from './commonAudioFileExtensions/commonAudioFileExtensions.js';
+import commonImageFileExtensions from './commonImageFileExtensions/commonImageFileExtensions.js';
+import commonVideoFileExtensions from './commonVideoFileExtensions/commonVideoFileExtensions.js';
 /**
  * @name            commonMediaFileExtensions
  * @namespace       shared.extension

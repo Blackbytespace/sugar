@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as fs from 'fs';
-import ensureDirSync from './ensureDirSync.js';
-import __folderPath from './folderPath.js';
+import ensureDirSync from './ensureDirSync/ensureDirSync.js';
+import __folderPath from './folderPath/folderPath.js';
 /**
  * @name                writeJson
  * @namespace           node.fs

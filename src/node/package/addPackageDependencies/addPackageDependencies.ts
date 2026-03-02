@@ -3,7 +3,7 @@ import fs from 'fs';
 import * as semver from 'semver';
 import { readJsonSync } from '@blackbyte/sugar/fs';
 import { writeJsonSync } from '@blackbyte/sugar/fs';
-import packageRootDir from './packageRootDir.js';
+import packageRootDir from '../packageRootDir/packageRootDir.js';
 
 /**
  * @name                    addPackageDependencies

@@ -1,5 +1,5 @@
-import { TScrollClassesSettings } from './scrollClasses.js';
-import { TSectionClassesSettings } from './sectionClasses.js';
+import { TScrollClassesSettings } from '../scrollClasses/scrollClasses.js';
+import { TSectionClassesSettings } from '../sectionClasses/sectionClasses.js';
 /**
  * @name            features
  * @namespace       js.dom.feature

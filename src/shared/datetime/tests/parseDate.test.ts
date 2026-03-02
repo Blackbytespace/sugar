@@ -1,5 +1,5 @@
 // @ts-nocheck
-import parseDate from '../parseDate.js';
+import parseDate from '../parseDate/parseDate.js';
 
 describe('shared.datetime.parseDate', () => {
   test('Parse some standard ISO date strings', () => {

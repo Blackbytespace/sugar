@@ -1,5 +1,5 @@
 import { isScrollable } from '@blackbyte/sugar/is';
-import querySelectorUp from './querySelectorUp.js';
+import querySelectorUp from './querySelectorUp/querySelectorUp.js';
 /**
  * @name                closestScrollableElement
  * @namespace           js.dom.query

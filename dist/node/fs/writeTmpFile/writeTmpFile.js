@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import __path from 'path';
 import tmpDir from 'temp-dir';
-import uniqid from '../../node/string/uniqid.js';
+import uniqid from '../../string/uniqid/uniqid.js';
 import { toString } from '@blackbyte/sugar/string';
-import writeFileSync from './writeFileSync.js';
+import writeFileSync from './writeFileSync/writeFileSync.js';
 export default function writeTmpFile(data_1) {
     return __awaiter(this, arguments, void 0, function* (data, settings = {}) {
         var _a;

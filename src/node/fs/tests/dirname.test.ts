@@ -1,5 +1,5 @@
 import { describe, it } from 'vitest';
-import __dirname from '../dirname.js';
+import __dirname from '../dirname/dirname.js';
 
 describe('sugar.node.fs.dirname', () => {
   it('should get the dirname correctly', () => {

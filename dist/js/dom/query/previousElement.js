@@ -1,4 +1,4 @@
-import matches from './matches.js';
+import matches from './matches/matches.js';
 /**
  * @name          previousElement
  * @namespace     js.dom.query

@@ -1,5 +1,5 @@
 import fs from 'fs';
-import composerPackageDir from './composerPackageDir.js';
+import composerPackageDir from '../composerPackageDir/composerPackageDir.js';
 export default function composerJsonSync(nameOrPath, settings) {
     settings = Object.assign({ cwd: process.cwd(), monorepo: false, checkExistence: true }, (settings !== null && settings !== void 0 ? settings : {}));
     const packageDir = composerPackageDir(nameOrPath, settings);

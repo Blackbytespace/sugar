@@ -1,5 +1,5 @@
 import __isDirectory from '../is/isDirectory.js';
-import __fileHashSync from './fileHashSync.js';
+import __fileHashSync from './fileHashSync/fileHashSync.js';
 import * as fs from 'fs';
 import sha256 from '../../shared/crypto/sha256.js';
 export default function folderHashSync(folderPath, settings = {}) {

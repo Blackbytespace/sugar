@@ -1,4 +1,4 @@
-import pickRandom from '../pickRandom.js';
+import pickRandom from '../pickRandom/pickRandom.js';
 
 describe('shared.array.pickRandom', () => {
   it('Should pick a random item from the passed array', () => {

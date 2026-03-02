@@ -1,7 +1,7 @@
 import hasAnsi from 'has-ansi';
 import { describe, expect, it } from 'vitest';
 import parseHtml from '../parseHtml';
-import tagsMap from '../tagsMap.js';
+import tagsMap from '../tagsMap/tagsMap.js';
 
 // Test cases for parseHtml
 

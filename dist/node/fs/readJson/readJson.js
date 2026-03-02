@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as fs from 'fs';
-import readJsonSync from './readJsonSync.js';
+import readJsonSync from './readJsonSync/readJsonSync.js';
 /**
  * @name            readJson
  * @namespace       node.fs

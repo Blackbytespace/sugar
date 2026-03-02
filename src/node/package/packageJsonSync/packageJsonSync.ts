@@ -1,5 +1,5 @@
 import fs from 'fs';
-import __packageDir from './packageDir.js';
+import __packageDir from '../packageDir/packageDir.js';
 
 /**
  * @name                    packageJsonSync

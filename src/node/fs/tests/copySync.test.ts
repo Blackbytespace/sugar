@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { describe, it } from 'vitest';
-import copySync from '../copy.js';
+import copySync from '../copy/copy.js';
 
 describe('sugar.node.fs.copySync', () => {
   it('should copy correctly a file', async () => {

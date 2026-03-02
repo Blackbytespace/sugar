@@ -1,5 +1,5 @@
 // @ts-nocheck
-import parseHsla from './parseHsla.js';
+import parseHsla from './parseHsla/parseHsla.js';
 
 /**
  * @name              hslaToHexa

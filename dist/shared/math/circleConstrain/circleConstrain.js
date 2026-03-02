@@ -1,4 +1,4 @@
-import distanceBetween from './distanceBetween.js';
+import distanceBetween from './distanceBetween/distanceBetween.js';
 export default function circleConstrain(center, radius, point) {
     const dist = distanceBetween(center, point);
     if (dist <= radius) {

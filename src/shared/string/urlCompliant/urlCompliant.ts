@@ -1,4 +1,4 @@
-import __simplifySpecialChars from './simplifySpecialChars.js';
+import __simplifySpecialChars from './simplifySpecialChars/simplifySpecialChars.js';
 
 /**
  * @name            urlCompliant

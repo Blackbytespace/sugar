@@ -1,4 +1,4 @@
-import convert24To12 from '../convert24To12.js';
+import convert24To12 from '../convert24To12/convert24To12.js';
 
 describe('shared.time.convert24To12', () => {
   test('Passing a number', () => {

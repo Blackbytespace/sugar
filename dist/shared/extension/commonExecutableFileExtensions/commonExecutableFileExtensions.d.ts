@@ -1,4 +1,4 @@
-import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
+import { type TCommonFileExtensionsSettings } from './commonFileExtensions/commonFileExtensions.js';
 /**
  * @name            commonExecutableFileExtensions
  * @namespace       shared.extension

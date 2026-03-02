@@ -1,5 +1,5 @@
 // @ts-nocheck
-import toYyyyMmDd from '../toYyyyMmDd.js';
+import toYyyyMmDd from '../toYyyyMmDd/toYyyyMmDd.js';
 
 describe('shared.datetime.toYyyyMmDd', () => {
   test('Convert simple ISO date to YYYY-MM-DD', () => {

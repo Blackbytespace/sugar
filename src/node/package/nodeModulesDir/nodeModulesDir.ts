@@ -1,5 +1,5 @@
 import fs from 'fs';
-import packageRootDir from './packageRootDir.js';
+import packageRootDir from '../packageRootDir/packageRootDir.js';
 
 /**
  * @name                    nodeModulesDir

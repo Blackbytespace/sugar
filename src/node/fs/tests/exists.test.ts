@@ -1,5 +1,5 @@
 import { describe, it } from 'vitest';
-import exists from '../exists.js';
+import exists from '../exists/exists.js';
 
 describe('sugar.node.fs.exists', () => {
   it('should detect a file correctly', async () => {

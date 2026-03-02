@@ -1,5 +1,5 @@
-import __isCjs from './isCjs.js';
-import __isEsm from './isEsm.js';
+import __isCjs from './isCjs/isCjs.js';
+import __isEsm from './isEsm/isEsm.js';
 /**
  * @name            isModuleSystem
  * @namespace       shared.is

@@ -1,4 +1,4 @@
-import uniqid from '../string/uniqid.js';
+import uniqid from '../../string/uniqid/uniqid.js';
 
 /**
  * @name 		            escapeQueue

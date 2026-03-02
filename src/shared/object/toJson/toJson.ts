@@ -1,5 +1,5 @@
-import mapDeep from './mapDeep.js';
-import set from './set.js';
+import mapDeep from './mapDeep/mapDeep.js';
+import set from './set/set.js';
 
 /**
  * @name                    toJson

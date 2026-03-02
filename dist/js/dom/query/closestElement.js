@@ -1,4 +1,4 @@
-import querySelectorUp from './querySelectorUp.js';
+import querySelectorUp from './querySelectorUp/querySelectorUp.js';
 /**
  * @name                closestElement
  * @namespace           js.dom.query

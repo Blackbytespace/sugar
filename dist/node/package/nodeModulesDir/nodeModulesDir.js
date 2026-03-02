@@ -1,5 +1,5 @@
 import fs from 'fs';
-import packageRootDir from './packageRootDir.js';
+import packageRootDir from '../packageRootDir/packageRootDir.js';
 export default function nodeModulesDir(settings) {
     const set = Object.assign({ cwd: process.cwd(), monorepo: false, checkExistence: true }, (settings !== null && settings !== void 0 ? settings : {}));
     let nodeModulesDir = `${packageRootDir(set.cwd, {

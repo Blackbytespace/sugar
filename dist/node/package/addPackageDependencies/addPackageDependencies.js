@@ -3,7 +3,7 @@ import fs from 'fs';
 import * as semver from 'semver';
 import { readJsonSync } from '@blackbyte/sugar/fs';
 import { writeJsonSync } from '@blackbyte/sugar/fs';
-import packageRootDir from './packageRootDir.js';
+import packageRootDir from '../packageRootDir/packageRootDir.js';
 export default function addPackageDependencies(deps, settings) {
     settings = Object.assign({ cwd: process.cwd(), dev: false, global: false, install: false }, (settings !== null && settings !== void 0 ? settings : {}));
     return new Promise((resolve, reject) => {

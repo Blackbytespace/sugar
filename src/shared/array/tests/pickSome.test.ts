@@ -1,4 +1,4 @@
-import pickSome from '../pickSome.js';
+import pickSome from '../pickSome/pickSome.js';
 
 describe('shared.array.pickSome', () => {
   it('Should pick some items from the passed array', () => {

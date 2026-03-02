@@ -1,5 +1,5 @@
-import flatten from './flatten.js';
-import __set from './set.js';
+import flatten from './flatten/flatten.js';
+import __set from './set/set.js';
 
 /**
  * @name                        findDeep

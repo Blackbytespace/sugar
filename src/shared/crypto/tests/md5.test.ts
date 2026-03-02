@@ -1,4 +1,4 @@
-import md5 from '../md5.js';
+import md5 from '../md5/md5.js';
 
 describe('shared.crypto.md5', () => {
   test('Encrypt', () => {

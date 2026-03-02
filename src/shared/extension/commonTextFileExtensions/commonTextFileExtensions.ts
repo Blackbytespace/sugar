@@ -1,6 +1,6 @@
 import unique from '../array/unique.js';
-import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
-import commonProgrammingFileExtensions from './commonProgrammingFileExtensions.js';
+import { type TCommonFileExtensionsSettings } from './commonFileExtensions/commonFileExtensions.js';
+import commonProgrammingFileExtensions from './commonProgrammingFileExtensions/commonProgrammingFileExtensions.js';
 
 /**
  * @name            commonTextFileExtensions

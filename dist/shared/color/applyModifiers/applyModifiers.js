@@ -1,6 +1,6 @@
-import hslaToRgba from './hslaToRgba.js';
-import parseColor from './parseColor.js';
-import rgbaToHex from './rgbaToHex.js';
+import hslaToRgba from './hslaToRgba/hslaToRgba.js';
+import parseColor from './parseColor/parseColor.js';
+import rgbaToHex from './rgbaToHex/rgbaToHex.js';
 export default function applyModifiers(input, modifiers = {}) {
     let hsla = parseColor(input, 'hsla');
     // apply modifiers

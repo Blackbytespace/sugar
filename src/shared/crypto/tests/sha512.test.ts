@@ -1,4 +1,4 @@
-import sha512 from '../sha512.js';
+import sha512 from '../sha512/sha512.js';
 
 describe('shared.crypto.base64', () => {
   test('Encrypt', () => {

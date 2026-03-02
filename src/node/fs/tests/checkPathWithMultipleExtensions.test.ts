@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import checkPathWithMultipleExtensions from '../checkPathWithMultipleExtensions.js';
+import checkPathWithMultipleExtensions from '../checkPathWithMultipleExtensions/checkPathWithMultipleExtensions.js';
 
 describe('sugar.node.fs.checkPathWithMultipleExtensions', () => {
   it('should find the test.php file', () => {

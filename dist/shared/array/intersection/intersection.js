@@ -1,4 +1,4 @@
-import sameItems from './sameItems.js';
+import sameItems from './sameItems/sameItems.js';
 /**
  * @name            intersection
  * @namespace       shared.array

@@ -1,5 +1,5 @@
-import getTheme from './getTheme.js';
-import setTheme from './setTheme.js';
+import getTheme from '../getTheme/getTheme.js';
+import setTheme from '../setTheme/setTheme.js';
 
 /**
  * @name            restoreTheme

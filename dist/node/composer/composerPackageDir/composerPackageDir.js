@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import composerVendorDir from './composerVendorDir.js';
+import composerVendorDir from '../composerVendorDir/composerVendorDir.js';
 export default function composerJsonSync(nameOrPath, settings) {
     settings = Object.assign({ cwd: process.cwd(), monorepo: false, checkExistence: true }, (settings !== null && settings !== void 0 ? settings : {}));
     // absolute path

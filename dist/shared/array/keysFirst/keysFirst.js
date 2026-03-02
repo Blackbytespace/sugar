@@ -1,4 +1,4 @@
-import unique from './unique.js';
+import unique from './unique/unique.js';
 /**
  * @name            keysFirst
  * @namespace       shared.array

@@ -1,4 +1,4 @@
-import uniqid from '../string/uniqid.js';
+import uniqid from '../../string/uniqid/uniqid.js';
 let _escapeQueue = [];
 const _escapeQueueMap = new WeakMap();
 let _isEscaping = false;

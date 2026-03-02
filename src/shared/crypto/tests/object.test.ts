@@ -1,4 +1,4 @@
-import object from '../object.js';
+import object from '../object/object.js';
 
 describe('shared.crypto.object', () => {
   test('Encrypt', () => {

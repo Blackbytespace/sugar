@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import parseDate from './parseDate.js';
+import parseDate from './parseDate/parseDate.js';
 
 /**
  * @name                                diffBetweenDates

@@ -1,4 +1,4 @@
-import parseDate from './parseDate.js';
+import parseDate from './parseDate/parseDate.js';
 export default function toYyyyMmDd(date, settings) {
     const finalSettings = Object.assign({ format: '', separator: '-' }, (settings !== null && settings !== void 0 ? settings : {}));
     if (typeof date === 'string' && date.match(/^\d{4}-\d{2}-\d{2}$/)) {

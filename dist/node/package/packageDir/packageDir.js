@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import nodeModulesDir from './nodeModulesDir.js';
+import nodeModulesDir from '../nodeModulesDir/nodeModulesDir.js';
 export default function packageDir(nameOrPath, settings) {
     settings = Object.assign({ cwd: process.cwd(), monorepo: false, checkExistence: true }, (settings !== null && settings !== void 0 ? settings : {}));
     // absolute path

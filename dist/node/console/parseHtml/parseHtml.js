@@ -1,5 +1,5 @@
 import replaceTags from '../../shared/html/replaceTags.js';
-import tagsMap from './tagsMap.js';
+import tagsMap from './tagsMap/tagsMap.js';
 /**
  * @name                    parseHtml
  * @namespace               node.console

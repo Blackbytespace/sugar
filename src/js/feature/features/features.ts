@@ -1,6 +1,6 @@
-import disableTitleTooltips from './disableTitleTooltips.js';
-import scrollClasses, { TScrollClassesSettings } from './scrollClasses.js';
-import sectionClasses, { TSectionClassesSettings } from './sectionClasses.js';
+import disableTitleTooltips from '../disableTitleTooltips/disableTitleTooltips.js';
+import scrollClasses, { TScrollClassesSettings } from '../scrollClasses/scrollClasses.js';
+import sectionClasses, { TSectionClassesSettings } from '../sectionClasses/sectionClasses.js';
 
 /**
  * @name            features

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import diffBetweenDates from '../diffBetweenDates.js';
+import diffBetweenDates from '../diffBetweenDates/diffBetweenDates.js';
 
 describe('shared.datetime.diffBetweenDates', () => {
   test('Check for a small diff', () => {

@@ -1,4 +1,4 @@
-import countLineChars from './countLineChars.js';
+import countLineChars from './countLineChars/countLineChars.js';
 export default function splitEvery(text, every, settings = {}) {
     const finalSettings = Object.assign({ splitWords: true }, settings);
     if (finalSettings.splitWords) {

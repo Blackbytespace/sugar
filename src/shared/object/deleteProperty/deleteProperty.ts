@@ -1,4 +1,4 @@
-import __set from './set.js';
+import __set from './set/set.js';
 
 /**
  * @name                        deleteProperty

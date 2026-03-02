@@ -1,6 +1,6 @@
-import disableTitleTooltips from './disableTitleTooltips.js';
-import scrollClasses from './scrollClasses.js';
-import sectionClasses from './sectionClasses.js';
+import disableTitleTooltips from '../disableTitleTooltips/disableTitleTooltips.js';
+import scrollClasses from '../scrollClasses/scrollClasses.js';
+import sectionClasses from '../sectionClasses/sectionClasses.js';
 export default function features(features) {
     if (features === 'all' || features.disableTitleTooltips) {
         disableTitleTooltips();

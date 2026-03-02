@@ -1,4 +1,4 @@
-import __isCjs from './isCjs.js';
+import __isCjs from './isCjs/isCjs.js';
 
 /**
  * @name                isEsm

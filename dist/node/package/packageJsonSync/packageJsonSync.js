@@ -1,5 +1,5 @@
 import fs from 'fs';
-import __packageDir from './packageDir.js';
+import __packageDir from '../packageDir/packageDir.js';
 export default function packageJsonSync(nameOrPath, settings) {
     settings = Object.assign({ cwd: process.cwd(), monorepo: false, checkExistence: true }, (settings !== null && settings !== void 0 ? settings : {}));
     const packageDir = __packageDir(nameOrPath, settings);

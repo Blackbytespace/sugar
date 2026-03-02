@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import fs from 'fs-extra';
 import { toString } from '@blackbyte/sugar/string';
 import { ensureDirSync } from '@blackbyte/sugar/fs';
-import { folderPath } from './_exports.js';
+import { folderPath } from './_exports/_exports.js';
 /**
  * @name            writeFile
  * @namespace       node.fs

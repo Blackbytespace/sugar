@@ -1,5 +1,5 @@
-import flatten from './flatten.js';
-import __set from './set.js';
+import flatten from './flatten/flatten.js';
+import __set from './set/set.js';
 export default function findDeep(object, filter) {
     // make sure the object is a copy
     object = JSON.parse(JSON.stringify(object));

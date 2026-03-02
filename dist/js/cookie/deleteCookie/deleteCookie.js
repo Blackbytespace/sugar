@@ -1,4 +1,4 @@
-import setCookie from './setCookie.js';
+import setCookie from '../setCookie/setCookie.js';
 /**
  * @name            deleteCookie
  * @namespace       js.cookie

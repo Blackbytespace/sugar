@@ -1,5 +1,5 @@
 import fs from 'fs';
-import composerPackageDir from './composerPackageDir.js';
+import composerPackageDir from '../composerPackageDir/composerPackageDir.js';
 
 /**
  * @name                    composerJsonSync

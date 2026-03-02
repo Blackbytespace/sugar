@@ -1,4 +1,4 @@
-import __isMobile from './isMobile.js';
+import __isMobile from '../isMobile/isMobile.js';
 
 /**
  * @name                isPhone
