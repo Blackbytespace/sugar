@@ -1,4 +1,4 @@
-import distanceBetween from '../../../shared/math/distanceBetween.js';
+import { distanceBetween } from '@blackbyte/sugar/math';
 export default function nearestElement($from, $elements, settings) {
     const finalParams = Object.assign({}, (settings !== null && settings !== void 0 ? settings : {}));
     let $nearestElement, nearestDistance = Infinity;

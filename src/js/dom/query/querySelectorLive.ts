@@ -1,4 +1,4 @@
-import uniqid from '../../string/uniqid.js';
+import { uniqid } from '@blackbyte/sugar/string';
 import type { TWhenTrigger } from '../when/when.js';
 import when from '../when/when.js';
 

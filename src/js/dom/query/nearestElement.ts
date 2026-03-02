@@ -1,4 +1,4 @@
-import distanceBetween from '../../../shared/math/distanceBetween.js';
+import { distanceBetween } from '@blackbyte/sugar/math';
 
 /**
  * @name            nearestElement

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import writeFileSync from '../fs/writeFileSync.js';
+import { writeFileSync } from '@blackbyte/sugar/fs';
 
 /**
  * @name            prependToFileSync

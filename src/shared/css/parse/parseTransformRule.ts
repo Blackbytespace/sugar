@@ -1,4 +1,4 @@
-import parse from '../../../shared/string/parse.js';
+import { parse } from '@blackbyte/sugar/string';
 
 /**
  * @name            parseTransformRule

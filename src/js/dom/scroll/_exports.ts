@@ -1,5 +1,5 @@
-import lockScroll from './lockScroll.js';
-import unlockScroll from './unlockScroll.js';
+import lockScroll from './lockScroll/lockScroll.js';
+import unlockScroll from './unlockScroll/unlockScroll.js';
 
 export {
   lockScroll as __lockScroll,

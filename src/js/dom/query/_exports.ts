@@ -1,16 +1,16 @@
-import closestElement from './closestElement.js';
-import closestNotVisibleElement from './closestNotVisibleElement.js';
-import closestScrollableElement from './closestScrollableElement.js';
-import elementsInViewport from './elementsInViewport.js';
-import matches from './matches.js';
-import nearestElement from './nearestElement.js';
-import nextElement from './nextElement.js';
-import previousElement from './previousElement.js';
-import querySelector from './querySelector.js';
-import querySelectorAll from './querySelectorAll.js';
-import querySelectorAllUp from './querySelectorAllUp.js';
-import querySelectorLive from './querySelectorLive.js';
-import querySelectorUp from './querySelectorUp.js';
+import closestElement from './closestElement/closestElement.js';
+import closestNotVisibleElement from './closestNotVisibleElement/closestNotVisibleElement.js';
+import closestScrollableElement from './closestScrollableElement/closestScrollableElement.js';
+import elementsInViewport from './elementsInViewport/elementsInViewport.js';
+import matches from './matches/matches.js';
+import nearestElement from './nearestElement/nearestElement.js';
+import nextElement from './nextElement/nextElement.js';
+import previousElement from './previousElement/previousElement.js';
+import querySelector from './querySelector/querySelector.js';
+import querySelectorAll from './querySelectorAll/querySelectorAll.js';
+import querySelectorAllUp from './querySelectorAllUp/querySelectorAllUp.js';
+import querySelectorLive from './querySelectorLive/querySelectorLive.js';
+import querySelectorUp from './querySelectorUp/querySelectorUp.js';
 
 export {
   closestElement as __closestElement,

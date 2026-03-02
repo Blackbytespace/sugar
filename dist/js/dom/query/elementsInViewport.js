@@ -1,4 +1,4 @@
-import isInViewport from '../../is/isInViewport.js';
+import { isInViewport } from '@blackbyte/sugar/is';
 export default function elementsInViewport(settings = {}) {
     var _a, _b;
     // extend settings

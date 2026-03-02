@@ -1,5 +1,5 @@
-import camelize from '../../../shared/string/camelize.js';
-import parse from '../../../shared/string/parse.js';
+import { camelize } from '@blackbyte/sugar/string';
+import { parse } from '@blackbyte/sugar/string';
 
 /**
  * @name            getStyleProperty

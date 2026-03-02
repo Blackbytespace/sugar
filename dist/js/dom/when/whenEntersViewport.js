@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import isInViewport from '../../is/isInViewport.js';
+import { isInViewport } from '@blackbyte/sugar/is';
 export default function whenEntersViewport(elm, settings) {
     function getRootMargin() {
         return [

@@ -1,4 +1,4 @@
-import isVisible from '../../is/isVisible.js';
+import { isVisible } from '@blackbyte/sugar/is';
 /**
  * @name                closestNotVisibleElement
  * @namespace           js.dom.query

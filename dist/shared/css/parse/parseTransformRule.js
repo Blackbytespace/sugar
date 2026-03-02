@@ -1,4 +1,4 @@
-import parse from '../../../shared/string/parse.js';
+import { parse } from '@blackbyte/sugar/string';
 export default function parseTransformRule(transformStr) {
     const transforms = transformStr.trim().split(/\) |\)/);
     const result = {

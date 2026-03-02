@@ -1,5 +1,5 @@
-import camelize from '../../string/camelize.js';
-import parse from '../../string/parse.js';
+import { camelize } from '@blackbyte/sugar/string';
+import { parse } from '@blackbyte/sugar/string';
 
 /**
  * @name            styleString2Object

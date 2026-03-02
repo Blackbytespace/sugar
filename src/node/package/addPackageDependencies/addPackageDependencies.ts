@@ -1,8 +1,8 @@
 import childProcess from 'child_process';
 import fs from 'fs';
 import * as semver from 'semver';
-import readJsonSync from '../fs/readJsonSync.js';
-import writeJsonSync from '../fs/writeJsonSync.js';
+import { readJsonSync } from '@blackbyte/sugar/fs';
+import { writeJsonSync } from '@blackbyte/sugar/fs';
 import packageRootDir from './packageRootDir.js';
 
 /**

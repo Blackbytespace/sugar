@@ -1,6 +1,6 @@
 import parseKeyframeKey from '../../../shared/css/parse/parseKeyframeKey.js';
 import removeVendorPrefix from '../../../shared/css/rule/removeVendorPrefix.js';
-import camelCase from '../../../shared/string/camelCase.js';
+import { camelCase } from '@blackbyte/sugar/string';
 import getDefinedStyles from './getDefinedStyles.js';
 function normalizePropertyName(propertyName) {
     return camelCase(removeVendorPrefix(propertyName));

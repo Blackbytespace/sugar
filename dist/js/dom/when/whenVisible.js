@@ -1,4 +1,4 @@
-import uniqid from '../../string/uniqid.js';
+import { uniqid } from '@blackbyte/sugar/string';
 const _whenVisibleStatuses = new WeakMap();
 export default function whenVisible($elm, settings) {
     let observer;

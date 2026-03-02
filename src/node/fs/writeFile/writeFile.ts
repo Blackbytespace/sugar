@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
-import toString from '../../shared/string/toString.js';
-import ensureDirSync from '../fs/ensureDirSync.js';
+import { toString } from '@blackbyte/sugar/string';
+import { ensureDirSync } from '@blackbyte/sugar/fs';
 import { folderPath } from './_exports.js';
 
 /**

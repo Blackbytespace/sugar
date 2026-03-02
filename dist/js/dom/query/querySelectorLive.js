@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import uniqid from '../../string/uniqid.js';
+import { uniqid } from '@blackbyte/sugar/string';
 import when from '../when/when.js';
 export default function querySelectorLive(selector, cb, settings, _isFirstLevel = true) {
     var _a, _b, _c, _d, _e, _f;

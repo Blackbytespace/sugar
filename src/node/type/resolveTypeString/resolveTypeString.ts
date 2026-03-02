@@ -3,7 +3,7 @@ import __path from 'path';
 import parseTypeString, {
   TTypeStringObject,
 } from '../../shared/type/parseTypeString.js';
-import packageRootDir from '../package/packageRootDir.js';
+import { packageRootDir } from '@blackbyte/sugar/package';
 
 /**
  * @name            resolveTypeString

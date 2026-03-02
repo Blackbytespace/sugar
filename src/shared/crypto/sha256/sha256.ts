@@ -1,6 +1,6 @@
 // @ts-ignore
 import sha256 from 'crypto-js/sha256.js';
-import toString from '../../shared/string/toString.js';
+import { toString } from '@blackbyte/sugar/string';
 
 /**
  * @name            sha256

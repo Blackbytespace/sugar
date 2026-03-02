@@ -1,4 +1,4 @@
-import uncamelize from '../../../shared/string/uncamelize.js';
+import { uncamelize } from '@blackbyte/sugar/string';
 
 /**
  * @name            styleObject2String

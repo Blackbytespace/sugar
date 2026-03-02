@@ -1,4 +1,4 @@
-import uniqid from '../../string/uniqid.js';
+import { uniqid } from '@blackbyte/sugar/string';
 export default function reloadStylesheets(settings) {
     var _a;
     const finalSettings = Object.assign({ $root: document }, (settings !== null && settings !== void 0 ? settings : {}));

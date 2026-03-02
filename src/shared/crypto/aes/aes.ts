@@ -1,5 +1,5 @@
 import AES from 'crypto-js/aes.js';
-import toString from '../../shared/string/toString.js';
+import { toString } from '@blackbyte/sugar/string';
 
 /**
  * @name            aes

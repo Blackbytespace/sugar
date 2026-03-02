@@ -1,4 +1,4 @@
-import uniqid from '../../string/uniqid.js';
+import { uniqid } from '@blackbyte/sugar/string';
 
 /**
  * @name            reloadStylesheets

@@ -1,5 +1,5 @@
 import md5 from 'crypto-js/md5.js';
-import toString from '../../shared/string/toString.js';
+import { toString } from '@blackbyte/sugar/string';
 
 /**
  * @name              md5

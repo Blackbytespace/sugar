@@ -1,5 +1,5 @@
-import isInViewport from '../../is/isInViewport.js';
-import isVisible from '../../is/isVisible.js';
+import { isInViewport } from '@blackbyte/sugar/is';
+import { isVisible } from '@blackbyte/sugar/is';
 import closestNotVisibleElement from './closestNotVisibleElement.js';
 
 /**

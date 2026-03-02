@@ -1,5 +1,5 @@
-import isInViewport from '../../is/isInViewport.js';
-import uniqid from '../../string/uniqid.js';
+import { isInViewport } from '@blackbyte/sugar/is';
+import { uniqid } from '@blackbyte/sugar/string';
 const whenInViewportStatuses = new WeakMap();
 class CancelablePromise extends Promise {
     cancel() { }

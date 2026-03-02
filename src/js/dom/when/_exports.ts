@@ -1,24 +1,24 @@
-import when, { WhenTriggers } from './when.js';
-import whenAnimationEnd from './whenAnimationEnd.js';
-import whenAttribute from './whenAttribute.js';
-import whenBackgroundImageLoaded from './whenBackgroundImageLoaded.js';
-import whenDomReady from './whenDomReady.js';
-import whenEntersViewport from './whenEntersViewport.js';
-import whenEventListener from './whenEventListener.js';
-import whenIframeReady from './whenIframeReady.js';
-import whenImageLoaded from './whenImageLoaded.js';
-import whenImagesLoaded from './whenImagesLoaded.js';
-import whenInViewport from './whenInViewport.js';
-import whenInteract from './whenInteract.js';
-import whenLinkLoaded from './whenLinkLoaded.js';
-import whenNearViewport from './whenNearViewport.js';
-import whenOutOfViewport from './whenOutOfViewport.js';
-import whenRemoved from './whenRemoved.js';
-import whenScriptLoaded from './whenScriptLoaded.js';
-import whenStylesheetsReady from './whenStylesheetsReady.js';
-import whenTransitionEnd from './whenTransitionEnd.js';
-import whenVideoReady from './whenVideoReady.js';
-import whenVisible from './whenVisible.js';
+import when, { WhenTriggers } from './when/when.js';
+import whenAnimationEnd from './whenAnimationEnd/whenAnimationEnd.js';
+import whenAttribute from './whenAttribute/whenAttribute.js';
+import whenBackgroundImageLoaded from './whenBackgroundImageLoaded/whenBackgroundImageLoaded.js';
+import whenDomReady from './whenDomReady/whenDomReady.js';
+import whenEntersViewport from './whenEntersViewport/whenEntersViewport.js';
+import whenEventListener from './whenEventListener/whenEventListener.js';
+import whenIframeReady from './whenIframeReady/whenIframeReady.js';
+import whenImageLoaded from './whenImageLoaded/whenImageLoaded.js';
+import whenImagesLoaded from './whenImagesLoaded/whenImagesLoaded.js';
+import whenInViewport from './whenInViewport/whenInViewport.js';
+import whenInteract from './whenInteract/whenInteract.js';
+import whenLinkLoaded from './whenLinkLoaded/whenLinkLoaded.js';
+import whenNearViewport from './whenNearViewport/whenNearViewport.js';
+import whenOutOfViewport from './whenOutOfViewport/whenOutOfViewport.js';
+import whenRemoved from './whenRemoved/whenRemoved.js';
+import whenScriptLoaded from './whenScriptLoaded/whenScriptLoaded.js';
+import whenStylesheetsReady from './whenStylesheetsReady/whenStylesheetsReady.js';
+import whenTransitionEnd from './whenTransitionEnd/whenTransitionEnd.js';
+import whenVideoReady from './whenVideoReady/whenVideoReady.js';
+import whenVisible from './whenVisible/whenVisible.js';
 export {
   when as __when,
   whenAnimationEnd as __whenAnimationEnd,

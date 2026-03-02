@@ -1,4 +1,4 @@
-import convertTime from '../../../shared/datetime/convertTime.js';
+import { convertTime } from '@blackbyte/sugar/datetime';
 import getStyleProperty from './getStyleProperty.js';
 function splitIfNeeded(what, separator) {
     var _a;

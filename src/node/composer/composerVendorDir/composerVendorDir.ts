@@ -1,5 +1,5 @@
 import fs from 'fs';
-import packageRootDir from '../package/packageRootDir.js';
+import { packageRootDir } from '@blackbyte/sugar/package';
 
 /**
  * @name                    composerVendorDir

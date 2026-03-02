@@ -1,4 +1,4 @@
-import extension from '../fs/extension.js';
+import { extension } from '@blackbyte/sugar/fs';
 
 /**
  * @name                 filename

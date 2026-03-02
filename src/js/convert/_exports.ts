@@ -1,7 +1,7 @@
-import emToPx from './emToPx.js';
-import pxToEm from './pxToEm.js';
-import pxToRem from './pxToRem.js';
-import remToPx from './remToPx.js';
+import emToPx from './emToPx/emToPx.js';
+import pxToEm from './pxToEm/pxToEm.js';
+import pxToRem from './pxToRem/pxToRem.js';
+import remToPx from './remToPx/remToPx.js';
 
 export * from '../../shared/convert/_exports.js';
 export {

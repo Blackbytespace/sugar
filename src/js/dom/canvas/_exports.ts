@@ -1,3 +1,3 @@
-import drawVideoToCanvas from './drawVideoToCanvas.js';
+import drawVideoToCanvas from './drawVideoToCanvas/drawVideoToCanvas.js';
 
 export { drawVideoToCanvas as __drawVideoToCanvas, drawVideoToCanvas };

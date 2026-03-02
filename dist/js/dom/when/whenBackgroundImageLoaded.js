@@ -1,4 +1,4 @@
-import unquote from '../../../shared/string/unquote.js';
+import { unquote } from '@blackbyte/sugar/string';
 import getStyleProperty from '../style/getStyleProperty.js';
 import whenImageLoaded from './whenImageLoaded.js';
 /**

@@ -1,3 +1,3 @@
-import ensureScriptExec from './ensureScriptExec.js';
+import ensureScriptExec from './ensureScriptExec/ensureScriptExec.js';
 
 export { ensureScriptExec as __ensureScriptExec, ensureScriptExec };

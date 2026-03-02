@@ -1,6 +1,6 @@
 import base64 from 'crypto-js/enc-base64.js';
 import encUtf8 from 'crypto-js/enc-utf8.js';
-import toString from '../../shared/string/toString.js';
+import { toString } from '@blackbyte/sugar/string';
 
 /**
  * @name            base64
