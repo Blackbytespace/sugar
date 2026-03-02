@@ -3,10 +3,10 @@ import currencySymbolToCode from './currencySymbolToCode/currencySymbolToCode.js
 import currencyCodeToSymbol from './currencyCodeToSymbol/currencyCodeToSymbol.js';
 
 export {
-  currencyStringToObject,
   currencyStringToObject as __currencyStringToObject,
-  currencySymbolToCode,
-  currencySymbolToCode as __currenrySymbolToCode,
-  currencyCodeToSymbol,
+  currencySymbolToCode as __currencySymbolToCode,
   currencyCodeToSymbol as __currencyCodeToSymbol,
+  currencyStringToObject,
+  currencySymbolToCode,
+  currencyCodeToSymbol,
 };
