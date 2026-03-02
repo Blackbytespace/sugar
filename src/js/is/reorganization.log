@@ -1,0 +1,28 @@
+2026-03-02 13:09:23    Processing       23 files in is
+2026-03-02 13:09:23    ✓ Moved: ./isIe.ts → isIe/isIe.ts
+2026-03-02 13:09:23    ✓ Moved: ./isFirefox.ts → isFirefox/isFirefox.ts
+2026-03-02 13:09:23    ✓ Moved: ./isDarkMode.ts → isDarkMode/isDarkMode.ts
+2026-03-02 13:09:23    ✓ Moved: ./isSamsungBrowser.ts → isSamsungBrowser/isSamsungBrowser.ts
+2026-03-02 13:09:23    ✓ Moved: ./isScrollable.ts → isScrollable/isScrollable.ts
+2026-03-02 13:09:23    ✓ Moved: ./isVisible.ts → isVisible/isVisible.ts
+2026-03-02 13:09:23    ✓ Moved: ./isFocus.ts → isFocus/isFocus.ts
+2026-03-02 13:09:23    ✓ Moved: ./isMobile.ts → isMobile/isMobile.ts
+2026-03-02 13:09:23    ✓ Moved: ./isHover.ts → isHover/isHover.ts
+2026-03-02 13:09:23    ✓ Moved: ./isTablet.ts → isTablet/isTablet.ts
+2026-03-02 13:09:23    ✓ Moved: ./isHlsSupported.ts → isHlsSupported/isHlsSupported.ts
+2026-03-02 13:09:23    ✓ Moved: ./isEdge.ts → isEdge/isEdge.ts
+2026-03-02 13:09:23    ✓ Moved: ./isPhone.ts → isPhone/isPhone.ts
+2026-03-02 13:09:23    ✓ Moved: ./isOpera.ts → isOpera/isOpera.ts
+2026-03-02 13:09:23    ✓ Moved: ./isUcBrowser.ts → isUcBrowser/isUcBrowser.ts
+2026-03-02 13:09:23    ✓ Moved: ./isFocusWithin.ts → isFocusWithin/isFocusWithin.ts
+2026-03-02 13:09:23    ✓ Moved: ./isCrawler.ts → isCrawler/isCrawler.ts
+2026-03-02 13:09:23    ✓ Moved: ./isSafari.ts → isSafari/isSafari.ts
+2026-03-02 13:09:23    ✓ Moved: ./isInIframe.ts → isInIframe/isInIframe.ts
+2026-03-02 13:09:23    ✓ Moved: ./isVideoPlaying.ts → isVideoPlaying/isVideoPlaying.ts
+2026-03-02 13:09:23    ✓ Moved: ./isChrome.ts → isChrome/isChrome.ts
+2026-03-02 13:09:23    ✓ Moved: ./isInViewport.ts → isInViewport/isInViewport.ts
+2026-03-02 13:09:23    ✓ Moved: ./isUserScrolling.ts → isUserScrolling/isUserScrolling.ts
+2026-03-02 13:09:23    ✅ Completed category: is
+2026-03-02 13:09:23    📝 Updating _exports.ts for is
+2026-03-02 13:09:23    ✅ Updated _exports.ts for is
+2026-03-02 13:09:23 📁 Processing category: is

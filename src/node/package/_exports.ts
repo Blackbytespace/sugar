@@ -1,8 +1,8 @@
-import addPackageDependencies from './addPackageDependencies.js';
-import nodeModulesDir from './nodeModulesDir.js';
-import packageDir from './packageDir.js';
-import packageJsonSync from './packageJsonSync.js';
-import packageRootDir from './packageRootDir.js';
+import addPackageDependencies from './addPackageDependencies/addPackageDependencies.js';
+import nodeModulesDir from './nodeModulesDir/nodeModulesDir.js';
+import packageDir from './packageDir/packageDir.js';
+import packageJsonSync from './packageJsonSync/packageJsonSync.js';
+import packageRootDir from './packageRootDir/packageRootDir.js';
 export {
   addPackageDependencies as __addPackageDependencies,
   nodeModulesDir as __nodeModulesDir,

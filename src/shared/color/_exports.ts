@@ -1,15 +1,15 @@
-import alphaToHex from './alphaToHex.js';
-import applyModifiers from './applyModifiers.js';
-import convertColor from './convertColor.js';
-import hexToRgba from './hexToRgba.js';
-import hslaToHex from './hslaToHex.js';
-import hslaToHexa from './hslaToHexa.js';
-import hslaToRgba from './hslaToRgba.js';
-import parseColor from './parseColor.js';
-import parseHsla from './parseHsla.js';
-import parseRgba from './parseRgba.js';
-import rgbaToHex from './rgbaToHex.js';
-import rgbaToHsla from './rgbaToHsla.js';
+import alphaToHex from './alphaToHex/alphaToHex.js';
+import applyModifiers from './applyModifiers/applyModifiers.js';
+import convertColor from './convertColor/convertColor.js';
+import hexToRgba from './hexToRgba/hexToRgba.js';
+import hslaToHex from './hslaToHex/hslaToHex.js';
+import hslaToHexa from './hslaToHexa/hslaToHexa.js';
+import hslaToRgba from './hslaToRgba/hslaToRgba.js';
+import parseColor from './parseColor/parseColor.js';
+import parseHsla from './parseHsla/parseHsla.js';
+import parseRgba from './parseRgba/parseRgba.js';
+import rgbaToHex from './rgbaToHex/rgbaToHex.js';
+import rgbaToHsla from './rgbaToHsla/rgbaToHsla.js';
 
 export {
   alphaToHex as __alphaToHex,

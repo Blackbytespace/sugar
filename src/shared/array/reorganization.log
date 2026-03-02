@@ -1,0 +1,19 @@
+2026-03-02 13:09:23    Processing       14 files in array
+2026-03-02 13:09:23    ✓ Moved: ./findAll.ts → findAll/findAll.ts
+2026-03-02 13:09:23    ✓ Moved: ./keysLast.ts → keysLast/keysLast.ts
+2026-03-02 13:09:23    ✓ Moved: ./fromQuantifier.ts → fromQuantifier/fromQuantifier.ts
+2026-03-02 13:09:23    ✓ Moved: ./intersection.ts → intersection/intersection.ts
+2026-03-02 13:09:23    ✓ Moved: ./proxyArray.ts → proxyArray/proxyArray.ts
+2026-03-02 13:09:23    ✓ Moved: ./find.ts → find/find.ts
+2026-03-02 13:09:23    ✓ Moved: ./splitEvery.ts → splitEvery/splitEvery.ts
+2026-03-02 13:09:23    ✓ Moved: ./asyncForEach.ts → asyncForEach/asyncForEach.ts
+2026-03-02 13:09:23    ✓ Moved: ./pickRandom.ts → pickRandom/pickRandom.ts
+2026-03-02 13:09:23    ✓ Moved: ./keysFirst.ts → keysFirst/keysFirst.ts
+2026-03-02 13:09:23    ✓ Moved: ./unique.ts → unique/unique.ts
+2026-03-02 13:09:23    ✓ Moved: ./pickSome.ts → pickSome/pickSome.ts
+2026-03-02 13:09:23    ✓ Moved: ./moveItem.ts → moveItem/moveItem.ts
+2026-03-02 13:09:23    ✓ Moved: ./sameItems.ts → sameItems/sameItems.ts
+2026-03-02 13:09:23    ✅ Completed category: array
+2026-03-02 13:09:23    📝 Updating _exports.ts for array
+2026-03-02 13:09:23    ✅ Updated _exports.ts for array
+2026-03-02 13:09:23 📁 Processing category: is

@@ -1,5 +1,5 @@
-import isValidCssUnitValue from './isValidCssUnitValue.js';
-import stripCssComments from './stripCssComments.js';
+import isValidCssUnitValue from './isValidCssUnitValue/isValidCssUnitValue.js';
+import stripCssComments from './stripCssComments/stripCssComments.js';
 
 export * from '../../shared/css/_exports.js';
 export * from './parse/_exports.js';

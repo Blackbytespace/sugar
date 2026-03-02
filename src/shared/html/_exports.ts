@@ -1,11 +1,11 @@
-import encodeEntities from './encodeEntities.js';
-import escapeHtml from './escapeHtml.js';
-import expandPleasantCssClassname from './expandPleasantCssClassname.js';
-import expandPleasantCssClassnames from './expandPleasantCssClassnames.js';
-import extractCssClassesNames from './extractCssClassesNames.js';
-import replaceTags from './replaceTags.js';
-import stripTags from './stripTags.js';
-import unescapeHtml from './unescapeHtml.js';
+import encodeEntities from './encodeEntities/encodeEntities.js';
+import escapeHtml from './escapeHtml/escapeHtml.js';
+import expandPleasantCssClassname from './expandPleasantCssClassname/expandPleasantCssClassname.js';
+import expandPleasantCssClassnames from './expandPleasantCssClassnames/expandPleasantCssClassnames.js';
+import extractCssClassesNames from './extractCssClassesNames/extractCssClassesNames.js';
+import replaceTags from './replaceTags/replaceTags.js';
+import stripTags from './stripTags/stripTags.js';
+import unescapeHtml from './unescapeHtml/unescapeHtml.js';
 
 export {
   encodeEntities as __encodeEntities,

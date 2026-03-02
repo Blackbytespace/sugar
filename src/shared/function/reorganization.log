@@ -1,0 +1,11 @@
+2026-03-02 13:09:22    Processing        6 files in function
+2026-03-02 13:09:22    ✓ Moved: ./throttle.ts → throttle/throttle.ts
+2026-03-02 13:09:22    ✓ Moved: ./debounce.ts → debounce/debounce.ts
+2026-03-02 13:09:22    ✓ Moved: ./sleep.ts → sleep/sleep.ts
+2026-03-02 13:09:22    ✓ Moved: ./easeInterval.ts → easeInterval/easeInterval.ts
+2026-03-02 13:09:22    ✓ Moved: ./memoize.ts → memoize/memoize.ts
+2026-03-02 13:09:22    ✓ Moved: ./getArgsNames.ts → getArgsNames/getArgsNames.ts
+2026-03-02 13:09:22    ✅ Completed category: function
+2026-03-02 13:09:22    📝 Updating _exports.ts for function
+2026-03-02 13:09:22    ✅ Updated _exports.ts for function
+2026-03-02 13:09:22 📁 Processing category: html

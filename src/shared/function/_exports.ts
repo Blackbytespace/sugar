@@ -1,9 +1,9 @@
-import debounce from './debounce.js';
-import easeInterval from './easeInterval.js';
-import getArgsNames from './getArgsNames.js';
-import memoize from './memoize.js';
-import sleep from './sleep.js';
-import throttle from './throttle.js';
+import debounce from './debounce/debounce.js';
+import easeInterval from './easeInterval/easeInterval.js';
+import getArgsNames from './getArgsNames/getArgsNames.js';
+import memoize from './memoize/memoize.js';
+import sleep from './sleep/sleep.js';
+import throttle from './throttle/throttle.js';
 
 export {
   debounce as __debounce,
