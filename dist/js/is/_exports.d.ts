@@ -21,5 +21,5 @@ import isUcBrowser from './isUcBrowser/isUcBrowser.js';
 import isUserScrolling from './isUserScrolling/isUserScrolling.js';
 import isVideoPlaying from './isVideoPlaying/isVideoPlaying.js';
 import isVisible from './isVisible/isVisible.js';
-export * from '@blackbyte/sugar/is';
+export * from '../../shared/is/_exports.js';
 export { isChrome as __isChrome, isCrawler as __isCrawler, isDarkMode as __isDarkMode, isEdge as __isEdge, isFirefox as __isFirefox, isFocus as __isFocus, isFocusWithin as __isFocusWithin, isHlsSupported as __isHlsSupported, isHover as __isHover, isIe as __isIe, isInIframe as __isInIframe, isInViewport as __isInViewport, isMobile as __isMobile, isOpera as __isOpera, isPhone as __isPhone, isSafari as __isSafari, isSamsungBrowser as __isSamsungBrowser, isScrollable as __isScrollable, isTablet as __isTablet, isUcBrowser as __isUcBrowser, isUserScrolling as __isUserScrolling, isVideoPlaying as __isVideoPlaying, isVisible as __isVisible, isChrome, isCrawler, isDarkMode, isEdge, isFirefox, isFocus, isFocusWithin, isHlsSupported, isHover, isIe, isInIframe, isInViewport, isMobile, isOpera, isPhone, isSafari, isSamsungBrowser, isScrollable, isTablet, isUcBrowser, isUserScrolling, isVideoPlaying, isVisible, };

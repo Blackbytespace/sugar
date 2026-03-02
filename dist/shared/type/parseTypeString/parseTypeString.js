@@ -1,5 +1,5 @@
-import mapDeep from '../object/mapDeep.js';
-import parse from '../string/parse.js';
+import mapDeep from '../../object/mapDeep/mapDeep.js';
+import parse from '../../string/parse/parse.js';
 function parseSingleTypeString(typeString) {
     let ofStr = '', typeStr = typeString, ofTypes = [];
     // string value

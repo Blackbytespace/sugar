@@ -1,4 +1,4 @@
-import unique from '../array/unique.js';
+import unique from '../../array/unique/unique.js';
 import commonProgrammingFileExtensions from '../commonProgrammingFileExtensions/commonProgrammingFileExtensions.js';
 /**
  * @name            commonTextFileExtensions

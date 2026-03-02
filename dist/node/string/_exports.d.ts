@@ -1,3 +1,3 @@
-import { uniqid } from './uniqid/uniqid.js';
-export * from '../../shared/string/_exports/_exports.js';
+import uniqid from './uniqid/uniqid.js';
+export * from '../../shared/string/_exports.js';
 export { uniqid as __uniqid, uniqid };

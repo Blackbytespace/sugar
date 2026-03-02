@@ -1,5 +1,5 @@
 import fs from 'fs';
-import isDirectory from '../is/isDirectory.js';
+import isDirectory from '../../is/isDirectory/isDirectory.js';
 /**
  * @name            unlinkSync
  * @namespace       node.fs

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import parseString from '../string/parse.js';
+import parseString from '../../string/parse/parse.js';
 /**
  * @name                            parseSchema
  * @namespace                       shared.url

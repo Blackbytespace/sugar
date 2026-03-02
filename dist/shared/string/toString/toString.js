@@ -1,12 +1,12 @@
 import { decycle } from 'json-cyclic';
-import mapToObj from '../convert/mapToObject.js';
-import isArray from '../is/isArray.js';
-import isBoolean from '../is/isBoolean.js';
-import isFunction from '../is/isFunction.js';
-import isJson from '../is/isJson.js';
-import isMap from '../is/isMap.js';
-import isObject from '../is/isObject.js';
-import mapDeep from '../object/mapDeep.js';
+import mapToObj from '../../convert/mapToObject/mapToObject.js';
+import isArray from '../../is/isArray/isArray.js';
+import isBoolean from '../../is/isBoolean/isBoolean.js';
+import isFunction from '../../is/isFunction/isFunction.js';
+import isJson from '../../is/isJson/isJson.js';
+import isMap from '../../is/isMap/isMap.js';
+import isObject from '../../is/isObject/isObject.js';
+import mapDeep from '../../object/mapDeep/mapDeep.js';
 export default function toString(value, settings = {}) {
     settings = Object.assign({ beautify: true, verbose: true }, settings);
     // string

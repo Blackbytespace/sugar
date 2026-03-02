@@ -1,5 +1,5 @@
-import isPlainObject from '../is/isPlainObject.js';
-import camelCase from '../string/camelCase.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
+import camelCase from '../../string/camelCase/camelCase.js';
 export default function camelCaseProps(object, settings) {
     const finalSettings = Object.assign({ deep: true }, (settings !== null && settings !== void 0 ? settings : {}));
     for (let [key, value] of Object.entries(object)) {

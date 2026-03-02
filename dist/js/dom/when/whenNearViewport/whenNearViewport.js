@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __closestScrollableElement from '@blackbyte/sugar/dom';
+import { closestScrollableElement } from '@blackbyte/sugar/dom';
 export default function whenNearViewport($elm, settings) {
     function getRootMargin() {
         return [
@@ -22,7 +22,7 @@ export default function whenNearViewport($elm, settings) {
     const rootMargin = finalSettings.offset
         ? `${finalSettings.offset}`
         : getRootMargin();
-    let $closest = __closestScrollableElement($elm);
+    let $closest = closestScrollableElement($elm);
     if (($closest === null || $closest === void 0 ? void 0 : $closest.tagName) === 'HTML')
         $closest = undefined;
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {

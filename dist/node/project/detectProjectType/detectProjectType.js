@@ -1,5 +1,5 @@
 import fs from 'fs';
-import __packageRootDir from '../package/packageRootDir.js';
+import __packageRootDir from '../../package/packageRootDir/packageRootDir.js';
 export default function detectProjectType(cwd = process.cwd()) {
     var _a, _b, _c, _d, _e;
     let packageJson = {}, composerJson = {};

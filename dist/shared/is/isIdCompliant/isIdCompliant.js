@@ -1,4 +1,4 @@
-import __idCompliant from '../string/idCompliant.js';
+import __idCompliant from '../../string/idCompliant/idCompliant.js';
 /**
  * @name            isIdCompliant
  * @namespace       shared.string

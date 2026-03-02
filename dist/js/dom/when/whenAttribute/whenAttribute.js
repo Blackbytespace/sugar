@@ -7,13 +7,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __parse from '../../../shared/string/parse/parse.js';
+import { parse } from '@blackbyte/sugar/string';
 export default function whenAttribute($elm, attrName, settings) {
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
         var _a;
         const finalSettings = Object.assign({ check: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
         if ($elm.hasAttribute(attrName)) {
-            const value = __parse((_a = $elm.getAttribute(attrName)) !== null && _a !== void 0 ? _a : 'undefined');
+            const value = parse((_a = $elm.getAttribute(attrName)) !== null && _a !== void 0 ? _a : 'undefined');
             if (finalSettings.check && finalSettings.check(value, value)) {
                 resolve(value);
                 return;
@@ -29,7 +29,7 @@ export default function whenAttribute($elm, attrName, settings) {
                 if (mutation.attributeName !== attrName) {
                     return;
                 }
-                const value = __parse((_a = $elm.getAttribute(mutation.attributeName)) !== null && _a !== void 0 ? _a : 'undefined');
+                const value = parse((_a = $elm.getAttribute(mutation.attributeName)) !== null && _a !== void 0 ? _a : 'undefined');
                 if (finalSettings.check &&
                     finalSettings.check(value, mutation.oldValue)) {
                     resolve(value);

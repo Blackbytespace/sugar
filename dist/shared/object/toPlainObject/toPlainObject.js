@@ -1,4 +1,4 @@
-import isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
 export default function toPlainObject(object, settings) {
     const finalSettings = Object.assign({ deep: true }, (settings !== null && settings !== void 0 ? settings : {}));
     function clean(obj) {

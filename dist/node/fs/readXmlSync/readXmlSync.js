@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import xmlToJson from '../../shared/convert/xmlTojson/xmlTojson.js';
+import { xmlToJson } from '@blackbyte/sugar/convert';
 /**
  * @name            readXmlSync
  * @namespace       node.fs

@@ -1,7 +1,7 @@
 import findPkgJson from 'find-package-json';
 import fs from 'fs';
-import objectHash from '../../shared/object/objectHash/objectHash.js';
-import isFile from '../is/isFile.js';
+import { objectHash } from '@blackbyte/sugar/object';
+import isFile from '../../is/isFile/isFile.js';
 const packageRootDirsCache = {};
 export default function packageRootDir(from = process.cwd(), settings) {
     const finalSettings = Object.assign({ highest: false, upCount: undefined, requiredProperties: ['name', 'version'] }, (settings !== null && settings !== void 0 ? settings : {}));

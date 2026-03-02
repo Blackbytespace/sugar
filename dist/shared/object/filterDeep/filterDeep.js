@@ -1,4 +1,4 @@
-import isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
 function processObj(object, filter, settings) {
     const newObj = {}, keys = Object.keys(object);
     // loop on the object keys

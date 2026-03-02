@@ -1,4 +1,4 @@
-import unique from '../array/unique.js';
+import unique from '../../array/unique/unique.js';
 import commonAudioFileExtensions from '../commonAudioFileExtensions/commonAudioFileExtensions.js';
 import commonCompressedFileExtensions from '../commonCompressedFileExtensions/commonCompressedFileExtensions.js';
 import commonDataFileExtensions from '../commonDataFileExtensions/commonDataFileExtensions.js';

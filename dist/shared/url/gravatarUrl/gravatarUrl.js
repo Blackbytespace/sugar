@@ -1,4 +1,4 @@
-import md5 from '../../shared/crypto/md5.js';
+import md5 from '../../crypto/md5/md5.js';
 /**
  * @name                gravatarUrl
  * @namespace           shared.url

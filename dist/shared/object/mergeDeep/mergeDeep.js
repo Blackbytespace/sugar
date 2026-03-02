@@ -1,4 +1,4 @@
-import isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
 export default function mergeDeep(objects, settings) {
     const finalSettings = Object.assign({ array: false, clone: true }, (settings !== null && settings !== void 0 ? settings : {}));
     function merge(firstObj, secondObj) {

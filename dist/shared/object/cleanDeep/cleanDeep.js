@@ -1,4 +1,4 @@
-import isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
 export default function cleanDeep(objectOrArray, settings) {
     settings = Object.assign({ array: true, clone: false, cleaner(value) {
             if (value === undefined || value === null || value === '') {

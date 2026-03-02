@@ -1,5 +1,5 @@
-import isClassInstance from '../is/isClassInstance.js';
-import isPlainObject from '../is/isPlainObject.js';
+import isClassInstance from '../../is/isClassInstance/isClassInstance.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
 import clone from '../clone/clone.js';
 export default function mapDeep(objectOrArray, processor, settings, _path = []) {
     settings = Object.assign({ classInstances: false, array: true, clone: false, privateProps: true }, settings);

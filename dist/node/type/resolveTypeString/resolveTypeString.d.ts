@@ -1,4 +1,4 @@
-import { TTypeStringObject } from '../../shared/type/parseTypeString/parseTypeString.js';
+import { TTypeStringObject } from '../../../shared/type/parseTypeString/parseTypeString.js';
 /**
  * @name            resolveTypeString
  * @namespace       node.type

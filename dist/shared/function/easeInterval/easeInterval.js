@@ -1,4 +1,4 @@
-import easeInOutQuart from '../easing/easeInOutQuart.js';
+import easeInOutQuart from '../../easing/easeInOutQuart/easeInOutQuart.js';
 export default function easeInterval(duration, cb, settings = {}) {
     let cleared = false, animationFrame;
     const pro = new Promise((resolve) => {

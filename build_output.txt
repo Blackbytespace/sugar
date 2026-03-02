@@ -1,2 +1,0 @@
-src/shared/object/_exports.ts(13,17): error TS2307: Cannot find module '../get/get.js' or its corresponding type declarations.
-src/shared/object/_exports.ts(23,17): error TS2307: Cannot find module '../set/set.js' or its corresponding type declarations.

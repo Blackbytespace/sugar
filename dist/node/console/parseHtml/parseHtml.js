@@ -1,4 +1,4 @@
-import replaceTags from '../../shared/html/replaceTags/replaceTags.js';
+import { replaceTags } from '@blackbyte/sugar/html';
 import tagsMap from '../tagsMap/tagsMap.js';
 /**
  * @name                    parseHtml

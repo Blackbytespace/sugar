@@ -1,4 +1,4 @@
-import toString from '../string/toString.js';
+import toString from '../../string/toString/toString.js';
 /**
  * @name                replaceTags
  * @namespace           shared.html

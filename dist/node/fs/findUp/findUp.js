@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import * as __fs from 'fs';
 import { globSync as __globSync } from 'glob';
-import isGlob from '@blackbyte/sugar/is';
+import { isGlob } from '@blackbyte/sugar/is';
 export default function findUp(search, settings) {
     settings = Object.assign({ symlinks: true, cwd: process.cwd(), stopWhenFound: true }, settings);
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
