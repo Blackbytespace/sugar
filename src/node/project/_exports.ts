@@ -1,4 +1,4 @@
-import detectProjectType from './detectProjectType.js';
+import detectProjectType from './detectProjectType/detectProjectType.js';
 
-export * from './detectProjectType.js';
+export * from './detectProjectType/detectProjectType.js';
 export { detectProjectType as __detectProjectType, detectProjectType };
