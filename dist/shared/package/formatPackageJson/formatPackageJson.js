@@ -1,4 +1,4 @@
-import parseAuthorString from './parseAuthorString/parseAuthorString.js';
+import parseAuthorString from '../parseAuthorString/parseAuthorString.js';
 /**
  * @name                    formatPackageJson
  * @namespace               shared.package

@@ -1,17 +1,17 @@
-import unique from '../array/unique.js';
-import commonAudioFileExtensions from './commonAudioFileExtensions/commonAudioFileExtensions.js';
-import commonCompressedFileExtensions from './commonCompressedFileExtensions/commonCompressedFileExtensions.js';
-import commonDataFileExtensions from './commonDataFileExtensions/commonDataFileExtensions.js';
-import commonDiscFileExtensions from './commonDiscFileExtensions/commonDiscFileExtensions.js';
-import commonEmailFileExtensions from './commonEmailFileExtensions/commonEmailFileExtensions.js';
-import commonExecutableFileExtensions from './commonExecutableFileExtensions/commonExecutableFileExtensions.js';
-import commonFontFileExtensions from './commonFontFileExtensions/commonFontFileExtensions.js';
-import commonImageFileExtensions from './commonImageFileExtensions/commonImageFileExtensions.js';
-import commonMediaFileExtensions from './commonMediaFileExtensions/commonMediaFileExtensions.js';
-import commonProgrammingFileExtensions from './commonProgrammingFileExtensions/commonProgrammingFileExtensions.js';
-import commonTextFileExtensions from './commonTextFileExtensions/commonTextFileExtensions.js';
-import commonVideoFileExtensions from './commonVideoFileExtensions/commonVideoFileExtensions.js';
-import commonWebFileExtensions from './commonWebFileExtensions/commonWebFileExtensions.js';
+import unique from '../../array/unique/unique.js';
+import commonAudioFileExtensions from '../commonAudioFileExtensions/commonAudioFileExtensions.js';
+import commonCompressedFileExtensions from '../commonCompressedFileExtensions/commonCompressedFileExtensions.js';
+import commonDataFileExtensions from '../commonDataFileExtensions/commonDataFileExtensions.js';
+import commonDiscFileExtensions from '../commonDiscFileExtensions/commonDiscFileExtensions.js';
+import commonEmailFileExtensions from '../commonEmailFileExtensions/commonEmailFileExtensions.js';
+import commonExecutableFileExtensions from '../commonExecutableFileExtensions/commonExecutableFileExtensions.js';
+import commonFontFileExtensions from '../commonFontFileExtensions/commonFontFileExtensions.js';
+import commonImageFileExtensions from '../commonImageFileExtensions/commonImageFileExtensions.js';
+import commonMediaFileExtensions from '../commonMediaFileExtensions/commonMediaFileExtensions.js';
+import commonProgrammingFileExtensions from '../commonProgrammingFileExtensions/commonProgrammingFileExtensions.js';
+import commonTextFileExtensions from '../commonTextFileExtensions/commonTextFileExtensions.js';
+import commonVideoFileExtensions from '../commonVideoFileExtensions/commonVideoFileExtensions.js';
+import commonWebFileExtensions from '../commonWebFileExtensions/commonWebFileExtensions.js';
 
 /**
  * @name                    commonFileExtensions

@@ -1,5 +1,5 @@
-import getRotateProperties from './getRotateProperties/getRotateProperties.js';
-import getTranslateProperties from './getTranslateProperties/getTranslateProperties.js';
+import getRotateProperties from '../getRotateProperties/getRotateProperties.js';
+import getTranslateProperties from '../getTranslateProperties/getTranslateProperties.js';
 
 /**
  * @name            getTransformProperties

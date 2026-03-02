@@ -1,4 +1,4 @@
-import matches from './matches/matches.js';
+import matches from '../matches/matches.js';
 
 /**
  * @name                 querySelectorUp

@@ -1,4 +1,4 @@
-import whenImageLoaded from './whenImageLoaded/whenImageLoaded.js';
+import whenImageLoaded from '../whenImageLoaded/whenImageLoaded.js';
 /**
  * @name            whenImagesLoaded
  * @namespace       js.dom.when

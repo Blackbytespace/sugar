@@ -1,6 +1,6 @@
 import isPlainObject from '../is/isPlainObject.js';
 import unquote from '../string/unquote.js';
-import get from './get/get.js';
+import get from '../get/get.js';
 export default function set(obj, path, value, settings) {
     const finalSettings = Object.assign({ preferAssign: false }, (settings !== null && settings !== void 0 ? settings : {}));
     let o = obj, a;

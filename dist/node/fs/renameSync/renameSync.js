@@ -1,7 +1,7 @@
 import fs from 'fs';
-import ensureDirSync from './ensureDirSync/ensureDirSync.js';
-import moveSync from './moveSync/moveSync.js';
-import unlinkSync from './unlinkSync/unlinkSync.js';
+import ensureDirSync from '../ensureDirSync/ensureDirSync.js';
+import moveSync from '../moveSync/moveSync.js';
+import unlinkSync from '../unlinkSync/unlinkSync.js';
 export default function renameSync(src, newName, settings) {
     const finalSettings = Object.assign({ override: true, dry: false }, (settings !== null && settings !== void 0 ? settings : {}));
     const parts = src.split('/');

@@ -1,4 +1,4 @@
-import __whenScriptLoaded from '../../when/whenScriptLoaded/whenScriptLoaded.js';
+import { whenScriptLoaded } from '@blackbyte/sugar/dom';
 /**
  * @name                injectScript
  * @namespace           js.dom.inject
@@ -26,6 +26,6 @@ export default function injectScript(src, $parent = document.body) {
     const $script = document.createElement('script');
     $script.src = src;
     $parent.appendChild($script);
-    return __whenScriptLoaded($script);
+    return whenScriptLoaded($script);
 }
 //# sourceMappingURL=injectScript.js.map

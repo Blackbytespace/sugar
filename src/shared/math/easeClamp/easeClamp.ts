@@ -1,5 +1,5 @@
-import easeOutQuad from '../easing/easeOutQuad.js';
-import clamp from './clamp/clamp.js';
+import easeOutQuad from '../../easing/easeOutQuad/easeOutQuad.js';
+import clamp from '../clamp/clamp.js';
 
 /**
  * @name                easeClamp

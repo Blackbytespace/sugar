@@ -1,7 +1,7 @@
-import hslaToRgba from './hslaToRgba/hslaToRgba.js';
-import parseColor from './parseColor/parseColor.js';
-import rgbaToHex from './rgbaToHex/rgbaToHex.js';
-import rgbaToHsla from './rgbaToHsla/rgbaToHsla.js';
+import hslaToRgba from '../hslaToRgba/hslaToRgba.js';
+import parseColor from '../parseColor/parseColor.js';
+import rgbaToHex from '../rgbaToHex/rgbaToHex.js';
+import rgbaToHsla from '../rgbaToHsla/rgbaToHsla.js';
 
 /**
  * @name                    convertColor

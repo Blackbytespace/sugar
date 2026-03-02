@@ -1,6 +1,6 @@
 // @ts-nocheck
-import replaceTags from '../../shared/html/replaceTags.js';
-import tagsMap from './tagsMap/tagsMap.js';
+import replaceTags from '../../shared/html/replaceTags/replaceTags.js';
+import tagsMap from '../tagsMap/tagsMap.js';
 /**
  * @name                      parseHtml
  * @namespace                 js.console

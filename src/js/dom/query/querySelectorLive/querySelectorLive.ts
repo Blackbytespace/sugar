@@ -1,6 +1,6 @@
 import { uniqid } from '@blackbyte/sugar/string';
-import type { TWhenTrigger } from '../when/when.js';
-import when from '../when/when.js';
+import type { TWhenTrigger } from '@blackbyte/sugar/dom';
+import { when } from '@blackbyte/sugar/dom';
 
 /**
  * @name            querySelectorLive

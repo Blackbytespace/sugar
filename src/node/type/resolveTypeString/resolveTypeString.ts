@@ -2,7 +2,7 @@ import fs from 'fs';
 import __path from 'path';
 import parseTypeString, {
   TTypeStringObject,
-} from '../../shared/type/parseTypeString.js';
+} from '../../../shared/type/parseTypeString/parseTypeString.js';
 import { packageRootDir } from '@blackbyte/sugar/package';
 
 /**

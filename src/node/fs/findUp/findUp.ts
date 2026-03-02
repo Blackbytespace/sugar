@@ -1,6 +1,6 @@
 import * as __fs from 'fs';
 import { globSync as __globSync } from 'glob';
-import isGlob from '../../shared/is/isGlob.js';
+import { isGlob } from '@blackbyte/sugar/is';
 
 /**
  * @name            findUp

@@ -1,5 +1,5 @@
 import unique from '../array/unique.js';
-import commonProgrammingFileExtensions from './commonProgrammingFileExtensions/commonProgrammingFileExtensions.js';
+import commonProgrammingFileExtensions from '../commonProgrammingFileExtensions/commonProgrammingFileExtensions.js';
 /**
  * @name            commonTextFileExtensions
  * @namespace       shared.extension

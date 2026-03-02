@@ -1,6 +1,6 @@
 import findPkgJson from 'find-package-json';
 import fs from 'fs';
-import objectHash from '../../shared/object/objectHash.js';
+import objectHash from '../../shared/object/objectHash/objectHash.js';
 import isFile from '../is/isFile.js';
 const packageRootDirsCache = {};
 export default function packageRootDir(from = process.cwd(), settings) {

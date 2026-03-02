@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import ensureDirSync from './ensureDirSync/ensureDirSync.js';
-import __folderPath from './folderPath/folderPath.js';
+import ensureDirSync from '../ensureDirSync/ensureDirSync.js';
+import __folderPath from '../folderPath/folderPath.js';
 
 /**
  * @name            writeJsonSync

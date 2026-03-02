@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __parse from '../../../shared/string/parse.js';
+import __parse from '../../../shared/string/parse/parse.js';
 export default function whenAttribute($elm, attrName, settings) {
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
         var _a;

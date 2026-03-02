@@ -1,4 +1,4 @@
-import offsetFromViewport from './offsetFromViewport/offsetFromViewport.js';
+import offsetFromViewport from '../offsetFromViewport/offsetFromViewport.js';
 /**
  * @name            offsetFromParent
  * @namespace       js.dom.offset

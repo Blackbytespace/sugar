@@ -1,4 +1,4 @@
-import positionFromEvent from '../../position/positionFromEvent/positionFromEvent.js';
+import { positionFromEvent } from '@blackbyte/sugar/dom';
 export default function onDrag($elm, cb, settings) {
     const finalSettings = Object.assign({ maxSpeed: 0.01 }, (settings !== null && settings !== void 0 ? settings : {}));
     let isMouseDown = false;

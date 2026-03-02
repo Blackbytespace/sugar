@@ -1,7 +1,7 @@
-import parseKeyframeKey from '../../../shared/css/parse/parseKeyframeKey.js';
-import removeVendorPrefix from '../../../shared/css/rule/removeVendorPrefix.js';
+import { parseKeyframeKey } from '@blackbyte/sugar/css';
+import { removeVendorPrefix } from '@blackbyte/sugar/css';
 import { camelCase } from '@blackbyte/sugar/string';
-import getDefinedStyles from './getDefinedStyles/getDefinedStyles.js';
+import getDefinedStyles from '../getDefinedStyles/getDefinedStyles.js';
 
 /**
  * @name                transformKeyframesDeclarations

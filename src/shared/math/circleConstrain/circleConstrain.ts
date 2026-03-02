@@ -1,4 +1,4 @@
-import distanceBetween from './distanceBetween/distanceBetween.js';
+import distanceBetween from '../distanceBetween/distanceBetween.js';
 
 /**
  * @name 		            circleConstrain

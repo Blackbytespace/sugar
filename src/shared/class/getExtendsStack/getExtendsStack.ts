@@ -1,4 +1,4 @@
-import isClass from '../is/isClass.js';
+import { isClass } from '@blackbyte/sugar/is';
 
 /**
  * @name            getExtendsStack

@@ -1,6 +1,6 @@
 import { minimatch as __minimatch } from 'minimatch';
-import unflatten from './unflatten/unflatten.js';
-import flatten from './flatten/flatten.js';
+import unflatten from '../unflatten/unflatten.js';
+import flatten from '../flatten/flatten.js';
 export default function getGlob(obj, glob, settings = {}) {
     settings = Object.assign({ unflatten: true }, settings);
     const flat = flatten(obj);

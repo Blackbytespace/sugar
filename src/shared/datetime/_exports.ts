@@ -6,9 +6,10 @@ import timeAgo from './timeAgo/timeAgo.js';
 import toYyyyMmDd from './toYyyyMmDd/toYyyyMmDd.js';
 import utcTime from './utcTime/utcTime.js';
 import wait from './wait/wait.js';
+import convertTime from './convertTime/convertTime.js';
 
-export * from './convertTime/convertTime.js';
 export {
+  convertTime as __convertTime,
   diffBetweenDates as __diffBetweenDates,
   formatDuration as __formatDuration,
   parseDate as __parseDate,
@@ -17,6 +18,7 @@ export {
   toYyyyMmDd as __toYyyyMmDd,
   utcTime as __utcTime,
   wait as __wait,
+  convertTime,
   diffBetweenDates,
   formatDuration,
   parseDate,

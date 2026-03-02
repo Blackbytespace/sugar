@@ -1,4 +1,4 @@
-import type { TWhenTrigger } from '../when/when.js';
+import type { TWhenTrigger } from '@blackbyte/sugar/dom';
 /**
  * @name            querySelectorLive
  * @namespace       js.dom.query

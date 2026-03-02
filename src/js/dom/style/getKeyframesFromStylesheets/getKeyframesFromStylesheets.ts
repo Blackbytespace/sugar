@@ -1,9 +1,9 @@
-import __getCssRulesFromStylesheet from './getCssRulesFromStylesheet/getCssRulesFromStylesheet.js';
+import __getCssRulesFromStylesheet from '../getCssRulesFromStylesheet/getCssRulesFromStylesheet.js';
 
-import __getKeyframesDeclarations from './getKeyframesDeclarations/getKeyframesDeclarations.js';
+import __getKeyframesDeclarations from '../getKeyframesDeclarations/getKeyframesDeclarations.js';
 import __transformKeyframeDeclaration, {
   TTransformedKeyframeDeclaration,
-} from './transformKeyframesDeclarations/transformKeyframesDeclarations.js';
+} from '../transformKeyframesDeclarations/transformKeyframesDeclarations.js';
 
 export type TKeyframe = {
   delay?: number;

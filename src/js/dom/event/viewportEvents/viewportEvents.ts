@@ -2,7 +2,7 @@ import { isInViewport } from '@blackbyte/sugar/is';
 import {
   distanceFromElementTopToViewportTop,
   whenRemoved,
-} from '../_exports.js';
+} from '@blackbyte/sugar/dom';
 
 /**
  * @name            viewportEvents

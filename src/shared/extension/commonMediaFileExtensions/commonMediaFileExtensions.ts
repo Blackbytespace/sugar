@@ -1,8 +1,8 @@
-import unique from '../array/unique.js';
-import commonAudioFileExtensions from './commonAudioFileExtensions/commonAudioFileExtensions.js';
-import { type TCommonFileExtensionsSettings } from './commonFileExtensions/commonFileExtensions.js';
-import commonImageFileExtensions from './commonImageFileExtensions/commonImageFileExtensions.js';
-import commonVideoFileExtensions from './commonVideoFileExtensions/commonVideoFileExtensions.js';
+import unique from '../../array/unique/unique.js';
+import commonAudioFileExtensions from '../commonAudioFileExtensions/commonAudioFileExtensions.js';
+import { type TCommonFileExtensionsSettings } from '../commonFileExtensions/commonFileExtensions.js';
+import commonImageFileExtensions from '../commonImageFileExtensions/commonImageFileExtensions.js';
+import commonVideoFileExtensions from '../commonVideoFileExtensions/commonVideoFileExtensions.js';
 
 /**
  * @name            commonMediaFileExtensions

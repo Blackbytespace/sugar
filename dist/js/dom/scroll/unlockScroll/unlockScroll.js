@@ -1,4 +1,4 @@
-import { lockScrollPreventDefault, lockScrollPreventDefaultForScrollKeys, } from './lockScroll/lockScroll.js';
+import { lockScrollPreventDefault, lockScrollPreventDefaultForScrollKeys, } from '../lockScroll/lockScroll.js';
 /**
  * @name            unlockScroll
  * @namespace       js.dom.scroll

@@ -1,4 +1,4 @@
-import simplifySpecialChars from './simplifySpecialChars/simplifySpecialChars.js';
+import simplifySpecialChars from '../simplifySpecialChars/simplifySpecialChars.js';
 export default function idCompliant(str, settings) {
     settings = Object.assign({ exclude: [] }, (settings !== null && settings !== void 0 ? settings : {}));
     // spaces

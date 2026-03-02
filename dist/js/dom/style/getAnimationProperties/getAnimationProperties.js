@@ -1,5 +1,5 @@
 import { convertTime } from '@blackbyte/sugar/datetime';
-import getStyleProperty from './getStyleProperty/getStyleProperty.js';
+import getStyleProperty from '../getStyleProperty/getStyleProperty.js';
 export default function getAnimationProperties(elm) {
     var _a, _b;
     // get the animation properties

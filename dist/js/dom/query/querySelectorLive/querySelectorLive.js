@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { uniqid } from '@blackbyte/sugar/string';
-import when from '../when/when.js';
+import { when } from '@blackbyte/sugar/dom';
 export default function querySelectorLive(selector, cb, settings, _isFirstLevel = true) {
     var _a, _b, _c, _d, _e, _f;
     let noScopeSelector, observer, canceled = false;

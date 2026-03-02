@@ -1,4 +1,4 @@
-import parseHsla from './parseHsla/parseHsla.js';
+import parseHsla from '../parseHsla/parseHsla.js';
 
 /**
  * @name                hslToRgba

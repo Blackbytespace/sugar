@@ -22,7 +22,7 @@ import isUserScrolling from './isUserScrolling/isUserScrolling.js';
 import isVideoPlaying from './isVideoPlaying/isVideoPlaying.js';
 import isVisible from './isVisible/isVisible.js';
 
-export * from '@blackbyte/sugar/is';
+export * from '../../shared/is/_exports.js';
 export {
   isChrome as __isChrome,
   isCrawler as __isCrawler,

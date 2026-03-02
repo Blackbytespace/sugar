@@ -1,4 +1,4 @@
-import parseDate from './parseDate/parseDate.js';
+import parseDate from '../parseDate/parseDate.js';
 
 /**
  * @name                                toYyyyMmDd

@@ -1,5 +1,5 @@
-import __unique from '../array/unique.js';
-import __unquote from '../string/unquote.js';
+import __unique from '../../array/unique/unique.js';
+import __unquote from '../../string/unquote/unquote.js';
 
 /**
  * @name                get

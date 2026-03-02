@@ -1,5 +1,5 @@
 import { isInViewport } from '@blackbyte/sugar/is';
-import { distanceFromElementTopToViewportTop, whenRemoved, } from '../_exports.js';
+import { distanceFromElementTopToViewportTop, whenRemoved, } from '@blackbyte/sugar/dom';
 const _viewportEventsInited = new WeakMap();
 export default function viewportEvents($elm, settings) {
     let observer, status = 'out';

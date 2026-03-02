@@ -1,4 +1,4 @@
-import { TTransformedKeyframeDeclaration } from './transformKeyframesDeclarations/transformKeyframesDeclarations.js';
+import { TTransformedKeyframeDeclaration } from '../transformKeyframesDeclarations/transformKeyframesDeclarations.js';
 export type TKeyframe = {
     delay?: number;
     direction: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' | 'inherit' | 'initial' | 'revert' | 'revert-layer' | 'unset';

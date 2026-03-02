@@ -1,6 +1,6 @@
-import isClassInstance from '../is/isClassInstance.js';
-import isPlainObject from '../is/isPlainObject.js';
-import clone from './clone/clone.js';
+import isClassInstance from '../../is/isClassInstance/isClassInstance.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
+import clone from '../clone/clone.js';
 
 /**
  * @name                mapDeep

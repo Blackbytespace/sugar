@@ -1,7 +1,7 @@
 import findPkgJson from 'find-package-json';
 import fs from 'fs';
-import objectHash from '../../shared/object/objectHash.js';
-import isFile from '../is/isFile.js';
+import { objectHash } from '@blackbyte/sugar/object';
+import isFile from '../../is/isFile/isFile.js';
 
 /**
  * @name                    packageRootDir

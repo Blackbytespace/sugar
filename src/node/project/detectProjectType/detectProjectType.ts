@@ -1,5 +1,5 @@
 import fs from 'fs';
-import __packageRootDir from '../package/packageRootDir.js';
+import __packageRootDir from '../../package/packageRootDir/packageRootDir.js';
 
 /**
  * @name            detectProjectType

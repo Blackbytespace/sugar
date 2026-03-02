@@ -1,6 +1,6 @@
 import { isInViewport } from '@blackbyte/sugar/is';
 import { isVisible } from '@blackbyte/sugar/is';
-import closestNotVisible from './closestNotVisibleElement/closestNotVisibleElement.js';
+import closestNotVisible from '../closestNotVisibleElement/closestNotVisibleElement.js';
 export default function querySelectorAll(selector, settings = {}) {
     // extend settings
     const finalSettings = Object.assign({ visible: null, inViewport: null, $rootNode: document.body }, settings);

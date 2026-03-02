@@ -1,6 +1,6 @@
-import isPlainObject from '../is/isPlainObject.js';
-import unquote from '../string/unquote.js';
-import get from './get/get.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
+import unquote from '../../string/unquote/unquote.js';
+import get from '../get/get.js';
 
 /**
  * @name                    set

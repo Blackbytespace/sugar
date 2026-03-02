@@ -1,8 +1,8 @@
 import __path from 'path';
 import tmpDir from 'temp-dir';
-import uniqid from '../../string/uniqid/uniqid.js';
+import { uniqid } from '@blackbyte/sugar/string';
 import { toString } from '@blackbyte/sugar/string';
-import writeFileSync from './writeFileSync/writeFileSync.js';
+import writeFileSync from '../writeFileSync/writeFileSync.js';
 
 /**
  * @name                writeTmpFileSync

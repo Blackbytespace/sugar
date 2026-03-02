@@ -1,5 +1,5 @@
 import __scrollTop from '../scrollTop/scrollTop.js';
-import offsetFromViewport from '../../offset/offsetFromViewport/offsetFromViewport.js';
+import { offsetFromViewport } from '@blackbyte/sugar/dom';
 /**
  * @name            distanceFromElementTopToViewportBottom
  * @namespace       js.dom.distance

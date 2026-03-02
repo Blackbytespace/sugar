@@ -1,4 +1,4 @@
-import renameSync from './renameSync/renameSync.js';
+import renameSync from '../renameSync/renameSync.js';
 
 /**
  * @name            rename

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import fs from 'fs';
 import __path from 'path';
-import parseTypeString from '../../shared/type/parseTypeString.js';
+import parseTypeString from '../../shared/type/parseTypeString/parseTypeString.js';
 import { packageRootDir } from '@blackbyte/sugar/package';
 export default function resolveTypeString(typeString_1) {
     return __awaiter(this, arguments, void 0, function* (typeString, settings = {}) {

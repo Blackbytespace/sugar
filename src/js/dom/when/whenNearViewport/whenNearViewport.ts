@@ -1,4 +1,4 @@
-import __closestScrollableElement from '../query/closestScrollableElement.js';
+import { closestScrollableElement } from '@blackbyte/sugar/dom';
 
 /**
  * @name            whenNearViewport
@@ -64,7 +64,7 @@ export default function whenNearViewport(
     ? `${finalSettings.offset}`
     : getRootMargin();
 
-  let $closest = __closestScrollableElement($elm);
+  let $closest = closestScrollableElement($elm);
   if ($closest?.tagName === 'HTML') $closest = undefined;
 
   return new Promise(async (resolve) => {

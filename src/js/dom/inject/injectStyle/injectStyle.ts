@@ -1,4 +1,4 @@
-import __uniqid from '../../../js/string/uniqid.js';
+import { uniqid } from '@blackbyte/sugar/string';
 
 /**
  * @name                injectStyle
@@ -38,7 +38,7 @@ export default function injectStyle(
   settings?: Partial<TInjectStyleSettings>,
 ) {
   const finalSettings = <TInjectStyleSettings>{
-    id: `injected-style-${__uniqid()}`,
+    id: `injected-style-${uniqid()}`,
     rootNode: undefined,
     ...(settings ?? {}),
   };

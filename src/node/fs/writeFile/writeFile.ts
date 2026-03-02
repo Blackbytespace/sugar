@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import { toString } from '@blackbyte/sugar/string';
 import { ensureDirSync } from '@blackbyte/sugar/fs';
-import { folderPath } from './_exports/_exports.js';
+import { folderPath } from '../_exports.js';
 
 /**
  * @name            writeFile

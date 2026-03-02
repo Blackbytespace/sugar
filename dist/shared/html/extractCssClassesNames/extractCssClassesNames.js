@@ -1,4 +1,4 @@
-import expandPleasantCssClassname from './expandPleasantCssClassname/expandPleasantCssClassname.js';
+import expandPleasantCssClassname from '../expandPleasantCssClassname/expandPleasantCssClassname.js';
 export default function extractCssClassesNames(html, settings) {
     const finalSettings = Object.assign({ expandPleasantCssClassname: true, includeIds: false }, (settings !== null && settings !== void 0 ? settings : {}));
     let reg = /class="[a-zA-Z0-9_\-:@\s]+"/gm;

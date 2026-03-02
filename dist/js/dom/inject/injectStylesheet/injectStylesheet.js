@@ -1,4 +1,4 @@
-import __whenLinkLoaded from '../../when/whenLinkLoaded/whenLinkLoaded.js';
+import { whenLinkLoaded } from '@blackbyte/sugar/dom';
 /**
  * @name                injectStylesheet
  * @namespace           js.dom.inject
@@ -28,6 +28,6 @@ export default function injectStylesheet(href) {
     $link.rel = 'stylesheet';
     $link.href = href;
     document.head.appendChild($link);
-    return __whenLinkLoaded($link);
+    return whenLinkLoaded($link);
 }
 //# sourceMappingURL=injectStylesheet.js.map

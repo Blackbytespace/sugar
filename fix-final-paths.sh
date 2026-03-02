@@ -1,60 +1,55 @@
 #!/bin/bash
 
-echo "=== Final comprehensive path fixes ==="
+echo "=== Fixing Final Path Issues ==="
 
-# Fix any remaining broken patterns we can identify programmatically
+cd packages/sugar || exit 1
 
-# Pattern 1: Fix same-category imports that go through the category name
-echo "Fixing same-category imports..."
-find src -name "*.ts" -not -name "_exports.ts" -type f | while read -r file; do
-    # Get the category name (second-to-last directory)
-    category=$(dirname "$file" | awk -F'/' '{print $(NF-1)}')
-    if [[ -n "$category" ]]; then
-        # Fix patterns like ../category/function.js -> ../function/function.js (when already in category)
-        sed -i '' "s|from '\"'\\.\\./\\${category}/\\([^/]\"'*\\)\\.js'\"'|from '\"'../\\1/\\1.js'\"'|g" "$file"
-    fi
-done
+echo "1. Fixing shared module subdirectory paths..."
 
-# Pattern 2: Fix double subdirectories
-echo "Fixing double subdirectories..."
-find src -name "*.ts" -type f -exec sed -i '' 's|/\([^/]*\)/\1/\1\.js|/\1/\1.js|g' {} \;
+# Fix paths in shared modules that need to point to subdirectories
+find src/shared -name "*.ts" -exec sed -i '' 's|../string/idCompliant\.js|../../string/idCompliant/idCompliant.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../extension/commonImageFileExtensions\.js|../../extension/commonImageFileExtensions/commonImageFileExtensions.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../string/urlCompliant\.js|../../string/urlCompliant/urlCompliant.js|g' {} \;
 
-# Pattern 3: Fix specific known broken patterns
-echo "Fixing specific broken patterns..."
+# Fix object module internal paths
+find src/shared/object -name "*.ts" -exec sed -i '' 's|../get/get\.js|../get/get.js|g' {} \;
+find src/shared/object -name "*.ts" -exec sed -i '' 's|../set/set\.js|../set/set.js|g' {} \;
 
-# Fix distance to scrollTop (same directory)
-sed -i '' 's|from '"'"'\.\./distance/scrollTop\.js'"'"'|from '"'"'../scrollTop/scrollTop.js'"'"'|g' src/js/dom/distance/distanceFromElementTopToViewportBottom/distanceFromElementTopToViewportBottom.ts
-sed -i '' 's|from '"'"'\.\./distance/scrollTop\.js'"'"'|from '"'"'../scrollTop/scrollTop.js'"'"'|g' src/js/dom/distance/distanceFromElementTopToViewportTop/distanceFromElementTopToViewportTop.ts
+# Fix typos with extra dots
+find src/shared -name "*.ts" -exec sed -i '' 's|\.\.\./set/set\.js|../set/set.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|\.\.\./get/get\.js|../get/get.js|g' {} \;
 
-# Fix distance to offset (different directory)  
-sed -i '' 's|from '"'"'\.\./offset/offsetFromViewport\.js'"'"'|from '"'"'../../offset/offsetFromViewport/offsetFromViewport.js'"'"'|g' src/js/dom/distance/distanceFromElementTopToViewportBottom/distanceFromElementTopToViewportBottom.ts
-sed -i '' 's|from '"'"'\.\./offset/offsetFromViewport\.js'"'"'|from '"'"'../../offset/offsetFromViewport/offsetFromViewport.js'"'"'|g' src/js/dom/distance/distanceFromElementTopToViewportTop/distanceFromElementTopToViewportTop.ts
+# Fix array and string imports that need subdirectory structure
+find src/shared -name "*.ts" -exec sed -i '' 's|../array/unique\.js|../../array/unique/unique.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../string/unquote\.js|../../string/unquote/unquote.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../convert/mapToObject\.js|../../convert/mapToObject/mapToObject.js|g' {} \;
 
-# Fix inject to when
-if [[ -f "src/js/dom/inject/injectScript/injectScript.ts" ]]; then
-    sed -i '' 's|from '"'"'\.\./when/whenScriptLoaded\.js'"'"'|from '"'"'../../when/whenScriptLoaded/whenScriptLoaded.js'"'"'|g' src/js/dom/inject/injectScript/injectScript.ts
-fi
-if [[ -f "src/js/dom/inject/injectStylesheet/injectStylesheet.ts" ]]; then
-    sed -i '' 's|from '"'"'\.\./when/whenLinkLoaded\.js'"'"'|from '"'"'../../when/whenLinkLoaded/whenLinkLoaded.js'"'"'|g' src/js/dom/inject/injectStylesheet/injectStylesheet.ts  
-fi
+# Fix is module imports that need subdirectory structure  
+find src/shared -name "*.ts" -exec sed -i '' 's|../is/isClassInstance\.js|../../is/isClassInstance/isClassInstance.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../is/isDomElement\.js|../../is/isDomElement/isDomElement.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../is/isArray\.js|../../is/isArray/isArray.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../is/isBoolean\.js|../../is/isBoolean/isBoolean.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../is/isFunction\.js|../../is/isFunction/isFunction.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../is/isJson\.js|../../is/isJson/isJson.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../is/isMap\.js|../../is/isMap/isMap.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../is/isObject\.js|../../is/isObject/isObject.js|g' {} \;
 
-# Fix on to position
-if [[ -f "src/js/dom/on/onDrag/onDrag.ts" ]]; then
-    sed -i '' 's|from '"'"'\.\./position/positionFromEvent\.js'"'"'|from '"'"'../../position/positionFromEvent/positionFromEvent.js'"'"'|g' src/js/dom/on/onDrag/onDrag.ts
-fi
+# Fix object and array cross-references
+find src/shared -name "*.ts" -exec sed -i '' 's|../object/clone\.js|../../object/clone/clone.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../object/mapDeep\.js|../../object/mapDeep/mapDeep.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../array/proxyArray\.js|../../array/proxyArray/proxyArray.js|g' {} \;
 
-# Fix query internal references
-if [[ -f "src/js/dom/query/closestElement/closestElement.ts" ]]; then
-    sed -i '' 's|from '"'"'\./querySelectorUp/querySelectorUp\.js'"'"'|from '"'"'../querySelectorUp/querySelectorUp.js'"'"'|g' src/js/dom/query/closestElement/closestElement.ts
-fi
-if [[ -f "src/js/dom/query/closestScrollableElement/closestScrollableElement.ts" ]]; then
-    sed -i '' 's|from '"'"'\./querySelectorUp/querySelectorUp\.js'"'"'|from '"'"'../querySelectorUp/querySelectorUp.js'"'"'|g' src/js/dom/query/closestScrollableElement/closestScrollableElement.ts
-fi
-if [[ -f "src/js/dom/query/nextElement/nextElement.ts" ]]; then
-    sed -i '' 's|from '"'"'\./matches/matches\.js'"'"'|from '"'"'../matches/matches.js'"'"'|g' src/js/dom/query/nextElement/nextElement.ts
-fi
-if [[ -f "src/js/dom/query/previousElement/previousElement.ts" ]]; then
-    sed -i '' 's|from '"'"'\./matches/matches\.js'"'"'|from '"'"'../matches/matches.js'"'"'|g' src/js/dom/query/previousElement/previousElement.ts
-fi
+# Fix remaining string and parse imports
+find src/shared -name "*.ts" -exec sed -i '' 's|../string/parse\.js|../../string/parse/parse.js|g' {} \;
+find src/shared -name "*.ts" -exec sed -i '' 's|../string/ltrim\.js|../../string/ltrim/ltrim.js|g' {} \;
 
-echo "=== Final path fixes completed ==="
+# Fix crypto path in url module
+find src/shared/url -name "*.ts" -exec sed -i '' 's|../../shared/crypto/md5\.js|../../crypto/md5/md5.js|g' {} \;
+
+# Fix node/type path to shared/type
+find src/node/type -name "*.ts" -exec sed -i '' 's|../../shared/type/parseTypeString/parseTypeString\.js|../../../shared/type/parseTypeString/parseTypeString.js|g' {} \;
+
+echo "2. Running TypeScript compilation to check final results..."
+npx tsc --noEmit 2>&1 | tee build_output.txt
+echo "Final error count:"
+cat build_output.txt | wc -l

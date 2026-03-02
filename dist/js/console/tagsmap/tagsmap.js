@@ -63,4 +63,4 @@ const tagsMap = {
     br: (tag, content) => '\n',
 };
 export default tagsMap;
-//# sourceMappingURL=tagsmap.js.map
+//# sourceMappingURL=tagsMap.js.map

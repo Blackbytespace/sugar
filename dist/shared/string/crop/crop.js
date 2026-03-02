@@ -1,4 +1,4 @@
-import countLineChars from './countLineChars/countLineChars.js';
+import countLineChars from '../countLineChars/countLineChars.js';
 export default function crop(text, length, settings = {}) {
     var _a, _b, _c, _d, _e;
     settings = Object.assign({ chars: '...', splitWords: false }, settings);

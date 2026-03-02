@@ -1,7 +1,7 @@
 import __isDirectory from '../is/isDirectory.js';
-import __fileHashSync from './fileHashSync/fileHashSync.js';
+import __fileHashSync from '../fileHashSync/fileHashSync.js';
 import * as fs from 'fs';
-import sha256 from '../../shared/crypto/sha256.js';
+import sha256 from '@blackbyte/sugar/crypto';
 export default function folderHashSync(folderPath, settings = {}) {
     const finalSettings = Object.assign({ recursive: true, algo: 'sha256', encoding: 'base64' }, (settings !== null && settings !== void 0 ? settings : {}));
     const paths = [];

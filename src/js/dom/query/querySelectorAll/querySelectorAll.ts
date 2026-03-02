@@ -1,6 +1,6 @@
 import { isInViewport } from '@blackbyte/sugar/is';
 import { isVisible } from '@blackbyte/sugar/is';
-import closestNotVisible from './closestNotVisibleElement/closestNotVisibleElement.js';
+import closestNotVisible from '../closestNotVisibleElement/closestNotVisibleElement.js';
 
 /**
  * @name            querySelectorAll

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import readJsonSync from './readJsonSync/readJsonSync.js';
+import readJsonSync from '../readJsonSync/readJsonSync.js';
 
 /**
  * @name            readJson

@@ -1,8 +1,8 @@
-import proxyArray from '../array/proxyArray.js';
-import isDomElement from '../is/isDomElement.js';
-import isPlainObject from '../is/isPlainObject.js';
-import clone from '../object/clone.js';
-import mapDeep from '../object/mapDeep.js';
+import proxyArray from '../../array/proxyArray/proxyArray.js';
+import isDomElement from '../../is/isDomElement/isDomElement.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
+import clone from '../../object/clone/clone.js';
+import mapDeep from '../../object/mapDeep/mapDeep.js';
 
 /**
  * @name                            proxyDeep

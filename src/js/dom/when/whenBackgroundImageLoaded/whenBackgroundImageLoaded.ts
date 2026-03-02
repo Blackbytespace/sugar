@@ -1,6 +1,6 @@
 import { unquote } from '@blackbyte/sugar/string';
-import getStyleProperty from '../style/getStyleProperty.js';
-import whenImageLoaded from './whenImageLoaded/whenImageLoaded.js';
+import { getStyleProperty } from '@blackbyte/sugar/dom';
+import whenImageLoaded from '../whenImageLoaded/whenImageLoaded.js';
 
 /**
  * @name            whenBackgroundImageLoaded

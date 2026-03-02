@@ -1,4 +1,4 @@
-import isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
 
 /**
  * @name                    mergeDeep

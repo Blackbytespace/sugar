@@ -1,4 +1,4 @@
-import base64 from './base64/base64.js';
+import base64 from '../base64/base64.js';
 
 /**
  * @name                object

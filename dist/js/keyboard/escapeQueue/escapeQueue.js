@@ -1,4 +1,4 @@
-import uniqid from '../../string/uniqid/uniqid.js';
+import { uniqid } from '@blackbyte/sugar/string';
 let _escapeQueue = [];
 const _escapeQueueMap = new WeakMap();
 let _isEscaping = false;

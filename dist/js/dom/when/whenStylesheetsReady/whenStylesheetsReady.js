@@ -1,4 +1,4 @@
-import whenLinkLoaded from './whenLinkLoaded/whenLinkLoaded.js';
+import whenLinkLoaded from '../whenLinkLoaded/whenLinkLoaded.js';
 /**
  * @name            whenStylesheetsReady
  * @namespace       js.dom.when

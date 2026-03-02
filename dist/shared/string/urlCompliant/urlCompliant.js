@@ -1,4 +1,4 @@
-import __simplifySpecialChars from './simplifySpecialChars/simplifySpecialChars.js';
+import __simplifySpecialChars from '../simplifySpecialChars/simplifySpecialChars.js';
 export default function urlCompliant(str, settings) {
     settings = Object.assign({ exclude: [] }, (settings !== null && settings !== void 0 ? settings : {}));
     // spaces

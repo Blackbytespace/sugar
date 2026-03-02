@@ -1,4 +1,4 @@
-import __urlCompliant from '../string/urlCompliant.js';
+import __urlCompliant from '../../string/urlCompliant/urlCompliant.js';
 
 /**
  * @name            isUrlCompliant

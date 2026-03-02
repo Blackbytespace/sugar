@@ -1,4 +1,4 @@
-import isPath from '../../shared/is/isPath.js';
+import { isPath } from '@blackbyte/sugar/is';
 
 /**
  * @name                folderPath

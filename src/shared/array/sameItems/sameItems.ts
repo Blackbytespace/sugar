@@ -1,6 +1,6 @@
-import base64 from '../crypto/base64.js';
-import isPlainObject from '../is/isPlainObject.js';
-import unique from './unique/unique.js';
+import { base64 } from '@blackbyte/sugar/crypto';
+import { isPlainObject } from '@blackbyte/sugar/is';
+import unique from '../unique/unique.js';
 
 /**
  * @name            sameItems

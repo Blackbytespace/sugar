@@ -1,6 +1,6 @@
-import __getCssRulesFromStylesheet from './getCssRulesFromStylesheet/getCssRulesFromStylesheet.js';
-import __getKeyframesDeclarations from './getKeyframesDeclarations/getKeyframesDeclarations.js';
-import __transformKeyframeDeclaration from './transformKeyframesDeclarations/transformKeyframesDeclarations.js';
+import __getCssRulesFromStylesheet from '../getCssRulesFromStylesheet/getCssRulesFromStylesheet.js';
+import __getKeyframesDeclarations from '../getKeyframesDeclarations/getKeyframesDeclarations.js';
+import __transformKeyframeDeclaration from '../transformKeyframesDeclarations/transformKeyframesDeclarations.js';
 export default function getKeyframesFromStylesheets(animationName, styleSheets) {
     // Collect CSSRules present in the document
     const CSSRules = [].slice

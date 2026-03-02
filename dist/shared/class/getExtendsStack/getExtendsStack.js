@@ -1,4 +1,4 @@
-import isClass from '../is/isClass.js';
+import isClass from '@blackbyte/sugar/is';
 const fn = function (cls, settings = {}) {
     const stack = {};
     if (!isClass(cls)) {

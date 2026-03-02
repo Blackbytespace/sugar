@@ -1,4 +1,4 @@
-import __commonImageFileExtensions from '../extension/commonImageFileExtensions.js';
+import __commonImageFileExtensions from '../../extension/commonImageFileExtensions/commonImageFileExtensions.js';
 
 /**
  * @name                isImageUrl

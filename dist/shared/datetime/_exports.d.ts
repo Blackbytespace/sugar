@@ -6,5 +6,5 @@ import timeAgo from './timeAgo/timeAgo.js';
 import toYyyyMmDd from './toYyyyMmDd/toYyyyMmDd.js';
 import utcTime from './utcTime/utcTime.js';
 import wait from './wait/wait.js';
-export * from './convertTime/convertTime.js';
-export { diffBetweenDates as __diffBetweenDates, formatDuration as __formatDuration, parseDate as __parseDate, sleep as __sleep, timeAgo as __timeAgo, toYyyyMmDd as __toYyyyMmDd, utcTime as __utcTime, wait as __wait, diffBetweenDates, formatDuration, parseDate, sleep, timeAgo, toYyyyMmDd, utcTime, wait, };
+import convertTime from './convertTime/convertTime.js';
+export { convertTime as __convertTime, diffBetweenDates as __diffBetweenDates, formatDuration as __formatDuration, parseDate as __parseDate, sleep as __sleep, timeAgo as __timeAgo, toYyyyMmDd as __toYyyyMmDd, utcTime as __utcTime, wait as __wait, convertTime, diffBetweenDates, formatDuration, parseDate, sleep, timeAgo, toYyyyMmDd, utcTime, wait, };

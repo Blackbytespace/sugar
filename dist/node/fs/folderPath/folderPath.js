@@ -1,4 +1,4 @@
-import isPath from '../../shared/is/isPath.js';
+import isPath from '@blackbyte/sugar/is';
 export default function folderPath(path, settings) {
     const finalSettings = Object.assign({ checkExistence: false }, (settings !== null && settings !== void 0 ? settings : {}));
     if (finalSettings.checkExistence) {

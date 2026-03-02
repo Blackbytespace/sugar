@@ -1,4 +1,4 @@
-import __parse from '../../../shared/string/parse.js';
+import { parse } from '@blackbyte/sugar/string';
 
 /**
  * @name            whenAttribute
@@ -64,7 +64,7 @@ export default function whenAttribute(
     };
 
     if ($elm.hasAttribute(attrName)) {
-      const value = __parse($elm.getAttribute(attrName) ?? 'undefined');
+      const value = parse($elm.getAttribute(attrName) ?? 'undefined');
       if (finalSettings.check && finalSettings.check(value, value)) {
         resolve(value);
         return;
@@ -79,7 +79,7 @@ export default function whenAttribute(
         if (mutation.attributeName !== attrName) {
           return;
         }
-        const value = __parse(
+        const value = parse(
           $elm.getAttribute(mutation.attributeName) ?? 'undefined',
         );
         if (

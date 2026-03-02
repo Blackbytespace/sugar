@@ -1,5 +1,5 @@
-import getRotateProperties from './getRotateProperties/getRotateProperties.js';
-import getTranslateProperties from './getTranslateProperties/getTranslateProperties.js';
+import getRotateProperties from '../getRotateProperties/getRotateProperties.js';
+import getTranslateProperties from '../getTranslateProperties/getTranslateProperties.js';
 function getTransformProperties($elm) {
     var _a, _b, _c;
     const rotates = getRotateProperties($elm), translates = getTranslateProperties($elm);

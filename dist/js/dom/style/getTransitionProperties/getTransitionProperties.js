@@ -1,5 +1,5 @@
 import { convertTime } from '@blackbyte/sugar/datetime';
-import getStyleProperty from './getStyleProperty/getStyleProperty.js';
+import getStyleProperty from '../getStyleProperty/getStyleProperty.js';
 function splitIfNeeded(what, separator) {
     var _a;
     if ((_a = what.includes) === null || _a === void 0 ? void 0 : _a.call(what, separator)) {

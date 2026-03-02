@@ -1,4 +1,4 @@
-import positionFromEvent from '../../position/positionFromEvent/positionFromEvent.js';
+import { positionFromEvent } from '@blackbyte/sugar/dom';
 
 /**
  * @name            onDrag

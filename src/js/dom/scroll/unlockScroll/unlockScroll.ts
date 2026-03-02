@@ -1,7 +1,7 @@
 import {
   lockScrollPreventDefault,
   lockScrollPreventDefaultForScrollKeys,
-} from './lockScroll/lockScroll.js';
+} from '../lockScroll/lockScroll.js';
 
 /**
  * @name            unlockScroll
