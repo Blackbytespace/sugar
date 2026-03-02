@@ -1,5 +1,5 @@
-import loopsCount from './loopsCount.js';
-import speedIndex from './speedIndex.js';
+import loopsCount from './loopsCount/loopsCount.js';
+import speedIndex from './speedIndex/speedIndex.js';
 
 export {
   loopsCount as __loopsCount,

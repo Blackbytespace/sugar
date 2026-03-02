@@ -1,5 +1,5 @@
-import scrollSpy from './scrollSpy.js';
-import scrollTo from './scrollTo.js';
+import scrollSpy from './scrollSpy/scrollSpy.js';
+import scrollTo from './scrollTo/scrollTo.js';
 
 export {
   scrollSpy as __scrollSpy,
