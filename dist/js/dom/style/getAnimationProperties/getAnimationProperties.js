@@ -1,7 +1,6 @@
 import { convertTime } from '@blackbyte/sugar/datetime';
 import getStyleProperty from '../getStyleProperty/getStyleProperty.js';
 export default function getAnimationProperties(elm) {
-    var _a, _b;
     // get the animation properties
     const name = getStyleProperty(elm, 'animation-name') || '';
     const duration = getStyleProperty(elm, 'animation-duration') || '0s';
@@ -16,9 +15,7 @@ export default function getAnimationProperties(elm) {
         names: name.split(','),
         durations: duration.split(',').map((value) => convertTime(value, 'ms')),
         delays: `${delay}`.split(',').map((value) => convertTime(value, 'ms')),
-        timingFunctions: ((_b = (_a = timingFunction.split) === null || _a === void 0 ? void 0 : _a.call(timingFunction, ',')) !== null && _b !== void 0 ? _b : timingFunction.name)
-            ? [timingFunction.name]
-            : ['linear'],
+        timingFunctions: timingFunction.split(',').map((s) => s.trim()),
         iterationCounts: `${iterationCount}`.split(','),
         directions: direction.split(','),
         fillModes: fillMode.split(','),
@@ -29,7 +26,7 @@ export default function getAnimationProperties(elm) {
         totalDuration: 0,
         animations,
     };
-    for (let [i, name] of props.names) {
+    for (let [i, name] of props.names.entries()) {
         animations.push({
             name,
             duration: props.durations[i],
@@ -42,12 +39,13 @@ export default function getAnimationProperties(elm) {
         });
     }
     let totalDuration = 0;
-    const i = 0;
+    let i = 0;
     const delays = [0].concat(props.delays);
     [0].concat(props.durations).forEach((val) => {
         if (val + delays[i] > totalDuration) {
             totalDuration = val + delays[i];
         }
+        i++;
     });
     result.totalDuration = totalDuration;
     return result;

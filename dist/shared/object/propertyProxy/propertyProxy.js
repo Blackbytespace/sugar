@@ -1,4 +1,5 @@
 // @ts-nocheck
+import __get from '../get/get.js';
 export default function propertyProxy(obj, property, descriptor, applySetterAtStart = false) {
     // handle property like "something.cool"
     const objPath = property.split('.').slice(0, -1).join('.');
@@ -53,10 +54,10 @@ export default function propertyProxy(obj, property, descriptor, applySetterAtSt
             : currentDescriptor && currentDescriptor.configurable !== undefined
                 ? currentDescriptor.configurable
                 : false,
-        enumarable: descriptor.enumarable !== undefined
+        enumerable: descriptor.enumarable !== undefined
             ? descriptor.enumarable
-            : currentDescriptor && currentDescriptor.enumarable !== undefined
-                ? currentDescriptor.enumarable
+            : currentDescriptor && currentDescriptor.enumerable !== undefined
+                ? currentDescriptor.enumerable
                 : true,
     });
     // return the value

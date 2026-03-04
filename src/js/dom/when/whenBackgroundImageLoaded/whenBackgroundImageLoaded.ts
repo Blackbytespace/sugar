@@ -60,7 +60,7 @@ export default function whenBackgroundImageLoaded(
 
   promise.finally(() => {
     isCancelled = true;
-  });
+  }).catch(() => {});
 
   return promise as Promise<HTMLElement>;
 }

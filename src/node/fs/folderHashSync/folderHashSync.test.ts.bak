@@ -1,0 +1,173 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import folderHashSync from './folderHashSync.js';
+
+const testDir = path.join(
+  process.cwd(),
+  'src/node/fs/folderHashSync/test-folderHashSync',
+);
+let createdDirs: string[] = [];
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+
+  // Create main test directory
+  fs.mkdirSync(testDir, { recursive: true });
+  createdDirs.push(testDir);
+});
+
+afterAll(() => {
+  // Clean up all created directories
+  createdDirs.forEach((dir) => {
+    if (fs.existsSync(dir)) {
+      fs.rmSync(dir, { recursive: true });
+    }
+  });
+});
+
+test('folderHashSync', () => {
+  // Test basic folder with single file
+  const folder1 = path.join(testDir, 'folder1');
+  fs.mkdirSync(folder1);
+  fs.writeFileSync(path.join(folder1, 'file1.txt'), 'Hello World');
+
+  const hash1 = folderHashSync(folder1);
+  expect(typeof hash1).toBe('string');
+  expect(hash1.length).toBeGreaterThan(0);
+
+  // Test same folder content should give same hash
+  const folder2 = path.join(testDir, 'folder2');
+  fs.mkdirSync(folder2);
+  fs.writeFileSync(path.join(folder2, 'file1.txt'), 'Hello World');
+
+  const hash2 = folderHashSync(folder2);
+  expect(hash2).toBe(hash1); // Same content should give same hash
+
+  // Test different content should give different hash
+  const folder3 = path.join(testDir, 'folder3');
+  fs.mkdirSync(folder3);
+  fs.writeFileSync(path.join(folder3, 'file1.txt'), 'Different Content');
+
+  const hash3 = folderHashSync(folder3);
+  expect(hash3).not.toBe(hash1);
+
+  // Test empty folder
+  const emptyFolder = path.join(testDir, 'empty');
+  fs.mkdirSync(emptyFolder);
+
+  const emptyHash = folderHashSync(emptyFolder);
+  expect(typeof emptyHash).toBe('string');
+  expect(emptyHash.length).toBeGreaterThan(0);
+
+  // Test folder with multiple files
+  const multiFileFolder = path.join(testDir, 'multifile');
+  fs.mkdirSync(multiFileFolder);
+  fs.writeFileSync(path.join(multiFileFolder, 'file1.txt'), 'Content 1');
+  fs.writeFileSync(path.join(multiFileFolder, 'file2.txt'), 'Content 2');
+  fs.writeFileSync(path.join(multiFileFolder, 'file3.txt'), 'Content 3');
+
+  const multiHash = folderHashSync(multiFileFolder);
+  expect(multiHash).not.toBe(hash1);
+  expect(multiHash).not.toBe(emptyHash);
+
+  // Test that file order doesn't matter (same files, different creation order)
+  const folder4 = path.join(testDir, 'folder4');
+  fs.mkdirSync(folder4);
+  fs.writeFileSync(path.join(folder4, 'file3.txt'), 'Content 3');
+  fs.writeFileSync(path.join(folder4, 'file1.txt'), 'Content 1');
+  fs.writeFileSync(path.join(folder4, 'file2.txt'), 'Content 2');
+
+  const hash4 = folderHashSync(folder4);
+  // Note: This might depend on how the filesystem orders files
+  // The hash should be consistent for the same content regardless of creation order
+
+  // Test recursive folder structure
+  const nestedFolder = path.join(testDir, 'nested');
+  const subFolder = path.join(nestedFolder, 'subfolder');
+  fs.mkdirSync(subFolder, { recursive: true });
+  fs.writeFileSync(path.join(nestedFolder, 'root.txt'), 'Root content');
+  fs.writeFileSync(path.join(subFolder, 'sub.txt'), 'Sub content');
+
+  const nestedHash = folderHashSync(nestedFolder);
+  expect(typeof nestedHash).toBe('string');
+  expect(nestedHash).not.toBe(hash1);
+
+  // Test non-recursive mode
+  const nonRecursiveHash = folderHashSync(nestedFolder, { recursive: false });
+  expect(nonRecursiveHash).not.toBe(nestedHash);
+
+  // Test with different algorithms
+  const hashMd5 = folderHashSync(folder1, { algo: 'md5' });
+  const hashSha1 = folderHashSync(folder1, { algo: 'sha1' });
+  const hashSha256 = folderHashSync(folder1, { algo: 'sha256' });
+  const hashSha512 = folderHashSync(folder1, { algo: 'sha512' });
+
+  expect(hashMd5).not.toBe(hashSha1);
+  expect(hashSha1).not.toBe(hashSha256);
+  expect(hashSha256).not.toBe(hashSha512);
+  expect(hashSha256).toBe(hash1); // Default is sha256
+
+  // Test with different encodings
+  const hashHex = folderHashSync(folder1, { encoding: 'hex' });
+  const hashBase64 = folderHashSync(folder1, { encoding: 'base64' });
+
+  expect(hashHex).not.toBe(hashBase64);
+  expect(hashBase64).toBe(hash1); // Default is base64
+
+  // Test that modifying a file changes the folder hash
+  const modifiableFolder = path.join(testDir, 'modifiable');
+  fs.mkdirSync(modifiableFolder);
+  fs.writeFileSync(path.join(modifiableFolder, 'modify.txt'), 'Original');
+
+  const originalHash = folderHashSync(modifiableFolder);
+
+  // Modify the file
+  fs.writeFileSync(path.join(modifiableFolder, 'modify.txt'), 'Modified');
+  const modifiedHash = folderHashSync(modifiableFolder);
+
+  expect(modifiedHash).not.toBe(originalHash);
+
+  // Test adding a file changes the hash
+  const addFileFolder = path.join(testDir, 'addfile');
+  fs.mkdirSync(addFileFolder);
+  fs.writeFileSync(path.join(addFileFolder, 'initial.txt'), 'Initial');
+
+  const beforeAddHash = folderHashSync(addFileFolder);
+
+  // Add a new file
+  fs.writeFileSync(path.join(addFileFolder, 'new.txt'), 'New file');
+  const afterAddHash = folderHashSync(addFileFolder);
+
+  expect(afterAddHash).not.toBe(beforeAddHash);
+
+  // Test error handling - non-existent folder should throw
+  expect(() => {
+    folderHashSync('/non/existent/folder');
+  }).toThrow();
+
+  // Test complex nested structure
+  const complexFolder = path.join(testDir, 'complex');
+  const level1 = path.join(complexFolder, 'level1');
+  const level2 = path.join(level1, 'level2');
+  fs.mkdirSync(level2, { recursive: true });
+
+  fs.writeFileSync(path.join(complexFolder, 'root.txt'), 'root');
+  fs.writeFileSync(path.join(level1, 'l1.txt'), 'level1');
+  fs.writeFileSync(path.join(level2, 'l2.txt'), 'level2');
+
+  const complexHash = folderHashSync(complexFolder);
+  const complexNonRecursive = folderHashSync(complexFolder, {
+    recursive: false,
+  });
+
+  expect(complexHash).not.toBe(complexNonRecursive);
+
+  // Test consistency - same folder should always return same hash
+  const consistentHash1 = folderHashSync(folder1);
+  const consistentHash2 = folderHashSync(folder1);
+  expect(consistentHash1).toBe(consistentHash2);
+});

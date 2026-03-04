@@ -44,22 +44,15 @@ export default function getScaleProperty(
     style.mozTransform ||
     // @ts-ignore
     style.msTransform;
-  if (!transform) return;
+  if (!transform || transform === 'none') return;
 
-  const matrix = rematrix.fromString(transform).toString();
-  var values = matrix.split(','),
-    pi = Math.PI,
-    sinB = parseFloat(values[8]),
-    b = Math.round((Math.asin(sinB) * 180) / pi),
-    cosB = Math.cos((b * pi) / 180),
-    matrixVal10 = parseFloat(values[9]),
-    a = Math.round((Math.asin(-matrixVal10 / cosB) * 180) / pi),
-    matrixVal1 = parseFloat(values[0]),
-    c = Math.round((Math.acos(matrixVal1 / cosB) * 180) / pi);
+  // fromString returns a Matrix3D (array of 16 numbers)
+  // scaleX is at index 0, scaleY is at index 5
+  const matrixArray = rematrix.fromString(transform);
 
   return {
-    x: a,
-    y: b,
-    z: c,
+    x: matrixArray[0],
+    y: matrixArray[5],
+    z: 1,
   };
 }

@@ -47,27 +47,17 @@ export default function iframeAutoSize(
       $iframe.style.width = 0 + 'px';
       $iframe.style.width =
         $iframe.contentWindow?.document.documentElement.scrollWidth + 'px';
-      setTimeout(() => {
-        if ($iframe.contentWindow?.document.body.scrollWidth) {
-          _resize();
-        }
-      }, 100);
     }
     if (finalSettings.height) {
       $iframe.style.height = 0 + 'px';
       $iframe.style.height =
         $iframe.contentWindow?.document.documentElement.scrollHeight + 'px';
-      setTimeout(() => {
-        if ($iframe.contentWindow?.document.body.scrollHeight) {
-          _resize();
-        }
-      }, 100);
     }
   }
 
   $iframe.addEventListener('load', () => {
     // resize on load
-    _resize;
+    _resize();
 
     // resize on image load
     $iframe.contentWindow?.document.body

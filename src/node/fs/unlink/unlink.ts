@@ -31,7 +31,7 @@ import isDirectory from '../../is/isDirectory/isDirectory.js';
 export default function unlink(path: string): Promise<void> {
   if (!fs.existsSync(path)) return Promise.resolve();
   if (isDirectory(path)) {
-    return fs.promises.rmdir(path, { recursive: true });
+    return fs.promises.rm(path, { recursive: true });
   } else {
     return fs.promises.unlink(path);
   }

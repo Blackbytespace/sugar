@@ -1,6 +1,3 @@
-import __scrollTop from '../scrollTop/scrollTop.js';
-import { offsetFromViewport } from '@blackbyte/sugar/dom';
-
 /**
  * @name            distanceFromElementTopToViewportBottom
  * @namespace       js.dom.distance
@@ -26,10 +23,7 @@ import { offsetFromViewport } from '@blackbyte/sugar/dom';
 export default function distanceFromElementTopToViewportBottom(
   $elm: HTMLElement,
 ): number {
-  const offsets = offsetFromViewport($elm);
-  const scrollTop = __scrollTop();
-  // @ts-ignore
   const viewportHeight = window.innerHeight;
-  const distance = viewportHeight - offsets.top + scrollTop;
-  return distance;
+  const elmTop = $elm.getBoundingClientRect().top;
+  return viewportHeight - elmTop;
 }

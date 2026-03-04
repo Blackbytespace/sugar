@@ -40,7 +40,7 @@ export default function setTheme(
     ...(settings ?? {}),
   };
 
-  document.body.classList.forEach((cls) => {
+  Array.from(document.body.classList).forEach((cls) => {
     if (cls.match(/^theme-/)) {
       document.body.classList.remove(cls);
     }

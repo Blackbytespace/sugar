@@ -17,7 +17,7 @@ import writeFileSync from '../writeFileSync/writeFileSync.js';
  *
  * @param       {Any}                       data                    The data to write in the file
  * @param       {TWriteTmpFileSettings}     [settings={}]           Some settings to customize your temp file creation
- * @return      {Promise<String>}                                   A promise that will be resolved when the writeTmpFile is completed with the path to it
+ * @return      {Promise<string>}                                   A promise that will be resolved when the writeTmpFile is completed with the path to it
  *
  * @todo        tests
  *
@@ -43,7 +43,7 @@ export type TWriteTmpFileSettings = {
 export default async function writeTmpFile(
   data: any,
   settings: Partial<TWriteTmpFileSettings> = {},
-): Promise<String> {
+): Promise<string> {
   settings = {
     path: undefined,
     ...settings,

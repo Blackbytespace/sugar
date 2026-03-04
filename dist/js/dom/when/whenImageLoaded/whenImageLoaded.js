@@ -54,7 +54,7 @@ export default function whenImageLoaded($img) {
     pro.finally(() => {
         imgLoadedHandler && $img.removeEventListener('load', imgLoadedHandler);
         imgErrorHandler && $img.removeEventListener('error', imgErrorHandler);
-    });
+    }).catch(() => { });
     return pro;
 }
 //# sourceMappingURL=whenImageLoaded.js.map

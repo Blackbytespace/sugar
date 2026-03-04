@@ -1,6 +1,6 @@
 // @ts-nocheck
-import easeInOutQuad from '../../shared/easing/easeInOutQuad.js';
-import isUserScrolling from '../is/isUserScrolling.js';
+import easeInOutQuad from '../../../shared/easing/easeInOutQuad/easeInOutQuad.js';
+import isUserScrolling from '../../is/isUserScrolling/isUserScrolling.js';
 
 /**
  * @name                scrollTo
@@ -152,7 +152,7 @@ export default function __scrollTo(
     if (target === 'left') {
       targetX = 0;
     } else if (target === 'right') {
-      targetY =
+      targetX =
         finalSettings.$elm?.scrollWidth ?? document.documentElement.scrollWidth;
     }
 
@@ -216,6 +216,9 @@ export default function __scrollTo(
       startTime: Date.now(),
       step: __scrollTo.step,
     };
+
+    // Start the animation
+    __scrollTo.step.call(obj);
   });
 }
 
@@ -238,6 +241,7 @@ __scrollTo.step = function () {
 
   // Continue animation as long as duration hasn't surpassed
   if (t !== 1) {
+    requestAnimationFrame(() => this.step());
   } else {
     if (this.onFinish) this.onFinish();
   }

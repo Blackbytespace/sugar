@@ -7,9 +7,9 @@ import { v4 as uuidv4 } from 'uuid';
  * @platform        node
  * @status          stable
  *
- * Generate a uniqid string of 8 bytes. Work using the [uniqid](https://www.npmjs.com/package/uniqid) npm package under the hood.
+ * Generate a unique identifier string using UUID v4. Works using the [uuid](https://www.npmjs.com/package/uuid) npm package under the hood.
  *
- * @return          {String}                A 8 bytes uniqid string
+ * @return          {String}                A UUID v4 string (36 characters with dashes)
  *
  * @todo      tests
  *
@@ -17,7 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
  *
  * @example       js
  * import { uniqid } from '@blackbyte/sugar/string';
- * console.log(uniqid()); // => 1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
+ * console.log(uniqid()); // => "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
  *
  * @see       https://www.npmjs.com/package/uuid
  * @since     1.0.0

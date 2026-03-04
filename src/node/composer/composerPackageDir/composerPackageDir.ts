@@ -38,9 +38,9 @@ export type TComposerPackageDirSettings = {
   checkExistence: boolean;
 };
 
-export default function composerJsonSync(
+export default function composerPackageDir(
   nameOrPath: string,
-  settings: Partial<TComposerPackageDirSettings>,
+  settings: Partial<TComposerPackageDirSettings> = {},
 ): any {
   settings = {
     cwd: process.cwd(),

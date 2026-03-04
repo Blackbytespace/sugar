@@ -13,7 +13,7 @@ export default function getTranslateProperties($elm) {
         style.mozTransform ||
         // @ts-ignore
         style.msTransform;
-    if (!transform)
+    if (!transform || transform === 'none')
         return {
             x: 0,
             y: 0,

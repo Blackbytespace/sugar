@@ -57,7 +57,7 @@ export default async function resolveTypeString(
     ...settings,
   };
 
-  let types, interf;
+  let types: TTypeStringObject[] | undefined, interf;
 
   if (typeString.match(/^(\.|\/)/)) {
     // resolve tokens
@@ -65,9 +65,11 @@ export default async function resolveTypeString(
 
     let potentialTypeFilePath;
 
-    if (typeString.match(/^(\.|\/)/)) {
+    if (typeString.match(/^\./)) {
+      // relative path from cwd
       potentialTypeFilePath = __path.resolve(finalSettings.cwd, path);
     } else {
+      // absolute path or package root relative path
       potentialTypeFilePath = __path.resolve(
         packageRootDir(finalSettings.cwd),
         path,
@@ -79,17 +81,25 @@ export default async function resolveTypeString(
       const typeData = (await import(potentialTypeFilePath)).default;
       types = [
         {
-          type: typeData.name ?? types,
+          type: typeData.name ?? 'unknown',
           of: undefined,
           value: undefined,
         },
       ];
       // save data into the "metas" property on the string directly
       interf = typeData.toObject?.() ?? typeData;
+    } else {
+      // File doesn't exist, fallback to parsing as regular type string
+      types = parseTypeString(typeString);
     }
     // regular types
   } else {
     types = parseTypeString(typeString);
+  }
+
+  // Ensure types is always defined
+  if (!types) {
+    types = [{ type: 'unknown', of: undefined, value: undefined }];
   }
 
   return {

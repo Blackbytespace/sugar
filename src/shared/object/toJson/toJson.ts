@@ -28,6 +28,10 @@ import set from '../set/set.js';
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function toJson(object: any): any {
+  if (object == null) {
+    return {};
+  }
+  
   const newObj = {};
   mapDeep(
     object,

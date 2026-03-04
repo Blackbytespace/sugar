@@ -3,10 +3,9 @@
  * @namespace               js.convert
  * @type                    Function
  * @platform                js
- * @platform                node
  * @status                  stable
  *
- * Convert rem value to a px one
+ * Convert a rem value to a px one
  *
  * @param         {Number}          rem           The rem value to convert
  * @return        {Number}                        The pixel value

@@ -37,7 +37,7 @@ export default function whenIframeReady($iframe) {
             var _a, _b;
             if ((_b = (_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document) === null || _b === void 0 ? void 0 : _b.body) {
                 clearInterval(int);
-                resolve(null);
+                resolve($iframe);
             }
         }, 10);
     });

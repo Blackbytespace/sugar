@@ -15,4 +15,4 @@
  * @since       2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function parseHtml(message: any): any;
+export default function parseHtml(message: string | string[]): string | string[];

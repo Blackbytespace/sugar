@@ -5,7 +5,7 @@
  * @platform        node
  * @status          stable
  *
- * Ensure that the passed file exists. If not, will be created... (async)
+ * Ensure that the passed file exists. If not, will be created... (sync)
  *
  * @param       {String}              filePath           The file to ensure that it exists...
  *

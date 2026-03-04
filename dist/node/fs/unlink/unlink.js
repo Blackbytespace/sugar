@@ -31,7 +31,7 @@ export default function unlink(path) {
     if (!fs.existsSync(path))
         return Promise.resolve();
     if (isDirectory(path)) {
-        return fs.promises.rmdir(path, { recursive: true });
+        return fs.promises.rm(path, { recursive: true });
     }
     else {
         return fs.promises.unlink(path);

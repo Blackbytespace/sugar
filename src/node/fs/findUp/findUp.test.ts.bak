@@ -1,0 +1,188 @@
+import fs from 'fs';
+import path from 'path';
+import { afterAll, beforeAll, expect, test } from 'vitest';
+import findUp from './findUp.js';
+
+const testDir = path.join(process.cwd(), 'src/node/fs/findUp/test-findUp');
+let createdDirs: string[] = [];
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+
+  // Create nested directory structure for testing
+  const level1 = path.join(testDir, 'level1');
+  const level2 = path.join(level1, 'level2');
+  const level3 = path.join(level2, 'level3');
+
+  fs.mkdirSync(level3, { recursive: true });
+  createdDirs.push(testDir);
+
+  // Create test files at different levels
+  fs.writeFileSync(path.join(testDir, 'root-config.json'), '{"level": "root"}');
+  fs.writeFileSync(
+    path.join(testDir, 'package.json'),
+    '{"name": "test-package"}',
+  );
+  fs.writeFileSync(path.join(level1, 'level1-config.json'), '{"level": "1"}');
+  fs.writeFileSync(path.join(level2, 'level2-config.json'), '{"level": "2"}');
+  fs.writeFileSync(path.join(level2, 'test.txt'), 'test content');
+  fs.writeFileSync(path.join(level3, 'deepfile.js'), 'console.log("deep");');
+
+  // Create multiple files with same name at different levels
+  fs.writeFileSync(path.join(testDir, 'common.conf'), 'root common');
+  fs.writeFileSync(path.join(level1, 'common.conf'), 'level1 common');
+  fs.writeFileSync(path.join(level2, 'common.conf'), 'level2 common');
+
+  // Create files for glob pattern testing
+  fs.writeFileSync(path.join(testDir, 'file1.txt'), 'file1');
+  fs.writeFileSync(path.join(testDir, 'file2.txt'), 'file2');
+  fs.writeFileSync(path.join(level1, 'test1.js'), 'test1');
+  fs.writeFileSync(path.join(level1, 'test2.js'), 'test2');
+});
+
+afterAll(() => {
+  // Clean up all created directories
+  createdDirs.forEach((dir) => {
+    if (fs.existsSync(dir)) {
+      fs.rmSync(dir, { recursive: true });
+    }
+  });
+});
+
+test('findUp', async () => {
+  const level3Dir = path.join(testDir, 'level1', 'level2', 'level3');
+
+  // Test basic file search from deep directory
+  const result1 = await findUp('package.json', { cwd: level3Dir });
+  expect(Array.isArray(result1)).toBe(true);
+  expect(result1.length).toBeGreaterThan(0);
+  expect(result1[0]).toContain('package.json');
+  expect(result1[0]).toContain(testDir);
+
+  // Test file that exists at current level
+  const level2Dir = path.join(testDir, 'level1', 'level2');
+  const result2 = await findUp('level2-config.json', { cwd: level2Dir });
+  expect(result2.length).toBeGreaterThan(0);
+  expect(result2[0]).toBe(path.join(level2Dir, 'level2-config.json'));
+
+  // Test file that doesn't exist
+  const result3 = await findUp('non-existent-file.txt', { cwd: level3Dir });
+  expect(result3).toEqual([]);
+
+  // Test stopWhenFound = false (should find all instances)
+  const result4 = await findUp('common.conf', {
+    cwd: level3Dir,
+    stopWhenFound: false,
+  });
+  expect(result4.length).toBe(3); // Should find all three common.conf files
+
+  // Test stopWhenFound = true (default - should find only the closest)
+  const result5 = await findUp('common.conf', {
+    cwd: level3Dir,
+    stopWhenFound: true,
+  });
+  expect(result5.length).toBe(1); // Should find only the closest one
+  expect(result5[0]).toContain('level2'); // Closest should be level2
+
+  // Test from level1 directory
+  const level1Dir = path.join(testDir, 'level1');
+  const result6 = await findUp('common.conf', {
+    cwd: level1Dir,
+    stopWhenFound: true,
+  });
+  expect(result6.length).toBe(1);
+  expect(result6[0]).toBe(path.join(level1Dir, 'common.conf'));
+
+  // Test glob pattern - find all .txt files
+  const result7 = await findUp('*.txt', {
+    cwd: level3Dir,
+    stopWhenFound: false,
+  });
+  expect(Array.isArray(result7)).toBe(true);
+  expect(result7.length).toBeGreaterThan(0);
+
+  // Test glob pattern - find all .js files
+  const result8 = await findUp('*.js', {
+    cwd: level3Dir,
+    stopWhenFound: false,
+  });
+  expect(result8.length).toBeGreaterThan(0);
+
+  // Test glob pattern with stopWhenFound = true
+  const result9 = await findUp('*.txt', {
+    cwd: level3Dir,
+    stopWhenFound: true,
+  });
+  expect(Array.isArray(result9)).toBe(true);
+
+  // Test from root directory
+  const result10 = await findUp('root-config.json', { cwd: testDir });
+  expect(result10.length).toBe(1);
+  expect(result10[0]).toBe(path.join(testDir, 'root-config.json'));
+
+  // Test with custom cwd
+  const result11 = await findUp('level1-config.json', {
+    cwd: level2Dir,
+  });
+  expect(result11.length).toBe(1);
+  expect(result11[0]).toContain('level1-config.json');
+
+  // Test searching from a path that contains the file
+  const result12 = await findUp('deepfile.js', {
+    cwd: level3Dir,
+  });
+  expect(result12.length).toBe(1);
+  expect(result12[0]).toBe(path.join(level3Dir, 'deepfile.js'));
+
+  // Test complex glob pattern
+  const result13 = await findUp('**/*.json', {
+    cwd: level2Dir,
+    stopWhenFound: true,
+  });
+  expect(Array.isArray(result13)).toBe(true);
+
+  // Test that search stops at filesystem root (no infinite loop)
+  const result14 = await findUp('definitely-does-not-exist-anywhere.xyz', {
+    cwd: level3Dir,
+  });
+  expect(result14).toEqual([]);
+
+  // Test symlinks setting (basic test - functionality depends on filesystem)
+  const result15 = await findUp('package.json', {
+    cwd: level3Dir,
+    symlinks: false,
+  });
+  expect(Array.isArray(result15)).toBe(true);
+
+  // Test with different file extensions
+  const result16 = await findUp('*.conf', {
+    cwd: level3Dir,
+    stopWhenFound: false,
+  });
+  expect(result16.length).toBe(3); // Should find all .conf files
+
+  // Test case sensitivity (depends on filesystem)
+  const result17 = await findUp('PACKAGE.JSON', { cwd: level3Dir });
+  // Result depends on filesystem case sensitivity
+  expect(Array.isArray(result17)).toBe(true);
+
+  // Test with relative pattern
+  const result18 = await findUp('test*.js', {
+    cwd: level2Dir,
+    stopWhenFound: false,
+  });
+  expect(Array.isArray(result18)).toBe(true);
+
+  // Test consistency - same search should return same results
+  const result19a = await findUp('package.json', { cwd: level3Dir });
+  const result19b = await findUp('package.json', { cwd: level3Dir });
+  expect(result19a).toEqual(result19b);
+
+  // Test edge case - empty search string (may match directories as glob)
+  const result20 = await findUp('', { cwd: level3Dir });
+  expect(Array.isArray(result20)).toBe(true);
+  // Empty string might match directories or return empty - both are valid
+});

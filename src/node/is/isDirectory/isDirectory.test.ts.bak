@@ -1,0 +1,232 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import isDirectory from './isDirectory.js';
+
+const testDir = path.join(
+  process.cwd(),
+  'src/node/is/isDirectory/test-isDirectory',
+);
+let createdPaths: string[] = [];
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+
+  // Create test directory structure
+  fs.mkdirSync(testDir, { recursive: true });
+  createdPaths.push(testDir);
+
+  // Create subdirectories
+  const subDir1 = path.join(testDir, 'subdir1');
+  fs.mkdirSync(subDir1);
+  createdPaths.push(subDir1);
+
+  const subDir2 = path.join(testDir, 'subdir2');
+  fs.mkdirSync(subDir2);
+  createdPaths.push(subDir2);
+
+  // Create nested directory
+  const nestedDir = path.join(subDir1, 'nested');
+  fs.mkdirSync(nestedDir);
+  createdPaths.push(nestedDir);
+
+  // Create empty directory
+  const emptyDir = path.join(testDir, 'empty');
+  fs.mkdirSync(emptyDir);
+  createdPaths.push(emptyDir);
+
+  // Create test files (should not be detected as directories)
+  const testFile = path.join(testDir, 'test.txt');
+  fs.writeFileSync(testFile, 'test content');
+  createdPaths.push(testFile);
+
+  const fileInSubdir = path.join(subDir1, 'file.txt');
+  fs.writeFileSync(fileInSubdir, 'file in subdir');
+  createdPaths.push(fileInSubdir);
+});
+
+afterAll(() => {
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+});
+
+test('isDirectory', () => {
+  // Test main directory
+  expect(isDirectory(testDir)).toBe(true);
+
+  // Test with default settings
+  expect(isDirectory(testDir, {})).toBe(true);
+
+  // Test subdirectories
+  expect(isDirectory(path.join(testDir, 'subdir1'))).toBe(true);
+  expect(isDirectory(path.join(testDir, 'subdir2'))).toBe(true);
+
+  // Test nested directory
+  expect(isDirectory(path.join(testDir, 'subdir1', 'nested'))).toBe(true);
+
+  // Test empty directory
+  expect(isDirectory(path.join(testDir, 'empty'))).toBe(true);
+
+  // Test files should return false
+  expect(isDirectory(path.join(testDir, 'test.txt'))).toBe(false);
+  expect(isDirectory(path.join(testDir, 'subdir1', 'file.txt'))).toBe(false);
+
+  // Test non-existent directory should return false
+  expect(isDirectory(path.join(testDir, 'nonexistent'))).toBe(false);
+  expect(isDirectory('/completely/nonexistent/path')).toBe(false);
+
+  // Test current directory references
+  expect(isDirectory('.')).toBe(true); // Current directory
+  expect(isDirectory('..')).toBe(true); // Parent directory
+
+  // Test root directory (if accessible)
+  expect(isDirectory('/')).toBe(true);
+
+  // Test directory with special characters
+  const specialDir = path.join(testDir, 'special-dir_123');
+  fs.mkdirSync(specialDir);
+  expect(isDirectory(specialDir)).toBe(true);
+
+  // Test hidden directory (starts with .)
+  const hiddenDir = path.join(testDir, '.hidden');
+  fs.mkdirSync(hiddenDir);
+  expect(isDirectory(hiddenDir)).toBe(true);
+
+  // Test deeply nested directory
+  const deepPath = path.join(testDir, 'level1', 'level2', 'level3');
+  fs.mkdirSync(deepPath, { recursive: true });
+  expect(isDirectory(deepPath)).toBe(true);
+  expect(isDirectory(path.join(testDir, 'level1'))).toBe(true);
+  expect(isDirectory(path.join(testDir, 'level1', 'level2'))).toBe(true);
+
+  // Test symlink behavior (if supported)
+  try {
+    const symlinkPath = path.join(testDir, 'dirsymlink');
+    fs.symlinkSync(path.join(testDir, 'subdir1'), symlinkPath);
+
+    // Test with symlink enabled (default)
+    expect(isDirectory(symlinkPath)).toBe(true);
+    expect(isDirectory(symlinkPath, { symlink: true })).toBe(true);
+
+    // Test with symlink disabled
+    expect(isDirectory(symlinkPath, { symlink: false })).toBe(false);
+
+    // Clean up symlink
+    fs.unlinkSync(symlinkPath);
+  } catch (error) {
+    // Symlinks might not be supported on all systems - that's ok
+    console.log(
+      'Directory symlink test skipped - not supported on this system',
+    );
+  }
+
+  // Test file symlink (should return false)
+  try {
+    const fileSymlinkPath = path.join(testDir, 'filesymlink');
+    fs.symlinkSync(path.join(testDir, 'test.txt'), fileSymlinkPath);
+
+    // Should return false since target is file
+    expect(isDirectory(fileSymlinkPath)).toBe(false);
+    expect(isDirectory(fileSymlinkPath, { symlink: true })).toBe(false);
+    expect(isDirectory(fileSymlinkPath, { symlink: false })).toBe(false);
+
+    // Clean up symlink
+    fs.unlinkSync(fileSymlinkPath);
+  } catch (error) {
+    // Symlinks might not be supported on all systems - that's ok
+  }
+
+  // Test edge cases
+  expect(isDirectory('')).toBe(false);
+  expect(isDirectory('   ')).toBe(false);
+
+  // Test consistency - same path should always return same result
+  expect(isDirectory(testDir)).toBe(isDirectory(testDir));
+
+  // Test directory with many files
+  const busyDir = path.join(testDir, 'busy');
+  fs.mkdirSync(busyDir);
+  for (let i = 0; i < 10; i++) {
+    fs.writeFileSync(path.join(busyDir, `file${i}.txt`), `content ${i}`);
+  }
+  expect(isDirectory(busyDir)).toBe(true);
+
+  // Test very long directory name
+  const longName = 'dir-' + 'a'.repeat(50);
+  const longDir = path.join(testDir, longName);
+  fs.mkdirSync(longDir);
+  expect(isDirectory(longDir)).toBe(true);
+
+  // Test case sensitivity (behavior depends on filesystem)
+  const upperDir = path.join(testDir, 'UPPERCASE');
+  fs.mkdirSync(upperDir);
+  expect(isDirectory(upperDir)).toBe(true);
+
+  // Test that directories and files are properly distinguished
+  const mixedTestDir = path.join(testDir, 'mixed');
+  fs.mkdirSync(mixedTestDir);
+  const sameNameFile = path.join(testDir, 'samename');
+  const sameNameDir = path.join(testDir, 'samename-dir');
+  fs.writeFileSync(sameNameFile, 'file content');
+  fs.mkdirSync(sameNameDir);
+
+  expect(isDirectory(sameNameFile)).toBe(false);
+  expect(isDirectory(sameNameDir)).toBe(true);
+
+  // Test directory permissions (read-only directory)
+  const readOnlyDir = path.join(testDir, 'readonly');
+  fs.mkdirSync(readOnlyDir);
+  try {
+    fs.chmodSync(readOnlyDir, 0o444); // Read-only
+    expect(isDirectory(readOnlyDir)).toBe(true);
+    // Restore permissions for cleanup
+    fs.chmodSync(readOnlyDir, 0o755);
+  } catch (error) {
+    // Permissions might not work on all systems - that's ok
+  }
+
+  // Test system directories (if accessible)
+  if (process.platform !== 'win32') {
+    expect(isDirectory('/tmp')).toBe(true);
+    expect(isDirectory('/usr')).toBe(true);
+  }
+
+  // Test relative path resolution
+  const relativeDir = path.join(testDir, 'relative');
+  fs.mkdirSync(relativeDir);
+  const relativePath = path.relative(process.cwd(), relativeDir);
+  expect(isDirectory(relativePath)).toBe(true);
+
+  // Clean up additional test paths
+  [
+    specialDir,
+    hiddenDir,
+    busyDir,
+    longDir,
+    upperDir,
+    mixedTestDir,
+    sameNameFile,
+    sameNameDir,
+    readOnlyDir,
+    relativeDir,
+  ].forEach((item) => {
+    if (fs.existsSync(item)) {
+      const stats = fs.lstatSync(item);
+      if (stats.isDirectory()) {
+        fs.rmSync(item, { recursive: true });
+      } else {
+        fs.unlinkSync(item);
+      }
+    }
+  });
+
+  // Clean up deep nested structure
+  if (fs.existsSync(path.join(testDir, 'level1'))) {
+    fs.rmSync(path.join(testDir, 'level1'), { recursive: true });
+  }
+});

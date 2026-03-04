@@ -42,6 +42,6 @@ export default async function writeJson(
     jsonStr = JSON.stringify(data, null, 4);
   }
   // @ts-ignore
-  await fs.writeFile(path, jsonStr);
+  await fs.promises.writeFile(path, jsonStr);
   return path;
 }

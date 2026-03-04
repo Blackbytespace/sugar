@@ -1,0 +1,117 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import writeFile from './writeFile.js';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const testDir = path.join(__dirname, 'test-writeFile');
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(testDir, { recursive: true });
+});
+
+afterAll(() => {
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+});
+
+test('writeFile', async () => {
+  // Test writing a basic string
+  const basicFile = path.join(testDir, 'basic.txt');
+  const basicContent = 'Hello, World!';
+
+  const result = await writeFile(basicFile, basicContent);
+  expect(result).toBe(basicFile);
+  expect(fs.existsSync(basicFile)).toBe(true);
+  expect(fs.readFileSync(basicFile, 'utf8')).toBe(basicContent);
+
+  // Test writing to nested directory structure
+  const nestedFile = path.join(testDir, 'nested', 'deep', 'file.txt');
+  const nestedContent = 'Nested content';
+
+  await writeFile(nestedFile, nestedContent);
+  expect(fs.existsSync(nestedFile)).toBe(true);
+  expect(fs.readFileSync(nestedFile, 'utf8')).toBe(nestedContent);
+  expect(fs.existsSync(path.dirname(nestedFile))).toBe(true);
+
+  // Test writing object data (should be converted using toString)
+  const objectFile = path.join(testDir, 'object.txt');
+  const objectData = { name: 'test', value: 123 };
+
+  await writeFile(objectFile, objectData);
+  expect(fs.existsSync(objectFile)).toBe(true);
+
+  const objectContent = fs.readFileSync(objectFile, 'utf8');
+  // Should be prettified JSON format due to toString utility
+  expect(objectContent).toContain('name');
+  expect(objectContent).toContain('test');
+  expect(objectContent).toContain('value');
+  expect(objectContent).toContain('123');
+
+  // Test writing number
+  const numberFile = path.join(testDir, 'number.txt');
+  const numberData = 42.5;
+
+  await writeFile(numberFile, numberData);
+  expect(fs.readFileSync(numberFile, 'utf8')).toBe('42.5');
+
+  // Test writing boolean
+  const boolFile = path.join(testDir, 'bool.txt');
+
+  await writeFile(boolFile, true);
+  expect(fs.readFileSync(boolFile, 'utf8')).toBe('true');
+
+  // Test writing array
+  const arrayFile = path.join(testDir, 'array.txt');
+  const arrayData = [1, 2, 3];
+
+  await writeFile(arrayFile, arrayData);
+  const arrayContent = fs.readFileSync(arrayFile, 'utf8');
+  expect(arrayContent).toContain('1');
+  expect(arrayContent).toContain('2');
+  expect(arrayContent).toContain('3');
+
+  // Test overwriting existing file
+  const overwriteFile = path.join(testDir, 'overwrite.txt');
+  await writeFile(overwriteFile, 'original content');
+  await writeFile(overwriteFile, 'new content');
+
+  expect(fs.readFileSync(overwriteFile, 'utf8')).toBe('new content');
+
+  // Test with options parameter
+  const optionsFile = path.join(testDir, 'options.txt');
+  const optionsContent = 'content with options';
+
+  await writeFile(optionsFile, optionsContent, { encoding: 'utf8' });
+  expect(fs.existsSync(optionsFile)).toBe(true);
+  expect(fs.readFileSync(optionsFile, 'utf8')).toBe(optionsContent);
+
+  // Test with special characters and unicode
+  const unicodeFile = path.join(testDir, 'unicode.txt');
+  const unicodeContent = 'Hello 世界 🌍 Special chars: ñáéíóú';
+
+  await writeFile(unicodeFile, unicodeContent);
+  expect(fs.readFileSync(unicodeFile, 'utf8')).toBe(unicodeContent);
+
+  // Test with empty content
+  const emptyFile = path.join(testDir, 'empty.txt');
+
+  await writeFile(emptyFile, '');
+  expect(fs.existsSync(emptyFile)).toBe(true);
+  expect(fs.readFileSync(emptyFile, 'utf8')).toBe('');
+
+  // Test with null and undefined (should be converted by toString)
+  const nullFile = path.join(testDir, 'null.txt');
+  const undefinedFile = path.join(testDir, 'undefined.txt');
+
+  await writeFile(nullFile, null);
+  await writeFile(undefinedFile, undefined);
+
+  expect(fs.readFileSync(nullFile, 'utf8')).toBe('null');
+  expect(fs.readFileSync(undefinedFile, 'utf8')).toBe('undefined');
+});

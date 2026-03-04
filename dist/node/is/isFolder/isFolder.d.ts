@@ -1,5 +1,5 @@
 /**
- * @name            isFfolder
+ * @name            isFolder
  * @namespace       node.is
  * @type            Function
  * @platform        node
@@ -15,8 +15,8 @@
  * @snippet         isFolder($1)
  *
  * @example     js
- * import { isfolder } from '@blackbyte/sugar/is';
- * isfolder('something/cool');
+ * import { isFolder } from '@blackbyte/sugar/is';
+ * isFolder('something/cool');
  *
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -24,4 +24,4 @@
 export type TIsFolderSettings = {
     symlink?: boolean;
 };
-export default function isfolder(path: string, settings?: TIsFolderSettings): boolean;
+export default function isFolder(path: string, settings?: TIsFolderSettings): boolean;

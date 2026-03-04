@@ -35,29 +35,17 @@ export default function iframeAutoSize($iframe, settings) {
             $iframe.style.width = 0 + 'px';
             $iframe.style.width =
                 ((_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.documentElement.scrollWidth) + 'px';
-            setTimeout(() => {
-                var _a;
-                if ((_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.body.scrollWidth) {
-                    _resize();
-                }
-            }, 100);
         }
         if (finalSettings.height) {
             $iframe.style.height = 0 + 'px';
             $iframe.style.height =
                 ((_b = $iframe.contentWindow) === null || _b === void 0 ? void 0 : _b.document.documentElement.scrollHeight) + 'px';
-            setTimeout(() => {
-                var _a;
-                if ((_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.body.scrollHeight) {
-                    _resize();
-                }
-            }, 100);
         }
     }
     $iframe.addEventListener('load', () => {
         var _a, _b;
         // resize on load
-        _resize;
+        _resize();
         // resize on image load
         (_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.body.querySelectorAll('img').forEach(($img) => {
             $img.addEventListener('load', () => {

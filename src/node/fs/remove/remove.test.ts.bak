@@ -1,0 +1,96 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import remove from './remove.js';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const testDir = path.join(__dirname, 'test-remove');
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(testDir, { recursive: true });
+});
+
+afterAll(() => {
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+});
+
+test('remove', async () => {
+  // Test removing a file
+  const testFile = path.join(testDir, 'test-file.txt');
+  fs.writeFileSync(testFile, 'test content');
+  expect(fs.existsSync(testFile)).toBe(true);
+
+  await remove(testFile);
+  expect(fs.existsSync(testFile)).toBe(false);
+
+  // Test removing a directory with contents
+  const testSubDir = path.join(testDir, 'test-subdir');
+  fs.mkdirSync(testSubDir, { recursive: true });
+  fs.writeFileSync(path.join(testSubDir, 'file1.txt'), 'content 1');
+  fs.writeFileSync(path.join(testSubDir, 'file2.txt'), 'content 2');
+
+  const nestedDir = path.join(testSubDir, 'nested');
+  fs.mkdirSync(nestedDir);
+  fs.writeFileSync(path.join(nestedDir, 'file3.txt'), 'content 3');
+
+  expect(fs.existsSync(testSubDir)).toBe(true);
+  expect(fs.existsSync(path.join(testSubDir, 'file1.txt'))).toBe(true);
+  expect(fs.existsSync(nestedDir)).toBe(true);
+
+  await remove(testSubDir);
+  expect(fs.existsSync(testSubDir)).toBe(false);
+  expect(fs.existsSync(path.join(testSubDir, 'file1.txt'))).toBe(false);
+  expect(fs.existsSync(nestedDir)).toBe(false);
+
+  // Test removing empty directory
+  const emptyDir = path.join(testDir, 'empty-dir');
+  fs.mkdirSync(emptyDir);
+  expect(fs.existsSync(emptyDir)).toBe(true);
+
+  await remove(emptyDir);
+  expect(fs.existsSync(emptyDir)).toBe(false);
+
+  // Test removing non-existent path (should not throw error)
+  const nonExistentPath = path.join(testDir, 'non-existent');
+  expect(fs.existsSync(nonExistentPath)).toBe(false);
+
+  await expect(remove(nonExistentPath)).resolves.toBeUndefined();
+
+  // Test return value (should be void/undefined)
+  const returnTestFile = path.join(testDir, 'return-test.txt');
+  fs.writeFileSync(returnTestFile, 'test');
+
+  const result = await remove(returnTestFile);
+  expect(result).toBeUndefined();
+
+  // Test removing files with special characters
+  const specialFile = path.join(testDir, 'special chars & symbols.txt');
+  fs.writeFileSync(specialFile, 'special content');
+
+  await remove(specialFile);
+  expect(fs.existsSync(specialFile)).toBe(false);
+
+  // Test removing deeply nested structure
+  const deepPath = path.join(
+    testDir,
+    'a',
+    'very',
+    'deep',
+    'nested',
+    'structure',
+  );
+  fs.mkdirSync(deepPath, { recursive: true });
+  fs.writeFileSync(path.join(deepPath, 'deep-file.txt'), 'deep content');
+
+  const rootDeepDir = path.join(testDir, 'a');
+  expect(fs.existsSync(rootDeepDir)).toBe(true);
+
+  await remove(rootDeepDir);
+  expect(fs.existsSync(rootDeepDir)).toBe(false);
+});

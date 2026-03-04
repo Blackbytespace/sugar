@@ -21,7 +21,7 @@
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default async function readText(): Promise<any> {
+export default async function readFile(): Promise<any> {
   if (navigator?.clipboard?.read) {
     return navigator.clipboard.read();
   }

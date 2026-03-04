@@ -1,0 +1,170 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import isFile from './isFile.js';
+
+const testDir = path.join(process.cwd(), 'src/node/is/isFile/test-isFile');
+let createdPaths: string[] = [];
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+
+  // Create test directory structure
+  fs.mkdirSync(testDir, { recursive: true });
+  createdPaths.push(testDir);
+
+  // Create test files
+  const testFile = path.join(testDir, 'test.txt');
+  fs.writeFileSync(testFile, 'test content');
+  createdPaths.push(testFile);
+
+  // Create a subdirectory
+  const subDir = path.join(testDir, 'subdir');
+  fs.mkdirSync(subDir);
+  createdPaths.push(subDir);
+
+  // Create nested file
+  const nestedFile = path.join(subDir, 'nested.txt');
+  fs.writeFileSync(nestedFile, 'nested content');
+  createdPaths.push(nestedFile);
+
+  // Create empty file
+  const emptyFile = path.join(testDir, 'empty.txt');
+  fs.writeFileSync(emptyFile, '');
+  createdPaths.push(emptyFile);
+
+  // Create binary file
+  const binaryFile = path.join(testDir, 'binary.bin');
+  fs.writeFileSync(binaryFile, Buffer.from([0x00, 0x01, 0x02, 0x03]));
+  createdPaths.push(binaryFile);
+});
+
+afterAll(() => {
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+});
+
+test('isFile', () => {
+  // Test regular file
+  const testFile = path.join(testDir, 'test.txt');
+  expect(isFile(testFile)).toBe(true);
+
+  // Test with default settings
+  expect(isFile(testFile, {})).toBe(true);
+
+  // Test directory should return false
+  expect(isFile(testDir)).toBe(false);
+  expect(isFile(path.join(testDir, 'subdir'))).toBe(false);
+
+  // Test non-existent file should return false
+  expect(isFile(path.join(testDir, 'nonexistent.txt'))).toBe(false);
+  expect(isFile('/completely/nonexistent/path/file.txt')).toBe(false);
+
+  // Test empty file
+  const emptyFile = path.join(testDir, 'empty.txt');
+  expect(isFile(emptyFile)).toBe(true);
+
+  // Test binary file
+  const binaryFile = path.join(testDir, 'binary.bin');
+  expect(isFile(binaryFile)).toBe(true);
+
+  // Test nested file
+  const nestedFile = path.join(testDir, 'subdir', 'nested.txt');
+  expect(isFile(nestedFile)).toBe(true);
+
+  // Test various file extensions
+  const jsFile = path.join(testDir, 'test.js');
+  fs.writeFileSync(jsFile, 'console.log("test");');
+  expect(isFile(jsFile)).toBe(true);
+
+  const jsonFile = path.join(testDir, 'test.json');
+  fs.writeFileSync(jsonFile, '{"test": true}');
+  expect(isFile(jsonFile)).toBe(true);
+
+  // Test file without extension
+  const noExtFile = path.join(testDir, 'noextension');
+  fs.writeFileSync(noExtFile, 'no extension');
+  expect(isFile(noExtFile)).toBe(true);
+
+  // Test hidden file (starts with .)
+  const hiddenFile = path.join(testDir, '.hidden');
+  fs.writeFileSync(hiddenFile, 'hidden content');
+  expect(isFile(hiddenFile)).toBe(true);
+
+  // Test symlink behavior (if supported)
+  try {
+    const symlinkPath = path.join(testDir, 'symlink.txt');
+    fs.symlinkSync(testFile, symlinkPath);
+
+    // Test with symlink enabled (default)
+    expect(isFile(symlinkPath)).toBe(true);
+    expect(isFile(symlinkPath, { symlink: true })).toBe(true);
+
+    // Test with symlink disabled
+    expect(isFile(symlinkPath, { symlink: false })).toBe(false);
+
+    // Clean up symlink
+    fs.unlinkSync(symlinkPath);
+  } catch (error) {
+    // Symlinks might not be supported on all systems - that's ok
+    console.log('Symlink test skipped - not supported on this system');
+  }
+
+  // Test directory symlink (should return false)
+  try {
+    const dirSymlinkPath = path.join(testDir, 'dirsymlink');
+    fs.symlinkSync(path.join(testDir, 'subdir'), dirSymlinkPath);
+
+    // Should return false since target is directory
+    expect(isFile(dirSymlinkPath)).toBe(false);
+    expect(isFile(dirSymlinkPath, { symlink: true })).toBe(false);
+    expect(isFile(dirSymlinkPath, { symlink: false })).toBe(false);
+
+    // Clean up symlink
+    fs.unlinkSync(dirSymlinkPath);
+  } catch (error) {
+    // Symlinks might not be supported on all systems - that's ok
+  }
+
+  // Test edge cases
+  expect(isFile('')).toBe(false);
+  expect(isFile('   ')).toBe(false);
+
+  // Test current directory references
+  expect(isFile('.')).toBe(false); // Current directory
+  expect(isFile('..')).toBe(false); // Parent directory
+
+  // Test consistency - same path should always return same result
+  expect(isFile(testFile)).toBe(isFile(testFile));
+
+  // Test case sensitivity (behavior depends on filesystem)
+  const upperFile = path.join(testDir, 'TEST.TXT');
+  const lowerFile = path.join(testDir, 'test.txt');
+  // On case-insensitive filesystems, these might be the same
+  // On case-sensitive filesystems, they're different
+
+  // Test very long filename
+  const longName = 'a'.repeat(100) + '.txt';
+  const longFile = path.join(testDir, longName);
+  fs.writeFileSync(longFile, 'long filename test');
+  expect(isFile(longFile)).toBe(true);
+
+  // Test special characters in filename
+  const specialFile = path.join(testDir, 'test-file_123.txt');
+  fs.writeFileSync(specialFile, 'special chars');
+  expect(isFile(specialFile)).toBe(true);
+
+  // Clean up additional test files
+  [jsFile, jsonFile, noExtFile, hiddenFile, longFile, specialFile].forEach(
+    (file) => {
+      if (fs.existsSync(file)) {
+        fs.unlinkSync(file);
+      }
+    },
+  );
+});

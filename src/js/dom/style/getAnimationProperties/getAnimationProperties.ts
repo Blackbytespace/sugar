@@ -69,10 +69,7 @@ export default function getAnimationProperties(elm: HTMLElement) {
     names: name.split(','),
     durations: duration.split(',').map((value) => convertTime(value, 'ms')),
     delays: `${delay}`.split(',').map((value) => convertTime(value, 'ms')),
-    timingFunctions:
-      (timingFunction.split?.(',') ?? timingFunction.name)
-        ? [timingFunction.name]
-        : ['linear'],
+    timingFunctions: timingFunction.split(',').map((s) => s.trim()),
     iterationCounts: `${iterationCount}`.split(','),
     directions: direction.split(','),
     fillModes: fillMode.split(','),
@@ -85,7 +82,7 @@ export default function getAnimationProperties(elm: HTMLElement) {
     animations,
   };
 
-  for (let [i, name] of props.names) {
+  for (let [i, name] of props.names.entries()) {
     animations.push({
       name,
       duration: props.durations[i],
@@ -99,12 +96,13 @@ export default function getAnimationProperties(elm: HTMLElement) {
   }
 
   let totalDuration = 0;
-  const i = 0;
+  let i = 0;
   const delays = [0].concat(props.delays);
   [0].concat(props.durations).forEach((val) => {
     if (val + delays[i] > totalDuration) {
       totalDuration = val + delays[i];
     }
+    i++;
   });
   result.totalDuration = totalDuration;
   return result;

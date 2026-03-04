@@ -5,8 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
  * @type            Function
  * @platform        js
  * @status          stable
- * @async
- *
  * This function simply returns you a unique id
  *
  * @return          {String}            A uniqid

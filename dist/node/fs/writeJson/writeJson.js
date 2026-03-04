@@ -48,7 +48,7 @@ export default function writeJson(path, data) {
             jsonStr = JSON.stringify(data, null, 4);
         }
         // @ts-ignore
-        yield fs.writeFile(path, jsonStr);
+        yield fs.promises.writeFile(path, jsonStr);
         return path;
     });
 }

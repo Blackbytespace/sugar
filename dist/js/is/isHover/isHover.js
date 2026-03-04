@@ -25,7 +25,6 @@
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isHover($elm) {
-    var _a;
-    return ((_a = $elm.parentElement) === null || _a === void 0 ? void 0 : _a.querySelector(':isHover')) === $elm;
+    return $elm.matches(':hover');
 }
 //# sourceMappingURL=isHover.js.map

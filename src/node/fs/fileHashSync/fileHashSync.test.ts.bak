@@ -1,0 +1,129 @@
+import fs from 'fs';
+import path from 'path';
+import { afterAll, beforeAll, expect, test } from 'vitest';
+import fileHashSync from './fileHashSync.js';
+
+const testDir = path.join(
+  process.cwd(),
+  'src/node/fs/fileHashSync/test-fileHashSync',
+);
+let createdFiles: string[] = [];
+
+beforeAll(() => {
+  // Create test directory
+  if (!fs.existsSync(testDir)) {
+    fs.mkdirSync(testDir, { recursive: true });
+  }
+});
+
+afterAll(() => {
+  // Clean up created files
+  createdFiles.forEach((file) => {
+    if (fs.existsSync(file)) {
+      fs.unlinkSync(file);
+    }
+  });
+
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+});
+
+test('fileHashSync', () => {
+  // Test basic hash calculation with default settings
+  const testFile1 = path.join(testDir, 'test1.txt');
+  fs.writeFileSync(testFile1, 'Hello World');
+  createdFiles.push(testFile1);
+
+  const hash1 = fileHashSync(testFile1);
+  expect(typeof hash1).toBe('string');
+  expect(hash1.length).toBeGreaterThan(0);
+  // Default should be sha256 with base64 encoding
+  expect(hash1).toMatch(/^[A-Za-z0-9+/]+=*$/); // base64 pattern
+
+  // Test with same content should give same hash
+  const testFile2 = path.join(testDir, 'test2.txt');
+  fs.writeFileSync(testFile2, 'Hello World');
+  createdFiles.push(testFile2);
+
+  const hash2 = fileHashSync(testFile2);
+  expect(hash2).toBe(hash1); // Same content should give same hash
+
+  // Test with different content should give different hash
+  const testFile3 = path.join(testDir, 'test3.txt');
+  fs.writeFileSync(testFile3, 'Hello World Different');
+  createdFiles.push(testFile3);
+
+  const hash3 = fileHashSync(testFile3);
+  expect(hash3).not.toBe(hash1); // Different content should give different hash
+
+  // Test with different algorithms
+  const hashMd5 = fileHashSync(testFile1, { algo: 'md5' });
+  const hashSha1 = fileHashSync(testFile1, { algo: 'sha1' });
+  const hashSha256 = fileHashSync(testFile1, { algo: 'sha256' });
+  const hashSha512 = fileHashSync(testFile1, { algo: 'sha512' });
+
+  expect(hashMd5).not.toBe(hashSha1);
+  expect(hashSha1).not.toBe(hashSha256);
+  expect(hashSha256).not.toBe(hashSha512);
+  expect(hashSha256).toBe(hash1); // Default is sha256
+
+  // Test with different encodings
+  const hashHex = fileHashSync(testFile1, { encoding: 'hex' });
+  const hashBase64 = fileHashSync(testFile1, { encoding: 'base64' });
+
+  expect(hashHex).not.toBe(hashBase64);
+  expect(hashBase64).toBe(hash1); // Default is base64
+  expect(hashHex).toMatch(/^[a-f0-9]+$/); // hex pattern
+
+  // Test with custom algorithm and encoding combination
+  const hashMd5Hex = fileHashSync(testFile1, { algo: 'md5', encoding: 'hex' });
+  expect(typeof hashMd5Hex).toBe('string');
+  expect(hashMd5Hex.length).toBe(32); // MD5 hex should be 32 chars
+  expect(hashMd5Hex).toMatch(/^[a-f0-9]+$/);
+
+  // Test with empty file
+  const emptyFile = path.join(testDir, 'empty.txt');
+  fs.writeFileSync(emptyFile, '');
+  createdFiles.push(emptyFile);
+
+  const emptyHash = fileHashSync(emptyFile);
+  expect(typeof emptyHash).toBe('string');
+  expect(emptyHash.length).toBeGreaterThan(0);
+
+  // Test with binary file
+  const binaryFile = path.join(testDir, 'binary.bin');
+  const binaryData = Buffer.from([0x00, 0x01, 0x02, 0x03, 0xff]);
+  fs.writeFileSync(binaryFile, binaryData);
+  createdFiles.push(binaryFile);
+
+  const binaryHash = fileHashSync(binaryFile);
+  expect(typeof binaryHash).toBe('string');
+  expect(binaryHash.length).toBeGreaterThan(0);
+
+  // Test that modifying file changes hash
+  fs.appendFileSync(testFile1, ' Modified');
+  const modifiedHash = fileHashSync(testFile1);
+  expect(modifiedHash).not.toBe(hash1);
+
+  // Test error handling - non-existent file should throw
+  expect(() => {
+    fileHashSync('/non/existent/file.txt');
+  }).toThrow();
+
+  // Test with large file content
+  const largeFile = path.join(testDir, 'large.txt');
+  const largeContent = 'A'.repeat(10000); // 10KB of 'A's
+  fs.writeFileSync(largeFile, largeContent);
+  createdFiles.push(largeFile);
+
+  const largeHash = fileHashSync(largeFile);
+  expect(typeof largeHash).toBe('string');
+  expect(largeHash.length).toBeGreaterThan(0);
+
+  // Test consistency - same file should always return same hash
+  const consistentHash1 = fileHashSync(testFile2);
+  const consistentHash2 = fileHashSync(testFile2);
+  expect(consistentHash1).toBe(consistentHash2);
+});

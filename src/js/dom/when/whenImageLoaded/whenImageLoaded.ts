@@ -56,6 +56,6 @@ export default function whenImageLoaded(
   pro.finally(() => {
     imgLoadedHandler && $img.removeEventListener('load', imgLoadedHandler);
     imgErrorHandler && $img.removeEventListener('error', imgErrorHandler);
-  });
+  }).catch(() => {});
   return pro as Promise<HTMLImageElement>;
 }

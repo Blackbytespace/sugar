@@ -67,7 +67,7 @@ export default function whenScriptLoaded($script, cb) {
         // @ts-ignore
         $script.onreadystatechange = null;
         $script.onerror = null;
-    });
+    }).catch(() => { });
     return promise;
 }
 //# sourceMappingURL=whenScriptLoaded.js.map

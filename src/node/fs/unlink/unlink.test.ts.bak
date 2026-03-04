@@ -1,0 +1,114 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import unlink from './unlink.js';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const testDir = path.join(__dirname, 'test-unlink');
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(testDir, { recursive: true });
+});
+
+afterAll(() => {
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+});
+
+test('unlink', async () => {
+  // Test unlinking a file
+  const testFile = path.join(testDir, 'test-file.txt');
+  fs.writeFileSync(testFile, 'test content');
+  expect(fs.existsSync(testFile)).toBe(true);
+
+  await unlink(testFile);
+  expect(fs.existsSync(testFile)).toBe(false);
+
+  // Test unlinking a directory with contents
+  const testSubDir = path.join(testDir, 'test-subdir');
+  fs.mkdirSync(testSubDir, { recursive: true });
+  fs.writeFileSync(path.join(testSubDir, 'file1.txt'), 'content 1');
+  fs.writeFileSync(path.join(testSubDir, 'file2.txt'), 'content 2');
+
+  const nestedDir = path.join(testSubDir, 'nested');
+  fs.mkdirSync(nestedDir);
+  fs.writeFileSync(path.join(nestedDir, 'file3.txt'), 'content 3');
+
+  expect(fs.existsSync(testSubDir)).toBe(true);
+  expect(fs.existsSync(path.join(testSubDir, 'file1.txt'))).toBe(true);
+  expect(fs.existsSync(nestedDir)).toBe(true);
+
+  await unlink(testSubDir);
+  expect(fs.existsSync(testSubDir)).toBe(false);
+  expect(fs.existsSync(path.join(testSubDir, 'file1.txt'))).toBe(false);
+  expect(fs.existsSync(nestedDir)).toBe(false);
+
+  // Test unlinking empty directory
+  const emptyDir = path.join(testDir, 'empty-dir');
+  fs.mkdirSync(emptyDir);
+  expect(fs.existsSync(emptyDir)).toBe(true);
+
+  await unlink(emptyDir);
+  expect(fs.existsSync(emptyDir)).toBe(false);
+
+  // Test unlinking non-existent path (should silently succeed)
+  const nonExistentPath = path.join(testDir, 'non-existent');
+  expect(fs.existsSync(nonExistentPath)).toBe(false);
+
+  await expect(unlink(nonExistentPath)).resolves.toBeUndefined();
+
+  // Test return value (should be void/undefined)
+  const returnTestFile = path.join(testDir, 'return-test.txt');
+  fs.writeFileSync(returnTestFile, 'test');
+
+  const result = await unlink(returnTestFile);
+  expect(result).toBeUndefined();
+
+  // Test unlinking files with special characters
+  const specialFile = path.join(testDir, 'special chars & symbols.txt');
+  fs.writeFileSync(specialFile, 'special content');
+
+  await unlink(specialFile);
+  expect(fs.existsSync(specialFile)).toBe(false);
+
+  // Test unlinking deeply nested structure
+  const deepPath = path.join(
+    testDir,
+    'a',
+    'very',
+    'deep',
+    'nested',
+    'structure',
+  );
+  fs.mkdirSync(deepPath, { recursive: true });
+  fs.writeFileSync(path.join(deepPath, 'deep-file.txt'), 'deep content');
+
+  const rootDeepDir = path.join(testDir, 'a');
+  expect(fs.existsSync(rootDeepDir)).toBe(true);
+
+  await unlink(rootDeepDir);
+  expect(fs.existsSync(rootDeepDir)).toBe(false);
+
+  // Test difference between file and directory handling
+  const testFile2 = path.join(testDir, 'test-file2.txt');
+  const testDir2 = path.join(testDir, 'test-dir2');
+
+  fs.writeFileSync(testFile2, 'file content');
+  fs.mkdirSync(testDir2);
+  fs.writeFileSync(path.join(testDir2, 'inner.txt'), 'inner content');
+
+  expect(fs.existsSync(testFile2)).toBe(true);
+  expect(fs.existsSync(testDir2)).toBe(true);
+
+  // Both should work (files use unlink, directories use rm)
+  await unlink(testFile2);
+  await unlink(testDir2);
+
+  expect(fs.existsSync(testFile2)).toBe(false);
+  expect(fs.existsSync(testDir2)).toBe(false);
+});

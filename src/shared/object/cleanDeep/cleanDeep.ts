@@ -39,7 +39,7 @@ import isPlainObject from '../../is/isPlainObject/isPlainObject.js';
 export type TCleanDeepSettings = {
   array?: boolean;
   clone?: boolean;
-  cleaner(value: any): boolean;
+  cleaner?(value: any): boolean;
 };
 
 export default function cleanDeep(
@@ -75,7 +75,7 @@ export default function cleanDeep(
       if (isPlainObject(v) || Array.isArray(v)) {
         workingObj[i] = cleanDeep(v, settings);
       }
-      if (!settings.cleaner(workingObj[i])) {
+      if (!settings.cleaner!(workingObj[i])) {
         workingObj.splice(workingObj.indexOf(v), 1);
       }
     }
@@ -84,7 +84,7 @@ export default function cleanDeep(
       if (isPlainObject(v) || Array.isArray(v)) {
         workingObj[k] = cleanDeep(v, settings);
       }
-      if (!settings.cleaner(workingObj[k])) {
+      if (!settings.cleaner!(workingObj[k])) {
         delete workingObj[k];
       }
     }

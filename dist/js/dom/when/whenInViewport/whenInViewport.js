@@ -81,7 +81,6 @@ export default function whenInViewport($elm, settings) {
         setTimeout(() => {
             pro.cancel = () => {
                 observer.disconnect();
-                Promise.resolve($elm);
             };
         });
     });

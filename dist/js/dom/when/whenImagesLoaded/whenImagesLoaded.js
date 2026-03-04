@@ -36,6 +36,10 @@ import whenImageLoaded from '../whenImageLoaded/whenImageLoaded.js';
 export default function whenImagesLoaded($imgs) {
     return new Promise((resolve, reject) => {
         const promises = [], loadedImages = [];
+        if (!$imgs.length) {
+            resolve([]);
+            return;
+        }
         Array.from($imgs).forEach(($img) => {
             const pro = whenImageLoaded($img);
             pro

@@ -75,53 +75,49 @@ export default function escapeQueue(
   callback?: Function,
   settings?: TEscapeQueueSettings,
 ): TEscapeQueueResult {
-  const pro = new CancelablePromise((resolve) => {
-    const finalSettings: TEscapeQueueSettings = {
-      ctx: document,
-      ...(settings ?? {}),
-    };
+  // create the queue item before the Promise constructor so cancel() can
+  // reference it synchronously
+  const finalSettings: TEscapeQueueSettings = {
+    ctx: document,
+    ...(settings ?? {}),
+  };
 
-    // @ts-ignore
-    const roots: HTMLElement[] | Document[] = Array.isArray(finalSettings.ctx)
-      ? finalSettings.ctx
-      : [finalSettings.ctx];
+  // @ts-ignore
+  const roots: HTMLElement[] | Document[] = Array.isArray(finalSettings.ctx)
+    ? finalSettings.ctx
+    : [finalSettings.ctx];
 
-    roots.forEach(($root) => {
-      // make sure we only register 1 by ctx
-      if (_escapeQueueMap.has($root)) return;
-      _escapeQueueMap.set($root, true);
+  roots.forEach(($root) => {
+    // make sure we only register 1 listener per ctx
+    if (_escapeQueueMap.has($root)) return;
+    _escapeQueueMap.set($root, true);
 
-      $root.addEventListener('keydown', (e) => {
-        if (e.key !== 'Escape' || !_escapeQueue.length || _isEscaping) {
-          return;
-        }
+    $root.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || !_escapeQueue.length || _isEscaping) {
+        return;
+      }
 
-        // make sure to not escape multiple times
-        // at once
-        _isEscaping = true;
-        setTimeout(() => {
-          _isEscaping = false;
-        });
-
-        const queueItem = <TEscapeQueueItem>_escapeQueue.pop();
-        queueItem.callback?.();
-        queueItem.resolve();
+      // make sure to not escape multiple times at once
+      _isEscaping = true;
+      setTimeout(() => {
+        _isEscaping = false;
       });
-    });
 
+      const queueItem = <TEscapeQueueItem>_escapeQueue.pop();
+      queueItem.callback?.();
+      queueItem.resolve();
+    });
+  });
+
+  let queueItem: TEscapeQueueItem;
+
+  const pro = new CancelablePromise((resolve) => {
     // create the queue item to register
-    const queueItem: TEscapeQueueItem = {
+    queueItem = {
       id: finalSettings.id ?? uniqid(),
       callback,
       resolve,
     };
-
-    setTimeout(() => {
-      pro.cancel = () => {
-        _escapeQueue = _escapeQueue.filter((i) => i.id !== queueItem.id);
-        Promise.resolve(pro);
-      };
-    });
 
     if (finalSettings.id) {
       const existing = <TEscapeQueueItem>(
@@ -138,6 +134,11 @@ export default function escapeQueue(
       _escapeQueue.push(queueItem);
     }
   });
+
+  // assign cancel() synchronously — no setTimeout needed
+  pro.cancel = () => {
+    _escapeQueue = _escapeQueue.filter((i) => i.id !== queueItem.id);
+  };
 
   return pro;
 }

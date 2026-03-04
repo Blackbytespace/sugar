@@ -47,9 +47,7 @@ export default function setCookie(
 ): void {
   settings = {
     path: '/',
-    expires: new Date(
-      Date.now() + 1000 * 60 * 60 * 24 * 365 * 1000,
-    ).toUTCString(),
+    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365).toUTCString(),
     secure: document.location.protocol === 'https:',
     ...settings,
   };

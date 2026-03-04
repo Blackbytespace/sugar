@@ -45,7 +45,7 @@ try {
 catch (e) { }
 export default function isUserScrolling($elm) {
     if ($elm._isUserInteractive !== undefined) {
-        return $elm._isUserInteractive && _isUserScrolling;
+        return !!($elm._isUserInteractive && _isUserScrolling);
     }
     $elm.addEventListener('mouseover', (e) => {
         $elm._isUserInteractive = true;
@@ -59,6 +59,6 @@ export default function isUserScrolling($elm) {
     $elm.addEventListener('touchend', (e) => {
         $elm._isUserInteractive = false;
     });
-    return $elm._isUserInteractive && _isUserScrolling;
+    return false;
 }
 //# sourceMappingURL=isUserScrolling.js.map

@@ -25,5 +25,5 @@
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isFocus($elm: HTMLElement): boolean {
-  return $elm.parentElement?.querySelector(':focus') === $elm;
+  return document.activeElement === $elm;
 }

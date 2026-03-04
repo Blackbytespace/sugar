@@ -8,7 +8,6 @@ import writeFileSync from '../writeFileSync/writeFileSync.js';
  * @name                writeTmpFileSync
  * @namespace           node.fs
  * @type                Function
- * @async
  * @platform            node
  * @status              stable
  *
@@ -17,7 +16,7 @@ import writeFileSync from '../writeFileSync/writeFileSync.js';
  *
  * @param       {Any}                               data                The data to write in the file
  * @param       {TWriteTmpFileSyncSettings}         [settings={}]       Some settings to customize your temp file creation
- * @return      {Promise}                                               A promise that will be resolved when the writeTmpFileSync is completed with the path to it
+ * @return      {string}                                            The path to the created temporary file
  *
  * @setting         {String}            [path=null]         A path relative to the temp folder to store your file
  *

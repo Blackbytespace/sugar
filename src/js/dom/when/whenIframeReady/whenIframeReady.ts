@@ -38,7 +38,7 @@ export default function whenIframeReady(
     let int = setInterval(() => {
       if ($iframe.contentWindow?.document?.body) {
         clearInterval(int);
-        resolve(null);
+        resolve($iframe);
       }
     }, 10);
   });

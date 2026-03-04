@@ -34,7 +34,7 @@
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TStripCssCommentsSettings = {
-    block: boolean;
-    line: boolean;
+    block?: boolean;
+    line?: boolean;
 };
-export default function stripCssComments(css: any, settings?: TStripCssCommentsSettings): string;
+export default function stripCssComments(css: string, settings?: TStripCssCommentsSettings): string;

@@ -1,0 +1,199 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import isSymlink from './isSymlink.js';
+
+const testDir = path.join(
+  process.cwd(),
+  'src/node/is/isSymlink/test-isSymlink',
+);
+let createdPaths: string[] = [];
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+
+  // Create test directory structure
+  fs.mkdirSync(testDir, { recursive: true });
+  createdPaths.push(testDir);
+
+  // Create test files and directories for symlink targets
+  const targetFile = path.join(testDir, 'target.txt');
+  fs.writeFileSync(targetFile, 'target file content');
+  createdPaths.push(targetFile);
+
+  const targetDir = path.join(testDir, 'targetdir');
+  fs.mkdirSync(targetDir);
+  createdPaths.push(targetDir);
+
+  const nestedFile = path.join(targetDir, 'nested.txt');
+  fs.writeFileSync(nestedFile, 'nested content');
+  createdPaths.push(nestedFile);
+});
+
+afterAll(() => {
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+});
+
+test('isSymlink', () => {
+  const targetFile = path.join(testDir, 'target.txt');
+  const targetDir = path.join(testDir, 'targetdir');
+
+  // Test regular file should return false
+  expect(isSymlink(targetFile)).toBe(false);
+
+  // Test regular directory should return false
+  expect(isSymlink(targetDir)).toBe(false);
+
+  // Test non-existent path should return false
+  expect(isSymlink(path.join(testDir, 'nonexistent'))).toBe(false);
+  expect(isSymlink('/completely/nonexistent/path')).toBe(false);
+
+  // Test symlink functionality (if supported)
+  try {
+    // Create file symlink
+    const fileSymlinkPath = path.join(testDir, 'filesymlink');
+    fs.symlinkSync(targetFile, fileSymlinkPath);
+
+    expect(isSymlink(fileSymlinkPath)).toBe(true);
+
+    // Clean up
+    fs.unlinkSync(fileSymlinkPath);
+  } catch (error) {
+    console.log('File symlink test skipped - not supported on this system');
+  }
+
+  try {
+    // Create directory symlink
+    const dirSymlinkPath = path.join(testDir, 'dirsymlink');
+    fs.symlinkSync(targetDir, dirSymlinkPath);
+
+    expect(isSymlink(dirSymlinkPath)).toBe(true);
+
+    // Clean up
+    fs.unlinkSync(dirSymlinkPath);
+  } catch (error) {
+    console.log(
+      'Directory symlink test skipped - not supported on this system',
+    );
+  }
+
+  try {
+    // Create relative symlink
+    const relativeSymlinkPath = path.join(testDir, 'relativesymlink');
+    const relativePath = path.relative(testDir, targetFile);
+    process.chdir(testDir);
+    fs.symlinkSync(relativePath, path.basename(relativeSymlinkPath));
+    process.chdir(path.dirname(testDir));
+
+    expect(isSymlink(relativeSymlinkPath)).toBe(true);
+
+    // Clean up
+    fs.unlinkSync(relativeSymlinkPath);
+  } catch (error) {
+    console.log('Relative symlink test skipped - not supported or failed');
+  }
+
+  try {
+    // Create broken symlink (pointing to non-existent target)
+    const brokenSymlinkPath = path.join(testDir, 'brokensymlink');
+    fs.symlinkSync('/nonexistent/target', brokenSymlinkPath);
+
+    // Should still return true because the symlink exists, even if broken
+    expect(isSymlink(brokenSymlinkPath)).toBe(true);
+
+    // Clean up
+    fs.unlinkSync(brokenSymlinkPath);
+  } catch (error) {
+    console.log('Broken symlink test skipped - not supported on this system');
+  }
+
+  try {
+    // Create nested symlink (symlink to symlink)
+    const firstSymlink = path.join(testDir, 'firstsymlink');
+    const secondSymlink = path.join(testDir, 'secondsymlink');
+
+    fs.symlinkSync(targetFile, firstSymlink);
+    fs.symlinkSync(firstSymlink, secondSymlink);
+
+    expect(isSymlink(firstSymlink)).toBe(true);
+    expect(isSymlink(secondSymlink)).toBe(true);
+
+    // Clean up
+    fs.unlinkSync(secondSymlink);
+    fs.unlinkSync(firstSymlink);
+  } catch (error) {
+    console.log('Nested symlink test skipped - not supported on this system');
+  }
+
+  // Test edge cases
+  expect(isSymlink('')).toBe(false);
+  expect(isSymlink('   ')).toBe(false);
+
+  // Test current directory references
+  expect(isSymlink('.')).toBe(false);
+  expect(isSymlink('..')).toBe(false);
+
+  // Test consistency - same path should always return same result
+  expect(isSymlink(targetFile)).toBe(isSymlink(targetFile));
+  expect(isSymlink(targetDir)).toBe(isSymlink(targetDir));
+
+  // Test various file types are not symlinks
+  const binaryFile = path.join(testDir, 'binary.bin');
+  fs.writeFileSync(binaryFile, Buffer.from([0x00, 0x01, 0x02]));
+  expect(isSymlink(binaryFile)).toBe(false);
+
+  const emptyFile = path.join(testDir, 'empty.txt');
+  fs.writeFileSync(emptyFile, '');
+  expect(isSymlink(emptyFile)).toBe(false);
+
+  const hiddenFile = path.join(testDir, '.hidden');
+  fs.writeFileSync(hiddenFile, 'hidden');
+  expect(isSymlink(hiddenFile)).toBe(false);
+
+  // Test special characters in path
+  try {
+    const specialFile = path.join(testDir, 'special-file_123.txt');
+    fs.writeFileSync(specialFile, 'special');
+    expect(isSymlink(specialFile)).toBe(false);
+
+    const specialSymlink = path.join(testDir, 'special-symlink_123');
+    fs.symlinkSync(specialFile, specialSymlink);
+    expect(isSymlink(specialSymlink)).toBe(true);
+
+    // Clean up
+    fs.unlinkSync(specialSymlink);
+    fs.unlinkSync(specialFile);
+  } catch (error) {
+    console.log('Special character symlink test skipped');
+  }
+
+  // Clean up additional files
+  [binaryFile, emptyFile, hiddenFile].forEach((file) => {
+    if (fs.existsSync(file)) {
+      fs.unlinkSync(file);
+    }
+  });
+
+  // Test absolute vs relative paths
+  const absolutePath = path.resolve(targetFile);
+  expect(isSymlink(absolutePath)).toBe(false);
+
+  // Test case sensitivity (depends on filesystem)
+  const upperFile = path.join(testDir, 'UPPER.TXT');
+  fs.writeFileSync(upperFile, 'upper');
+  expect(isSymlink(upperFile)).toBe(false);
+  fs.unlinkSync(upperFile);
+
+  // Test very long path names
+  const longName = 'very-long-filename-' + 'a'.repeat(50) + '.txt';
+  const longFile = path.join(testDir, longName);
+  fs.writeFileSync(longFile, 'long name');
+  expect(isSymlink(longFile)).toBe(false);
+  fs.unlinkSync(longFile);
+});

@@ -19,4 +19,4 @@
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TReadCssDaraSettings = {};
-export default function readCssDataFrom($elm: HTMLElement, settings?: Partial<TReadCssDaraSettings>): void;
+export default function readCssDataFrom($elm: HTMLElement, settings?: Partial<TReadCssDaraSettings>): Record<string, any>;

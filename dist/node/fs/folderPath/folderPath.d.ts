@@ -19,7 +19,7 @@
  *
  * @example         js
  * import { folderPath } from '@blackbyte/sugar/fs';
- * folderPath('my/cool/path.js'); // => true
+ * folderPath('my/cool/path.js'); // => 'my/cool'
  *
  * @since           1.0.0
  * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

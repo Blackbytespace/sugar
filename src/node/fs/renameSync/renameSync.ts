@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import ensureDirSync from '../ensureDirSync/ensureDirSync.js';
 import moveSync from '../moveSync/moveSync.js';
 import unlinkSync from '../unlinkSync/unlinkSync.js';
@@ -78,7 +79,7 @@ export default function renameSync(
     }
 
     // make sure we have the folder to write in
-    ensureDirSync(newPath);
+    ensureDirSync(path.dirname(newPath));
 
     // move the file to his new destination
     moveSync(src, newPath);

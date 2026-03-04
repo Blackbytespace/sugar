@@ -3,12 +3,11 @@
  * @namespace               js.convert
  * @type                    Function
  * @platform                js
- * @platform                node
  * @status                  stable
  *
- * Convert rem value to a px one
+ * Convert a px value to an em one
  *
- * @param         {Number}          em                                      The rem value to convert
+ * @param         {Number}          px                                      The px value to convert
  * @param         {HTMLElement}     [$elm=document.documentElement]         The HTMLElement to take as source for calculating the em
  * @return        {Number}                                                  The pixel value
  *

@@ -25,5 +25,5 @@
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isFocusWithin($elm: HTMLElement): boolean {
-  return $elm.parentElement?.querySelector(':focus-within') === $elm;
+  return $elm.matches(':focus-within');
 }

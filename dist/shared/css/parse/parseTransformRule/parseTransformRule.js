@@ -27,15 +27,31 @@ export default function parseTransformRule(transformStr) {
         }
         else {
             const vals = value.split(',').map((v) => parse(v.trim()));
-            if (vals.length === 1 && prop === 'scale') {
-                result.scale = parseFloat(value);
+            // Handle base transform functions (without axis)
+            if (vals.length === 1) {
+                // Single value base functions like scale(1.5), rotate(45deg)
+                if (prop === 'scale') {
+                    // For scale, set both the scale property and all axis properties
+                    const scaleValue = parse(value);
+                    result.scale = scaleValue;
+                    result.scaleX = scaleValue;
+                    result.scaleY = scaleValue;
+                    result.scaleZ = scaleValue;
+                }
+                else if (prop === 'rotate' || prop === 'skew') {
+                    result[prop] = parse(value);
+                }
+                else {
+                    // For other single-value functions, set the X axis
+                    result[`${prop}X`] = vals[0];
+                }
             }
             else {
+                // Multi-value functions like translate(x, y) or scale(x, y)
                 ['X', 'Y', 'Z'].forEach((axis, i) => {
-                    if (!vals[i]) {
-                        return;
+                    if (vals[i] !== undefined) {
+                        result[`${prop}${axis}`] = vals[i];
                     }
-                    result[`${prop}${axis}`] = vals[i];
                 });
             }
         }

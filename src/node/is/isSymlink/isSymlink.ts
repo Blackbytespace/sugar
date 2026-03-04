@@ -7,10 +7,10 @@ import * as __fs from 'fs';
  * @platform        node
  * @status          stable
  *
- * This function check if the passed string path is a sySlink or not
+ * This function check if the passed string path is a symlink or not
  *
  * @param     {String}        path        The path to check
- * @return    {Boolean}                   true if is a sySlink, false if not
+ * @return    {Boolean}                   true if is a symlink, false if not
  *
  * @todo      tests
  *

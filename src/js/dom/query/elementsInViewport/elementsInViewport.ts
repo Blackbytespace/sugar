@@ -46,9 +46,9 @@ export default function elementsInViewport(
 
   // get all elements
   const $elms = Array.from(
-    settings.rootNode?.querySelectorAll(
+    finalSettings.rootNode.querySelectorAll(
       '*:not(html,body,head,script,style,template)',
-    ) ?? [],
+    ),
   );
 
   // loop on each elements until some are not in the viewport, then stop

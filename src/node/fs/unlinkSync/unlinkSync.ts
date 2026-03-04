@@ -27,7 +27,7 @@ import isDirectory from '../../is/isDirectory/isDirectory.js';
 export default function unlinkSync(path: string): void {
   if (!fs.existsSync(path)) return;
   if (isDirectory(path)) {
-    fs.rmdirSync(path, { recursive: true });
+    fs.rmSync(path, { recursive: true });
   } else {
     fs.unlinkSync(path);
   }

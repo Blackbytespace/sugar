@@ -25,6 +25,9 @@ export default function drawVideoToCanvas($video, $canvas) {
     if (!$canvas) {
         $canvas = document.createElement('canvas');
     }
+    // set the canvas dimensions to match the video
+    $canvas.width = $video.videoWidth;
+    $canvas.height = $video.videoHeight;
     // srt the canvas size
     $canvas.style.width = `${$video.videoWidth}px`;
     $canvas.style.aspectRatio = `${$video.offsetWidth}/${$video.offsetHeight}`;

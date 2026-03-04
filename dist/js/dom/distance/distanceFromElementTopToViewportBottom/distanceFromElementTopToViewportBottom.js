@@ -1,5 +1,3 @@
-import __scrollTop from '../scrollTop/scrollTop.js';
-import { offsetFromViewport } from '@blackbyte/sugar/dom';
 /**
  * @name            distanceFromElementTopToViewportBottom
  * @namespace       js.dom.distance
@@ -23,11 +21,8 @@ import { offsetFromViewport } from '@blackbyte/sugar/dom';
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function distanceFromElementTopToViewportBottom($elm) {
-    const offsets = offsetFromViewport($elm);
-    const scrollTop = __scrollTop();
-    // @ts-ignore
     const viewportHeight = window.innerHeight;
-    const distance = viewportHeight - offsets.top + scrollTop;
-    return distance;
+    const elmTop = $elm.getBoundingClientRect().top;
+    return viewportHeight - elmTop;
 }
 //# sourceMappingURL=distanceFromElementTopToViewportBottom.js.map

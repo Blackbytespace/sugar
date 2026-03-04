@@ -1,3 +1,4 @@
+import when, { TWhenTrigger, WhenTriggers } from './when/when.js';
 import whenAnimationEnd from './whenAnimationEnd/whenAnimationEnd.js';
 import whenAttribute from './whenAttribute/whenAttribute.js';
 import whenBackgroundImageLoaded from './whenBackgroundImageLoaded/whenBackgroundImageLoaded.js';
@@ -18,9 +19,9 @@ import whenStylesheetsReady from './whenStylesheetsReady/whenStylesheetsReady.js
 import whenTransitionEnd from './whenTransitionEnd/whenTransitionEnd.js';
 import whenVideoReady from './whenVideoReady/whenVideoReady.js';
 import whenVisible from './whenVisible/whenVisible.js';
-import when, { WhenTriggers, TWhenTrigger } from './when.js';
 export {
-  
+  TWhenTrigger as __TWhenTrigger,
+  when as __when,
   whenAnimationEnd as __whenAnimationEnd,
   whenAttribute as __whenAttribute,
   whenBackgroundImageLoaded as __whenBackgroundImageLoaded,
@@ -39,12 +40,11 @@ export {
   whenScriptLoaded as __whenScriptLoaded,
   whenStylesheetsReady as __whenStylesheetsReady,
   whenTransitionEnd as __whenTransitionEnd,
+  WhenTriggers as __WhenTriggers,
   whenVideoReady as __whenVideoReady,
   whenVisible as __whenVisible,
-  when as __when,
-  WhenTriggers as __WhenTriggers,
-  TWhenTrigger as __TWhenTrigger,
-  
+  TWhenTrigger,
+  when,
   whenAnimationEnd,
   whenAttribute,
   whenBackgroundImageLoaded,
@@ -64,8 +64,6 @@ export {
   whenStylesheetsReady,
   whenTransitionEnd,
   WhenTriggers,
-  TWhenTrigger,
   whenVideoReady,
   whenVisible,
-  when,
 };

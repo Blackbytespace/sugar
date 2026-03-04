@@ -1,0 +1,3 @@
+import{test,expect}from'vitest'
+import parseTypeString from'./parseTypeString'
+test('parseTypeString',()=>{const r1=parseTypeString('string');expect(r1).toEqual([{type:'string',of:undefined}]);const r2=parseTypeString('string|number');expect(r2).toHaveLength(2);expect(r2[0].type).toBe('string');expect(r2[1].type).toBe('number');const r3=parseTypeString('array<string>');expect(r3[0].type).toBe('array');expect(r3[0].of).toEqual(['string']);const r4=parseTypeString('"hello"');expect(r4[0]).toEqual({type:'string',of:undefined,value:'hello'})})

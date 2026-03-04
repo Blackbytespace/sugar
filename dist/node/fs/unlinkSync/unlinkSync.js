@@ -27,7 +27,7 @@ export default function unlinkSync(path) {
     if (!fs.existsSync(path))
         return;
     if (isDirectory(path)) {
-        fs.rmdirSync(path, { recursive: true });
+        fs.rmSync(path, { recursive: true });
     }
     else {
         fs.unlinkSync(path);

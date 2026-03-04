@@ -55,7 +55,7 @@ export default function whenBackgroundImageLoaded($elm) {
     });
     promise.finally(() => {
         isCancelled = true;
-    });
+    }).catch(() => { });
     return promise;
 }
 //# sourceMappingURL=whenBackgroundImageLoaded.js.map

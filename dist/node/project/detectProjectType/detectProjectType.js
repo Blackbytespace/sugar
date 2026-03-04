@@ -1,95 +1,148 @@
 import fs from 'fs';
 import __packageRootDir from '../../package/packageRootDir/packageRootDir.js';
+function parseVersion(versionString) {
+    // Remove common prefixes like ^ and ~
+    const cleanVersion = versionString.replace(/^[\^~]/, '');
+    // Handle complex versions like "1.2.3-beta.1" by taking only the numeric part
+    const numericVersion = cleanVersion.split('-')[0];
+    const parts = numericVersion.split('.');
+    return {
+        cleanVersion: numericVersion,
+        major: parseInt(parts[0]) || 0,
+        minor: parseInt(parts[1]) || 0,
+        fix: parseInt(parts[2]) || 0,
+    };
+}
 export default function detectProjectType(cwd = process.cwd()) {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
     let packageJson = {}, composerJson = {};
-    const packageRootDir = __packageRootDir(cwd);
+    // First try to use the exact cwd, then fall back to packageRootDir
+    let searchDir = cwd;
+    // If we have a package.json in the exact cwd, use it
+    if (!fs.existsSync(`${cwd}/package.json`) && !fs.existsSync(`${cwd}/composer.json`)) {
+        // No local files, try to find package root
+        const foundPackageRootDir = __packageRootDir(cwd);
+        if (foundPackageRootDir && foundPackageRootDir !== false) {
+            searchDir = foundPackageRootDir;
+        }
+    }
     try {
-        packageJson = JSON.parse(fs.readFileSync(`${packageRootDir}/package.json`, 'utf8').toString());
+        packageJson = JSON.parse(fs.readFileSync(`${searchDir}/package.json`, 'utf8').toString());
     }
     catch (e) { }
     try {
-        composerJson = JSON.parse(fs.readFileSync(`${packageRootDir}/composer.json`, 'utf8').toString());
+        composerJson = JSON.parse(fs.readFileSync(`${searchDir}/composer.json`, 'utf8').toString());
     }
     catch (e) { }
     // detecting the package type laravel
     if ((_a = composerJson.require) === null || _a === void 0 ? void 0 : _a['laravel/framework']) {
-        const version = composerJson.require['laravel/framework'].replace(/\^/, '');
+        const rawVersion = composerJson.require['laravel/framework'];
+        const { cleanVersion, major, minor, fix } = parseVersion(rawVersion);
         return {
             type: 'laravel',
-            version,
-            rawVersion: composerJson.require['laravel/framework'],
-            major: parseInt(version.split('.')[0]),
-            minor: parseInt(version.split('.')[1]),
-            fix: parseInt(version.split('.')[2]),
+            version: cleanVersion,
+            rawVersion,
+            major,
+            minor,
+            fix,
         };
     }
     // detecting the package type next
-    if (fs.existsSync(`${packageRootDir}/next.config.js`) ||
-        fs.existsSync(`${packageRootDir}/next.config.mjs`) ||
-        fs.existsSync(`${packageRootDir}/next.config.ts`)) {
-        const version = (_b = packageJson.dependencies) === null || _b === void 0 ? void 0 : _b.next.replace(/\^/, '');
+    if (fs.existsSync(`${searchDir}/next.config.js`) ||
+        fs.existsSync(`${searchDir}/next.config.mjs`) ||
+        fs.existsSync(`${searchDir}/next.config.ts`)) {
+        const rawVersion = (_b = packageJson.dependencies) === null || _b === void 0 ? void 0 : _b.next;
+        if (!rawVersion) {
+            // Check devDependencies as well
+            const devVersion = (_c = packageJson.devDependencies) === null || _c === void 0 ? void 0 : _c.next;
+            if (!devVersion) {
+                throw new Error('Next.js config found but no next dependency in package.json');
+            }
+            const { cleanVersion, major, minor, fix } = parseVersion(devVersion);
+            return {
+                type: 'next',
+                version: cleanVersion,
+                rawVersion: devVersion,
+                major,
+                minor,
+                fix,
+            };
+        }
+        const { cleanVersion, major, minor, fix } = parseVersion(rawVersion);
         return {
             type: 'next',
-            version,
-            rawVersion: packageJson.dependencies.next,
-            major: parseInt(version.split('.')[0]),
-            minor: parseInt(version.split('.')[1]),
-            fix: parseInt(version.split('.')[2]),
+            version: cleanVersion,
+            rawVersion,
+            major,
+            minor,
+            fix,
         };
     }
     // detecting the package type nuxt
-    if (fs.existsSync(`${packageRootDir}/nuxt.config.js`) ||
-        fs.existsSync(`${packageRootDir}/nuxt.config.mjs`) ||
-        fs.existsSync(`${packageRootDir}/nuxt.config.ts`)) {
-        const version = packageJson.dependencies.nuxt.replace(/\^/, '');
+    if (fs.existsSync(`${searchDir}/nuxt.config.js`) ||
+        fs.existsSync(`${searchDir}/nuxt.config.mjs`) ||
+        fs.existsSync(`${searchDir}/nuxt.config.ts`)) {
+        const rawVersion = ((_d = packageJson.dependencies) === null || _d === void 0 ? void 0 : _d.nuxt) || ((_e = packageJson.devDependencies) === null || _e === void 0 ? void 0 : _e.nuxt);
+        if (!rawVersion) {
+            throw new Error('Nuxt.js config found but no nuxt dependency in package.json');
+        }
+        const { cleanVersion, major, minor, fix } = parseVersion(rawVersion);
         return {
             type: 'nuxt',
-            version,
-            rawVersion: packageJson.dependencies.nuxt,
-            major: parseInt(version.split('.')[0]),
-            minor: parseInt(version.split('.')[1]),
-            fix: parseInt(version.split('.')[2]),
+            version: cleanVersion,
+            rawVersion,
+            major,
+            minor,
+            fix,
         };
     }
     // detecting the package type svelte
-    if (fs.existsSync(`${packageRootDir}/svelte.config.js`) ||
-        fs.existsSync(`${packageRootDir}/svelte.config.mjs`) ||
-        fs.existsSync(`${packageRootDir}/svelte.config.ts`)) {
-        const version = (_c = packageJson.dependencies) === null || _c === void 0 ? void 0 : _c['@sveltejs/kit'].replace(/\^/, '');
+    if (fs.existsSync(`${searchDir}/svelte.config.js`) ||
+        fs.existsSync(`${searchDir}/svelte.config.mjs`) ||
+        fs.existsSync(`${searchDir}/svelte.config.ts`)) {
+        const rawVersion = ((_f = packageJson.dependencies) === null || _f === void 0 ? void 0 : _f['@sveltejs/kit']) || ((_g = packageJson.devDependencies) === null || _g === void 0 ? void 0 : _g['@sveltejs/kit']);
+        if (!rawVersion) {
+            throw new Error('SvelteKit config found but no @sveltejs/kit dependency in package.json');
+        }
+        const { cleanVersion, major, minor, fix } = parseVersion(rawVersion);
         return {
             type: 'sveltekit',
-            version,
-            rawVersion: packageJson.dependencies['@sveltejs/kit'],
-            major: parseInt(version.split('.')[0]),
-            minor: parseInt(version.split('.')[1]),
-            fix: parseInt(version.split('.')[2]),
+            version: cleanVersion,
+            rawVersion,
+            major,
+            minor,
+            fix,
         };
     }
     // detecting the package type astro
-    if (fs.existsSync(`${packageRootDir}/astro.config.js`) ||
-        fs.existsSync(`${packageRootDir}/astro.config.mjs`) ||
-        fs.existsSync(`${packageRootDir}/astro.config.ts`)) {
-        const version = (_d = packageJson.dependencies) === null || _d === void 0 ? void 0 : _d.astro.replace(/\^/, '');
+    if (fs.existsSync(`${searchDir}/astro.config.js`) ||
+        fs.existsSync(`${searchDir}/astro.config.mjs`) ||
+        fs.existsSync(`${searchDir}/astro.config.ts`)) {
+        const rawVersion = ((_h = packageJson.dependencies) === null || _h === void 0 ? void 0 : _h.astro) || ((_j = packageJson.devDependencies) === null || _j === void 0 ? void 0 : _j.astro);
+        if (!rawVersion) {
+            throw new Error('Astro config found but no astro dependency in package.json');
+        }
+        const { cleanVersion, major, minor, fix } = parseVersion(rawVersion);
         return {
             type: 'astro',
-            version,
-            rawVersion: packageJson.dependencies.astro,
-            major: parseInt(version.split('.')[0]),
-            minor: parseInt(version.split('.')[1]),
-            fix: parseInt(version.split('.')[2]),
+            version: cleanVersion,
+            rawVersion,
+            major,
+            minor,
+            fix,
         };
     }
     // detecting the package type remix
-    if ((_e = packageJson.dependencies) === null || _e === void 0 ? void 0 : _e['@remix-run/serve']) {
-        const version = packageJson.dependencies['@remix-run/serve'].replace(/\^/, '');
+    if (((_k = packageJson.dependencies) === null || _k === void 0 ? void 0 : _k['@remix-run/serve']) || ((_l = packageJson.devDependencies) === null || _l === void 0 ? void 0 : _l['@remix-run/serve'])) {
+        const rawVersion = ((_m = packageJson.dependencies) === null || _m === void 0 ? void 0 : _m['@remix-run/serve']) || ((_o = packageJson.devDependencies) === null || _o === void 0 ? void 0 : _o['@remix-run/serve']);
+        const { cleanVersion, major, minor, fix } = parseVersion(rawVersion);
         return {
             type: 'remix',
-            version,
-            rawVersion: packageJson.dependencies['@remix-run/serve'],
-            major: parseInt(version.split('.')[0]),
-            minor: parseInt(version.split('.')[1]),
-            fix: parseInt(version.split('.')[2]),
+            version: cleanVersion,
+            rawVersion,
+            major,
+            minor,
+            fix,
         };
     }
     return {

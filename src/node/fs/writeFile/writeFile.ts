@@ -11,7 +11,7 @@ import { folderPath } from '../_exports.js';
  * @platform        node
  * @status          stable
  *
- * CWrite a file. If don't exist, will be created as well as the directory structure if needed... ( (async)
+ * Write a file. If don't exist, will be created as well as the directory structure if needed... ( (async)
  *
  * @param       {String}              path              The file path to write
  * @param       {String}              data              The data to write in the file

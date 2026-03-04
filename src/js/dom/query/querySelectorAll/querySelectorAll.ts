@@ -77,7 +77,7 @@ export default function querySelectorAll(
     if (settings.visible === false) {
       if (isVisible($elm) || closestNotVisible($elm)) return;
     } else if (settings.visible === true) {
-      if (!isVisible($elm) || !closestNotVisible($elm)) return;
+      if (!isVisible($elm) || closestNotVisible($elm)) return;
     }
     if (settings.inViewport === false) {
       if (isInViewport($elm)) return;

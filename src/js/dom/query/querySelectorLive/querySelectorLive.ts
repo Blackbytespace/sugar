@@ -1,4 +1,3 @@
-import { uniqid } from '@blackbyte/sugar/string';
 import type { TWhenTrigger } from '@blackbyte/sugar/dom';
 import { when } from '@blackbyte/sugar/dom';
 
@@ -27,7 +26,6 @@ import { when } from '@blackbyte/sugar/dom';
  * @setting         {HTMLElement}          [rootNode=document]                  The root node from where to observe childs
  * @setting         {Boolean}              [once=true]                          If true, each observed nodes will be handled only once even if they are removed and reinjected in the dom
  * @setting         {Function}             [afterFirst=null]               A function that will be called once the first scan is done
- * @setting         {Boolean}              [scopes=true]                        If true, the selector will be searched inside elements with the "s-query-selector-live-scope" attribute as scopes
  * @setting         {Boolean}              [firstOnly=false]                    If true, the query will stop after the first matching node is found
  * @setting         {TWhenTrigger|string}  [when=null]                     An optional when trigger or array of triggers to wait for before calling the callback with the detected node
  * @setting         {Function}             [disconnectedCallback=null]     An optional callback function that will be called when a previously detected node is removed from the dom
@@ -39,7 +37,7 @@ import { when } from '@blackbyte/sugar/dom';
  * });
  *
  * @example 	js
- * import { querySelectorLive } from '@lotsof/sugar/dom'
+ * import { querySelectorLive } from '@blackbyte/sugar/dom'
  * const query = querySelectorLive('.my-cool-item', (node, api) => {
  * 	    // do something here with the detected node
  *      // call api.cancel if you want to stop listening for this selector
@@ -56,7 +54,6 @@ export type TQuerySelectorLiveSettings = {
   rootNode: HTMLElement | Document;
   once: boolean;
   afterFirst?: Function;
-  scopes: boolean;
   firstOnly: boolean;
   when?: TWhenTrigger<string>;
   disconnectedCallback?: ($elm: HTMLElement) => void;
@@ -76,277 +73,133 @@ export default function querySelectorLive(
   selector: string,
   cb: TQuerySelectorLiveCallback,
   settings?: Partial<TQuerySelectorLiveSettings>,
-  _isFirstLevel = true,
 ): TQuerySelectorLiveApi {
-  let noScopeSelector,
-    observer,
-    canceled = false;
+  // ─── State ────────────────────────────────────────────────────────────────
+  let canceled = false;
+  // Tracks nodes already dispatched (for once:true)
+  const seen = new WeakSet<HTMLElement>();
+  // Nodes currently awaiting a `when` promise
+  const pending = new WeakSet<HTMLElement>();
 
-  const selectedNodes: HTMLElement[] = [];
-
-  // extend settings
+  // ─── Settings ─────────────────────────────────────────────────────────────
   const finalSettings: TQuerySelectorLiveSettings = {
     rootNode: document,
     once: true,
     afterFirst: undefined,
-    scopes: true,
     firstOnly: false,
     attributes: [],
-    disconnectedCallback: undefined,
     when: undefined,
+    disconnectedCallback: undefined,
     ...(settings ?? {}),
   };
 
-  const innerQuerySelectorLive: TQuerySelectorLiveApi[] = [];
+  // ─── API ──────────────────────────────────────────────────────────────────
+  const api: TQuerySelectorLiveApi = { cancel };
 
-  // process selectors when scopes are true
-  if (finalSettings.scopes) {
-    noScopeSelector = selector
-      .split(',')
-      .map((sel) => {
-        return `${sel.trim()}:not([s-query-selector-live-scope] ${sel.trim()})`;
-      })
-      .join(',');
-  }
-
-  function isCanceled() {
-    return selectedNodes.length && canceled && _isFirstLevel;
-  }
-
-  function cancel() {
+  function cancel(): void {
     canceled = true;
-
-    innerQuerySelectorLive.forEach((querySelectorLiveApi) => {
-      querySelectorLiveApi.cancel();
-    });
-    observer?.disconnect();
+    observer.disconnect();
   }
 
-  function handleNode($node: HTMLElement): void {
-    if (isCanceled()) {
-      return;
-    }
+  // ─── Attribute list for the MutationObserver ──────────────────────────────
+  // Always watch class and id (mutations on those can make selectors match).
+  // Also auto-detect attribute names from bracketed parts of the selector, and
+  // merge with any caller-supplied list.
+  const attrSet = new Set<string>(['class', 'id', ...finalSettings.attributes]);
+  for (const match of selector.matchAll(/\[([^\]=~|^$*]+)/g)) {
+    attrSet.add(match[1].trim());
+  }
+  const attributeFilter = Array.from(attrSet);
 
-    // reset the "isDisconnected" flag
-    if ((<any>$node)._isDisconnected) {
-      delete (<any>$node)._isDisconnected;
-    }
-
-    // callback with our node
-    cb?.($node, {
-      cancel,
-    });
-
-    // handle firstOnly setting
-    if (finalSettings.firstOnly) {
-      cancel();
-    }
-
-    // mark our node as selected at least 1 time
-    if (!selectedNodes.includes($node)) {
-      selectedNodes.push($node);
-    }
-
-    // mark our node as selected at least 1 time
-    if (!selectedNodes.includes($node)) {
-      selectedNodes.push($node);
-    }
-
-    // disconnected callback
-    if (finalSettings.disconnectedCallback) {
-      let mutationTimeout;
-      if ($node.parentNode) {
-        const disconnectObserver = new MutationObserver((mutations) => {
-          clearTimeout(mutationTimeout);
-          mutationTimeout = setTimeout(() => {
-            if (!$node.parentNode && !(<any>$node)._isDisconnected) {
-              (<any>$node)._isDisconnected = true;
-              finalSettings.disconnectedCallback?.($node);
-              disconnectObserver.disconnect();
-            }
-          });
-        });
-        disconnectObserver.observe($node.parentNode, {
-          childList: true,
-        });
+  // ─── disconnectedCallback watcher ────────────────────────────────────────
+  function watchDisconnect($elm: HTMLElement): void {
+    if (!finalSettings.disconnectedCallback || !$elm.parentNode) return;
+    const parentObserver = new MutationObserver(() => {
+      if (!document.contains($elm)) {
+        parentObserver.disconnect();
+        finalSettings.disconnectedCallback!($elm);
       }
-    }
+    });
+    parentObserver.observe($elm.parentNode, { childList: true });
   }
 
-  async function processNode($node: HTMLElement, sel: string): Promise<void> {
-    if (!$node.matches || isCanceled()) {
-      return;
-    }
+  // ─── Core: handle one matching element ───────────────────────────────────
+  async function handleElement($elm: HTMLElement): Promise<void> {
+    if (canceled) return;
 
-    // if the node match and has not already been emitted
-    if (
-      $node.matches(selector) &&
-      (!finalSettings.once || !selectedNodes.includes($node))
-    ) {
-      // handle the "when" setting
-      if (finalSettings.when) {
-        await when($node, [finalSettings.when]);
-        if (isCanceled()) {
-          return;
-        }
-        handleNode($node);
-      } else {
-        handleNode($node);
+    // once:true — skip if we already fired for this node
+    if (finalSettings.once && seen.has($elm)) return;
+
+    // Avoid double-processing while a `when` promise is in flight
+    if (pending.has($elm)) return;
+
+    if (finalSettings.when) {
+      pending.add($elm);
+      try {
+        await when($elm, [finalSettings.when] as TWhenTrigger<string>[]);
+      } finally {
+        pending.delete($elm);
       }
+      // Re-check after the async gap
+      if (canceled) return;
+      if (finalSettings.once && seen.has($elm)) return;
     }
 
-    // search inside our node
-    findAndProcess($node, sel);
+    if (finalSettings.once) seen.add($elm);
+
+    cb($elm, api);
+
+    watchDisconnect($elm);
+
+    if (finalSettings.firstOnly) cancel();
   }
 
-  function findAndProcess($root: HTMLElement, sel: string) {
-    if (!$root.querySelectorAll || isCanceled()) {
-      return;
+  // ─── Walk a subtree looking for matching nodes ────────────────────────────
+  function scan(root: Node): void {
+    if (canceled) return;
+
+    // Check the root itself if it is an Element
+    if (root instanceof HTMLElement && root.matches(selector)) {
+      handleElement(root);
     }
 
-    const nodes = Array.from($root?.querySelectorAll(sel));
-    nodes.forEach(($node) => {
-      processNode($node as HTMLElement, sel);
-    });
-  }
-
-  if (
-    finalSettings.scopes &&
-    (finalSettings.rootNode === document ||
-      // @ts-ignore
-      !finalSettings.rootNode?.hasAttribute?.('s-query-selector-live-scope'))
-  ) {
-    let isAfterCalledByScopeId = {};
-
-    // search for scopes and handle nested nodes
-    innerQuerySelectorLive.push(
-      querySelectorLive(
-        '[s-query-selector-live-scope]',
-        async ($scope) => {
-          // get or generate a new id
-          const scopeId =
-            $scope.id || `s-query-selector-live-scope-${uniqid()}`;
-          if ($scope.id !== scopeId) {
-            $scope.setAttribute('id', scopeId);
-          }
-
-          if (isCanceled()) {
-            return;
-          }
-
-          await when($scope, ['nearViewport']);
-
-          if (isCanceled()) {
-            return;
-          }
-
-          innerQuerySelectorLive.push(
-            querySelectorLive(
-              selector,
-              ($elm) => {
-                processNode($elm, selector);
-              },
-              Object.assign({}, settings, {
-                rootNode: $scope,
-                scopes: false,
-                afterFirst() {
-                  if (
-                    isAfterCalledByScopeId[scopeId] &&
-                    // @ts-ignore
-                    $scope._sQuerySelectorLiveScopeDirty
-                  ) {
-                    return;
-                  }
-                  // @ts-ignore
-                  $scope._sQuerySelectorLiveScopeDirty = true;
-                  isAfterCalledByScopeId[scopeId] = true;
-                  $scope.classList.add('ready');
-                  $scope.setAttribute('ready', 'true');
-                },
-              }),
-              true,
-            ),
-          );
-        },
-        Object.assign({}, settings, {
-          firstOnly: false,
-          scopes: false,
-        }),
-        false,
-      ),
-    );
-    // handle things not in a scope
-    innerQuerySelectorLive.push(
-      querySelectorLive(
-        noScopeSelector,
-        ($elm) => {
-          // findAndProcess($scope, selector);
-          processNode($elm, selector);
-        },
-        Object.assign({}, settings, {
-          scopes: false,
-        }),
-        false,
-      ),
-    );
-    // after first callback
-    finalSettings.afterFirst?.();
-  } else {
-    observer = new MutationObserver((mutations, obs) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName) {
-          processNode(mutation.target as HTMLElement, selector);
-        }
-        if (mutation.addedNodes) {
-          mutation.addedNodes.forEach(($node) => {
-            processNode($node as HTMLElement, selector);
-          });
-        }
-      });
-    });
-
-    let observeSettings: MutationObserverInit = {
-      childList: true,
-      subtree: true,
-    };
-
-    selector
-      .split(',')
-      .map((l) => l.trim())
-      .forEach((sel) => {
-        const attrMatches = sel.match(/\[[^\]]+\]/gm);
-        if (attrMatches?.length) {
-          attrMatches.forEach((attrStr) => {
-            const attrName = attrStr
-              .split('=')[0]
-              .replace(/^\[/, '')
-              .replace(/\]$/, '');
-            if (!finalSettings.attributes?.includes(attrName)) {
-              finalSettings.attributes?.push(attrName);
-            }
-          });
-        }
-      });
-
-    if (finalSettings.attributes?.length) {
-      observeSettings = {
-        ...observeSettings,
-        attributes: finalSettings.attributes?.length ? true : false,
-        attributeFilter: finalSettings.attributes.length
-          ? finalSettings.attributes
-          : undefined,
-      };
+    // Check descendants
+    if ('querySelectorAll' in root) {
+      (root as HTMLElement | Document)
+        .querySelectorAll<HTMLElement>(selector)
+        .forEach(($elm) => handleElement($elm));
     }
-
-    observer.observe(finalSettings.rootNode, observeSettings);
-
-    // first query
-    findAndProcess(finalSettings.rootNode as HTMLElement, selector);
-    // after first callback
-    finalSettings.afterFirst?.();
   }
 
-  return {
-    cancel,
+  // ─── MutationObserver ─────────────────────────────────────────────────────
+  const observerInit: MutationObserverInit = {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter,
   };
+
+  const observer = new MutationObserver((mutations) => {
+    if (canceled) return;
+    for (const mutation of mutations) {
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach((node) => scan(node));
+      } else if (mutation.type === 'attributes') {
+        const target = mutation.target;
+        if (target instanceof HTMLElement && target.matches(selector)) {
+          handleElement(target);
+        }
+      }
+    }
+  });
+
+  observer.observe(finalSettings.rootNode, observerInit);
+
+  // ─── Initial scan of the current DOM ─────────────────────────────────────
+  scan(finalSettings.rootNode as Node);
+
+  // afterFirst fires synchronously after the initial scan is queued
+  finalSettings.afterFirst?.();
+
+  return api;
 }

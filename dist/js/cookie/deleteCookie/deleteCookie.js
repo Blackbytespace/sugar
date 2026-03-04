@@ -8,8 +8,8 @@ import setCookie from '../setCookie/setCookie.js';
  *
  * Delete a cookie
  *
- * @param       {String}            name            The cookie name to delete
- * @return      {any}                               The cookie value
+ * @param       {String}            name            The cookie name to delete
+ * @return      {void}
  *
  * @snippet         deleteCookie($1)
  *

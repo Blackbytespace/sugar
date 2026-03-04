@@ -22,7 +22,7 @@ export default function querySelectorAll(selector, settings = {}) {
                 return;
         }
         else if (settings.visible === true) {
-            if (!isVisible($elm) || !closestNotVisible($elm))
+            if (!isVisible($elm) || closestNotVisible($elm))
                 return;
         }
         if (settings.inViewport === false) {

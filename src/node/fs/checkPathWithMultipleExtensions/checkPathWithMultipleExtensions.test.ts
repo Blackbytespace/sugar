@@ -1,0 +1,25 @@
+import { describe, expect, it } from 'vitest';
+import checkPathWithMultipleExtensions from '../checkPathWithMultipleExtensions/checkPathWithMultipleExtensions.js';
+
+describe('sugar.node.fs.checkPathWithMultipleExtensions', () => {
+  it('should find the test.php file', () => {
+    const path = checkPathWithMultipleExtensions(`${__dirname}/data/test.txt`, [
+      'php',
+    ]);
+    expect(path).not.toBeUndefined();
+  });
+  it('should not find the test.gif file', () => {
+    const path = checkPathWithMultipleExtensions(`${__dirname}/data/test.txt`, [
+      'gif',
+    ]);
+    expect(path).toBeUndefined();
+  });
+  it('should find first the test.ts file', () => {
+    const path = checkPathWithMultipleExtensions(`${__dirname}/data/test.ts`, [
+      'ts',
+      'php',
+      'gif',
+    ]);
+    expect(path).not.toBeUndefined();
+  });
+});

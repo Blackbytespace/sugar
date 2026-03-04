@@ -1,4 +1,4 @@
-import { isPath } from '@blackbyte/sugar/is';
+import * as fs from 'fs';
 
 /**
  * @name                folderPath
@@ -21,7 +21,7 @@ import { isPath } from '@blackbyte/sugar/is';
  *
  * @example         js
  * import { folderPath } from '@blackbyte/sugar/fs';
- * folderPath('my/cool/path.js'); // => true
+ * folderPath('my/cool/path.js'); // => 'my/cool'
  *
  * @since           1.0.0
  * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -41,7 +41,7 @@ export default function folderPath(
   };
 
   if (finalSettings.checkExistence) {
-    if (!isPath(path)) return '';
+    if (!fs.existsSync(path)) return '';
   }
   const parts = path.split('/');
   if (parts.length <= 1) {

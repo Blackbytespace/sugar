@@ -3,12 +3,11 @@
  * @namespace               js.convert
  * @type                    Function
  * @platform                js
- * @platform                node
  * @status                  stable
  *
- * Convert rem value to a px one
+ * Convert a px value to a rem one
  *
- * @param         {Number}          em            The rem value to convert
+ * @param         {Number}          px            The px value to convert
  * @return        {Number}                        The pixel value
  *
  * @todo      tests

@@ -1,0 +1,203 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import readXmlSync from './readXmlSync.js';
+
+const testDir = path.join(
+  process.cwd(),
+  'src/node/fs/readXmlSync/test-readXmlSync',
+);
+let createdFiles: string[] = [];
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+
+  // Create test directory
+  fs.mkdirSync(testDir, { recursive: true });
+});
+
+afterAll(() => {
+  // Clean up created files
+  createdFiles.forEach((file) => {
+    if (fs.existsSync(file)) {
+      fs.unlinkSync(file);
+    }
+  });
+
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+});
+
+test('readXmlSync', () => {
+  // Test basic XML reading
+  const simpleXmlFile = path.join(testDir, 'simple.xml');
+  const simpleXmlContent =
+    '<?xml version="1.0" encoding="UTF-8"?><root><name>Test</name><value>42</value></root>';
+  fs.writeFileSync(simpleXmlFile, simpleXmlContent);
+  createdFiles.push(simpleXmlFile);
+
+  const simpleResult = readXmlSync(simpleXmlFile);
+  expect(typeof simpleResult).toBe('object');
+  expect(simpleResult).not.toBeNull();
+  expect(simpleResult).toHaveProperty('root');
+
+  // Test XML with attributes
+  const xmlWithAttributesFile = path.join(testDir, 'attributes.xml');
+  const xmlWithAttributesContent =
+    '<?xml version="1.0"?><person id="123" active="true"><name>John Doe</name></person>';
+  fs.writeFileSync(xmlWithAttributesFile, xmlWithAttributesContent);
+  createdFiles.push(xmlWithAttributesFile);
+
+  const attributesResult = readXmlSync(xmlWithAttributesFile);
+  expect(typeof attributesResult).toBe('object');
+  expect(attributesResult).not.toBeNull();
+  expect(attributesResult).toHaveProperty('person');
+
+  // Test nested XML structure
+  const nestedXmlFile = path.join(testDir, 'nested.xml');
+  const nestedXmlContent = `<?xml version="1.0"?>
+    <catalog>
+      <book id="1">
+        <title>XML Guide</title>
+        <author>Jane Smith</author>
+        <price currency="USD">29.99</price>
+      </book>
+      <book id="2">
+        <title>JSON Guide</title>
+        <author>Bob Johnson</author>
+        <price currency="EUR">24.50</price>
+      </book>
+    </catalog>`;
+  fs.writeFileSync(nestedXmlFile, nestedXmlContent);
+  createdFiles.push(nestedXmlFile);
+
+  const nestedResult = readXmlSync(nestedXmlFile);
+  expect(typeof nestedResult).toBe('object');
+  expect(nestedResult).not.toBeNull();
+  expect(nestedResult).toHaveProperty('catalog');
+
+  // Test XML with CDATA
+  const cdataXmlFile = path.join(testDir, 'cdata.xml');
+  const cdataXmlContent =
+    '<?xml version="1.0"?><root><content><![CDATA[This is some text with <special> characters]]></content></root>';
+  fs.writeFileSync(cdataXmlFile, cdataXmlContent);
+  createdFiles.push(cdataXmlFile);
+
+  const cdataResult = readXmlSync(cdataXmlFile);
+  expect(typeof cdataResult).toBe('object');
+  expect(cdataResult).not.toBeNull();
+
+  // Test XML with namespaces
+  const namespaceXmlFile = path.join(testDir, 'namespace.xml');
+  const namespaceXmlContent =
+    '<?xml version="1.0"?><root xmlns:ns1="http://example.com/ns1"><ns1:element>Content</ns1:element></root>';
+  fs.writeFileSync(namespaceXmlFile, namespaceXmlContent);
+  createdFiles.push(namespaceXmlFile);
+
+  const namespaceResult = readXmlSync(namespaceXmlFile);
+  expect(typeof namespaceResult).toBe('object');
+  expect(namespaceResult).not.toBeNull();
+
+  // Test empty XML file
+  const emptyXmlFile = path.join(testDir, 'empty.xml');
+  const emptyXmlContent = '<?xml version="1.0"?><root></root>';
+  fs.writeFileSync(emptyXmlFile, emptyXmlContent);
+  createdFiles.push(emptyXmlFile);
+
+  const emptyResult = readXmlSync(emptyXmlFile);
+  expect(typeof emptyResult).toBe('object');
+  expect(emptyResult).not.toBeNull();
+  expect(emptyResult).toHaveProperty('root');
+
+  // Test XML with special characters
+  const specialCharsXmlFile = path.join(testDir, 'special.xml');
+  const specialCharsXmlContent =
+    '<?xml version="1.0" encoding="UTF-8"?><root><text>Special: &lt; &gt; &amp; &quot; &apos;</text></root>';
+  fs.writeFileSync(specialCharsXmlFile, specialCharsXmlContent);
+  createdFiles.push(specialCharsXmlFile);
+
+  const specialResult = readXmlSync(specialCharsXmlFile);
+  expect(typeof specialResult).toBe('object');
+  expect(specialResult).not.toBeNull();
+
+  // Test XML with numbers and boolean-like values
+  const typesXmlFile = path.join(testDir, 'types.xml');
+  const typesXmlContent =
+    '<?xml version="1.0"?><data><number>123</number><float>45.67</float><boolean>true</boolean><string>hello</string></data>';
+  fs.writeFileSync(typesXmlFile, typesXmlContent);
+  createdFiles.push(typesXmlFile);
+
+  const typesResult = readXmlSync(typesXmlFile);
+  expect(typeof typesResult).toBe('object');
+  expect(typesResult).not.toBeNull();
+  expect(typesResult).toHaveProperty('data');
+
+  // Test error handling - non-existent file
+  expect(() => {
+    readXmlSync('/non/existent/file.xml');
+  }).toThrow();
+
+  // Test error handling - file path that doesn't exist
+  expect(() => {
+    readXmlSync(path.join(testDir, 'non-existent.xml'));
+  }).toThrow(/does not exists/);
+
+  // Test malformed XML (should handle gracefully or throw)
+  const malformedXmlFile = path.join(testDir, 'malformed.xml');
+  const malformedXmlContent =
+    '<?xml version="1.0"?><root><unclosed><tag>Content</root>';
+  fs.writeFileSync(malformedXmlFile, malformedXmlContent);
+  createdFiles.push(malformedXmlFile);
+
+  // The behavior here depends on the xmlToJson implementation
+  // It might throw an error or handle it gracefully
+  try {
+    const malformedResult = readXmlSync(malformedXmlFile);
+    // If no error is thrown, we just check it returns an object
+    expect(typeof malformedResult).toBe('object');
+  } catch (error) {
+    // If an error is thrown, that's also valid behavior for malformed XML
+    expect(error).toBeInstanceOf(Error);
+  }
+
+  // Test reading the same file multiple times (consistency)
+  const result1 = readXmlSync(simpleXmlFile);
+  const result2 = readXmlSync(simpleXmlFile);
+  expect(result1).toEqual(result2);
+
+  // Test XML with arrays (multiple elements with same name)
+  const arrayXmlFile = path.join(testDir, 'array.xml');
+  const arrayXmlContent = `<?xml version="1.0"?>
+    <items>
+      <item>First</item>
+      <item>Second</item>
+      <item>Third</item>
+    </items>`;
+  fs.writeFileSync(arrayXmlFile, arrayXmlContent);
+  createdFiles.push(arrayXmlFile);
+
+  const arrayResult = readXmlSync(arrayXmlFile);
+  expect(typeof arrayResult).toBe('object');
+  expect(arrayResult).not.toBeNull();
+  expect(arrayResult).toHaveProperty('items');
+
+  // Test large XML file
+  const largeXmlFile = path.join(testDir, 'large.xml');
+  let largeXmlContent = '<?xml version="1.0"?><root>';
+  for (let i = 0; i < 100; i++) {
+    largeXmlContent += `<item${i}>Content ${i}</item${i}>`;
+  }
+  largeXmlContent += '</root>';
+  fs.writeFileSync(largeXmlFile, largeXmlContent);
+  createdFiles.push(largeXmlFile);
+
+  const largeResult = readXmlSync(largeXmlFile);
+  expect(typeof largeResult).toBe('object');
+  expect(largeResult).not.toBeNull();
+  expect(largeResult).toHaveProperty('root');
+});

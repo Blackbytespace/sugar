@@ -1,4 +1,5 @@
 // @ts-nocheck
+import __get from '../get/get.js';
 
 /**
  * @name                propertyProxy
@@ -114,11 +115,11 @@ export default function propertyProxy(
         : currentDescriptor && currentDescriptor.configurable !== undefined
           ? currentDescriptor.configurable
           : false,
-    enumarable:
+    enumerable:
       descriptor.enumarable !== undefined
         ? descriptor.enumarable
-        : currentDescriptor && currentDescriptor.enumarable !== undefined
-          ? currentDescriptor.enumarable
+        : currentDescriptor && currentDescriptor.enumerable !== undefined
+          ? currentDescriptor.enumerable
           : true,
   });
 

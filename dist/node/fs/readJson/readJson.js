@@ -33,12 +33,11 @@ import readJsonSync from '../readJsonSync/readJsonSync.js';
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function readJson(path) {
-    if (!fs.existsSync(path)) {
-        throw new Error(`<red>[readJson]</red> Sorry but the passed file path "<cyan>${path}</cyan>" does not exists...`);
-    }
-    return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-        const json = readJsonSync(path);
-        resolve(json);
-    }));
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!fs.existsSync(path)) {
+            throw new Error(`<red>[readJson]</red> Sorry but the passed file path "<cyan>${path}</cyan>" does not exists...`);
+        }
+        return readJsonSync(path);
+    });
 }
 //# sourceMappingURL=readJson.js.map

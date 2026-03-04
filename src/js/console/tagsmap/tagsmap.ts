@@ -42,31 +42,33 @@ const tagsMap = {
   strike: (tag, content) => content,
 
   date: (tag, content) =>
-    new Date().getDate().toString().padStart('0', 2) +
+    new Date().getDate().toString().padStart(2, '0') +
     '-' +
-    (new Date().getMonth() + 1).toString().padStart('0', 2) +
+    (new Date().getMonth() + 1).toString().padStart(2, '0') +
     '-' +
-    new Date().getFullYear().toString().padStart('0', 2),
+    new Date().getFullYear().toString().padStart(4, '0'),
   time: (tag, content) =>
-    new Date().getHours().toString().padStart('0', 2) +
+    new Date().getHours().toString().padStart(2, '0') +
     ':' +
-    new Date().getMinutes().toString().padStart('0', 2) +
+    new Date().getMinutes().toString().padStart(2, '0') +
     ':' +
-    new Date().getMinutes().toString().padStart('0', 2),
-  day: (tag, content) => new Date().getDate().toString().padStart('0', 2),
-  days: (tag, content) => new Date().getDate().toString().padStart('0', 2),
-  month: (tag, content) => new Date().getMonth().toString().padStart('0', 2),
-  months: (tag, content) => new Date().getMonth().toString().padStart('0', 2),
-  year: (tag, content) => new Date().getFullYear().toString().padStart('0', 2),
-  years: (tag, content) => new Date().getFullYear().toString().padStart('0', 2),
-  hour: (tag, content) => new Date().getHours().toString().padStart('0', 2),
-  hours: (tag, content) => new Date().getHours().toString().padStart('0', 2),
-  minute: (tag, content) => new Date().getMinutes().toString().padStart('0', 2),
+    new Date().getSeconds().toString().padStart(2, '0'),
+  day: (tag, content) => new Date().getDate().toString().padStart(2, '0'),
+  days: (tag, content) => new Date().getDate().toString().padStart(2, '0'),
+  month: (tag, content) =>
+    (new Date().getMonth() + 1).toString().padStart(2, '0'),
+  months: (tag, content) =>
+    (new Date().getMonth() + 1).toString().padStart(2, '0'),
+  year: (tag, content) => new Date().getFullYear().toString().padStart(4, '0'),
+  years: (tag, content) => new Date().getFullYear().toString().padStart(4, '0'),
+  hour: (tag, content) => new Date().getHours().toString().padStart(2, '0'),
+  hours: (tag, content) => new Date().getHours().toString().padStart(2, '0'),
+  minute: (tag, content) => new Date().getMinutes().toString().padStart(2, '0'),
   minutes: (tag, content) =>
-    new Date().getMinutes().toString().padStart('0', 2),
-  second: (tag, content) => new Date().getSeconds().toString().padStart('0', 2),
+    new Date().getMinutes().toString().padStart(2, '0'),
+  second: (tag, content) => new Date().getSeconds().toString().padStart(2, '0'),
   seconds: (tag, content) =>
-    new Date().getSeconds().toString().padStart('0', 2),
+    new Date().getSeconds().toString().padStart(2, '0'),
 
   hr: (tag, content) => '-'.repeat(20),
   br: (tag, content) => '\n',

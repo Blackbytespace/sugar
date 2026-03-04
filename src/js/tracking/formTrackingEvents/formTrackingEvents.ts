@@ -85,9 +85,13 @@ function _getFormId($form) {
   return formId;
 }
 
+export type TFormTrackingEventsApi = {
+  cancel: Function;
+};
+
 export default function formTrackingEvents(
   settings?: Partial<TFormTrackingEventsSettings>,
-): void {
+): TFormTrackingEventsApi {
   const finalSettings: TFormTrackingEventsSettings = {
     lang: true,
     debug: false,
@@ -98,7 +102,7 @@ export default function formTrackingEvents(
 
   // if disabled, stop here
   if (!finalSettings.enabled) {
-    return;
+    return { cancel: () => {} };
   }
 
   // @ts-ignore
@@ -110,7 +114,7 @@ export default function formTrackingEvents(
   };
 
   // get each forms in the page
-  querySelectorLive('form', ($form) => {
+  const api = querySelectorLive('form', ($form) => {
     // get the form id
     const formId = _getFormId($form);
 
@@ -163,4 +167,6 @@ export default function formTrackingEvents(
       $formControl.addEventListener('change', handleFormStart);
     }
   });
+
+  return api;
 }

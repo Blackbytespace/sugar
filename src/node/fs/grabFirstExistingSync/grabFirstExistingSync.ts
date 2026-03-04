@@ -20,9 +20,9 @@ import * as fs from 'fs';
  * import { grabFirstExistingSync } from '@blackbyte/sugar/fs';
  * grabFirstExistingSync([
  *  'file/1.txt',
- *  'file/2.txt
+ *  'file/2.txt'
  * ]); // => 'file/2.txt'
-' *
+ *
  * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */

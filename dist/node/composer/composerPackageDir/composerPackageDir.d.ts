@@ -32,4 +32,4 @@ export type TComposerPackageDirSettings = {
     monorepo: boolean;
     checkExistence: boolean;
 };
-export default function composerJsonSync(nameOrPath: string, settings: Partial<TComposerPackageDirSettings>): any;
+export default function composerPackageDir(nameOrPath: string, settings?: Partial<TComposerPackageDirSettings>): any;

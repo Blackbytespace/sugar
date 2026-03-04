@@ -1,7 +1,5 @@
-// @ts-nocheck
-
-import replaceTags from '../../shared/html/replaceTags/replaceTags.js';
-import tagsMap from '../tagsMap/tagsMap.js';
+import replaceTags from '../../../shared/html/replaceTags/replaceTags.js';
+import tagsMap from '../tagsmap/tagsmap.js';
 
 /**
  * @name                      parseHtml
@@ -20,7 +18,9 @@ import tagsMap from '../tagsMap/tagsMap.js';
  * @since       2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function parseHtml(message) {
+export default function parseHtml(
+  message: string | string[],
+): string | string[] {
   let isArray = false;
   if (Array.isArray(message)) {
     isArray = true;
@@ -28,7 +28,7 @@ export default function parseHtml(message) {
     message = [message];
   }
 
-  message = message.map((m) => {
+  message = (message as string[]).map((m) => {
     return replaceTags(m, tagsMap);
   });
 

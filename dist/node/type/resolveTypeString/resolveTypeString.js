@@ -20,10 +20,12 @@ export default function resolveTypeString(typeString_1) {
             // resolve tokens
             const path = typeString;
             let potentialTypeFilePath;
-            if (typeString.match(/^(\.|\/)/)) {
+            if (typeString.match(/^\./)) {
+                // relative path from cwd
                 potentialTypeFilePath = __path.resolve(finalSettings.cwd, path);
             }
             else {
+                // absolute path or package root relative path
                 potentialTypeFilePath = __path.resolve(packageRootDir(finalSettings.cwd), path);
             }
             if (fs.existsSync(potentialTypeFilePath)) {
@@ -31,7 +33,7 @@ export default function resolveTypeString(typeString_1) {
                 const typeData = (yield import(potentialTypeFilePath)).default;
                 types = [
                     {
-                        type: (_a = typeData.name) !== null && _a !== void 0 ? _a : types,
+                        type: (_a = typeData.name) !== null && _a !== void 0 ? _a : 'unknown',
                         of: undefined,
                         value: undefined,
                     },
@@ -39,10 +41,18 @@ export default function resolveTypeString(typeString_1) {
                 // save data into the "metas" property on the string directly
                 interf = (_c = (_b = typeData.toObject) === null || _b === void 0 ? void 0 : _b.call(typeData)) !== null && _c !== void 0 ? _c : typeData;
             }
+            else {
+                // File doesn't exist, fallback to parsing as regular type string
+                types = parseTypeString(typeString);
+            }
             // regular types
         }
         else {
             types = parseTypeString(typeString);
+        }
+        // Ensure types is always defined
+        if (!types) {
+            types = [{ type: 'unknown', of: undefined, value: undefined }];
         }
         return {
             types,

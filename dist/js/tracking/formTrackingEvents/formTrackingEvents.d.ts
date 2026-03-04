@@ -53,4 +53,7 @@ export type TFormTrackingEventsSettings = {
     debug?: boolean;
     enabled?: boolean;
 };
-export default function formTrackingEvents(settings?: Partial<TFormTrackingEventsSettings>): void;
+export type TFormTrackingEventsApi = {
+    cancel: Function;
+};
+export default function formTrackingEvents(settings?: Partial<TFormTrackingEventsSettings>): TFormTrackingEventsApi;

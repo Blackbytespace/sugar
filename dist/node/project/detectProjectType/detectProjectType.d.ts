@@ -22,7 +22,7 @@
  * @snippet         detectProjectType()
  *
  * @example         js
- * import { detectProjectType } from '@coffeekraken/sugar/project';
+ * import { detectProjectType } from '@blackbyte/sugar/project';
  * detectProjectType();
  *
  * @since          1.0.0

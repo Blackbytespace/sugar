@@ -72,7 +72,7 @@ export default function whenScriptLoaded(
     // @ts-ignore
     $script.onreadystatechange = null;
     $script.onerror = null;
-  });
+  }).catch(() => {});
 
   return promise as Promise<HTMLScriptElement>;
 }

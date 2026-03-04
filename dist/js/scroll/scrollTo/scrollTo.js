@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 // @ts-nocheck
-import easeInOutQuad from '../../shared/easing/easeInOutQuad.js';
-import isUserScrolling from '../is/isUserScrolling.js';
+import easeInOutQuad from '../../../shared/easing/easeInOutQuad/easeInOutQuad.js';
+import isUserScrolling from '../../is/isUserScrolling/isUserScrolling.js';
 export default function __scrollTo(target, settings = {}) {
     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
@@ -80,7 +80,7 @@ export default function __scrollTo(target, settings = {}) {
             targetX = 0;
         }
         else if (target === 'right') {
-            targetY =
+            targetX =
                 (_k = (_j = finalSettings.$elm) === null || _j === void 0 ? void 0 : _j.scrollWidth) !== null && _k !== void 0 ? _k : document.documentElement.scrollWidth;
         }
         // y
@@ -143,6 +143,8 @@ export default function __scrollTo(target, settings = {}) {
             startTime: Date.now(),
             step: __scrollTo.step,
         };
+        // Start the animation
+        __scrollTo.step.call(obj);
     }));
 }
 __scrollTo.step = function () {
@@ -160,6 +162,7 @@ __scrollTo.step = function () {
         return;
     // Continue animation as long as duration hasn't surpassed
     if (t !== 1) {
+        requestAnimationFrame(() => this.step());
     }
     else {
         if (this.onFinish)

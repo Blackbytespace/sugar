@@ -23,8 +23,8 @@ export default function onDrag($elm, cb, settings) {
             y,
             deltaX,
             deltaY,
-            speedX: (lastDeltaX / secondPercentage) * 100,
-            speedY: (lastDeltaY / secondPercentage) * 100,
+            speedX,
+            speedY,
         };
         return point;
     }

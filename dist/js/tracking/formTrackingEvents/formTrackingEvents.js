@@ -25,7 +25,7 @@ export default function formTrackingEvents(settings) {
     const finalSettings = Object.assign({ lang: true, debug: false, simplifyLang: true, enabled: true }, (settings || {}));
     // if disabled, stop here
     if (!finalSettings.enabled) {
-        return;
+        return { cancel: () => { } };
     }
     // @ts-ignore
     const dataLayer = window.dataLayer || [];
@@ -35,7 +35,7 @@ export default function formTrackingEvents(settings) {
         console.info(parseHtml(`[FormTrackingEvents]: ${msg}`));
     };
     // get each forms in the page
-    querySelectorLive('form', ($form) => {
+    const api = querySelectorLive('form', ($form) => {
         var _a;
         // get the form id
         const formId = _getFormId($form);
@@ -75,5 +75,6 @@ export default function formTrackingEvents(settings) {
             $formControl.addEventListener('change', handleFormStart);
         }
     });
+    return api;
 }
 //# sourceMappingURL=formTrackingEvents.js.map

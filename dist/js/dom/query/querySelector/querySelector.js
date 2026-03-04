@@ -10,29 +10,60 @@ export default function querySelector(selector, settings = {}) {
         // @ts-ignore
         finalSettings.$rootNode = finalSettings.rootNode;
     }
-    // grab the element into the dom
-    const $elm = finalSettings.$rootNode.querySelector(selector);
-    // if no element, stop here
-    if (!$elm)
-        return;
-    // check finalSettings
-    if (finalSettings.visible === false) {
-        if (isVisible($elm) || closestNotVisibleElement($elm))
-            return;
+    // grab all matching elements and find the first one that matches our criteria
+    const allElements = Array.from(finalSettings.$rootNode.querySelectorAll(selector));
+    for (const $elm of allElements) {
+        // check finalSettings
+        if (finalSettings.visible === false) {
+            // For visible=false, we want elements that are NOT visible (either themselves or via ancestors)
+            if (!isVisible($elm) || closestNotVisibleElement($elm)) {
+                // Check viewport setting if specified
+                if (finalSettings.inViewport === false) {
+                    if (!isInViewport($elm))
+                        return $elm;
+                }
+                else if (finalSettings.inViewport === true) {
+                    if (isInViewport($elm))
+                        return $elm;
+                }
+                else {
+                    return $elm; // No viewport filter
+                }
+            }
+        }
+        else if (finalSettings.visible === true) {
+            // For visible=true, we want elements that ARE visible (both themselves and ancestors)
+            if (isVisible($elm) && !closestNotVisibleElement($elm)) {
+                // Check viewport setting if specified
+                if (finalSettings.inViewport === false) {
+                    if (!isInViewport($elm))
+                        return $elm;
+                }
+                else if (finalSettings.inViewport === true) {
+                    if (isInViewport($elm))
+                        return $elm;
+                }
+                else {
+                    return $elm; // No viewport filter
+                }
+            }
+        }
+        else {
+            // No visibility filter, just check viewport
+            if (finalSettings.inViewport === false) {
+                if (!isInViewport($elm))
+                    return $elm;
+            }
+            else if (finalSettings.inViewport === true) {
+                if (isInViewport($elm))
+                    return $elm;
+            }
+            else {
+                return $elm; // No filters at all
+            }
+        }
     }
-    else if (finalSettings.visible === true) {
-        if (!isVisible($elm) || !closestNotVisibleElement($elm))
-            return;
-    }
-    if (finalSettings.inViewport === false) {
-        if (isInViewport($elm))
-            return;
-    }
-    else if (finalSettings.inViewport === true) {
-        if (!isInViewport($elm))
-            return;
-    }
-    // return the element
-    return $elm;
+    // No matching element found
+    return;
 }
 //# sourceMappingURL=querySelector.js.map

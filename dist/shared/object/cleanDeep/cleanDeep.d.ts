@@ -36,6 +36,6 @@
 export type TCleanDeepSettings = {
     array?: boolean;
     clone?: boolean;
-    cleaner(value: any): boolean;
+    cleaner?(value: any): boolean;
 };
 export default function cleanDeep(objectOrArray: any, settings?: TCleanDeepSettings): any;

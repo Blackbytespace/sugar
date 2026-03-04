@@ -11,7 +11,7 @@
  *
  * @param       {Any}                       data                    The data to write in the file
  * @param       {TWriteTmpFileSettings}     [settings={}]           Some settings to customize your temp file creation
- * @return      {Promise<String>}                                   A promise that will be resolved when the writeTmpFile is completed with the path to it
+ * @return      {Promise<string>}                                   A promise that will be resolved when the writeTmpFile is completed with the path to it
  *
  * @todo        tests
  *
@@ -32,4 +32,4 @@
 export type TWriteTmpFileSettings = {
     path: string;
 };
-export default function writeTmpFile(data: any, settings?: Partial<TWriteTmpFileSettings>): Promise<String>;
+export default function writeTmpFile(data: any, settings?: Partial<TWriteTmpFileSettings>): Promise<string>;

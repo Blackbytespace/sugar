@@ -21,4 +21,4 @@
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function readText(): Promise<any>;
+export default function readFile(): Promise<any>;

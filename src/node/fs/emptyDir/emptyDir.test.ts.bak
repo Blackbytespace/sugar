@@ -1,0 +1,109 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import emptyDir from './emptyDir.js';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const testDir = path.join(__dirname, 'test-emptyDir');
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(testDir, { recursive: true });
+});
+
+afterAll(() => {
+  // Clean up test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+});
+
+test('emptyDir', async () => {
+  // Test emptying a directory with files
+  const testSubDir = path.join(testDir, 'test-subdir');
+  fs.mkdirSync(testSubDir, { recursive: true });
+  fs.writeFileSync(path.join(testSubDir, 'file1.txt'), 'content 1');
+  fs.writeFileSync(path.join(testSubDir, 'file2.txt'), 'content 2');
+  fs.writeFileSync(path.join(testSubDir, 'file3.js'), 'console.log("test")');
+
+  expect(fs.existsSync(testSubDir)).toBe(true);
+  expect(fs.readdirSync(testSubDir).length).toBe(3);
+
+  await emptyDir(testSubDir);
+  expect(fs.existsSync(testSubDir)).toBe(true); // Directory should still exist
+  expect(fs.readdirSync(testSubDir).length).toBe(0); // But be empty
+
+  // Test emptying a directory with nested structure
+  const nestedDir = path.join(testDir, 'nested-dir');
+  const deepPath = path.join(nestedDir, 'deep', 'nested', 'structure');
+  fs.mkdirSync(deepPath, { recursive: true });
+  fs.writeFileSync(path.join(nestedDir, 'root-file.txt'), 'root content');
+  fs.writeFileSync(path.join(deepPath, 'deep-file.txt'), 'deep content');
+  fs.mkdirSync(path.join(nestedDir, 'empty-subdir'));
+
+  expect(fs.readdirSync(nestedDir).length).toBeGreaterThan(0);
+
+  await emptyDir(nestedDir);
+  expect(fs.existsSync(nestedDir)).toBe(true);
+  expect(fs.readdirSync(nestedDir).length).toBe(0);
+  expect(fs.existsSync(deepPath)).toBe(false);
+
+  // Test emptying an already empty directory
+  const emptyTestDir = path.join(testDir, 'already-empty');
+  fs.mkdirSync(emptyTestDir);
+  expect(fs.readdirSync(emptyTestDir).length).toBe(0);
+
+  await emptyDir(emptyTestDir);
+  expect(fs.existsSync(emptyTestDir)).toBe(true);
+  expect(fs.readdirSync(emptyTestDir).length).toBe(0);
+
+  // Test emptying a directory with special files and hidden files
+  const specialDir = path.join(testDir, 'special-dir');
+  fs.mkdirSync(specialDir);
+  fs.writeFileSync(path.join(specialDir, '.hidden-file'), 'hidden content');
+  fs.writeFileSync(
+    path.join(specialDir, 'file with spaces.txt'),
+    'spaces content',
+  );
+  fs.writeFileSync(
+    path.join(specialDir, 'unicode-文件.txt'),
+    'unicode content',
+  );
+
+  expect(fs.readdirSync(specialDir).length).toBe(3);
+
+  await emptyDir(specialDir);
+  expect(fs.existsSync(specialDir)).toBe(true);
+  expect(fs.readdirSync(specialDir).length).toBe(0);
+
+  // Test return value (should be void/undefined)
+  const returnTestDir = path.join(testDir, 'return-test');
+  fs.mkdirSync(returnTestDir);
+  fs.writeFileSync(path.join(returnTestDir, 'test.txt'), 'test');
+
+  await emptyDir(returnTestDir);
+
+  // Test error handling - non-existent directory
+  const nonExistentDir = path.join(testDir, 'non-existent');
+  expect(fs.existsSync(nonExistentDir)).toBe(false);
+
+  // Should create the directory and leave it empty
+  await emptyDir(nonExistentDir);
+  expect(fs.existsSync(nonExistentDir)).toBe(true);
+  expect(fs.readdirSync(nonExistentDir).length).toBe(0);
+
+  // Test with directory containing many files
+  const manyFilesDir = path.join(testDir, 'many-files');
+  fs.mkdirSync(manyFilesDir);
+  for (let i = 0; i < 50; i++) {
+    fs.writeFileSync(path.join(manyFilesDir, `file-${i}.txt`), `content ${i}`);
+  }
+
+  expect(fs.readdirSync(manyFilesDir).length).toBe(50);
+
+  await emptyDir(manyFilesDir);
+  expect(fs.existsSync(manyFilesDir)).toBe(true);
+  expect(fs.readdirSync(manyFilesDir).length).toBe(0);
+});

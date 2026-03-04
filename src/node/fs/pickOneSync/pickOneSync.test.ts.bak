@@ -1,0 +1,101 @@
+import { test, expect, beforeAll, afterAll } from 'vitest';
+import * as fs from 'fs';
+import * as path from 'path';
+import pickOneSync from './pickOneSync.js';
+
+let testDir: string;
+
+beforeAll(() => {
+  // Create temporary test directory with various files
+  testDir = path.join(process.cwd(), 'test-pick-one-sync-dir');
+
+  if (!fs.existsSync(testDir)) {
+    fs.mkdirSync(testDir, { recursive: true });
+  }
+
+  // Create test files
+  fs.writeFileSync(path.join(testDir, 'file1.txt'), 'test1');
+  fs.writeFileSync(path.join(testDir, 'file2.json'), 'test2');
+  fs.writeFileSync(path.join(testDir, 'config.yaml'), 'test3');
+  fs.writeFileSync(path.join(testDir, 'script.js'), 'test4');
+  fs.writeFileSync(path.join(testDir, 'README.md'), 'test5');
+});
+
+afterAll(() => {
+  // Clean up test files
+  try {
+    if (fs.existsSync(testDir)) {
+      fs.rmSync(testDir, { recursive: true, force: true });
+    }
+  } catch (error) {
+    console.warn('Cleanup failed:', error.message);
+  }
+});
+
+test('pickOneSync', () => {
+  // Test picking the first matching file from current directory
+  const result1 = pickOneSync(['file1.txt', 'file2.json'], { cwd: testDir });
+  expect(result1).toBe(path.join(testDir, 'file1.txt'));
+
+  // Test picking when first file doesn't exist but second does
+  const result2 = pickOneSync(['nonexistent.txt', 'file2.json'], {
+    cwd: testDir,
+  });
+  expect(result2).toBe(path.join(testDir, 'file2.json'));
+
+  // Test with glob patterns
+  const result3 = pickOneSync(['*.yaml'], { cwd: testDir });
+  expect(result3).toBe(path.join(testDir, 'config.yaml'));
+
+  // Test with multiple patterns
+  const result4 = pickOneSync(['*.nonexistent', '*.js'], { cwd: testDir });
+  expect(result4).toBe(path.join(testDir, 'script.js'));
+
+  // Test when no files match
+  const result5 = pickOneSync(['nonexistent1.txt', 'nonexistent2.txt'], {
+    cwd: testDir,
+  });
+  expect(result5).toBe('');
+
+  // Test with empty array
+  const result6 = pickOneSync([], { cwd: testDir });
+  expect(result6).toBe('');
+
+  // Test with default cwd (current working directory)
+  // Create a test file in current directory temporarily
+  const tempFile = 'temp-test-file.txt';
+  fs.writeFileSync(tempFile, 'temp');
+
+  try {
+    const result7 = pickOneSync([tempFile]);
+    expect(result7).toBe(path.join(process.cwd(), tempFile));
+  } finally {
+    // Clean up
+    try {
+      if (fs.existsSync(tempFile)) {
+        fs.unlinkSync(tempFile);
+      }
+    } catch (error) {
+      console.warn('Temp file cleanup failed:', error.message);
+    }
+  }
+
+  // Test with complex glob patterns
+  const result8 = pickOneSync(['*.{js,json}'], { cwd: testDir });
+  expect(result8).toBe(path.join(testDir, 'file2.json')); // Should pick first match
+
+  // Test case sensitivity
+  const result9 = pickOneSync(['FILE1.TXT'], { cwd: testDir });
+  expect(result9).toBe(''); // Should not match due to case sensitivity
+
+  // Test with pattern that matches multiple files (should return first found)
+  const result10 = pickOneSync(['file*.{txt,json}'], { cwd: testDir });
+  expect([
+    path.join(testDir, 'file1.txt'),
+    path.join(testDir, 'file2.json'),
+  ]).toContain(result10); // Should be one of these files
+
+  // Test settings object default behavior
+  const result11 = pickOneSync(['file1.txt'], {});
+  expect(result11).toBe(''); // Current working directory probably doesn't have file1.txt
+});

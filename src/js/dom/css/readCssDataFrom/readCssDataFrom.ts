@@ -24,7 +24,7 @@ export type TReadCssDaraSettings = {};
 export default function readCssDataFrom(
   $elm: HTMLElement,
   settings?: Partial<TReadCssDaraSettings>,
-): void {
+): Record<string, any> {
   // const finalSettings: TReadCssDaraSettings = {
   //     ...(settings ?? {}),
   // };
@@ -43,7 +43,7 @@ export default function readCssDataFrom(
   // if no data, check in ":after"
   if (!data) {
     const afterStyle = window.getComputedStyle($elm, '::after');
-    if (afterStyle.content) {
+    if (afterStyle.content !== 'none') {
       try {
         // @TODO        check why we need to make JSON.parse 2 times...
         data = JSON.parse(JSON.parse(afterStyle.content));

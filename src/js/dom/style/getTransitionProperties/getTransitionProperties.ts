@@ -76,7 +76,7 @@ function getTransitionProperties(
     totalDuration: 0,
   };
 
-  for (let [i, property] of props.properties) {
+  for (let [i, property] of props.properties.entries()) {
     result.transitions.push({
       property,
       duration: props.durations[i],

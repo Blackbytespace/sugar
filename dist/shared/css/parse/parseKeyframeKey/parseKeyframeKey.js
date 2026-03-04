@@ -3,7 +3,7 @@
  * @namespace       js.css.parse
  * @type            Function
  * @platform        js
- * @platform        nonde
+ * @platform        node
  * @status          beta
  * @private
  *

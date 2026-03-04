@@ -26,4 +26,4 @@ export type TScrollSpySettings = {
     offset?: number;
     activeClass?: string;
 };
-export default function scrollSpy($links: NodeListOf<HTMLAnchorElement>, settings?: TScrollSpySettings): void;
+export default function scrollSpy($links: NodeListOf<HTMLAnchorElement>, settings?: TScrollSpySettings): () => void;

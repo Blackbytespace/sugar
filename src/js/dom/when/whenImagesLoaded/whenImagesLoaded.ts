@@ -41,6 +41,11 @@ export default function whenImagesLoaded(
     const promises: Promise<HTMLImageElement>[] = [],
       loadedImages: HTMLImageElement[] = [];
 
+    if (!$imgs.length) {
+      resolve([]);
+      return;
+    }
+
     Array.from($imgs).forEach(($img) => {
       const pro = whenImageLoaded($img);
       pro

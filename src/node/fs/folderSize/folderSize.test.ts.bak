@@ -1,0 +1,242 @@
+import fs from 'fs';
+import path from 'path';
+import { afterAll, beforeAll, expect, test } from 'vitest';
+import folderSize from './folderSize.js';
+
+// Helper function to ensure files are properly created and accessible
+function ensureFileAccessible(filePath: string): void {
+  let retries = 0;
+  const maxRetries = 5;
+
+  while (retries < maxRetries) {
+    try {
+      if (fs.existsSync(filePath)) {
+        fs.readFileSync(filePath);
+        return; // File is accessible
+      }
+    } catch (error) {
+      // File not ready, wait a bit
+    }
+    retries++;
+    if (retries < maxRetries) {
+      // Simple synchronous sleep for small delays
+      const start = Date.now();
+      while (Date.now() - start < 10) {
+        // Busy wait for 10ms
+      }
+    }
+  }
+}
+
+const testDir = path.join(
+  process.cwd(),
+  'src/node/fs/folderSize/test-folderSize',
+);
+let createdDirs: string[] = [];
+
+beforeAll(() => {
+  // Clean up any existing test directory
+  if (fs.existsSync(testDir)) {
+    fs.rmSync(testDir, { recursive: true });
+  }
+
+  // Create test directory
+  fs.mkdirSync(testDir, { recursive: true });
+  createdDirs.push(testDir);
+});
+
+afterAll(() => {
+  // Clean up all created directories
+  createdDirs.forEach((dir) => {
+    if (fs.existsSync(dir)) {
+      fs.rmSync(dir, { recursive: true });
+    }
+  });
+});
+
+test('folderSize', async () => {
+  // Test empty folder
+  const emptyFolder = path.join(testDir, 'empty');
+  fs.mkdirSync(emptyFolder);
+
+  const emptySize = await folderSize(emptyFolder);
+  expect(typeof emptySize).toBe('number');
+  expect(emptySize).toBeGreaterThanOrEqual(0);
+
+  // Test folder with single small file
+  const singleFileFolder = path.join(testDir, 'single');
+  fs.mkdirSync(singleFileFolder);
+  const smallContent = 'Hello World'; // 11 bytes
+  const smallFilePath = path.join(singleFileFolder, 'small.txt');
+  fs.writeFileSync(smallFilePath, smallContent);
+
+  // Ensure file is accessible before testing
+  ensureFileAccessible(smallFilePath);
+
+  const singleFileSize = await folderSize(singleFileFolder);
+  expect(typeof singleFileSize).toBe('number');
+  expect(singleFileSize).toBeGreaterThanOrEqual(smallContent.length);
+
+  // Test folder with multiple files
+  const multiFileFolder = path.join(testDir, 'multi');
+  fs.mkdirSync(multiFileFolder);
+  const content1 = 'File 1 content';
+  const content2 = 'File 2 content with more text';
+  const content3 = 'File 3 short';
+  const file1Path = path.join(multiFileFolder, 'file1.txt');
+  const file2Path = path.join(multiFileFolder, 'file2.txt');
+  const file3Path = path.join(multiFileFolder, 'file3.txt');
+
+  fs.writeFileSync(file1Path, content1);
+  fs.writeFileSync(file2Path, content2);
+  fs.writeFileSync(file3Path, content3);
+
+  // Ensure all files are accessible before testing
+  ensureFileAccessible(file1Path);
+  ensureFileAccessible(file2Path);
+  ensureFileAccessible(file3Path);
+
+  const multiFileSize = await folderSize(multiFileFolder);
+  expect(typeof multiFileSize).toBe('number');
+  const expectedMinSize = content1.length + content2.length + content3.length;
+  expect(multiFileSize).toBeGreaterThanOrEqual(expectedMinSize);
+
+  // Test that multi-file folder is larger than single-file folder
+  expect(multiFileSize).toBeGreaterThan(singleFileSize);
+
+  // Test nested directory structure
+  const nestedFolder = path.join(testDir, 'nested');
+  const subFolder = path.join(nestedFolder, 'subfolder');
+  fs.mkdirSync(subFolder, { recursive: true });
+  fs.writeFileSync(path.join(nestedFolder, 'root.txt'), 'Root file content');
+  fs.writeFileSync(path.join(subFolder, 'sub.txt'), 'Subfolder file content');
+
+  const nestedSize = await folderSize(nestedFolder);
+  expect(typeof nestedSize).toBe('number');
+  expect(nestedSize).toBeGreaterThan(0);
+
+  // Test large file
+  const largeFileFolder = path.join(testDir, 'large');
+  fs.mkdirSync(largeFileFolder);
+  const largeContent = 'A'.repeat(10000); // 10KB of 'A's
+  fs.writeFileSync(path.join(largeFileFolder, 'large.txt'), largeContent);
+
+  const largeFileSize = await folderSize(largeFileFolder);
+  expect(typeof largeFileSize).toBe('number');
+  expect(largeFileSize).toBeGreaterThanOrEqual(largeContent.length);
+  // Note: Due to filesystem block allocation, size might be equal to multiFileSize
+
+  // Test binary file
+  const binaryFolder = path.join(testDir, 'binary');
+  fs.mkdirSync(binaryFolder);
+  const binaryData = Buffer.alloc(1000, 0xff); // 1KB of 0xFF bytes
+  fs.writeFileSync(path.join(binaryFolder, 'binary.bin'), binaryData);
+
+  const binarySize = await folderSize(binaryFolder);
+  expect(typeof binarySize).toBe('number');
+  expect(binarySize).toBeGreaterThanOrEqual(binaryData.length);
+
+  // Test consistency - same folder should return same size
+  const consistentSize1 = await folderSize(singleFileFolder);
+  const consistentSize2 = await folderSize(singleFileFolder);
+  expect(consistentSize1).toBe(consistentSize2);
+
+  // Test size changes when adding files
+  const growingFolder = path.join(testDir, 'growing');
+  fs.mkdirSync(growingFolder);
+
+  const initialSize = await folderSize(growingFolder);
+  expect(initialSize).toBeGreaterThanOrEqual(0);
+
+  // Add a file
+  fs.writeFileSync(path.join(growingFolder, 'new.txt'), 'New file content');
+  const afterAddSize = await folderSize(growingFolder);
+  expect(afterAddSize).toBeGreaterThan(initialSize);
+
+  // Test deep nested structure
+  const deepFolder = path.join(testDir, 'deep');
+  let currentPath = deepFolder;
+  for (let i = 0; i < 5; i++) {
+    currentPath = path.join(currentPath, `level${i}`);
+    fs.mkdirSync(currentPath, { recursive: true });
+    fs.writeFileSync(
+      path.join(currentPath, `file${i}.txt`),
+      `Content at level ${i}`,
+    );
+  }
+
+  const deepSize = await folderSize(deepFolder);
+  expect(typeof deepSize).toBe('number');
+  expect(deepSize).toBeGreaterThan(0);
+
+  // Test folder with various file types
+  const mixedFolder = path.join(testDir, 'mixed');
+  fs.mkdirSync(mixedFolder);
+  fs.writeFileSync(path.join(mixedFolder, 'text.txt'), 'Text content');
+  fs.writeFileSync(path.join(mixedFolder, 'data.json'), '{"key": "value"}');
+  fs.writeFileSync(
+    path.join(mixedFolder, 'script.js'),
+    'console.log("hello");',
+  );
+  fs.writeFileSync(path.join(mixedFolder, 'style.css'), 'body { margin: 0; }');
+
+  const mixedSize = await folderSize(mixedFolder);
+  expect(typeof mixedSize).toBe('number');
+  expect(mixedSize).toBeGreaterThan(0);
+
+  // Test error handling - non-existent folder
+  try {
+    const nonExistentSize = await folderSize('/non/existent/path');
+    // If it doesn't throw, it should return 0 or a number
+    expect(typeof nonExistentSize).toBe('number');
+    expect(nonExistentSize).toBeGreaterThanOrEqual(0);
+  } catch (error) {
+    // If it throws an error, that's also valid behavior
+    expect(error).toBeDefined();
+  }
+
+  // Test empty file (0 bytes)
+  const emptyFileFolder = path.join(testDir, 'emptyfile');
+  fs.mkdirSync(emptyFileFolder);
+  fs.writeFileSync(path.join(emptyFileFolder, 'empty.txt'), '');
+
+  const emptyFileSize = await folderSize(emptyFileFolder);
+  expect(typeof emptyFileSize).toBe('number');
+  expect(emptyFileSize).toBeGreaterThanOrEqual(0);
+
+  // Test that folder sizes make logical sense (accounting for filesystem block allocation)
+  expect(multiFileSize).toBeGreaterThanOrEqual(emptySize);
+  expect(largeFileSize).toBeGreaterThanOrEqual(singleFileSize);
+  expect(nestedSize).toBeGreaterThan(emptySize);
+
+  // Test with symbolic links (if supported by filesystem)
+  try {
+    const symlinkFolder = path.join(testDir, 'symlink');
+    fs.mkdirSync(symlinkFolder);
+    const targetFile = path.join(symlinkFolder, 'target.txt');
+    fs.writeFileSync(targetFile, 'Target content');
+
+    // Try to create a symlink
+    const linkPath = path.join(symlinkFolder, 'link.txt');
+    fs.symlinkSync(targetFile, linkPath);
+
+    const symlinkSize = await folderSize(symlinkFolder);
+    expect(typeof symlinkSize).toBe('number');
+    expect(symlinkSize).toBeGreaterThan(0);
+  } catch (error) {
+    // Symlinks might not be supported on all systems - that's ok
+  }
+
+  // Test with hidden files (starting with .)
+  const hiddenFileFolder = path.join(testDir, 'hidden');
+  fs.mkdirSync(hiddenFileFolder);
+  fs.writeFileSync(path.join(hiddenFileFolder, '.hidden'), 'Hidden content');
+  fs.writeFileSync(
+    path.join(hiddenFileFolder, 'visible.txt'),
+    'Visible content',
+  );
+
+  const hiddenFileSize = await folderSize(hiddenFileFolder);
+  expect(typeof hiddenFileSize).toBe('number');
+  expect(hiddenFileSize).toBeGreaterThan(0);
+});

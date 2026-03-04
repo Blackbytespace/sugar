@@ -24,14 +24,11 @@ import readJsonSync from '../readJsonSync/readJsonSync.js';
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function readJson(path: string): Promise<any> {
+export default async function readJson(path: string): Promise<any> {
   if (!fs.existsSync(path)) {
     throw new Error(
       `<red>[readJson]</red> Sorry but the passed file path "<cyan>${path}</cyan>" does not exists...`,
     );
   }
-  return new Promise(async (resolve, reject) => {
-    const json = readJsonSync(path);
-    resolve(json);
-  });
+  return readJsonSync(path);
 }

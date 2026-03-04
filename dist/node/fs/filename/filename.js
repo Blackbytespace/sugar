@@ -27,7 +27,10 @@ export default function filename(path, withExtension = true) {
     var _a;
     let filename = (_a = path.split('/').pop()) !== null && _a !== void 0 ? _a : '';
     if (!withExtension) {
-        filename = filename.replace(`.${extension(filename)}`, '');
+        const ext = extension(filename);
+        if (ext) {
+            filename = filename.replace(`.${ext}`, '');
+        }
     }
     return filename;
 }

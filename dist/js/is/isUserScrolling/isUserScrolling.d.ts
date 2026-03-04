@@ -1,1 +1,1 @@
-export default function isUserScrolling($elm: any): any;
+export default function isUserScrolling($elm: any): boolean;

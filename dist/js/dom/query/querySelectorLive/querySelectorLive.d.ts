@@ -24,7 +24,6 @@ import type { TWhenTrigger } from '@blackbyte/sugar/dom';
  * @setting         {HTMLElement}          [rootNode=document]                  The root node from where to observe childs
  * @setting         {Boolean}              [once=true]                          If true, each observed nodes will be handled only once even if they are removed and reinjected in the dom
  * @setting         {Function}             [afterFirst=null]               A function that will be called once the first scan is done
- * @setting         {Boolean}              [scopes=true]                        If true, the selector will be searched inside elements with the "s-query-selector-live-scope" attribute as scopes
  * @setting         {Boolean}              [firstOnly=false]                    If true, the query will stop after the first matching node is found
  * @setting         {TWhenTrigger|string}  [when=null]                     An optional when trigger or array of triggers to wait for before calling the callback with the detected node
  * @setting         {Function}             [disconnectedCallback=null]     An optional callback function that will be called when a previously detected node is removed from the dom
@@ -36,7 +35,7 @@ import type { TWhenTrigger } from '@blackbyte/sugar/dom';
  * });
  *
  * @example 	js
- * import { querySelectorLive } from '@lotsof/sugar/dom'
+ * import { querySelectorLive } from '@blackbyte/sugar/dom'
  * const query = querySelectorLive('.my-cool-item', (node, api) => {
  * 	    // do something here with the detected node
  *      // call api.cancel if you want to stop listening for this selector
@@ -52,7 +51,6 @@ export type TQuerySelectorLiveSettings = {
     rootNode: HTMLElement | Document;
     once: boolean;
     afterFirst?: Function;
-    scopes: boolean;
     firstOnly: boolean;
     when?: TWhenTrigger<string>;
     disconnectedCallback?: ($elm: HTMLElement) => void;
@@ -62,5 +60,5 @@ export type TQuerySelectorLiveApi = {
     cancel: Function;
 };
 type TQuerySelectorLiveCallback = ($elm: HTMLElement, api: TQuerySelectorLiveApi) => void;
-export default function querySelectorLive(selector: string, cb: TQuerySelectorLiveCallback, settings?: Partial<TQuerySelectorLiveSettings>, _isFirstLevel?: boolean): TQuerySelectorLiveApi;
+export default function querySelectorLive(selector: string, cb: TQuerySelectorLiveCallback, settings?: Partial<TQuerySelectorLiveSettings>): TQuerySelectorLiveApi;
 export {};
