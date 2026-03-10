@@ -59,7 +59,7 @@ export default function querySelectorLive(selector, cb, settings) {
             if (finalSettings.when) {
                 pending.add($elm);
                 try {
-                    yield when($elm, [finalSettings.when]);
+                    yield when($elm, finalSettings.when);
                 }
                 finally {
                     pending.delete($elm);

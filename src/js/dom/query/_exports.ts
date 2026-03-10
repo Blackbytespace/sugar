@@ -11,6 +11,7 @@ import querySelectorAll from './querySelectorAll/querySelectorAll.js';
 import querySelectorAllUp from './querySelectorAllUp/querySelectorAllUp.js';
 import querySelectorLive from './querySelectorLive/querySelectorLive.js';
 import querySelectorUp from './querySelectorUp/querySelectorUp.js';
+import queryStegaElementsLive from './queryStegaElementsLive/queryStegaElementsLive.js';
 
 export {
   closestElement as __closestElement,
@@ -26,6 +27,7 @@ export {
   querySelectorAllUp as __querySelectorAllUp,
   querySelectorLive as __querySelectorLive,
   querySelectorUp as __querySelectorUp,
+  queryStegaElementsLive as __queryStegaElementsLive,
   closestElement,
   closestNotVisibleElement,
   closestScrollableElement,
@@ -39,4 +41,5 @@ export {
   querySelectorAllUp,
   querySelectorLive,
   querySelectorUp,
+  queryStegaElementsLive,
 };

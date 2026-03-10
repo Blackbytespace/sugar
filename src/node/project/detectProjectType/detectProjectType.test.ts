@@ -1,10 +1,11 @@
 import { test, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import detectProjectType from './detectProjectType.js';
 
-// Test directory for creating temporary projects
-const testDir = path.join(process.cwd(), 'test-detect-project-type');
+// Test directory for creating temporary projects (use os.tmpdir to avoid vitest scanning project files)
+const testDir = path.join(os.tmpdir(), 'test-detect-project-type');
 
 // Setup test directory
 beforeAll(() => {

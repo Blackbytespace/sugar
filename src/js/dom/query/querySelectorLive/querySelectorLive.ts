@@ -27,7 +27,7 @@ import { when } from '@blackbyte/sugar/dom';
  * @setting         {Boolean}              [once=true]                          If true, each observed nodes will be handled only once even if they are removed and reinjected in the dom
  * @setting         {Function}             [afterFirst=null]               A function that will be called once the first scan is done
  * @setting         {Boolean}              [firstOnly=false]                    If true, the query will stop after the first matching node is found
- * @setting         {TWhenTrigger|string}  [when=null]                     An optional when trigger or array of triggers to wait for before calling the callback with the detected node
+ * @setting         {TWhenTrigger}         [when=null]                     An optional when trigger or array of triggers to wait for before calling the callback with the detected node
  * @setting         {Function}             [disconnectedCallback=null]     An optional callback function that will be called when a previously detected node is removed from the dom
  * @setting         {String[]}             [attributes=[]]                      An optional array of attributes to monitor for changes (in addition to class and id)
  *
@@ -55,7 +55,7 @@ export type TQuerySelectorLiveSettings = {
   once: boolean;
   afterFirst?: Function;
   firstOnly: boolean;
-  when?: TWhenTrigger<string>;
+  when?: TWhenTrigger;
   disconnectedCallback?: ($elm: HTMLElement) => void;
   attributes: string[];
 };
@@ -136,7 +136,7 @@ export default function querySelectorLive(
     if (finalSettings.when) {
       pending.add($elm);
       try {
-        await when($elm, [finalSettings.when] as TWhenTrigger<string>[]);
+        await when($elm, finalSettings.when);
       } finally {
         pending.delete($elm);
       }

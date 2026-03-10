@@ -55,6 +55,7 @@ export type TwhenSettings = {
     whenInteract?: TWhenInteractSettings;
     whenVisible?: TWhenVisibleSettings;
 };
-export type TWhenTrigger<string> = ('direct' | 'directly' | 'inViewport' | 'nearViewport' | 'enterViewport' | 'outOfViewport' | 'interact' | 'visible' | 'domReady' | 'stylesheetsReady' | 'animationEnd')[];
+export type TWhenTriggerUnit = 'direct' | 'directly' | 'inViewport' | 'nearViewport' | 'enterViewport' | 'outOfViewport' | 'interact' | 'visible' | 'domReady' | 'stylesheetsReady' | 'animationEnd';
+export type TWhenTrigger = TWhenTriggerUnit | TWhenTriggerUnit[];
 export declare const WhenTriggers: string[];
-export default function when($elm: HTMLElement, trigger: TWhenTrigger[], settings?: TwhenSettings): Promise<any>;
+export default function when($elm: HTMLElement, trigger: TWhenTrigger, settings?: TwhenSettings): Promise<any>;

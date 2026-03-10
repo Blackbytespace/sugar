@@ -69,7 +69,7 @@ export type TwhenSettings = {
   whenVisible?: TWhenVisibleSettings;
 };
 
-export type TWhenTrigger<string> = (
+export type TWhenTriggerUnit =
   | 'direct'
   | 'directly'
   | 'inViewport'
@@ -80,8 +80,9 @@ export type TWhenTrigger<string> = (
   | 'visible'
   | 'domReady'
   | 'stylesheetsReady'
-  | 'animationEnd'
-)[];
+  | 'animationEnd';
+
+export type TWhenTrigger = TWhenTriggerUnit | TWhenTriggerUnit[];
 
 export const WhenTriggers = [
   'direct',
@@ -99,7 +100,7 @@ export const WhenTriggers = [
 
 export default function when(
   $elm: HTMLElement,
-  trigger: TWhenTrigger[],
+  trigger: TWhenTrigger,
   settings?: TwhenSettings,
 ): Promise<any> {
   const finalSettings: TwhenSettings = {

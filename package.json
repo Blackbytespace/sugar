@@ -1,7 +1,7 @@
 {
   "name": "@blackbyte/sugar",
   "description": "The toolkit that you missed... like a sugar in your coffee!",
-  "version": "1.0.0-beta.29",
+  "version": "1.0.0-beta.34",
   "keywords": [
     "javascript",
     "typescript",
@@ -30,7 +30,7 @@
     "test:js": "vitest src/js --project=unit",
     "test:js:browser": "vitest src/js --project=browser",
     "test:all": "vitest",
-    "publish": "vitest run --project=unit && vitest run --project=browser && npm publish --access public --tag latest"
+    "publish": "npm publish --access public --tag latest"
   },
   "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
   "contributors": [
@@ -214,6 +214,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
+    "@vercel/stega": "^1.0.0",
     "aggregation": "^1.2.7",
     "chalk": "^5.3.0",
     "change-case": "^5.4.3",
@@ -224,8 +225,10 @@
     "currency-symbol-map": "^5.1.0",
     "escape-html": "^1.0.3",
     "fast-folder-size": "^2.2.0",
-    "fast-xml-parser": "^5.3.9",
+    "fast-xml-builder": "^1.1.0",
+    "fast-xml-parser": "^5.5.1",
     "fecha": "^4.2.3",
+    "figlet": "^1.11.0",
     "filesize": "^10.1.0",
     "find-package-json": "^1.2.0",
     "flattenjs": "^2.1.3",
