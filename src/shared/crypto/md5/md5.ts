@@ -1,11 +1,12 @@
-import md5 from 'crypto-js/md5.js';
 import { toString } from '@blackbyte/sugar/string';
+import md5 from 'crypto-js/md5.js';
 
 /**
  * @name              md5
  * @namespace         shared.crypto
  * @type              Object
  * @platform          js
+ * @platform          node
  * @status            stable
  *
  * Expose two function named "encrypt" that you can use to process your content using the md5 algorithm

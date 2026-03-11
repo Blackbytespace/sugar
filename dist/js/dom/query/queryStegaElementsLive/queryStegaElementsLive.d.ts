@@ -29,7 +29,7 @@ import type { TWhenTrigger } from '@blackbyte/sugar/dom';
  * @setting         {Boolean | String[]}       [attributes=true]                If true, check all attributes. If false, skip attributes. If string[], check only listed attributes.
  * @setting         {Boolean}                  [clean=true]                    If true, strip the stega payload from the DOM after detection
  *
- * @snippet         queryStegaElementsLive($1)
+ * @snippetp         queryStegaElementsLive($1)
  * queryStegaElementsLive(element => {
  *      $1
  * });

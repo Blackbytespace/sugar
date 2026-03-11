@@ -1,17 +1,4 @@
-/**
- * @name            drawVideoToCanvas.browser.test.ts
- * @namespace       js.dom.canvas
- * @type            Test
- * @platform        js
- * @status          stable
- *
- * Browser e2e tests for drawVideoToCanvas
- *
- * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
- */
-
-import { describe, it, expect, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import drawVideoToCanvas from './drawVideoToCanvas.js';
 
 describe('drawVideoToCanvas (browser)', () => {

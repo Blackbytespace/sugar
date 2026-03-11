@@ -3,6 +3,7 @@
  * @namespace       shared.crypto
  * @type            Object
  * @platform        js
+ * @platform        node
  * @status          stable
  *
  * Expose two functions named "encrypt" and "decrypt" to process content using the stega algorithm.

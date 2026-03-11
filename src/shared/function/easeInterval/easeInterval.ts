@@ -5,6 +5,7 @@ import easeInOutQuart from '../../easing/easeInOutQuart/easeInOutQuart.js';
  * @namespace           shared.function
  * @type                Function
  * @platform            js
+ * @platform            node
  * @status              stable
  * @async
  *

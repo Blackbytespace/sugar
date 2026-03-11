@@ -3,7 +3,6 @@
  * @namespace           js.is
  * @type                Function
  * @platform            js
- * @platform            node
  * @status              stable
  *
  * Check if the passed element is a DOM node
