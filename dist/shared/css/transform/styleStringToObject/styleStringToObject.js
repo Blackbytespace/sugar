@@ -1,8 +1,7 @@
-import { camelize } from '@blackbyte/sugar/string';
-import { parse } from '@blackbyte/sugar/string';
+import { camelize, parse } from '@blackbyte/sugar/string';
 /**
  * @name            styleString2Object
- * @namespace       js.css.transform
+ * @namespace       shared.css.transform
  * @type            Function
  * @platform        js
  * @platform        node

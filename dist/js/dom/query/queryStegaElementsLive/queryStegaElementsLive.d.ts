@@ -42,6 +42,7 @@ import type { TWhenTrigger } from '@blackbyte/sugar/dom';
  * // stop observing when needed
  * query.cancel();
  *
+ * @see             https://www.npmjs.com/package/@vercel/stega
  * @since           1.0.0
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */

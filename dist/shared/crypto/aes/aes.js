@@ -4,6 +4,7 @@ import { toString } from '@blackbyte/sugar/string';
  * @name            aes
  * @namespace       shared.crypto
  * @type            Object
+ * @platform        js
  * @platform        node
  * @status          stable
  *

@@ -1,11 +1,12 @@
+import { toString } from '@blackbyte/sugar/string';
 import base64 from 'crypto-js/enc-base64.js';
 import encUtf8 from 'crypto-js/enc-utf8.js';
-import { toString } from '@blackbyte/sugar/string';
 /**
  * @name            base64
  * @namespace       shared.crypto
  * @type            Object
  * @platform        js
+ * @platform        node
  * @status          stable
  *
  * Expose two function named "encrypt" that you can use to process your content using the base64 algorithm

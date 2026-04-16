@@ -1,6 +1,6 @@
 /**
  * @name            styleString2Object
- * @namespace       js.css.transform
+ * @namespace       shared.css.transform
  * @type            Function
  * @platform        js
  * @platform        node

@@ -10,7 +10,7 @@
  * the direction you want to search the nearest element.
  *
  * @param           {HTMLElement}                 $from             The element from which to start the search
- * @param           {HTMLElement[]}               $elements         The elements list to search in
+ * @param           {NodeListOf<HTMLElement>|HTMLElement[]}               $elements         The elements list to search in
  * @param           {TNearestElementSettings}     [settings={}]     Some settings to configure your search
  * @return          {HTMLElement}                                   The nearest element found
  *

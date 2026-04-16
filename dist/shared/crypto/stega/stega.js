@@ -3,6 +3,7 @@
  * @namespace       shared.crypto
  * @type            Object
  * @platform        js
+ * @platform        node
  * @status          stable
  *
  * Expose two functions named "encrypt" and "decrypt" to process content using the stega algorithm.
@@ -15,7 +16,8 @@
  * const encoded = stega.encrypt({ source: 'cms', field: 'title' });
  * const data    = stega.decrypt(encoded);
  *
- * @since         1.0.0
+ * @see            https://www.npmjs.com/package/@vercel/stega
+ * @since          1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 import { vercelStegaEncode as _vercelStegaEncode, vercelStegaDecode, } from '@vercel/stega';

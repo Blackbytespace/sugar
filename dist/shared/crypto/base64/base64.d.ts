@@ -3,6 +3,7 @@
  * @namespace       shared.crypto
  * @type            Object
  * @platform        js
+ * @platform        node
  * @status          stable
  *
  * Expose two function named "encrypt" that you can use to process your content using the base64 algorithm

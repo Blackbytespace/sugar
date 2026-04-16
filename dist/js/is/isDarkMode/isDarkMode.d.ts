@@ -21,7 +21,7 @@
  *
  * @example 	js
  * import { isDarkMode } from '@blackbyte/sugar/is'
- * if ( isDarkMode()) {
+ * if (isDarkMode()) {
  *   // do something cool
  * }
  *

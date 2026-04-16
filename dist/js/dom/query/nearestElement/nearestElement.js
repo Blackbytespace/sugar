@@ -11,7 +11,7 @@ export default function nearestElement($from, $elements, settings) {
         let distance;
         switch (finalParams.direction) {
             case 'top':
-                if (elmBound.top > fromElmBound.top) {
+                if (elmBound.bottom > fromElmBound.top) {
                     continue;
                 }
                 break;
@@ -21,7 +21,7 @@ export default function nearestElement($from, $elements, settings) {
                 }
                 break;
             case 'bottom':
-                if (elmBound.bottom < fromElmBound.bottom) {
+                if (elmBound.top < fromElmBound.bottom) {
                     continue;
                 }
                 break;

@@ -1,6 +1,6 @@
 /**
  * @name            removeVendorPrefix
- * @namespace       js.css.rule
+ * @namespace       shared.css.rule
  * @type            Function
  * @platform        js
  * @platform        node

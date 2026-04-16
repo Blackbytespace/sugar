@@ -1,7 +1,7 @@
 import { uncamelize } from '@blackbyte/sugar/string';
 /**
  * @name            styleObject2String
- * @namespace       js.css.transform
+ * @namespace       shared.css.transform
  * @type            Function
  * @platform        js
  * @platform        node

@@ -5,6 +5,7 @@ import { toString } from '@blackbyte/sugar/string';
  * @name            sha512
  * @namespace       shared.crypto
  * @type            Object
+ * @platform        js
  * @platform        node
  * @status          stable
  *
