@@ -16,7 +16,8 @@
  * const encoded = stega.encrypt({ source: 'cms', field: 'title' });
  * const data    = stega.decrypt(encoded);
  *
- * @since         1.0.0
+ * @see            https://www.npmjs.com/package/@vercel/stega
+ * @since          1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 

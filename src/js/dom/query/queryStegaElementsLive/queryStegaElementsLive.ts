@@ -46,6 +46,7 @@ import { VERCEL_STEGA_REGEX, vercelStegaClean } from '@vercel/stega';
  * // stop observing when needed
  * query.cancel();
  *
+ * @see             https://www.npmjs.com/package/@vercel/stega
  * @since           1.0.0
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
