@@ -12,7 +12,7 @@ import { distanceBetween } from '@blackbyte/sugar/math';
  * the direction you want to search the nearest element.
  *
  * @param           {HTMLElement}                 $from             The element from which to start the search
- * @param           {HTMLElement[]}               $elements         The elements list to search in
+ * @param           {NodeListOf<HTMLElement>|HTMLElement[]}               $elements         The elements list to search in
  * @param           {TNearestElementSettings}     [settings={}]     Some settings to configure your search
  * @return          {HTMLElement}                                   The nearest element found
  *
@@ -60,7 +60,7 @@ export default function nearestElement(
 
     switch (finalParams.direction) {
       case 'top':
-        if (elmBound.top > fromElmBound.top) {
+        if (elmBound.bottom > fromElmBound.top) {
           continue;
         }
         break;
@@ -70,7 +70,7 @@ export default function nearestElement(
         }
         break;
       case 'bottom':
-        if (elmBound.bottom < fromElmBound.bottom) {
+        if (elmBound.top < fromElmBound.bottom) {
           continue;
         }
         break;
