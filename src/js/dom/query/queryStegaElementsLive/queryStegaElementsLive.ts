@@ -87,18 +87,18 @@ export default function queryStegaElementsLive(
 ): TQueryStegaElementsLiveApi {
   // ─── State ────────────────────────────────────────────────────────────────
   let canceled = false;
-  // Unique key per (element, attr?) pair to track already-dispatched results
-  const seen = new Set<string>();
-  let seenCounter = 0;
-  const elmIds = new WeakMap<HTMLElement, string>();
+  // Tracks already-dispatched elements, keyed by the DOM element itself. An
+  // element is marked as seen the first time it is taken, regardless of whether
+  // the stega data came from its text content or an attribute. A WeakSet lets
+  // entries be garbage collected once the element is removed from the DOM.
+  const seen = new WeakSet<HTMLElement>();
 
-  function elmId($elm: HTMLElement): string {
-    if (!elmIds.has($elm)) elmIds.set($elm, String(seenCounter++));
-    return elmIds.get($elm)!;
+  function hasSeen($elm: HTMLElement): boolean {
+    return seen.has($elm);
   }
 
-  function seenKey($elm: HTMLElement, attr?: string): string {
-    return attr ? `${elmId($elm)}|${attr}` : elmId($elm);
+  function markSeen($elm: HTMLElement): void {
+    seen.add($elm);
   }
 
   // ─── Settings ─────────────────────────────────────────────────────────────
@@ -168,43 +168,53 @@ export default function queryStegaElementsLive(
   ): Promise<void> {
     if (canceled) return;
 
-    const key = seenKey(result.$elm, result.attr);
-    if (finalSettings.once && seen.has(key)) return;
+    if (finalSettings.once && hasSeen(result.$elm)) return;
+
+    // Reserve the element synchronously, before any await, so concurrent scans
+    // of the same element (childList + attributes + characterData mutations
+    // firing for the same node) can't dispatch the callback more than once.
+    if (finalSettings.once) markSeen(result.$elm);
+
+    // Strip the stega payload right away, as soon as it is detected, instead of
+    // waiting for the (possibly deferred) `when` trigger to fulfill. Otherwise
+    // the payload lingers in the DOM and gets re-detected every time the
+    // framework re-renders / patches the node, calling the callback again. The
+    // decoded data is already captured in `result`, so the callback still
+    // receives it below.
+    if (finalSettings.clean) cleanStega(result);
 
     if (finalSettings.when) {
       await when(result.$elm, finalSettings.when);
       if (canceled) return;
-      if (finalSettings.once && seen.has(key)) return;
     }
-
-    if (finalSettings.once) seen.add(key);
 
     cb(result, api);
 
-    if (finalSettings.clean) {
-      // Pause the observer so stripping zero-width chars doesn't trigger a re-scan
-      observer.disconnect();
-      if (result.attr) {
-        result.$elm.setAttribute(
-          result.attr,
-          vercelStegaClean(result.$elm.getAttribute(result.attr) ?? ''),
-        );
-      } else {
-        for (const node of Array.from(result.$elm.childNodes)) {
-          if (node.nodeType === Node.TEXT_NODE && node.textContent) {
-            node.textContent = vercelStegaClean(node.textContent);
-          }
+    watchDisconnect(result.$elm, result);
+  }
+
+  // ─── Strip the stega payload from a detected element ──────────────────────
+  function cleanStega(result: TQueryStegaElementsLiveElement): void {
+    // Pause the observer so stripping zero-width chars doesn't trigger a re-scan
+    observer.disconnect();
+    if (result.attr) {
+      result.$elm.setAttribute(
+        result.attr,
+        vercelStegaClean(result.$elm.getAttribute(result.attr) ?? ''),
+      );
+    } else {
+      for (const node of Array.from(result.$elm.childNodes)) {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent) {
+          node.textContent = vercelStegaClean(node.textContent);
         }
       }
-      observer.observe(finalSettings.rootNode, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        characterData: true,
-      });
     }
-
-    watchDisconnect(result.$elm, result);
+    observer.observe(finalSettings.rootNode, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true,
+    });
   }
 
   // ─── Scan one element for stega data ──────────────────────────────────────
