@@ -17,17 +17,16 @@ function extractStega(value) {
 export default function queryStegaElementsLive(cb, settings) {
     // ─── State ────────────────────────────────────────────────────────────────
     let canceled = false;
-    // Unique key per (element, attr?) pair to track already-dispatched results
-    const seen = new Set();
-    let seenCounter = 0;
-    const elmIds = new WeakMap();
-    function elmId($elm) {
-        if (!elmIds.has($elm))
-            elmIds.set($elm, String(seenCounter++));
-        return elmIds.get($elm);
+    // Tracks already-dispatched elements, keyed by the DOM element itself. An
+    // element is marked as seen the first time it is taken, regardless of whether
+    // the stega data came from its text content or an attribute. A WeakSet lets
+    // entries be garbage collected once the element is removed from the DOM.
+    const seen = new WeakSet();
+    function hasSeen($elm) {
+        return seen.has($elm);
     }
-    function seenKey($elm, attr) {
-        return attr ? `${elmId($elm)}|${attr}` : elmId($elm);
+    function markSeen($elm) {
+        seen.add($elm);
     }
     // ─── Settings ─────────────────────────────────────────────────────────────
     const finalSettings = Object.assign({ rootNode: document, once: true, clean: true, attributes: true, when: undefined, disconnectedCallback: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
@@ -72,43 +71,52 @@ export default function queryStegaElementsLive(cb, settings) {
     // ─── Core: handle one stega result ────────────────────────────────────────
     function handleResult(result) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a;
             if (canceled)
                 return;
-            const key = seenKey(result.$elm, result.attr);
-            if (finalSettings.once && seen.has(key))
+            if (finalSettings.once && hasSeen(result.$elm))
                 return;
+            // Reserve the element synchronously, before any await, so concurrent scans
+            // of the same element (childList + attributes + characterData mutations
+            // firing for the same node) can't dispatch the callback more than once.
+            if (finalSettings.once)
+                markSeen(result.$elm);
+            // Strip the stega payload right away, as soon as it is detected, instead of
+            // waiting for the (possibly deferred) `when` trigger to fulfill. Otherwise
+            // the payload lingers in the DOM and gets re-detected every time the
+            // framework re-renders / patches the node, calling the callback again. The
+            // decoded data is already captured in `result`, so the callback still
+            // receives it below.
+            if (finalSettings.clean)
+                cleanStega(result);
             if (finalSettings.when) {
                 yield when(result.$elm, finalSettings.when);
                 if (canceled)
                     return;
-                if (finalSettings.once && seen.has(key))
-                    return;
             }
-            if (finalSettings.once)
-                seen.add(key);
             cb(result, api);
-            if (finalSettings.clean) {
-                // Pause the observer so stripping zero-width chars doesn't trigger a re-scan
-                observer.disconnect();
-                if (result.attr) {
-                    result.$elm.setAttribute(result.attr, vercelStegaClean((_a = result.$elm.getAttribute(result.attr)) !== null && _a !== void 0 ? _a : ''));
-                }
-                else {
-                    for (const node of Array.from(result.$elm.childNodes)) {
-                        if (node.nodeType === Node.TEXT_NODE && node.textContent) {
-                            node.textContent = vercelStegaClean(node.textContent);
-                        }
-                    }
-                }
-                observer.observe(finalSettings.rootNode, {
-                    childList: true,
-                    subtree: true,
-                    attributes: true,
-                    characterData: true,
-                });
-            }
             watchDisconnect(result.$elm, result);
+        });
+    }
+    // ─── Strip the stega payload from a detected element ──────────────────────
+    function cleanStega(result) {
+        var _a;
+        // Pause the observer so stripping zero-width chars doesn't trigger a re-scan
+        observer.disconnect();
+        if (result.attr) {
+            result.$elm.setAttribute(result.attr, vercelStegaClean((_a = result.$elm.getAttribute(result.attr)) !== null && _a !== void 0 ? _a : ''));
+        }
+        else {
+            for (const node of Array.from(result.$elm.childNodes)) {
+                if (node.nodeType === Node.TEXT_NODE && node.textContent) {
+                    node.textContent = vercelStegaClean(node.textContent);
+                }
+            }
+        }
+        observer.observe(finalSettings.rootNode, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            characterData: true,
         });
     }
     // ─── Scan one element for stega data ──────────────────────────────────────
