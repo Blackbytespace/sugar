@@ -4,6 +4,7 @@ import expandPleasantCssClassname from './expandPleasantCssClassname/expandPleas
 import expandPleasantCssClassnames from './expandPleasantCssClassnames/expandPleasantCssClassnames.js';
 import extractCssClassesNames from './extractCssClassesNames/extractCssClassesNames.js';
 import replaceTags from './replaceTags/replaceTags.js';
+import sanitizeSvg from './sanitizeSvg/sanitizeSvg.js';
 import stripTags from './stripTags/stripTags.js';
 import unescapeHtml from './unescapeHtml/unescapeHtml.js';
 
@@ -14,6 +15,7 @@ export {
   expandPleasantCssClassnames as __expandPleasantCssClassnames,
   extractCssClassesNames as __extractCssClassesNames,
   replaceTags as __replaceTags,
+  sanitizeSvg as __sanitizeSvg,
   stripTags as __stripTags,
   unescapeHtml as __unescapeHtml,
   encodeEntities,
@@ -22,6 +24,7 @@ export {
   expandPleasantCssClassnames,
   extractCssClassesNames,
   replaceTags,
+  sanitizeSvg,
   stripTags,
   unescapeHtml,
 };
